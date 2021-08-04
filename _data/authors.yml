@@ -1,0 +1,22 @@
+Jinchao Li:
+  name      : Jinchao Li
+  url       : https://jinchaoli.com
+  avatar    : /assets/images/Jinchao.png # path or url of avatar image (square)
+  bio       : >
+    Ph.D. at <a href="https://www.se.cuhk.edu.hk/laboratories/human-computer-communications-laboratory/" target="_blank">HCCL</a> Lab<br>
+    <a href="https://cuhk.edu.hk" target="_blank">CUHK</a>, Hong Kong, China<br>    
+  email     : jcli@se.cuhk.edu.hk
+  github    : JinchaoLove # "user_name" the last part of your profile url, e.g. https://github.com/user_name
+  gscholar  : 0LWE_dkAAAAJ # "user_id" https://scholar.google.com/citations?hl=en&user=user_id
+  rgate     : Jinchao-Li-3 # "user_name" https://www.researchgate.net/profile/user_name
+  facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
+  twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
+  weibo     : # "user_id"   the last part of your profile url, e.g. https://www.weibo.com/user_id/profile?...
+  googleplus: # "user_id"   the last part of your profile url, e.g. https://plus.google.com/u/0/user_id
+  telegram  : # "user_name" the last part of your profile url, e.g. https://t.me/user_name
+  medium    : # "user_name" the last part of your profile url, e.g. https://medium.com/user_name
+  zhihu     : # "user_name" the last part of your profile url, e.g. https://www.zhihu.com/people/user_name
+  douban    : # "user_name" the last part of your profile url, e.g. https://www.douban.com/people/user_name
+  linkedin  : # "user_name" the last part of your profile url, e.g. https://www.linkedin.com/in/user_name
+  npm       : # "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name
+
