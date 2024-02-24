@@ -120,20 +120,20 @@ docs[i].content = htmlToPlainText(docs[i].content).trim();
     var searchInput = document.getElementById('search-input');
     var searchResults = document.getElementById('search-results');
     var suggestionsList = document.getElementById('suggestions');
-    var searchTrigger = document.getElementById('search-trigger');
-    var cancelTrigger = document.getElementById('search-cancel');
+    var bntSearch = document.getElementById('search-trigger');
+    var btnCancel = document.getElementById('search-cancel');
 
     var currentInput;
     var currentSearchIndex = 0;
 
     function showSearch() {
-      searchTrigger.click();
+      bntSearch.click();
     }
 
     function hideSearch() {
-      cancelTrigger.click();
+      btnCancel.click();
     }
-      // add event listener on ctrl + <focus_shortcut_key> for showing the search input
+      // add event listener on ctrl + <shortcut_key> for showing the search input
       jtd.addEvent(document, 'keydown', function (e) {
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
           e.preventDefault();
@@ -425,7 +425,8 @@ docs[i].content = htmlToPlainText(docs[i].content).trim();
       switch (e.keyCode) {
         case 27: // When esc key is pressed, hide the results and clear the field
           searchInput.value = '';
-          searchInput.focusout();
+          searchInput.trigger('focusout');
+          hideSearch();
           break;
         case 38: // arrow up
         case 40: // arrow down
