@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://jinchaoli.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-02-27T20:58:45+08:00</updated><id>https://jinchaoli.com/feed.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Customize Your Jekyll Chirpy Theme</title><link href="https://jinchaoli.com/blog/customize-jekyll-chirpy/" rel="alternate" type="text/html" title="Customize Your Jekyll Chirpy Theme" /><published>2023-07-23T10:00:00+08:00</published><updated>2024-02-16T23:14:32+08:00</updated><id>https://jinchaoli.com/blog/customize-jekyll-chirpy</id><content type="html" xml:base="https://jinchaoli.com/blog/customize-jekyll-chirpy/"><![CDATA[<p><a href="https://github.com/cotes2020/jekyll-theme-chirpy">Jekyll Chirpy Theme</a> is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official <a href="https://github.com/cotes2020/jekyll-theme-chirpy/wiki">wiki</a> to realize your own magic modification.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://jinchaoli.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-02-28T21:21:25+08:00</updated><id>https://jinchaoli.com/feed.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Customize Your Jekyll Chirpy Theme</title><link href="https://jinchaoli.com/blog/customize-jekyll-chirpy/" rel="alternate" type="text/html" title="Customize Your Jekyll Chirpy Theme" /><published>2023-07-23T10:00:00+08:00</published><updated>2024-02-16T23:14:32+08:00</updated><id>https://jinchaoli.com/blog/customize-jekyll-chirpy</id><content type="html" xml:base="https://jinchaoli.com/blog/customize-jekyll-chirpy/"><![CDATA[<p><a href="https://github.com/cotes2020/jekyll-theme-chirpy">Jekyll Chirpy Theme</a> is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official <a href="https://github.com/cotes2020/jekyll-theme-chirpy/wiki">wiki</a> to realize your own magic modification.</p>
 
 <p>This blog introduces some basic tutorials to customize your own Chirpy theme, suitable for those friends who are not satisfied with the Chirpy configuration and want more blogging functions. Welcome to <a href="https://github.com/JinchaoLove/jekyll-chirpy-demo/issues">issue</a> or <a href="https://github.com/JinchaoLove/jekyll-chirpy-demo/pulls">join us</a> to help others build blogs.</p>
 
@@ -262,7 +262,7 @@
     jekyll build
 </span></pre></td></tr></tbody></table></code></pre></div></div>
 
-<p>Unless you specified the output path, the generated site files will be placed in folder <code class="language-plaintext filepath highlighter-rouge">_site</code> of the project’s root directory. Now you should upload those files to the target server.</p>]]></content><author><name>Cotes Chung</name></author><category term="Blogging" /><category term="Tutorial" /><category term="getting started" /><summary type="html"><![CDATA[Prerequisites]]></summary></entry><entry><title type="html">Writing a New Post</title><link href="https://jinchaoli.com/blog/write-a-new-post/" rel="alternate" type="text/html" title="Writing a New Post" /><published>2019-08-08T14:10:00+08:00</published><updated>2024-02-08T21:14:11+08:00</updated><id>https://jinchaoli.com/blog/write-a-new-post</id><content type="html" xml:base="https://jinchaoli.com/blog/write-a-new-post/"><![CDATA[<p>This tutorial will guide you how to write a post in the <em>Chirpy</em> template, and it’s worth reading even if you’ve used Jekyll before, as many features require specific variables to be set.</p>
+<p>Unless you specified the output path, the generated site files will be placed in folder <code class="language-plaintext filepath highlighter-rouge">_site</code> of the project’s root directory. Now you should upload those files to the target server.</p>]]></content><author><name>Cotes Chung</name></author><category term="Blogging" /><category term="Tutorial" /><category term="getting started" /><summary type="html"><![CDATA[Prerequisites]]></summary></entry><entry><title type="html">Writing a New Post</title><link href="https://jinchaoli.com/blog/write-a-new-post/" rel="alternate" type="text/html" title="Writing a New Post" /><published>2019-08-08T14:10:00+08:00</published><updated>2024-02-28T21:07:41+08:00</updated><id>https://jinchaoli.com/blog/write-a-new-post</id><content type="html" xml:base="https://jinchaoli.com/blog/write-a-new-post/"><![CDATA[<p>This tutorial will guide you how to write a post in the <em>Chirpy</em> template, and it’s worth reading even if you’ve used Jekyll before, as many features require specific variables to be set.</p>
 
 <h2 id="naming-and-path">Naming and Path</h2>
 
@@ -358,7 +358,7 @@
 
 <h2 id="comments">Comments</h2>
 
-<p>The global switch of comments is defined by variable <code class="language-plaintext highlighter-rouge">comments.active</code> in the file <code class="language-plaintext filepath highlighter-rouge">_config.yml</code>. After selecting a comment system for this variable, comments will be turned on for all posts.</p>
+<p>The global switch of comments is defined by variable <code class="language-plaintext highlighter-rouge">comments.provider</code> in the file <code class="language-plaintext filepath highlighter-rouge">_config.yml</code>. After selecting a comment system for this variable, comments will be turned on for all posts.</p>
 
 <p>If you want to close the comment for a specific post, add the following to the <strong>Front Matter</strong> of the post:</p>
 
@@ -739,6 +739,8 @@ Can be referenced as <span class="se">\e</span>qref{eq:label_name}.
 
 <h2 id="videos">Videos</h2>
 
+<h3 id="video-sharing-platform">Video Sharing Platform</h3>
+
 <p>You can embed a video with the following syntax:</p>
 
 <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -775,6 +777,34 @@ Can be referenced as <span class="se">\e</span>qref{eq:label_name}.
     </tr>
   </tbody>
 </table>
+
+<h3 id="video-file">Video File</h3>
+
+<p>If you want to embed a video file directly, use the following syntax:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>embed/video.html<span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s1">'{URL}'</span><span class="w"> </span><span class="cp">%}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Where <code class="language-plaintext highlighter-rouge">URL</code> is an URL to a video file e.g. <code class="language-plaintext highlighter-rouge">/assets/img/sample/video.mp4</code>.</p>
+
+<p>You can also specify additional attributes for the embedded video file. Here is a full list of attributes allowed.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">poster='/path/to/poster.png'</code> - poster image for a video that is shown while video is downloading</li>
+  <li><code class="language-plaintext highlighter-rouge">title='Text'</code> - title for a video that appears below the video and looks same as for images</li>
+  <li><code class="language-plaintext highlighter-rouge">autoplay=true</code> - video automatically begins to play back as soon as it can</li>
+  <li><code class="language-plaintext highlighter-rouge">loop=true</code> - automatically seek back to the start upon reaching the end of the video</li>
+  <li><code class="language-plaintext highlighter-rouge">muted=true</code> - audio will be initially silenced</li>
+</ul>
+
+<p>Consider an example utilizing all of the above:</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>embed/video.html<span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s1">'video.mp4'</span><span class="w"> </span><span class="na">poster</span><span class="o">=</span><span class="s1">'poster.png'</span><span class="w"> </span><span class="na">title</span><span class="o">=</span><span class="s1">'Demo video'</span><span class="w">
+   </span><span class="na">autoplay</span><span class="o">=</span><span class="kc">true</span><span class="w"> </span><span class="na">loop</span><span class="o">=</span><span class="kc">true</span><span class="w"> </span><span class="na">muted</span><span class="o">=</span><span class="kc">true</span><span class="w"> </span><span class="cp">%}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="learn-more">Learn More</h2>
 
@@ -1008,7 +1038,7 @@ Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecena
 
 <h2 id="video">Video</h2>
 
-<iframe class="embed-video youtube" loading="lazy" src="https://www.youtube.com/embed/Balreaj8Yqs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<iframe class="embed-video" loading="lazy" src="https://www.youtube.com/embed/Balreaj8Yqs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
 <h2 id="reverse-footnote">Reverse Footnote</h2>
 
