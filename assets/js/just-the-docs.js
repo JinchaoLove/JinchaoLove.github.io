@@ -447,6 +447,7 @@ docs[i].content = htmlToPlainText(docs[i].content).trim();
             if (active.parentElement.previousSibling) {
               var previous = active.parentElement.previousSibling.querySelector('.search-result');
               previous.classList.add('active');
+              previous.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
           }
           return;
@@ -458,11 +459,13 @@ docs[i].content = htmlToPlainText(docs[i].content).trim();
               var next = active.parentElement.nextSibling.querySelector('.search-result');
               active.classList.remove('active');
               next.classList.add('active');
+              next.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
           } else {
             var next = document.querySelector('.search-result');
             if (next) {
               next.classList.add('active');
+              next.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
           }
           return;
