@@ -292,7 +292,7 @@
         "35": {
           "doc": "Text and Typography",
           "title": "Headings",
-          "content": "\n\n",
+          "content": "\n\n<!-- markdownlint-disable MD022 MD025 -->\n",
           "url": "/blog/text-and-typography/#headings",
           
           "relUrl": "/blog/text-and-typography/#headings"
@@ -308,7 +308,7 @@
         "37": {
           "doc": "Text and Typography",
           "title": "H2 - heading",
-          "content": "\n\n<h3 data-toc-skip=\"\" class=\"mt-4 mb-0\" id=\"h3---heading\">H3 - heading</h3>\n\n<h4 data-toc-skip=\"\" class=\"mt-4\" id=\"h4---heading\">H4 - heading</h4>\n\n",
+          "content": "\n\n<h3 data-toc-skip=\"\" class=\"mt-4 mb-0\" id=\"h3---heading\">H3 - heading</h3>\n\n<h4 data-toc-skip=\"\" class=\"mt-4\" id=\"h4---heading\">H4 - heading</h4>\n<!-- markdownlint-enable MD022 MD025 -->\n\n",
           "url": "/blog/text-and-typography/#h2---heading",
           
           "relUrl": "/blog/text-and-typography/#h2---heading"
