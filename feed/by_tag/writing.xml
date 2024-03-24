@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/writing.xml" rel="self" type="application/atom+xml" /><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-03-09T13:48:25+08:00</updated><id>https://jinchaoli.com/feed/by_tag/writing.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Writing a New Post</title><link href="https://jinchaoli.com/blog/write-a-new-post/" rel="alternate" type="text/html" title="Writing a New Post" /><published>2019-08-08T14:10:00+08:00</published><updated>2024-03-09T10:31:20+08:00</updated><id>https://jinchaoli.com/blog/write-a-new-post</id><content type="html" xml:base="https://jinchaoli.com/blog/write-a-new-post/"><![CDATA[<p>This tutorial will guide you how to write a post in the <em>Chirpy</em> template, and it’s worth reading even if you’ve used Jekyll before, as many features require specific variables to be set.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/writing.xml" rel="self" type="application/atom+xml" /><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-03-24T22:08:00+08:00</updated><id>https://jinchaoli.com/feed/by_tag/writing.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Writing a New Post</title><link href="https://jinchaoli.com/blog/write-a-new-post/" rel="alternate" type="text/html" title="Writing a New Post" /><published>2019-08-08T14:10:00+08:00</published><updated>2024-03-24T21:57:37+08:00</updated><id>https://jinchaoli.com/blog/write-a-new-post</id><content type="html" xml:base="https://jinchaoli.com/blog/write-a-new-post/"><![CDATA[<p>This tutorial will guide you how to write a post in the <em>Chirpy</em> template, and it’s worth reading even if you’ve used Jekyll before, as many features require specific variables to be set.</p>
 
 <h2 id="naming-and-path">Naming and Path</h2>
 
@@ -78,6 +78,24 @@
 
 <blockquote class="prompt-info">
   <p>The benefit of reading the author information from the file <code class="language-plaintext filepath highlighter-rouge">_data/authors.yml</code> is that the page will have the meta tag <code class="language-plaintext highlighter-rouge">twitter:creator</code>, which enriches the <a href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution">Twitter Cards</a> and is good for SEO.</p>
+</blockquote>
+
+<h3 id="post-description">Post Description</h3>
+
+<p>By default, the first words of the post are used to display on the home page for a list of posts, in the <em>Further Reading</em> section, and in the XML of the RSS feed. If you don’t want to display the auto-generated description for the post, you can customize it using the <code class="language-plaintext highlighter-rouge">description</code> field in the <em>Front Matter</em> as follows:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">Short summary of the post.</span>
+<span class="nn">---</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Additionally, the <code class="language-plaintext highlighter-rouge">description</code> text will also be displayed under the post title on the post’s page.</p>
+
+<blockquote class="prompt-tip">
+  <p>The <code class="language-plaintext highlighter-rouge">jekyll-feed</code> plugin will automatically process with the front-matters <code class="language-plaintext highlighter-rouge">date</code>, <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">excerpt</code>, <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">category</code>, <code class="language-plaintext highlighter-rouge">tags</code>, <code class="language-plaintext highlighter-rouge">image</code>, <code class="language-plaintext highlighter-rouge">author</code>, and <code class="language-plaintext highlighter-rouge">description</code>.</p>
 </blockquote>
 
 <h2 id="table-of-contents">Table of Contents</h2>
