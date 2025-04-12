@@ -255,6 +255,7 @@ docs[i].content = htmlToPlainText(docs[i].content).trim();
 
         var resultLink = document.createElement('a');
         resultLink.classList.add('search-result');
+        // resultLink.classList.add('anchor');
         resultLink.setAttribute('href', doc.url);
         resultsListItem.appendChild(resultLink);
 

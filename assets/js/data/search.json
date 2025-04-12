@@ -436,7 +436,7 @@
         "53": {
           "doc": "Text and Typography",
           "title": "Reverse Footnote",
-          "content": "\n\n<div class=\"footnotes\" role=\"doc-endnotes\">\n  <ol>\n    <li id=\"fn:footnote\" role=\"doc-endnote\">\n      <p>The footnote source <a href=\"#fnref:footnote\" class=\"reversefootnote\" role=\"doc-backlink\">&#8617;</a></p>\n    </li>\n    <li id=\"fn:fn-nth-2\" role=\"doc-endnote\">\n      <p>The 2nd footnote source <a href=\"#fnref:fn-nth-2\" class=\"reversefootnote\" role=\"doc-backlink\">&#8617;</a></p>\n    </li>\n  </ol>\n</div>\n",
+          "content": "\n\n<div class=\"footnotes\" role=\"doc-endnotes\">\n  <ol>\n    <li id=\"fn:footnote\" role=\"doc-endnote\">\n      <p>The footnote source <a href=\"#fnref:footnote\" class=\"reversefootnote\" role=\"doc-backlink\">&#8617;&#xfe0e;</a></p>\n    </li>\n    <li id=\"fn:fn-nth-2\" role=\"doc-endnote\">\n      <p>The 2nd footnote source <a href=\"#fnref:fn-nth-2\" class=\"reversefootnote\" role=\"doc-backlink\">&#8617;&#xfe0e;</a></p>\n    </li>\n  </ol>\n</div>\n",
           "url": "/blog/text-and-typography/#reverse-footnote",
           
           "relUrl": "/blog/text-and-typography/#reverse-footnote"
