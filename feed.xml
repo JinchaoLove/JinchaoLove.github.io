@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://jinchaoli.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-06-22T21:04:34+08:00</updated><id>https://jinchaoli.com/feed.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Customize Your Jekyll Chirpy Theme</title><link href="https://jinchaoli.com/blog/customize-jekyll-chirpy/" rel="alternate" type="text/html" title="Customize Your Jekyll Chirpy Theme" /><published>2023-07-23T10:00:00+08:00</published><updated>2024-02-16T23:14:32+08:00</updated><id>https://jinchaoli.com/blog/customize-jekyll-chirpy</id><content type="html" xml:base="https://jinchaoli.com/blog/customize-jekyll-chirpy/"><![CDATA[<p><a href="https://github.com/cotes2020/jekyll-theme-chirpy">Jekyll Chirpy Theme</a> is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official <a href="https://github.com/cotes2020/jekyll-theme-chirpy/wiki">wiki</a> to realize your own magic modification.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://jinchaoli.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-06-25T23:44:16+08:00</updated><id>https://jinchaoli.com/feed.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Customize Your Jekyll Chirpy Theme</title><link href="https://jinchaoli.com/blog/customize-jekyll-chirpy/" rel="alternate" type="text/html" title="Customize Your Jekyll Chirpy Theme" /><published>2023-07-23T10:00:00+08:00</published><updated>2024-02-16T23:14:32+08:00</updated><id>https://jinchaoli.com/blog/customize-jekyll-chirpy</id><content type="html" xml:base="https://jinchaoli.com/blog/customize-jekyll-chirpy/"><![CDATA[<p><a href="https://github.com/cotes2020/jekyll-theme-chirpy">Jekyll Chirpy Theme</a> is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official <a href="https://github.com/cotes2020/jekyll-theme-chirpy/wiki">wiki</a> to realize your own magic modification.</p>
 
 <p>This blog introduces some basic tutorials to customize your own Chirpy theme, suitable for those friends who are not satisfied with the Chirpy configuration and want more blogging functions. Welcome to <a href="https://github.com/JinchaoLove/jekyll-chirpy-demo/issues">issue</a> or <a href="https://github.com/JinchaoLove/jekyll-chirpy-demo/pulls">join us</a> to help others build blogs.</p>
 
@@ -227,8 +227,8 @@
 
 <ol>
   <li>
-    <p>Browse to your repository on GitHub. Select the tab <em>Settings</em>, then click <em>Pages</em> in the left navigation bar. Then, in the <strong>Source</strong> section (under <em>Build and deployment</em>), select <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow"><strong>GitHub Actions</strong></a> from the dropdown menu.<br />
-<img src="pages-source-light.png" alt="Build source" class="light border normal" w="375" h="140" />
+    <p>Browse to your repository on GitHub. Select the tab <em>Settings</em>, then click <em>Pages</em> in the left navigation bar. Then, in the <strong>Source</strong> section (under <em>Build and deployment</em>), select <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow"><strong>GitHub Actions</strong></a> from the dropdown menu.  <br />
+<img src="pages-source-light.png" alt="Build source" class="light border normal" w="375" h="140" /><br />
 <img src="pages-source-dark.png" alt="Build source" class="dark normal" w="375" h="140" /></p>
   </li>
   <li>
@@ -1030,7 +1030,7 @@ Can be referenced as <span class="se">\e</span>qref{eq:label_name}.
 
 <h3 id="default-with-caption">Default (with caption)</h3>
 
-<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="Desktop View" width="972" height="589" />
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="Desktop View" width="972" height="589" /><br />
 <em>Full screen width and center alignment</em></p>
 
 <h3 id="left-aligned">Left aligned</h3>
@@ -1039,19 +1039,19 @@ Can be referenced as <span class="se">\e</span>qref{eq:label_name}.
 
 <h3 id="float-to-left">Float to left</h3>
 
-<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="Desktop View" width="972" height="589" class="w-50 left" />
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="Desktop View" width="972" height="589" class="w-50 left" /><br />
 Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.</p>
 
 <h3 id="float-to-right">Float to right</h3>
 
-<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="Desktop View" width="972" height="589" class="w-50 right" />
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="Desktop View" width="972" height="589" class="w-50 right" /><br />
 Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.</p>
 
 <h3 id="darklight-mode--shadow">Dark/Light mode &amp; Shadow</h3>
 
 <p>The image below will toggle dark/light mode based on theme preference, notice it has shadows.</p>
 
-<p><img src="https://chirpy-img.netlify.app/posts/20190808/devtools-light.png" alt="light mode only" class="light w-75 shadow rounded-10" w="1212" h="668" />
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/devtools-light.png" alt="light mode only" class="light w-75 shadow rounded-10" w="1212" h="668" /><br />
 <img src="https://chirpy-img.netlify.app/posts/20190808/devtools-dark.png" alt="dark mode only" class="dark w-75 shadow rounded-10" w="1212" h="668" /></p>
 
 <h2 id="video">Video</h2>
