@@ -38,7 +38,7 @@
         "4": {
           "doc": "About",
           "title": "News",
-          "content": "\n\n<ul>\n  <li>2024.12: One paper submitted to journal (<a href=\"https://arxiv.org/pdf/2501.03727\">under review</a>).</li>\n  <li>2023.01: Two papers (<a href=\"https://arxiv.org/pdf/2303.08019\">1</a>, <a href=\"https://arxiv.org/pdf/2303.08027\">2</a>) accepted by ICASSP 2023</li>\n  <li>Fall 2022: Co-teach “Conversational AI systems” (ASR part) with Prof. Meng and other nice colleagues in CUHK</li>\n  <li>2022.09: Winner of two tasks in the “<a href=\"https://www.competitions.hume.ai/avb2022\">ACII Affective Vocal Bursts (A-VB)</a>” competition organized by <a href=\"https://hume.ai\">Hume AI</a></li>\n</ul>\n\n<hr />\n\n",
+          "content": "\n\n<blockquote class=\"prompt-info\">\n  <p><b>I am actively seeking academic and industry opportunities, including Postdoctoral, Research Fellow, and Research Internship positions. Interested collaborators are welcome to connect!</b></p>\n</blockquote>\n\n<ul>\n  <li>2024.12: One paper submitted to journal (<a href=\"https://arxiv.org/pdf/2501.03727\">under review</a>).</li>\n  <li>2023.01: Two papers (<a href=\"https://arxiv.org/pdf/2303.08019\">1</a>, <a href=\"https://arxiv.org/pdf/2303.08027\">2</a>) accepted by ICASSP 2023</li>\n  <li>Fall 2022: Co-teach “Conversational AI systems” (ASR part) with Prof. Meng and other nice colleagues in CUHK</li>\n  <li>2022.09: Winner of two tasks in the “<a href=\"https://www.competitions.hume.ai/avb2022\">ACII Affective Vocal Bursts (A-VB)</a>” competition organized by <a href=\"https://hume.ai\">Hume AI</a></li>\n</ul>\n\n<hr />\n\n",
           "url": "/#news",
           
           "relUrl": "/#news"
