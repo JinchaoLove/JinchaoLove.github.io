@@ -1,85 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://jinchaoli.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-08-05T22:03:41+08:00</updated><id>https://jinchaoli.com/feed.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Configure Waline with TiDB</title><link href="https://jinchaoli.com/blog/set-waline-with-tidb/" rel="alternate" type="text/html" title="Configure Waline with TiDB" /><published>2025-07-27T11:00:00+08:00</published><updated>2025-07-27T13:02:50+08:00</updated><id>https://jinchaoli.com/blog/set-waline-with-tidb</id><content type="html" xml:base="https://jinchaoli.com/blog/set-waline-with-tidb/"><![CDATA[<h2 id="why-waline--tidb">Why Waline + TiDB?</h2>
-
-<p><a href="https://waline.js.org/">Waline</a> is a lightweight, open-source, privacy-focused, and self-hosted comment system with backend UI and rich features, and <a href="https://tidbcloud.com/">TiDB Cloud</a> offers a scalable, MySQL-compatible database with a generous 5GB free tier – making them a powerful pair for efficient and reliable comment system.</p>
-
-<h2 id="how-to-set-up-waline-with-tidb-cloud">How to Set Up Waline with TiDB Cloud?</h2>
-
-<p>Follow these steps to deploy and configure <a href="https://waline.js.org/">Waline</a> using <a href="https://tidbcloud.com/">TiDB Cloud</a> as the database backend.</p>
-
-<ol>
-  <li>
-    <p>Create a cluster in <a href="https://tidbcloud.com/">TiDB Database</a> (any name is okay)</p>
-  </li>
-  <li>
-    <p>Connect with the above cluster in your local editor (e.g., VS Code)</p>
-
-    <p>To manage your database and initialize comment tables:</p>
-
-    <ol>
-      <li>
-        <p>Get Connection Details: In the TiDB Cloud console (Overview of the cluster), click the Connect button (top-right corner). You’ll see the connection parameters <code class="language-plaintext highlighter-rouge">HOST</code>, <code class="language-plaintext highlighter-rouge">PORT</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">PASSWORD</code> (generate and copy it), <code class="language-plaintext highlighter-rouge">DATABASE</code> and <code class="language-plaintext highlighter-rouge">CA</code>.</p>
-      </li>
-      <li>
-        <p>Set Up VS Code: See details in <a href="https://docs.pingcap.com/tidbcloud/dev-guide-gui-vscode-sqltools/">TiDB Developer Guide</a>.</p>
-      </li>
-      <li>
-        <p>Initialize the Waline Database Schema: Copy <a href="https://github.com/walinejs/waline/blob/main/assets/waline.tidb">waline.tidb</a> and execute the entire script in VS Code. The script will create a database named <code class="language-plaintext highlighter-rouge">waline</code> with <code class="language-plaintext highlighter-rouge">wl_Comment</code>, <code class="language-plaintext highlighter-rouge">wl_Counter</code> and <code class="language-plaintext highlighter-rouge">wl_Users</code> in it.</p>
-      </li>
-    </ol>
-  </li>
-  <li>
-    <p>Configure <code class="language-plaintext highlighter-rouge">Environment Variables</code> as listed in <a href="https://waline.js.org/guide/database.html#tidb">Waline Guidebook</a></p>
-  </li>
-</ol>
-
-<blockquote class="prompt-warning">
-  <p>When first connecting via VS Code, the default <code class="language-plaintext highlighter-rouge">Database</code> is <code class="language-plaintext highlighter-rouge">test</code>. After running <code class="language-plaintext highlighter-rouge">waline.tidb</code>, the actual database used by Waline is <code class="language-plaintext highlighter-rouge">waline</code>. So in <code class="language-plaintext highlighter-rouge">Environment Variables</code>, set <code class="language-plaintext highlighter-rouge">DATABASE = waline</code>.</p>
-</blockquote>]]></content><author><name>Jinchao Li</name></author><category term="Blogging" /><category term="Tutorial" /><category term="homepage" /><summary type="html"><![CDATA[Why Waline + TiDB?]]></summary></entry><entry><title type="html">Customize Your Jekyll Chirpy Theme</title><link href="https://jinchaoli.com/blog/customize-jekyll-chirpy/" rel="alternate" type="text/html" title="Customize Your Jekyll Chirpy Theme" /><published>2023-07-23T10:00:00+08:00</published><updated>2025-07-27T12:30:05+08:00</updated><id>https://jinchaoli.com/blog/customize-jekyll-chirpy</id><content type="html" xml:base="https://jinchaoli.com/blog/customize-jekyll-chirpy/"><![CDATA[<p><a href="https://github.com/cotes2020/jekyll-theme-chirpy">Jekyll Chirpy Theme</a> is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official <a href="https://github.com/cotes2020/jekyll-theme-chirpy/wiki">wiki</a> to realize your own magic modification.</p>
-
-<p>This blog introduces some basic tutorials to customize your own Chirpy theme, suitable for those friends who are not satisfied with the Chirpy configuration and want more blogging functions. Welcome to <a href="https://github.com/JinchaoLove/jekyll-chirpy-demo/issues">issue</a> or <a href="https://github.com/JinchaoLove/jekyll-chirpy-demo/pulls">join us</a> to help others build blogs.</p>
-
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-10-19T18:16:44+08:00</updated><id>https://jinchaoli.com/feed.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Python Basics</title><link href="https://jinchaoli.com/blog/python/" rel="alternate" type="text/html" title="Python Basics"/><published>2025-09-09T22:00:00+08:00</published><updated>2025-09-09T22:00:00+08:00</updated><id>https://jinchaoli.com/blog/python</id><content type="html" xml:base="https://jinchaoli.com/blog/python/"><![CDATA[<h2 id="math">Math</h2>
+<p>在正数时，<code class="language-plaintext highlighter-rouge">int(a / b)</code> 和 <code class="language-plaintext highlighter-rouge">a // b</code> 通常结果相同，但在负数时可能不同：</p>
 <ul>
-  <li>
-    <p><a href="/blog/exchange-homepage-and-about/">Exchange Homepage and About</a></p>
-  </li>
-  <li>
-    <p><a href="https://nihil.cc/posts/use_valine/">Replace Disqus with Valine for Discussion</a></p>
-  </li>
-  <li>
-    <p><a href="https://blog.ixiaocai.net/posts/Astro-Blog-Customize-4-Waline-Enhancement/">Use Waline for Discussion</a></p>
-  </li>
-</ul>]]></content><author><name>Jinchao Li</name></author><category term="Blogging" /><category term="Tutorial" /><category term="theme" /><summary type="html"><![CDATA[Jekyll Chirpy Theme is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official wiki to realize your own magic modification.]]></summary></entry><entry><title type="html">Exchange Homepage and About</title><link href="https://jinchaoli.com/blog/exchange-homepage-and-about/" rel="alternate" type="text/html" title="Exchange Homepage and About" /><published>2023-07-23T10:00:00+08:00</published><updated>2024-02-16T23:14:32+08:00</updated><id>https://jinchaoli.com/blog/exchange-homepage-and-about</id><content type="html" xml:base="https://jinchaoli.com/blog/exchange-homepage-and-about/"><![CDATA[<p>To change the default site homepage as <code class="language-plaintext highlighter-rouge">About</code>, and the original paginator homepage as <code class="language-plaintext highlighter-rouge">Blog</code>. It may be difficult since <a href="https://jekyllrb.com/docs/pagination/">pagination</a> only works within <code class="language-plaintext highlighter-rouge">index.html</code>, see similar <a href="https://github.com/cotes2020/jekyll-theme-chirpy/issues/711">issue</a>.</p>
-
-<ol>
-  <li>
-    <p>Modify the front matters with permalink:</p>
-
-    <ul>
-      <li>Create a new folder, e.g. <code class="language-plaintext highlighter-rouge">/blog/</code>, and move <code class="language-plaintext highlighter-rouge">index.html</code> inside it.</li>
-      <li>Add <code class="language-plaintext highlighter-rouge">permalink: /</code> in the front matter of <code class="language-plaintext highlighter-rouge">/_tabs/about.md</code>.</li>
-    </ul>
-  </li>
-  <li>
-    <p>Add <code class="language-plaintext highlighter-rouge">paginate_path</code> in <code class="language-plaintext highlighter-rouge">/_config.yml</code> to point to the folder <code class="language-plaintext highlighter-rouge">/blog/</code></p>
-
-    <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre> + paginate_path: "/blog/page:num/"
- ...
- - permalink: /posts/:title/
- + permalink: /blog/:title/
-</pre></td></tr></tbody></table></code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Add <code class="language-plaintext highlighter-rouge">BLOG</code> as a new tab or navigation item, refer to this <a href="https://github.com/cotes2020/jekyll-theme-chirpy/issues/855">issue</a>.</p>
-
-    <ul>
-      <li>
-        <p>Modify <code class="language-plaintext highlighter-rouge">/_includes/sidebar.html</code></p>
-
-        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<li><code class="language-plaintext highlighter-rouge">int(a / b)</code> 是向零取整（<code class="language-plaintext highlighter-rouge">trunc</code>）。如果你希望总是向零取整，使用 <code class="language-plaintext highlighter-rouge">int(a / b)</code>。</li>
+<li><code class="language-plaintext highlighter-rouge">//</code> 是向下取整（<code class="language-plaintext highlighter-rouge">floor</code>）。如果你希望总是向下取整，使用 <code class="language-plaintext highlighter-rouge">a // b</code>。</li>
+</ul>
+<p>另外，取模运算 <code class="language-plaintext highlighter-rouge">a % b</code>也遵从 <code class="language-plaintext highlighter-rouge">floor</code>法则，<code class="language-plaintext highlighter-rouge">a = (a // b) * b + (a % b)</code> -&gt; <code class="language-plaintext highlighter-rouge">a % b = a - (a // b) * b</code>。</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -94,365 +20,24 @@
 13
 14
 15
-16
-17
-18
-</pre></td><td class="rouge-code"><pre>  <span class="c">&lt;!-- home --&gt;</span>
-  - <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item{% if page.layout == 'home' %}{{ "</span> <span class="na">active</span> <span class="err">"</span> <span class="err">}}{%</span> <span class="na">endif</span> <span class="err">%}"</span><span class="nt">&gt;</span>
-  + <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item{% if page.url == '/' | relative_url %}{{ "</span> <span class="na">active</span> <span class="err">"</span> <span class="err">}}{%</span> <span class="na">endif</span> <span class="err">%}"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/' | relative_url }}"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa-fw fas fa-home"</span><span class="nt">&gt;&lt;/i&gt;</span>
-      <span class="nt">&lt;span&gt;</span>{{ site.data.locales[include.lang].tabs.home | upcase }}<span class="nt">&lt;/span&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;/li&gt;</span>
-  + <span class="c">&lt;!-- blog --&gt;</span>
-  + <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item{% if page.url == '/blog/' | relative_url %}{{ "</span> <span class="na">active</span> <span class="err">"</span> <span class="err">}}{%</span> <span class="na">endif</span> <span class="err">%}"</span><span class="nt">&gt;</span>
-  +   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/blog/' | relative_url }}"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>
-  +     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa-fw fas fa-pen"</span><span class="nt">&gt;&lt;/i&gt;</span> 
-  +     <span class="nt">&lt;span&gt;</span>BLOG<span class="nt">&lt;/span&gt;</span>
-  +   <span class="nt">&lt;/a&gt;</span>
-  + <span class="nt">&lt;/li&gt;</span>
-  <span class="c">&lt;!-- the real tabs --&gt;</span>
-  {% for tab in site.tabs %}
-  +     {% if tab.url == '/' | relative_url %}{% continue %}{% endif %}
-</pre></td></tr></tbody></table></code></pre></div>        </div>
-      </li>
-      <li>
-        <p>Modify <code class="language-plaintext highlighter-rouge">/_includes/topbar.html</code></p>
-
-        <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-</pre></td><td class="rouge-code"><pre>  - {% if paths.size == 0 or page.layout == 'home' %}
-  -   <span class="c">&lt;!-- index page --&gt;</span>
-  + {% if paths.size == 0 %}
-  +   <span class="c">&lt;!-- home page --&gt;</span>
-  ...
-  -           {% elsif page.layout == 'category' or page.layout == 'tag' %}
-  +           {% elsif page.layout == 'category' or page.layout == 'tag' or page.layout == 'home' %}
-</pre></td></tr></tbody></table></code></pre></div>        </div>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>Replace <code class="language-plaintext highlighter-rouge">page.layout == 'home'</code> with <code class="language-plaintext highlighter-rouge">page.url == '/' or page.url == site.baseurl</code> if needed, including <code class="language-plaintext highlighter-rouge">_layouts/page.html</code>, <code class="language-plaintext highlighter-rouge">_includes/head.html</code>, <code class="language-plaintext highlighter-rouge">/_includes/sidebar.html</code>, and <code class="language-plaintext highlighter-rouge">_includes/topbar.html</code>.</p>
-  </li>
-  <li>
-    <p>(Optional) Modify your style in <code class="language-plaintext highlighter-rouge">/_tabs/about.md</code>. For example, this demo we disable <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">post-meta</code> and <code class="language-plaintext highlighter-rouge">tails</code> in the homepage by assigning bool values <code class="language-plaintext highlighter-rouge">has_title</code>, <code class="language-plaintext highlighter-rouge">has_meta</code> and <code class="language-plaintext highlighter-rouge">has_tail</code> to skip related part in <code class="language-plaintext highlighter-rouge">_layouts/page.html</code> and <code class="language-plaintext highlighter-rouge">_layouts/post.html</code>.</p>
-  </li>
-</ol>]]></content><author><name>Jinchao Li</name></author><category term="Blogging" /><category term="Tutorial" /><category term="homepage" /><summary type="html"><![CDATA[To change the default site homepage as About, and the original paginator homepage as Blog. It may be difficult since pagination only works within index.html, see similar issue.]]></summary></entry><entry><title type="html">Getting Started</title><link href="https://jinchaoli.com/blog/getting-started/" rel="alternate" type="text/html" title="Getting Started" /><published>2019-08-09T20:55:00+08:00</published><updated>2025-07-08T00:41:33+08:00</updated><id>https://jinchaoli.com/blog/getting-started</id><content type="html" xml:base="https://jinchaoli.com/blog/getting-started/"><![CDATA[<h2 id="prerequisites">Prerequisites</h2>
-
-<p>Follow the instructions in the <a href="https://jekyllrb.com/docs/installation/">Jekyll Docs</a> to complete the installation of the basic environment. <a href="https://git-scm.com/">Git</a> also needs to be installed.</p>
-
-<h2 id="installation">Installation</h2>
-
-<h3 id="creating-a-new-site">Creating a New Site</h3>
-
-<p>There are two ways to create a new repository for this theme:</p>
-
-<ul>
-  <li><a href="#option-1-using-the-chirpy-starter"><strong>Using the Chirpy Starter</strong></a> - Easy to upgrade, isolates irrelevant project files so you can focus on writing.</li>
-  <li><a href="#option-2-github-fork"><strong>GitHub Fork</strong></a> - Convenient for custom development, but difficult to upgrade. Unless you are familiar with Jekyll and are determined to tweak or contribute to this project, this approach is not recommended.</li>
-</ul>
-
-<h4 id="option-1-using-the-chirpy-starter">Option 1. Using the Chirpy Starter</h4>
-
-<p>Sign in to GitHub and browse to <a href="https://github.com/cotes2020/chirpy-starter"><strong>Chirpy Starter</strong></a>, click the button <kbd>Use this template</kbd> &gt; <kbd>Create a new repository</kbd>, and name the new repository <code class="language-plaintext highlighter-rouge">USERNAME.github.io</code>, where <code class="language-plaintext highlighter-rouge">USERNAME</code> represents your GitHub username.</p>
-
-<h4 id="option-2-github-fork">Option 2. GitHub Fork</h4>
-
-<p>Sign in to GitHub to <a href="https://github.com/cotes2020/jekyll-theme-chirpy/fork">fork <strong>Chirpy</strong></a>, and then rename it to <code class="language-plaintext highlighter-rouge">USERNAME.github.io</code> (<code class="language-plaintext highlighter-rouge">USERNAME</code> means your username).</p>
-
-<p>Next, clone your site to local machine. In order to build JavaScript files later, we need to install <a href="https://nodejs.org/">Node.js</a>, and then run the tool:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="go">bash tools/init
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-
-<blockquote class="prompt-info">
-  <p>If you don’t want to deploy your site on GitHub Pages, append option <code class="language-plaintext highlighter-rouge">--no-gh</code> at the end of the above command.</p>
-</blockquote>
-
-<p>The above command will:</p>
-
-<ol>
-  <li>Check out the code to the <a href="https://github.com/cotes2020/jekyll-theme-chirpy/tags">latest tag</a> (to ensure the stability of your site: as the code for the default branch is under development).</li>
-  <li>Remove non-essential sample files and take care of GitHub-related files.</li>
-  <li>Build JavaScript files and export to <code class="language-plaintext filepath highlighter-rouge">assets/js/dist/</code>, then make them tracked by Git.</li>
-  <li>Automatically create a new commit to save the changes above.</li>
-</ol>
-
-<h3 id="installing-dependencies">Installing Dependencies</h3>
-
-<p>Before running local server for the first time, go to the root directory of your site and run:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="go">bundle
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-
-<h2 id="usage">Usage</h2>
-
-<h3 id="configuration">Configuration</h3>
-
-<p>Update the variables of <code class="language-plaintext filepath highlighter-rouge">_config.yml</code> as needed. Some of them are typical options:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">url</code></li>
-  <li><code class="language-plaintext highlighter-rouge">avatar</code></li>
-  <li><code class="language-plaintext highlighter-rouge">timezone</code></li>
-  <li><code class="language-plaintext highlighter-rouge">lang</code></li>
-</ul>
-
-<h3 id="customizing-stylesheet">Customizing Stylesheet</h3>
-
-<p>If you need to customize the stylesheet, copy the theme’s <code class="language-plaintext filepath highlighter-rouge">assets/css/style.scss</code> to the same path on your Jekyll site, and then add the custom style at the end of it.</p>
-
-<p>Starting with version <code class="language-plaintext highlighter-rouge">4.1.0</code>, if you want to overwrite the SASS variables defined in <code class="language-plaintext filepath highlighter-rouge">_sass/addon/variables.scss</code>, copy the main sass file <code class="language-plaintext filepath highlighter-rouge">_sass/jekyll-theme-chirpy.scss</code> into the <code class="language-plaintext filepath highlighter-rouge">_sass</code> directory in your site’s source, then create a new file <code class="language-plaintext filepath highlighter-rouge">_sass/variables-hook.scss</code> and assign new value.</p>
-
-<h3 id="customing-static-assets">Customing Static Assets</h3>
-
-<p>Static assets configuration was introduced in version <code class="language-plaintext highlighter-rouge">5.1.0</code>. The CDN of the static assets is defined by file <code class="language-plaintext filepath highlighter-rouge">_data/origin/cors.yml</code>, and you can replace some of them according to the network conditions in the region where your website is published.</p>
-
-<p>Also, if you’d like to self-host the static assets, please refer to the <a href="https://github.com/cotes2020/chirpy-static-assets#readme"><em>chirpy-static-assets</em></a>.</p>
-
-<h3 id="running-local-server">Running Local Server</h3>
-
-<p>You may want to preview the site contents before publishing, so just run it by:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="go">bundle exec jekyll s
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>Or run the site on Docker with the following command:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre><span class="go">docker run -it --rm \
-</span><span class="gp">    --volume="$</span>PWD:/srv/jekyll<span class="s2">" </span><span class="se">\</span><span class="s2">
-</span><span class="go">    -p 4000:4000 jekyll/jekyll \
-    jekyll serve
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>After a few seconds, the local service will be published at <em><a href="http://127.0.0.1:4000">http://127.0.0.1:4000</a></em>.</p>
-
-<h2 id="deployment">Deployment</h2>
-
-<p>Before the deployment begins, check out the file <code class="language-plaintext filepath highlighter-rouge">_config.yml</code> and make sure the <code class="language-plaintext highlighter-rouge">url</code> is configured correctly. Furthermore, if you prefer the <a href="https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites"><strong>project site</strong></a> and don’t use a custom domain, or you want to visit your website with a base URL on a web server other than <strong>GitHub Pages</strong>, remember to change the <code class="language-plaintext highlighter-rouge">baseurl</code> to your project name that starts with a slash, e.g, <code class="language-plaintext highlighter-rouge">/project-name</code>.</p>
-
-<p>Now you can choose <em>ONE</em> of the following methods to deploy your Jekyll site.</p>
-
-<h3 id="deploy-by-using-github-actions">Deploy by Using GitHub Actions</h3>
-
-<p>There are a few things to get ready for.</p>
-
-<ul>
-  <li>If you’re on the GitHub Free plan, keep your site repository public.</li>
-  <li>
-    <p>If you have committed <code class="language-plaintext filepath highlighter-rouge">Gemfile.lock</code> to the repository, and your local machine is not running Linux, go the the root of your site and update the platform list of the lock-file:</p>
-
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="go">bundle lock --add-platform x86_64-linux
-</span></pre></td></tr></tbody></table></code></pre></div>    </div>
-  </li>
-</ul>
-
-<p>Next, configure the <em>Pages</em> service.</p>
-
-<ol>
-  <li>
-    <p>Browse to your repository on GitHub. Select the tab <em>Settings</em>, then click <em>Pages</em> in the left navigation bar. Then, in the <strong>Source</strong> section (under <em>Build and deployment</em>), select <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow"><strong>GitHub Actions</strong></a> from the dropdown menu.  <br />
-<img src="/assets/img/demos/pages-source-light.png" alt="Build source" class="light border normal" w="375" h="140" /><br />
-<img src="/assets/img/demos/pages-source-dark.png" alt="Build source" class="dark normal" w="375" h="140" /></p>
-  </li>
-  <li>
-    <p>Push any commits to GitHub to trigger the <em>Actions</em> workflow. In the <em>Actions</em> tab of your repository, you should see the workflow <em>Build and Deploy</em> running. Once the build is complete and successful, the site will be deployed automatically.</p>
-  </li>
-</ol>
-
-<p>At this point, you can go to the URL indicated by GitHub to access your site.</p>
-
-<h3 id="manually-build-and-deploy">Manually Build and Deploy</h3>
-
-<p>On self-hosted servers, you cannot enjoy the convenience of <strong>GitHub Actions</strong>. Therefore, you should build the site on your local machine and then upload the site files to the server.</p>
-
-<p>Go to the root of the source project, and build your site as follows:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="go">JEKYLL_ENV=production bundle exec jekyll b
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>Or build the site on Docker:</p>
-
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-</pre></td><td class="rouge-code"><pre><span class="go">docker run -it --rm \
-    --env JEKYLL_ENV=production \
-</span><span class="gp">    --volume="$</span>PWD:/srv/jekyll<span class="s2">" </span><span class="se">\</span><span class="s2">
-</span><span class="go">    jekyll/jekyll \
-    jekyll build
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>Unless you specified the output path, the generated site files will be placed in folder <code class="language-plaintext filepath highlighter-rouge">_site</code> of the project’s root directory. Now you should upload those files to the target server.</p>]]></content><author><name>Cotes Chung</name></author><category term="Blogging" /><category term="Tutorial" /><category term="getting started" /><summary type="html"><![CDATA[Get started with Chirpy basics in this comprehensive overview. You will learn how to install, configure, and use your first Chirpy-based website, as well as deploy it to a web server.]]></summary></entry><entry><title type="html">Writing a New Post</title><link href="https://jinchaoli.com/blog/write-a-new-post/" rel="alternate" type="text/html" title="Writing a New Post" /><published>2019-08-08T14:10:00+08:00</published><updated>2024-03-24T21:57:37+08:00</updated><id>https://jinchaoli.com/blog/write-a-new-post</id><content type="html" xml:base="https://jinchaoli.com/blog/write-a-new-post/"><![CDATA[<p>This tutorial will guide you how to write a post in the <em>Chirpy</em> template, and it’s worth reading even if you’ve used Jekyll before, as many features require specific variables to be set.</p>
-
-<h2 id="naming-and-path">Naming and Path</h2>
-
-<p>Create a new file named <code class="language-plaintext filepath highlighter-rouge">YYYY-MM-DD-TITLE.EXTENSION</code> and put it in the <code class="language-plaintext filepath highlighter-rouge">_posts</code> of the root directory. Please note that the <code class="language-plaintext filepath highlighter-rouge">EXTENSION</code> must be one of <code class="language-plaintext filepath highlighter-rouge">md</code> and <code class="language-plaintext filepath highlighter-rouge">markdown</code>. If you want to save time of creating files, please consider using the plugin <a href="https://github.com/jekyll/jekyll-compose"><code class="language-plaintext highlighter-rouge">Jekyll-Compose</code></a> to accomplish this.</p>
-
-<h2 id="front-matter">Front Matter</h2>
-
-<p>Basically, you need to fill the <a href="https://jekyllrb.com/docs/front-matter/">Front Matter</a> as below at the top of the post:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
-<span class="na">title</span><span class="pi">:</span> <span class="s">TITLE</span>
-<span class="na">date</span><span class="pi">:</span> <span class="s">YYYY-MM-DD HH:MM:SS +/-TTTT</span>
-<span class="na">categories</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">TOP_CATEGORIE</span><span class="pi">,</span> <span class="nv">SUB_CATEGORIE</span><span class="pi">]</span>
-<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">TAG</span><span class="pi">]</span>     <span class="c1"># TAG names should always be lowercase</span>
-<span class="nn">---</span>
+</pre></td><td class="rouge-code"><pre>
+<span class="c1"># 向零取整
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 1
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># -1
+</span>
+<span class="c1"># 向下取整
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 1
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># -2
+# floor(-1.5) = -2
+</span>
+<span class="c1"># 取模
+</span><span class="nf">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 1
+</span><span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 2
+# -10 - (-10//3) * 3 = -10 - (-4) * 3 = 2
+</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
-
-<blockquote class="prompt-tip">
-  <p>The posts’ <em>layout</em> has been set to <code class="language-plaintext highlighter-rouge">post</code> by default, so there is no need to add the variable <em>layout</em> in the Front Matter block.</p>
-</blockquote>
-
-<h3 id="timezone-of-date">Timezone of Date</h3>
-
-<p>In order to accurately record the release date of a post, you should not only set up the <code class="language-plaintext highlighter-rouge">timezone</code> of <code class="language-plaintext filepath highlighter-rouge">_config.yml</code> but also provide the post’s timezone in variable <code class="language-plaintext highlighter-rouge">date</code> of its Front Matter block. Format: <code class="language-plaintext highlighter-rouge">+/-TTTT</code>, e.g. <code class="language-plaintext highlighter-rouge">+0800</code>.</p>
-
-<h3 id="categories-and-tags">Categories and Tags</h3>
-
-<p>The <code class="language-plaintext highlighter-rouge">categories</code> of each post are designed to contain up to two elements, and the number of elements in <code class="language-plaintext highlighter-rouge">tags</code> can be zero to infinity. For instance:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
-<span class="na">categories</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">Animal</span><span class="pi">,</span> <span class="nv">Insect</span><span class="pi">]</span>
-<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">bee</span><span class="pi">]</span>
-<span class="nn">---</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h3 id="author-information">Author Information</h3>
-
-<p>The author information of the post usually does not need to be filled in the <em>Front Matter</em> , they will be obtained from variables <code class="language-plaintext highlighter-rouge">social.name</code> and the first entry of <code class="language-plaintext highlighter-rouge">social.links</code> of the configuration file by default. But you can also override it as follows:</p>
-
-<p>Adding author information in <code class="language-plaintext highlighter-rouge">_data/authors.yml</code> (If your website doesn’t have this file, don’t hesitate to create one).</p>
-
-<div file="_data/authors.yml" class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre><span class="na">&lt;author_id&gt;</span><span class="pi">:</span>
-  <span class="na">name</span><span class="pi">:</span> <span class="s">&lt;full name&gt;</span>
-  <span class="na">twitter</span><span class="pi">:</span> <span class="s">&lt;twitter_of_author&gt;</span>
-  <span class="na">url</span><span class="pi">:</span> <span class="s">&lt;homepage_of_author&gt;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>And then use <code class="language-plaintext highlighter-rouge">author</code> to specify a single entry or <code class="language-plaintext highlighter-rouge">authors</code> to specify multiple entries:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
-<span class="na">author</span><span class="pi">:</span> <span class="s">&lt;author_id&gt;</span>                     <span class="c1"># for single entry</span>
-<span class="c1"># or</span>
-<span class="na">authors</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">&lt;author1_id&gt;</span><span class="pi">,</span> <span class="nv">&lt;author2_id&gt;</span><span class="pi">]</span>   <span class="c1"># for multiple entries</span>
-<span class="nn">---</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>Having said that, the key <code class="language-plaintext highlighter-rouge">author</code> can also identify multiple entries.</p>
-
-<blockquote class="prompt-info">
-  <p>The benefit of reading the author information from the file <code class="language-plaintext filepath highlighter-rouge">_data/authors.yml</code> is that the page will have the meta tag <code class="language-plaintext highlighter-rouge">twitter:creator</code>, which enriches the <a href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/guides/getting-started#card-and-content-attribution">Twitter Cards</a> and is good for SEO.</p>
-</blockquote>
-
-<h3 id="post-description">Post Description</h3>
-
-<p>By default, the first words of the post are used to display on the home page for a list of posts, in the <em>Further Reading</em> section, and in the XML of the RSS feed. If you don’t want to display the auto-generated description for the post, you can customize it using the <code class="language-plaintext highlighter-rouge">description</code> field in the <em>Front Matter</em> as follows:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
-<span class="na">description</span><span class="pi">:</span> <span class="s">Short summary of the post.</span>
-<span class="nn">---</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>Additionally, the <code class="language-plaintext highlighter-rouge">description</code> text will also be displayed under the post title on the post’s page.</p>
-
-<blockquote class="prompt-tip">
-  <p>The <code class="language-plaintext highlighter-rouge">jekyll-feed</code> plugin will automatically process with the front-matters <code class="language-plaintext highlighter-rouge">date</code>, <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">excerpt</code>, <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">category</code>, <code class="language-plaintext highlighter-rouge">tags</code>, <code class="language-plaintext highlighter-rouge">image</code>, <code class="language-plaintext highlighter-rouge">author</code>, and <code class="language-plaintext highlighter-rouge">description</code>.</p>
-</blockquote>
-
-<h2 id="table-of-contents">Table of Contents</h2>
-
-<p>By default, the <strong>T</strong>able <strong>o</strong>f <strong>C</strong>ontents (TOC) is displayed on the right panel of the post. If you want to turn it off globally, go to <code class="language-plaintext filepath highlighter-rouge">_config.yml</code> and set the value of variable <code class="language-plaintext highlighter-rouge">toc</code> to <code class="language-plaintext highlighter-rouge">false</code>. If you want to turn off TOC for a specific post, add the following to the post’s <a href="https://jekyllrb.com/docs/front-matter/">Front Matter</a>:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
-<span class="na">toc</span><span class="pi">:</span> <span class="kc">false</span>
-<span class="nn">---</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h2 id="comments">Comments</h2>
-
-<p>The global switch of comments is defined by variable <code class="language-plaintext highlighter-rouge">comments.provider</code> in the file <code class="language-plaintext filepath highlighter-rouge">_config.yml</code>. After selecting a comment system for this variable, comments will be turned on for all posts.</p>
-
-<p>If you want to close the comment for a specific post, add the following to the <strong>Front Matter</strong> of the post:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
-<span class="na">comments</span><span class="pi">:</span> <span class="kc">false</span>
-<span class="nn">---</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h2 id="mathematics">Mathematics</h2>
-
-<p>For website performance reasons, the mathematical feature won’t be loaded by default. But it can be enabled by:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
-<span class="na">math</span><span class="pi">:</span> <span class="kc">true</span>
-<span class="nn">---</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>After enabling the mathematical feature, you can add math equations with the following syntax:</p>
-
-<ul>
-  <li><strong>Block math</strong> should be added with <code class="language-plaintext highlighter-rouge">$$ math $$</code> with <strong>mandatory</strong> blank lines before and after <code class="language-plaintext highlighter-rouge">$$</code>
-    <ul>
-      <li><strong>Inserting equation numbering</strong> should be added with <code class="language-plaintext highlighter-rouge">$$\begin{equation} math \end{equation}$$</code></li>
-      <li><strong>Referencing equation numbering</strong> should be done with <code class="language-plaintext highlighter-rouge">\label{eq:label_name}</code> in the equation block and <code class="language-plaintext highlighter-rouge">\eqref{eq:label_name}</code> inline with text (see example below)</li>
-    </ul>
-  </li>
-  <li><strong>Inline math</strong> (in lines) should be added with <code class="language-plaintext highlighter-rouge">$$ math $$</code> without any blank line before or after <code class="language-plaintext highlighter-rouge">$$</code></li>
-  <li><strong>Inline math</strong> (in lists) should be added with <code class="language-plaintext highlighter-rouge">\$$ math $$</code></li>
-</ul>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<h2 id="arrays">Arrays</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -478,391 +63,1050 @@
 24
 25
 26
-</pre></td><td class="rouge-code"><pre><span class="c">&lt;!-- Block math, keep all blank lines --&gt;</span>
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre><span class="c1"># Sublists (aka slicing), 左闭右开
+</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>  <span class="c1"># [2, 3]
+# Similar to for-loop ranges, last index is non-inclusive
+</span>
+<span class="c1"># But no out of bounds error
+</span><span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>  <span class="c1"># [1, 2, 3, 4]
+</span>
+<span class="c1"># Reverse
+</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">nums</span><span class="p">.</span><span class="nf">reverse</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>  <span class="c1"># [3, 2, 1]
+</span>
+<span class="c1"># Sorting (in-place, ascending)
+</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>  <span class="c1"># [3, 4, 5, 7, 8]
+</span>
+<span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>  <span class="c1"># [8, 7, 5, 4, 3]
+</span>
+<span class="c1"># Custom sort (e.g., by length of string)
+</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="sh">"</span><span class="s">bob</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">alice</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">jane</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">doe</span><span class="sh">"</span><span class="p">]</span>
+<span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nf">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>  <span class="c1"># ['bob', 'doe', 'jane', 'alice']
+</span>
+<span class="c1"># 2-D lists
+</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
 
-$$
-LaTeX_math_expression
-$$
-
-<span class="c">&lt;!-- Equation numbering, keep all blank lines  --&gt;</span>
-
-$$
-<span class="se">\b</span>egin{equation}
-  LaTeX_math_expression
-  <span class="se">\l</span>abel{eq:label_name}
-<span class="se">\e</span>nd{equation}
-$$
-
-Can be referenced as <span class="se">\e</span>qref{eq:label_name}.
-
-<span class="c">&lt;!-- Inline math in lines, NO blank lines --&gt;</span>
-
-"Lorem ipsum dolor sit amet, $$ LaTeX_math_expression $$ consectetur adipiscing elit."
-
-<span class="c">&lt;!-- Inline math in lists, escape the first `$` --&gt;</span>
-<span class="p">
-1.</span> <span class="se">\$</span>$ LaTeX_math_expression $$
-<span class="p">2.</span> <span class="se">\$</span>$ LaTeX_math_expression $$
-<span class="p">3.</span> <span class="se">\$</span>$ LaTeX_math_expression $$
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h2 id="mermaid">Mermaid</h2>
-
-<p><a href="https://github.com/mermaid-js/mermaid"><strong>Mermaid</strong></a> is a great diagram generation tool. To enable it on your post, add the following to the YAML block:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
-<span class="na">mermaid</span><span class="pi">:</span> <span class="kc">true</span>
-<span class="nn">---</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>Then you can use it like other markdown languages: surround the graph code with <code class="language-plaintext highlighter-rouge">```mermaid</code> and <code class="language-plaintext highlighter-rouge">```</code>.</p>
-
-<h2 id="images">Images</h2>
-
-<h3 id="caption">Caption</h3>
-
-<p>Add italics to the next line of an image, then it will become the caption and appear at the bottom of the image:</p>
-
-<div class="language-markdown nolineno highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">img-description</span><span class="p">](</span><span class="sx">/path/to/image</span><span class="p">)</span>
-<span class="ge">_Image Caption_</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h3 id="size">Size</h3>
-
-<p>In order to prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image.</p>
-
-<div class="language-markdown nolineno highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Desktop View</span><span class="p">](</span><span class="sx">/assets/img/sample/mockup.png</span><span class="p">)</span>{: width="700" height="400" }
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<blockquote class="prompt-info">
-  <p>For an SVG, you have to at least specify its <em>width</em>, otherwise it won’t be rendered.</p>
+<span class="c1"># This won't work
+# arr = [[0] * 4] * 4
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<blockquote class="prompt-warn">
+<p>python里面的区间基本上是左闭右开，比如range、slicing</p>
 </blockquote>
-
-<p>Starting from <em>Chirpy v5.0.0</em>, <code class="language-plaintext highlighter-rouge">height</code> and <code class="language-plaintext highlighter-rouge">width</code> support abbreviations (<code class="language-plaintext highlighter-rouge">height</code> → <code class="language-plaintext highlighter-rouge">h</code>, <code class="language-plaintext highlighter-rouge">width</code> → <code class="language-plaintext highlighter-rouge">w</code>). The following example has the same effect as the above:</p>
-
-<div class="language-markdown nolineno highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Desktop View</span><span class="p">](</span><span class="sx">/assets/img/sample/mockup.png</span><span class="p">)</span>{: w="700" h="400" }
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h3 id="position">Position</h3>
-
-<p>By default, the image is centered, but you can specify the position by using one of the classes <code class="language-plaintext highlighter-rouge">normal</code>, <code class="language-plaintext highlighter-rouge">left</code>, and <code class="language-plaintext highlighter-rouge">right</code>.</p>
-
-<blockquote class="prompt-warning">
-  <p>Once the position is specified, the image caption should not be added.</p>
-</blockquote>
-
-<ul>
-  <li>
-    <p><strong>Normal position</strong></p>
-
-    <p>Image will be left aligned in below sample:</p>
-
-    <div class="language-markdown nolineno highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Desktop View</span><span class="p">](</span><span class="sx">/assets/img/sample/mockup.png</span><span class="p">)</span>{: .normal }
-</pre></td></tr></tbody></table></code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>Float to the left</strong></p>
-
-    <div class="language-markdown nolineno highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Desktop View</span><span class="p">](</span><span class="sx">/assets/img/sample/mockup.png</span><span class="p">)</span>{: .left }
-</pre></td></tr></tbody></table></code></pre></div>    </div>
-  </li>
-  <li>
-    <p><strong>Float to the right</strong></p>
-
-    <div class="language-markdown nolineno highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Desktop View</span><span class="p">](</span><span class="sx">/assets/img/sample/mockup.png</span><span class="p">)</span>{: .right }
-</pre></td></tr></tbody></table></code></pre></div>    </div>
-  </li>
-</ul>
-
-<h3 id="darklight-mode">Dark/Light mode</h3>
-
-<p>You can make images follow theme preferences in dark/light mode. This requires you to prepare two images, one for dark mode and one for light mode, and then assign them a specific class (<code class="language-plaintext highlighter-rouge">dark</code> or <code class="language-plaintext highlighter-rouge">light</code>):</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Light mode only</span><span class="p">](</span><span class="sx">/path/to/light-mode.png</span><span class="p">)</span>{: .light }
-<span class="p">![</span><span class="nv">Dark mode only</span><span class="p">](</span><span class="sx">/path/to/dark-mode.png</span><span class="p">)</span>{: .dark }
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h3 id="shadow">Shadow</h3>
-
-<p>The screenshots of the program window can be considered to show the shadow effect:</p>
-
-<div class="language-markdown nolineno highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Desktop View</span><span class="p">](</span><span class="sx">/assets/img/sample/mockup.png</span><span class="p">)</span>{: .shadow }
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h3 id="image-path">Image Path</h3>
-
-<p>When a post contains many images, it will be a time-consuming task to repeatedly define the path of the images. To solve this, we can define this path in the YAML block of the post:</p>
-
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
-<span class="na">img_path</span><span class="pi">:</span> <span class="s">/img/path/</span>
-<span class="nn">---</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>And then, the image source of Markdown can write the file name directly:</p>
-
-<div class="language-md nolineno highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">The flower</span><span class="p">](</span><span class="sx">flower.png</span><span class="p">)</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>The output will be:</p>
-
-<div class="language-html nolineno highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/img/path/flower.png"</span> <span class="na">alt=</span><span class="s">"The flower"</span> <span class="nt">/&gt;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h3 id="preview-image">Preview Image</h3>
-
-<p>If you want to add an image at the top of the post, please provide an image with a resolution of <code class="language-plaintext highlighter-rouge">1200 x 630</code>. Please note that if the image aspect ratio does not meet <code class="language-plaintext highlighter-rouge">1.91 : 1</code>, the image will be scaled and cropped.</p>
-
-<p>Knowing these prerequisites, you can start setting the image’s attribute:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
-<span class="na">image</span><span class="pi">:</span>
-  <span class="na">path</span><span class="pi">:</span> <span class="s">/path/to/image</span>
-  <span class="na">alt</span><span class="pi">:</span> <span class="s">image alternative text</span>
-<span class="nn">---</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>Note that the <a href="#image-path"><code class="language-plaintext highlighter-rouge">img_path</code></a> can also be passed to the preview image, that is, when it has been set, the attribute <code class="language-plaintext highlighter-rouge">path</code> only needs the image file name.</p>
-
-<p>For simple use, you can also just use <code class="language-plaintext highlighter-rouge">image</code> to define the path.</p>
-
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
-<span class="na">image</span><span class="pi">:</span> <span class="s">/path/to/image</span>
-<span class="nn">---</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h3 id="lqip">LQIP</h3>
-
-<p>For preview images:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
-<span class="na">image</span><span class="pi">:</span>
-  <span class="na">lqip</span><span class="pi">:</span> <span class="s">/path/to/lqip-file</span> <span class="c1"># or base64 URI</span>
-<span class="nn">---</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<blockquote>
-  <p>You can observe LQIP in the preview image of post <a href="https://chirpy-img.netlify.app/posts/text-and-typography/"><em>Text and Typography</em></a>.</p>
-</blockquote>
-
-<p>For normal images:</p>
-
-<div class="language-markdown nolineno highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="p">![</span><span class="nv">Image description</span><span class="p">](</span><span class="sx">/path/to/image</span><span class="p">)</span>{: lqip="/path/to/lqip-file" }
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h2 id="pinned-posts">Pinned Posts</h2>
-
-<p>You can pin one or more posts to the top of the home page, and the fixed posts are sorted in reverse order according to their release date. Enable by:</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="nn">---</span>
-<span class="na">pin</span><span class="pi">:</span> <span class="kc">true</span>
-<span class="nn">---</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h2 id="prompts">Prompts</h2>
-
-<p>There are several types of prompts: <code class="language-plaintext highlighter-rouge">tip</code>, <code class="language-plaintext highlighter-rouge">info</code>, <code class="language-plaintext highlighter-rouge">warning</code>, and <code class="language-plaintext highlighter-rouge">danger</code>. They can be generated by adding the class <code class="language-plaintext highlighter-rouge">prompt-{type}</code> to the blockquote. For example, define a prompt of type <code class="language-plaintext highlighter-rouge">info</code> as follows:</p>
-
-<div class="language-md nolineno highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="gt">&gt; Example line for prompt.</span>
-{: .prompt-info }
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h2 id="syntax">Syntax</h2>
-
-<h3 id="inline-code">Inline Code</h3>
-
-<div class="language-md nolineno highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="sb">`inline code part`</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h3 id="filepath-hightlight">Filepath Hightlight</h3>
-
-<div class="language-md nolineno highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="sb">`/path/to/a/file.extend`</span>{: .filepath}
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h3 id="code-block">Code Block</h3>
-
-<p>Markdown symbols <code class="language-plaintext highlighter-rouge">```</code> can easily create a code block as follows:</p>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="p">```</span><span class="nl">
-</span>This is a plaintext code snippet.
-<span class="p">```</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h4 id="specifying-language">Specifying Language</h4>
-
-<p>Using <code class="language-plaintext highlighter-rouge">```{language}</code> you will get a code block with syntax highlight:</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="p">```</span><span class="nl">yaml
-</span><span class="na">key</span><span class="pi">:</span> <span class="s">value</span>
-<span class="p">```</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<blockquote class="prompt-danger">
-  <p>The Jekyll tag <code class="language-plaintext highlighter-rouge">{% highlight %}</code> is not compatible with this theme.</p>
-</blockquote>
-
-<h4 id="line-number">Line Number</h4>
-
-<p>By default, all languages except <code class="language-plaintext highlighter-rouge">plaintext</code>, <code class="language-plaintext highlighter-rouge">console</code>, and <code class="language-plaintext highlighter-rouge">terminal</code> will display line numbers. When you want to hide the line number of a code block, add the class <code class="language-plaintext highlighter-rouge">nolineno</code> to it:</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre><span class="p">```</span><span class="nl">shell
-</span><span class="nb">echo</span> <span class="s1">'No more line numbers!'</span>
-<span class="p">```</span>
-{: .nolineno }
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h4 id="specifying-the-filename">Specifying the Filename</h4>
-
-<p>You may have noticed that the code language will be displayed at the top of the code block. If you want to replace it with the file name, you can add the attribute <code class="language-plaintext highlighter-rouge">file</code> to achieve this:</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre><span class="p">```</span><span class="nl">shell
-</span><span class="c"># content</span>
-<span class="p">```</span>
-{: file="path/to/file" }
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h4 id="liquid-codes">Liquid Codes</h4>
-
-<p>If you want to display the <strong>Liquid</strong> snippet, surround the liquid code with <code class="language-plaintext highlighter-rouge">{% raw %}</code> and <code class="language-plaintext highlighter-rouge">{% endraw %}</code>:</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<h2 id="strings">Strings</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
 5
 6
 7
-</pre></td><td class="rouge-code"><pre>{% raw %}
-<span class="p">```</span><span class="nl">liquid
-</span><span class="cp">{%</span><span class="w"> </span><span class="nt">if</span><span class="w"> </span><span class="nv">product</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="ow">contains</span><span class="w"> </span><span class="s1">'Pack'</span><span class="w"> </span><span class="cp">%}</span>
-  This product's title contains the word Pack.
-<span class="cp">{%</span><span class="w"> </span><span class="nt">endif</span><span class="w"> </span><span class="cp">%}</span>
-<span class="p">```</span>
-{% endraw %}
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="c1"># Valid numeric strings can be converted
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="sh">"</span><span class="s">123</span><span class="sh">"</span><span class="p">)</span> <span class="o">+</span> <span class="nf">int</span><span class="p">(</span><span class="sh">"</span><span class="s">123</span><span class="sh">"</span><span class="p">))</span>  <span class="c1"># 246
+</span>
+<span class="c1"># And numbers can be converted to strings
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="mi">123</span><span class="p">))</span>  <span class="c1"># 123123
+</span>
+<span class="c1"># In rare cases you may need the ASCII value of a char
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">ord</span><span class="p">(</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">))</span>  <span class="c1"># 97
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">ord</span><span class="p">(</span><span class="sh">"</span><span class="s">b</span><span class="sh">"</span><span class="p">))</span>  <span class="c1"># 98
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="queues">Queues</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="c1"># Queues (double ended queue)
+</span><span class="kn">from</span> <span class="n">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="n">queue</span> <span class="o">=</span> <span class="nf">deque</span><span class="p">()</span>
+<span class="n">queue</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">queue</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>  <span class="c1"># deque([1, 2])
+</span>
+<span class="n">queue</span><span class="p">.</span><span class="nf">popleft</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>  <span class="c1"># deque([2])
+</span>
+<span class="n">queue</span><span class="p">.</span><span class="nf">appendleft</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>  <span class="c1"># deque([1, 2])
+</span>
+<span class="n">queue</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>  <span class="c1"># deque([1])
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="heaps">Heaps</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">heapq</span>
+
+<span class="c1"># under the hood are arrays
+</span><span class="n">minHeap</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Min is always at index 0
+</span><span class="nf">print</span><span class="p">(</span><span class="n">minHeap</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 2
+</span>
+<span class="k">while</span> <span class="nf">len</span><span class="p">(</span><span class="n">minHeap</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">minHeap</span><span class="p">))</span>
+<span class="c1"># 2
+# 3
+# 4
+</span>
+<span class="c1"># No max heaps by default, work around is
+# to use min heap and multiply by -1 when push &amp; pop.
+</span><span class="n">maxHeap</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Max is always at index 0
+</span><span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">maxHeap</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 4
+</span>
+<span class="k">while</span> <span class="nf">len</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">))</span>
+<span class="c1"># 4
+# 3
+# 2
+</span>
+<span class="c1"># Build heap from initial values
+</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heapify</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">arr</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
+<span class="c1"># 1
+# 2
+# 4
+# 5
+# 8
+</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://neetcode.io/courses/lessons/python-for-coding-interviews">neetcode</a></li>
+</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="python"/><summary type="html"><![CDATA[Math]]></summary></entry><entry><title type="html">基础算法题解模板</title><link href="https://jinchaoli.com/blog/basic-algorithm/" rel="alternate" type="text/html" title="基础算法题解模板"/><published>2025-08-22T20:00:00+08:00</published><updated>2025-09-09T22:41:10+08:00</updated><id>https://jinchaoli.com/blog/basic-algorithm</id><content type="html" xml:base="https://jinchaoli.com/blog/basic-algorithm/"><![CDATA[<h2 id="算法复杂度">算法复杂度</h2>
 
-<p>Or adding <code class="language-plaintext highlighter-rouge">render_with_liquid: false</code> (Requires Jekyll 4.0 or higher) to the post’s YAML block.</p>
-
-<h2 id="videos">Videos</h2>
-
-<h3 id="video-sharing-platform">Video Sharing Platform</h3>
-
-<p>You can embed a video with the following syntax:</p>
-
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>embed/{Platform}.html<span class="w"> </span><span class="na">id</span><span class="o">=</span><span class="s1">'{ID}'</span><span class="w"> </span><span class="cp">%}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>Where <code class="language-plaintext highlighter-rouge">Platform</code> is the lowercase of the platform name, and <code class="language-plaintext highlighter-rouge">ID</code> is the video ID.</p>
-
-<p>The following table shows how to get the two parameters we need in a given video URL, and you can also know the currently supported video platforms.</p>
-
+<h3 id="主定理master-theorem">主定理（Master Theorem）</h3>
+<p>假设有递归关系式：</p>
+\[T(N) = aT(N/b) + f(N), f(N) = N^{\log_b(a)} \log^k(N)\]
+<p>其中，$N$为问题规模，$a$为递归的子问题数量，$N/b$为每个子问题的规模（假设每个子问题的规模基本一样），$f(N)$为递归以外进行的计算工作。</p>
+<p><strong>则其算法复杂度为</strong>：</p>
+\[T(N) = O(N^{\log_b(a)} \log^{(k+1)}N)\]
+<h3 id="常见算法复杂度">常见算法复杂度</h3>
 <table>
-  <thead>
-    <tr>
-      <th>Video URL</th>
-      <th>Platform</th>
-      <th style="text-align: left">ID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><a href="https://www.youtube.com/watch?v=H-B46URT4mg">https://www.<strong>youtube</strong>.com/watch?v=<strong>H-B46URT4mg</strong></a></td>
-      <td><code class="language-plaintext highlighter-rouge">youtube</code></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">H-B46URT4mg</code></td>
-    </tr>
-    <tr>
-      <td><a href="https://www.twitch.tv/videos/1634779211">https://www.<strong>twitch</strong>.tv/videos/<strong>1634779211</strong></a></td>
-      <td><code class="language-plaintext highlighter-rouge">twitch</code></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">1634779211</code></td>
-    </tr>
-    <tr>
-      <td><a href="https://www.bilibili.com/video/BV1Q44y1B7Wf">https://www.<strong>bilibili</strong>.com/video/<strong>BV1Q44y1B7Wf</strong></a></td>
-      <td><code class="language-plaintext highlighter-rouge">bilibili</code></td>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">BV1Q44y1B7Wf</code></td>
-    </tr>
-  </tbody>
+<thead>
+<tr>
+<th>算法</th>
+<th>递归关系式</th>
+<th>复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二分查找</td>
+<td>$T(N) = T(N/2) + O(1)$</td>
+<td>$O(\log(N))$</td>
+</tr>
+<tr>
+<td>二叉树遍历</td>
+<td>$T(N) = 2T(N/2) + O(1)$</td>
+<td>$O(N)$</td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td>$T(N) = 2T(N/2) + O(N)$</td>
+<td>$O(N\log(N))$</td>
+</tr>
+</tbody>
 </table>
 
-<h3 id="video-file">Video File</h3>
+<h2 id="双指针">双指针</h2>
 
-<p>If you want to embed a video file directly, use the following syntax:</p>
-
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>embed/video.html<span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s1">'{URL}'</span><span class="w"> </span><span class="cp">%}</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>Where <code class="language-plaintext highlighter-rouge">URL</code> is an URL to a video file e.g. <code class="language-plaintext highlighter-rouge">/assets/img/sample/video.mp4</code>.</p>
-
-<p>You can also specify additional attributes for the embedded video file. Here is a full list of attributes allowed.</p>
-
+<p>使用两个指针变量在数组或链表等线性结构上协同移动，避免嵌套循环，将部分 $O(N^2)$ 的算法优化为 $O(N)$。主要分为：</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">poster='/path/to/poster.png'</code> - poster image for a video that is shown while video is downloading</li>
-  <li><code class="language-plaintext highlighter-rouge">title='Text'</code> - title for a video that appears below the video and looks same as for images</li>
-  <li><code class="language-plaintext highlighter-rouge">autoplay=true</code> - video automatically begins to play back as soon as it can</li>
-  <li><code class="language-plaintext highlighter-rouge">loop=true</code> - automatically seek back to the start upon reaching the end of the video</li>
-  <li><code class="language-plaintext highlighter-rouge">muted=true</code> - audio will be initially silenced</li>
+<li>同向双指针（快慢指针）：一个快指针先行，慢指针跟进，常用于滑动窗口（去重）、链表操作（找中点、判断环、环入口）等。</li>
+<li>相向双指针（对撞指针）：从两端向中间移动，常用于有序数组求和、回文判断、反转数组、数组合并等。</li>
+<li>背向双指针：从中间向两边扩展，常用于回文串、最长子回文等问题。</li>
 </ul>
-
-<p>Consider an example utilizing all of the above:</p>
-
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<h3 id="算法复杂度-1">算法复杂度</h3>
+<p>通常情况下，时间复杂度 $O(N)$（与最内层循环主体的执行次数有关），空间复杂度：O(1)。</p>
+<h3 id="使用场景">使用场景</h3>
+<ul>
+<li>滑动窗口 (90%)</li>
+<li>时间复杂度要求 $O(N)$ (80%是双指针)</li>
+<li>要求原地操作，只可以使用交换，不能使用额外空间 (80%)</li>
+<li>有子数组 subarray / 子字符串 substring 的关键词 (50%)</li>
+<li>有回文 Palindrome 关键词(50%)</li>
+</ul>
+<h3 id="代码模板">代码模板</h3>
+<ul>
+<li>初始化指针：<code class="language-plaintext highlighter-rouge">left</code>, <code class="language-plaintext highlighter-rouge">right</code>根据方向设置起点</li>
+<li>循环控制：<code class="language-plaintext highlighter-rouge">while</code>或<code class="language-plaintext highlighter-rouge">for</code>控制移动（比如<code class="language-plaintext highlighter-rouge">right</code>扩展，<code class="language-plaintext highlighter-rouge">left</code>收缩）</li>
+<li>状态更新：维护当前窗口或配对状态，根据条件分类讨论</li>
+<li>结果记录：更新答案（相等时、满足条件时）</li>
+<li>边界处理：空数组、单元素、去重跳过等</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
-</pre></td><td class="rouge-code"><pre><span class="cp">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span>embed/video.html<span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="s1">'video.mp4'</span><span class="w"> </span><span class="na">poster</span><span class="o">=</span><span class="s1">'poster.png'</span><span class="w"> </span><span class="na">title</span><span class="o">=</span><span class="s1">'Demo video'</span><span class="w">
-   </span><span class="na">autoplay</span><span class="o">=</span><span class="kc">true</span><span class="w"> </span><span class="na">loop</span><span class="o">=</span><span class="kc">true</span><span class="w"> </span><span class="na">muted</span><span class="o">=</span><span class="kc">true</span><span class="w"> </span><span class="cp">%}</span>
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre><span class="c1"># 通用双指针框架（适用于数组/列表）
+</span><span class="k">def</span> <span class="nf">two_pointers_template</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>  <span class="c1"># 或其他默认值
+</span>
+    <span class="c1"># Step 1: 初始化指针
+</span>    <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>                    <span class="c1"># 左指针 / 慢指针
+</span>    <span class="c1"># right = 0 或 n - 1，根据方向选择
+</span>
+    <span class="c1"># Step 2: 根据类型选择遍历结构
+</span>    <span class="k">for</span> <span class="n">right</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>      <span class="c1"># 同向：快慢指针；滑动窗口
+</span>    <span class="c1"># while left &lt; right:       # 相向：对撞指针（常用于有序数组）
+</span>    <span class="c1"># while left &lt; n:           # 其他控制条件
+</span>
+        <span class="c1"># Step 3: 扩展或移动右指针后，处理当前窗口/状态
+</span>        <span class="c1"># ... 更新状态
+</span>
+        <span class="c1"># Step 4: 判断是否需要收缩左指针（滑动窗口类）
+</span>        <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span> <span class="ow">and</span> <span class="nf">need_to_move_left</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+            <span class="c1"># ... 更新或记录结果
+</span>            <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># 或：根据条件移动双指针（对撞类）
+</span>        <span class="c1"># if condition:
+</span>        <span class="c1">#     left += 1
+</span>        <span class="c1"># else:
+</span>        <span class="c1">#     right -= 1
+</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h3 id="例题">例题</h3>
+<p><a href="https://leetcode.cn/problems/merge-sorted-array">88. 合并两个有序数组</a></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：给你两个按 非递减顺序 排列的整数数组 `nums1` 和 `nums2`，另有两个整数 `m` 和 `n`，分别表示 `nums1` 和 `nums2` 中的元素数目。请你 合并 `nums2` 到 `nums1` 中，使合并后的数组同样按 非递减顺序 排列。
+🧪样例：输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3；输出：[1,2,2,3,5,6]
+💡重点：从后往前操作可以直接覆盖
+</span><span class="sh">"""</span>
+
+<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">nums1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">nums2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">
+    Do not return anything, modify nums1 in-place instead.
+    </span><span class="sh">"""</span>
+    <span class="c1"># 逆向双指针，从后往前操作可以直接覆盖
+</span>    <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># 同向，但是从后往前
+</span>    <span class="n">tail</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># 需要维护的状态：当前需要处理的索引
+</span>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">p1</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">p2</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">if</span> <span class="n">nums1</span><span class="p">[</span><span class="n">p1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">nums2</span><span class="p">[</span><span class="n">p2</span><span class="p">]:</span>
+            <span class="n">nums1</span><span class="p">[</span><span class="n">tail</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums2</span><span class="p">[</span><span class="n">p2</span><span class="p">]</span>
+            <span class="n">p2</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">tail</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nums1</span><span class="p">[</span><span class="n">tail</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums1</span><span class="p">[</span><span class="n">p1</span><span class="p">]</span>
+            <span class="n">p1</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">tail</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="c1"># 由于比较，总会有一个数组先结束，对于后结束的一个数组：这里肯定是p2
+</span>    <span class="k">if</span> <span class="n">p2</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">nums1</span><span class="p">[:</span> <span class="n">p2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums2</span><span class="p">[:</span> <span class="n">p2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">nums1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">nums2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="sh">"""</span><span class="s"> 合并双指针，非原地操作。
+    🧪样例：输入：nums1 = [1,2,3], nums2 = [2,5,6]；输出：[1,2,2,3,5,6]
+    </span><span class="sh">"""</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">num1</span><span class="p">),</span> <span class="nf">len</span><span class="p">(</span><span class="n">nums2</span><span class="p">)</span>
+    <span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="c1"># 合并的过程只能操作 i, j 的移动，不要去用 list1.pop(0) 之类的操作
+</span>    <span class="c1"># 因为 pop(0) 是 O(n) 的时间复杂度，而且会改变序号
+</span>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">m</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">new_list</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_list</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># 合并剩下的数到 new_list 里
+</span>    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">:</span>
+        <span class="n">new_list</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">new_list</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">new_list</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p><a href="https://leetcode.cn/problems/longest-palindromic-substring">5. 最长回文子串</a></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：给你一个字符串 `s`，找到 `s` 中最长的 回文 子串。
+🧪样例：输入s = </span><span class="sh">"</span><span class="s">babad</span><span class="sh">"</span><span class="s">；输出</span><span class="sh">"</span><span class="s">bab</span><span class="sh">"</span><span class="s">或</span><span class="sh">"</span><span class="s">aba</span><span class="sh">"</span><span class="s">。输入：s = </span><span class="sh">"</span><span class="s">cbbd</span><span class="sh">"</span><span class="s">；输出：</span><span class="sh">"</span><span class="s">bb</span><span class="sh">"</span><span class="s">。
+💡重点：
+- 需要同时考虑奇数和偶数长的回文串
+- 中心扩散
+- 这题还可以用动态规划解: 
+    - 状态定义：dp[i][j]表示s[i:j+1]是否为回文
+    - 初始化：dp = [[False for _ in range(size)] for _ in range(size)]
+    - 转移方程：dp[i][j] = dp[i-1][j-1] and s[i] == s[j]
+</span><span class="sh">"""</span>
+<span class="k">def</span> <span class="nf">longestPalindrome</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">s</span>
+    <span class="n">max_s</span><span class="p">,</span> <span class="n">max_len</span> <span class="o">=</span> <span class="sh">""</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">max_len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">break</span>  <span class="c1"># 提前终止
+</span>        <span class="c1"># 处理奇数长度的回文子串，以i为中心向两边移动
+</span>        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">right</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]:</span>
+                <span class="n">left</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">right</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>  <span class="c1"># 注意所有break的情况
+</span>        <span class="n">cur_len</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">cur_len</span> <span class="o">&gt;</span> <span class="n">max_len</span><span class="p">:</span>
+            <span class="n">max_s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">right</span><span class="p">]</span>
+            <span class="n">max_len</span> <span class="o">=</span> <span class="n">cur_len</span>
+        <span class="c1"># 处理偶数长度的回文子串
+</span>        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">right</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]:</span>
+                <span class="n">left</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">right</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="n">cur_len</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">cur_len</span> <span class="o">&gt;</span> <span class="n">max_len</span><span class="p">:</span>
+            <span class="n">max_s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">right</span><span class="p">]</span>
+            <span class="n">max_len</span> <span class="o">=</span> <span class="n">cur_len</span>
+    <span class="k">return</span> <span class="n">max_s</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<blockquote class="prompt-warn">
+<p>TODO: 完成下面例题</p>
+</blockquote>
+<p><a href="https://leetcode.cn/problems/binary-subarrays-with-sum">930. 和相同的二元子数组</a></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：
+🧪样例：
+💡重点：
+</span><span class="sh">"""</span>
+
 </pre></td></tr></tbody></table></code></pre></div></div>
 
-<h2 id="learn-more">Learn More</h2>
+<h2 id="查找">查找</h2>
 
-<p>For more knowledge about Jekyll posts, visit the <a href="https://jekyllrb.com/docs/posts/">Jekyll Docs: Posts</a>.</p>]]></content><author><name>Cotes Chung</name></author><category term="Blogging" /><category term="Tutorial" /><category term="writing" /><summary type="html"><![CDATA[This tutorial will guide you how to write a post in the Chirpy template, and it’s worth reading even if you’ve used Jekyll before, as many features require specific variables to be set.]]></summary></entry></feed>
+<p>查找是最基础操作，其中最常用的是二分查找，即从有序数组<code class="language-plaintext highlighter-rouge">array</code>中直接寻找某个值<code class="language-plaintext highlighter-rouge">query</code>对应的<code class="language-plaintext highlighter-rouge">index</code>。一般解法：</p>
+<ul>
+<li>双指针：比较<code class="language-plaintext highlighter-rouge">array[mid]</code>和<code class="language-plaintext highlighter-rouge">query</code>的大小（<code class="language-plaintext highlighter-rouge">mid = low + (high-low)//2</code>），从而更新左右指针<code class="language-plaintext highlighter-rouge">low</code>、<code class="language-plaintext highlighter-rouge">high</code>，终止条件:
+<ul>
+<li>(1) 找到了<code class="language-plaintext highlighter-rouge">query</code>（<code class="language-plaintext highlighter-rouge">array[mid] = query</code>）</li>
+<li>(2) 左右指针相遇（<code class="language-plaintext highlighter-rouge">low &gt; high</code>）</li>
+</ul>
+</li>
+<li>递归：分成左右两子数组，如果<code class="language-plaintext highlighter-rouge">array[mid]</code>不等于<code class="language-plaintext highlighter-rouge">query</code>则不断在左或者右子数组里面查找，直到找到了<code class="language-plaintext highlighter-rouge">query</code>或者子数组为空。</li>
+</ul>
+<p>重点在于分类讨论，建议用双闭区间，仔细讨论<code class="language-plaintext highlighter-rouge">array[low:mid]</code>, <code class="language-plaintext highlighter-rouge">array[mid]</code>, <code class="language-plaintext highlighter-rouge">array[mid+1:high+1]</code>的情况，并注意三个数组是否为空。</p>
+<h3 id="算法复杂度-2">算法复杂度</h3>
+<p>时间 $O(\log(N))$。每次只需要查一边，所以子问题数量为1。空间 $O(1)$。</p>
+<h3 id="使用场景-1">使用场景</h3>
+<ul>
+<li>当数组已经排好序 (30-40%是二分)</li>
+<li>当面试官要求你找一个比 $O(N)$ 更小的时间复杂度算法的时候(99%)</li>
+<li>找到数组中的一个分割位置，使得左半部分满足某个条件，右半部分不满足(100%)</li>
+<li>找到一个最大/最小的值使得某个条件被满足(90%)</li>
+</ul>
+<h3 id="代码模板-1">代码模板</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">hash_search</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+    <span class="c1"># 哈希查找，用于无序数组
+</span>    <span class="n">seen</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+        <span class="n">complement</span> <span class="o">=</span> <span class="n">query</span> <span class="o">-</span> <span class="n">val</span>
+        <span class="k">if</span> <span class="n">complement</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">seen</span><span class="p">[</span><span class="n">complement</span><span class="p">],</span> <span class="n">i</span><span class="p">]</span>  <span class="c1"># 如两数之和
+</span>        <span class="n">seen</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s"> Two points. [low, high] will be splitted:
+        (1) [low, mid - 1]
+        (2) [mid]
+        (3) [mid + 1, high]
+    </span><span class="sh">"""</span>
+    <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># 闭区间 [left, right]
+</span>    <span class="k">while</span> <span class="n">low</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="n">low</span> <span class="o">+</span> <span class="p">(</span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>  <span class="c1"># 防溢出
+</span>        <span class="n">val</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span>
+        <span class="c1"># array[low:mid], array[mid], array[mid+1:high+1]
+</span>        <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="n">query</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">mid</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="n">query</span><span class="p">:</span>
+            <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="bp">None</span>
+
+<span class="k">def</span> <span class="nf">binary_search_recur</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s"> Recurrence. [low, high] will be splitted:
+        (1) [low, mid - 1]
+        (2) [mid]
+        (3) [mid + 1, high]
+    </span><span class="sh">"""</span>
+    <span class="k">if</span> <span class="n">low</span> <span class="o">&gt;</span> <span class="n">high</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">mid</span> <span class="o">=</span> <span class="n">low</span> <span class="o">+</span> <span class="p">(</span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>   <span class="c1"># This mid will not break integer range
+</span>    <span class="k">if</span> <span class="n">query</span> <span class="o">&lt;</span> <span class="n">array</span><span class="p">[</span><span class="n">mid</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="nf">binary_search_recur</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>  <span class="c1"># Go search in the left subarray
+</span>    <span class="k">if</span> <span class="n">query</span> <span class="o">&gt;</span> <span class="n">array</span><span class="p">[</span><span class="n">mid</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="nf">binary_search_recur</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>  <span class="c1"># Go search in the right subarray
+</span>    <span class="k">return</span> <span class="n">mid</span>  <span class="c1"># `array[mid] = query`, stop recurrence
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<h3 id="例题-1">例题</h3>
+<p><a href="https://leetcode.cn/problems/search-in-rotated-sorted-array">33. 搜索旋转排序数组</a></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：给定旋转后的数组 `nums` 和一个整数 `target`，如果 `nums` 中存在这个目标值 `target`，则返回它的下标，否则返回 `-1`。
+🧪样例：输入：`nums = [2,3,4,5,6,7,0,1]`, `target = 0`；输出：`target`的下标为`6`。
+💡重点：
+1. 数组不是有序的，但是是局部有序的。有序的那端一定是最左边小于最右边，无序的那端一定是最左边大于最右边。
+2. 目标是否在有序部分比较好判断`nums[left_] &lt;= target and target &lt; nums[right_]`，如果不满足则落在另一边。
+https://leetcode.cn/problems/search-in-rotated-sorted-array/solutions/2636954/javapython3cer-fen-cha-zhao-you-xu-de-ba-5g7e
+</span><span class="sh">"""</span>
+<span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">low</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="n">low</span> <span class="o">+</span> <span class="p">(</span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span>
+        <span class="c1"># print(mid, nums[low:mid], nums[mid], nums[mid+1:high+1])
+</span>        <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">mid</span>
+        <span class="k">if</span> <span class="n">low</span> <span class="o">&lt;</span> <span class="n">mid</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span>
+            <span class="c1"># 左边有序，先判断是否在左边
+</span>            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">target</span> <span class="ow">and</span> <span class="n">target</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">mid</span> <span class="o">&lt;</span> <span class="n">high</span><span class="p">:</span>
+            <span class="c1"># 右边有序，先判断是否在右边
+</span>            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">target</span> <span class="ow">and</span> <span class="n">target</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">high</span><span class="p">]:</span>
+                <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p><a href="https://leetcode.cn/problems/find-k-closest-elements/">658. 找到 K 个最接近的元素</a></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：给定一个排序好的数组 `arr`，两个整数 `k` 和 `x`，从数组中找到最靠近 `x` 的 `k` 个数。返回的结果必须要是按升序排好的。
+🧪样例：输入：`arr = [1,2,3,4,5]`, `k = 4`, `x = 3`；输出：`[1,2,3,4]`。
+💡重点：
+1. 反向思维，删除最边缘的`n - k`个，每次判断删最左边还是删最右边。
+2. 返回结果要排好序，可以用双指针寻找最优子区间。
+</span><span class="sh">"""</span>
+
+<span class="k">def</span> <span class="nf">findClosestElements</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="c1"># 排除法（双指针）
+</span>    <span class="n">N</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="n">remove_nums</span> <span class="o">=</span> <span class="n">N</span> <span class="o">-</span> <span class="n">k</span>
+    <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">N</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">remove_nums</span><span class="p">:</span>
+        <span class="c1"># 注意：这里等于号的含义，题目中说，差值相等的时候取小的
+</span>        <span class="c1"># 因此相等的时候，尽量缩小右边界
+</span>        <span class="k">if</span> <span class="n">x</span> <span class="o">-</span> <span class="n">arr</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">arr</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">:</span>
+            <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">remove_nums</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">arr</span><span class="p">[</span><span class="n">left</span><span class="p">:</span><span class="n">left</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="排序">排序</h2>
+
+<h3 id="算法复杂度-3">算法复杂度</h3>
+<p>时间复杂度：</p>
+<ul>
+<li>快速排序：期望 $O(N\log(N))$</li>
+<li>归并排序：期望 $O(N\log(N))$</li>
+</ul>
+<p>空间复杂度：</p>
+<ul>
+<li>快速排序：期望 $O(1)$</li>
+<li>归并排序：期望 $O(N)$</li>
+</ul>
+<h3 id="使用场景-2">使用场景</h3>
+<p>TODO</p>
+<h3 id="代码模板-2">代码模板</h3>
+<p>TODO</p>
+<h3 id="例题-2">例题</h3>
+<p>TODO</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：
+🧪样例：
+💡重点：
+</span><span class="sh">"""</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="动态规划">动态规划</h2>
+
+<p>动态规划四要素：</p>
+<ul>
+<li>状态 (State) – 递归的定义</li>
+<li>方程 (Function) – 递归的拆解</li>
+<li>初始化 (Initialization) – 递归的出口</li>
+<li>答案 (Answer) – 递归的调用</li>
+</ul>
+<p>常见的动态规划类型：</p>
+<ul>
+<li>背包型：给出 <code class="language-plaintext highlighter-rouge">n</code> 个物品及其大小，能否挑选出一些物品装满大小为 <code class="language-plaintext highlighter-rouge">m</code> 的背包
+<ul>
+<li>通常用二维的状态数组<code class="language-plaintext highlighter-rouge">dp[i][j]</code>，表示？？？</li>
+</ul>
+</li>
+<li>区间型：题目中有 <code class="language-plaintext highlighter-rouge">subarray</code> / <code class="language-plaintext highlighter-rouge">substring</code> 的信息，通常大区间依赖小区间
+<ul>
+<li><code class="language-plaintext highlighter-rouge">dp[i][j]</code> 表示数组/字符串中 <code class="language-plaintext highlighter-rouge">i</code>, <code class="language-plaintext highlighter-rouge">j</code> 这一段区间的最优值/可行性/方案总数</li>
+</ul>
+</li>
+<li>匹配型：通常两个字符串的匹配值依赖于两个字符串前缀的匹配值
+<ul>
+<li><code class="language-plaintext highlighter-rouge">dp[i][j]</code> 表示第一个字符串的前 <code class="language-plaintext highlighter-rouge">i</code> 个字符与第二个字符串的前 <code class="language-plaintext highlighter-rouge">j</code> 个字符的状态(max/min/sum/or)</li>
+</ul>
+</li>
+<li>接龙型：给一个接龙规则，求最长的龙有多长
+<ul>
+<li><code class="language-plaintext highlighter-rouge">dp[i]</code> 表示以坐标为 <code class="language-plaintext highlighter-rouge">i</code> 的元素结尾的最长龙的长度</li>
+</ul>
+</li>
+</ul>
+<h3 id="算法复杂度-4">算法复杂度</h3>
+<p>时间复杂度：O(状态总数 * 每个状态的处理耗费)</p>
+<p>空间复杂度：O(状态总数)</p>
+<h3 id="使用场景-3">使用场景</h3>
+<ul>
+<li>求方案总数(90%)</li>
+<li>求最值(80%)</li>
+<li>求可行性(80%)</li>
+</ul>
+<p>不适用的场景：</p>
+<ul>
+<li>找所有具体的方案（准确率 99%）</li>
+<li>输入数据无序(除了背包问题外，准确率 60%~70%)</li>
+<li>暴力算法已经是多项式时间复杂度（准确率 80%）</li>
+</ul>
+<h3 id="代码模板-3">代码模板</h3>
+<p>TODO</p>
+<h3 id="例题-3">例题</h3>
+<p>TODO</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：
+🧪样例：
+💡重点：
+</span><span class="sh">"""</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="贪心算法">贪心算法</h2>
+
+<h3 id="例题-4">例题</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：
+🧪样例：
+💡重点：
+</span><span class="sh">"""</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="宽度优先搜索-bfs">宽度优先搜索 BFS</h2>
+
+<h3 id="算法复杂度-5">算法复杂度</h3>
+<p>时间复杂度：$O(n + m)$, <code class="language-plaintext highlighter-rouge">n</code> 是点数, <code class="language-plaintext highlighter-rouge">m</code> 是边数</p>
+<p>空间复杂度：$O(n)$</p>
+<h3 id="使用场景-4">使用场景</h3>
+<ul>
+<li>拓扑排序(100%)</li>
+<li>出现连通块的关键词(100%)</li>
+<li>分层遍历(100%)</li>
+<li>简单图最短路径(100%)</li>
+<li>给定一个变换规则，从初始状态变到终止状态最少几步(100%)</li>
+</ul>
+<h3 id="代码模板-4">代码模板</h3>
+<p>队列</p>
+<h3 id="例题-5">例题</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：
+🧪样例：
+💡重点：
+</span><span class="sh">"""</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="宽度优先搜索">宽度优先搜索</h2>
+
+<h3 id="算法复杂度-6">算法复杂度</h3>
+<p>时间复杂度：O(方案个数 * 构造每个方案的时间)</p>
+<ul>
+<li>树的遍历： $O(N)$</li>
+<li>排列问题： $O(N! * N)$</li>
+<li>组合问题： $O(2^N * N)$</li>
+</ul>
+<h3 id="使用场景-5">使用场景</h3>
+<ul>
+<li>找满足某个条件的所有方案 (99%)</li>
+<li>二叉树 Binary Tree 的问题 (90%)</li>
+<li>组合问题(95%)
+<ul>
+<li>问题模型：求出所有满足条件的“组合”</li>
+<li>判断条件：组合中的元素是顺序无关的</li>
+</ul>
+</li>
+<li>排列问题 (95%)
+<ul>
+<li>问题模型：求出所有满足条件的“排列”</li>
+<li>判断条件：组合中的元素是顺序“相关”的。</li>
+</ul>
+</li>
+</ul>
+<p>不要用 DFS 的场景:</p>
+<ul>
+<li>连通块问题（一定要用 BFS，否则 StackOverflow）</li>
+<li>拓扑排序（一定要用 BFS，否则 StackOverflow）</li>
+<li>一切 BFS 可以解决的问题</li>
+</ul>
+<h3 id="代码模板-5">代码模板</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">参数列表</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">递归出口</span><span class="p">:</span>
+        <span class="n">记录答案</span>
+        <span class="k">return</span>
+    <span class="k">for</span> <span class="n">所有的拆解可能性</span><span class="p">:</span>
+        <span class="n">修改所有的参数</span>
+        <span class="nf">dfs</span><span class="p">(</span><span class="n">参数列表</span><span class="p">)</span>
+        <span class="n">还原所有被修改过的参数</span>
+    <span class="k">return</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h3 id="例题-6">例题</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：
+🧪样例：
+💡重点：
+</span><span class="sh">"""</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="参考资源">参考资源</h2>
+<ul>
+<li><a href="https://github.com/ninechapter-algorithm/leetcode-linghu-templete">北大令狐冲的算法小抄</a></li>
+<li><a href="https://github.com/keon/algorithms">Algorithms</a></li>
+<li><a href="https://labuladong.online/algo">labuladong的算法笔记</a></li>
+<li><a href="https://greyireland.gitbook.io/algorithm-pattern">算法模板</a></li>
+</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="algorithm"/><summary type="html"><![CDATA[算法复杂度]]></summary></entry><entry><title type="html">2025年阅读计划</title><link href="https://jinchaoli.com/blog/todo/" rel="alternate" type="text/html" title="2025年阅读计划"/><published>2025-08-19T11:00:00+08:00</published><updated>2025-09-09T22:41:10+08:00</updated><id>https://jinchaoli.com/blog/todo</id><content type="html" xml:base="https://jinchaoli.com/blog/todo/"><![CDATA[<p>2025年阅读计划（先挖坑再填）：</p>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>《学会提问》</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>算法刷题模板</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>炼丹技巧（loss突变怎么办）</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>深度学习
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>各种基础网络结构对比（Attention、Transformer、MoE）</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>强化学习
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>PPO、GRPO、GSPO</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>各种SSL对比</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>各种Codec对比</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>各种LLM对比</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>各种AudioLLM对比</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>各种多模态模型对比</li>
+</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="todo"/><summary type="html"><![CDATA[2025年阅读计划（先挖坑再填）：]]></summary></entry><entry><title type="html">Configure Waline with TiDB</title><link href="https://jinchaoli.com/blog/set-waline-with-tidb/" rel="alternate" type="text/html" title="Configure Waline with TiDB"/><published>2025-07-27T11:00:00+08:00</published><updated>2025-09-09T22:41:10+08:00</updated><id>https://jinchaoli.com/blog/set-waline-with-tidb</id><content type="html" xml:base="https://jinchaoli.com/blog/set-waline-with-tidb/"><![CDATA[<h2 id="why-waline--tidb">Why Waline + TiDB?</h2>
+<p><a href="https://waline.js.org/">Waline</a> is a lightweight, open-source, privacy-focused, and self-hosted comment system with backend UI and rich features, and <a href="https://tidbcloud.com/">TiDB Cloud</a> offers a scalable, MySQL-compatible database with a generous 5GB free tier – making them a powerful pair for efficient and reliable comment system.</p>
+<h2 id="how-to-set-up-waline-with-tidb-cloud">How to Set Up Waline with TiDB Cloud?</h2>
+<p>Follow these steps to deploy and configure <a href="https://waline.js.org/">Waline</a> using <a href="https://tidbcloud.com/">TiDB Cloud</a> as the database backend.</p>
+<ol>
+<li>
+<p>Create a cluster in <a href="https://tidbcloud.com/">TiDB Database</a> (any name is okay)</p>
+</li>
+<li>
+<p>Connect with the above cluster in your local editor (e.g., VS Code)</p>
+<p>To manage your database and initialize comment tables:</p>
+<ol>
+<li>
+<p>Get Connection Details: In the TiDB Cloud console (Overview of the cluster), click the Connect button (top-right corner). You’ll see the connection parameters <code class="language-plaintext highlighter-rouge">HOST</code>, <code class="language-plaintext highlighter-rouge">PORT</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">PASSWORD</code> (generate and copy it), <code class="language-plaintext highlighter-rouge">DATABASE</code> and <code class="language-plaintext highlighter-rouge">CA</code>.</p>
+</li>
+<li>
+<p>Set Up VS Code: See details in <a href="https://docs.pingcap.com/tidbcloud/dev-guide-gui-vscode-sqltools/">TiDB Developer Guide</a>.</p>
+</li>
+<li>
+<p>Initialize the Waline Database Schema: Copy <a href="https://github.com/walinejs/waline/blob/main/assets/waline.tidb">waline.tidb</a> and execute the entire script in VS Code. The script will create a database named <code class="language-plaintext highlighter-rouge">waline</code> with <code class="language-plaintext highlighter-rouge">wl_Comment</code>, <code class="language-plaintext highlighter-rouge">wl_Counter</code> and <code class="language-plaintext highlighter-rouge">wl_Users</code> in it.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Configure <code class="language-plaintext highlighter-rouge">Environment Variables</code> as listed in <a href="https://waline.js.org/guide/database.html#tidb">Waline Guidebook</a></p>
+</li>
+</ol>
+<blockquote class="prompt-warn">
+<p>When first connecting via VS Code, the default <code class="language-plaintext highlighter-rouge">Database</code> is <code class="language-plaintext highlighter-rouge">test</code>. After running <code class="language-plaintext highlighter-rouge">waline.tidb</code>, the actual database used by Waline is <code class="language-plaintext highlighter-rouge">waline</code>. So in <code class="language-plaintext highlighter-rouge">Environment Variables</code>, set <code class="language-plaintext highlighter-rouge">DATABASE = waline</code>.</p>
+</blockquote>]]></content><author><name>Jinchao Li</name></author><category term="Blogging"/><category term="homepage"/><summary type="html"><![CDATA[Why Waline + TiDB?]]></summary></entry><entry><title type="html">Customize Your Jekyll Chirpy Theme</title><link href="https://jinchaoli.com/blog/customize-jekyll-chirpy/" rel="alternate" type="text/html" title="Customize Your Jekyll Chirpy Theme"/><published>2023-07-23T10:00:00+08:00</published><updated>2025-08-23T09:14:44+08:00</updated><id>https://jinchaoli.com/blog/customize-jekyll-chirpy</id><content type="html" xml:base="https://jinchaoli.com/blog/customize-jekyll-chirpy/"><![CDATA[<p><a href="https://github.com/cotes2020/jekyll-theme-chirpy">Jekyll Chirpy Theme</a> is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official <a href="https://github.com/cotes2020/jekyll-theme-chirpy/wiki">wiki</a> to realize your own magic modification.</p>
+<p>This blog introduces some basic tutorials to customize your own Chirpy theme, suitable for those friends who are not satisfied with the Chirpy configuration and want more blogging functions. Welcome to <a href="https://github.com/JinchaoLove/jekyll-chirpy-demo/issues">issue</a> or <a href="https://github.com/JinchaoLove/jekyll-chirpy-demo/pulls">join us</a> to help others build blogs.</p>
+<ul>
+<li>
+<p><a href="/blog/exchange-homepage-and-about/">Exchange Homepage and About</a></p>
+</li>
+<li>
+<p><a href="https://nihil.cc/posts/use_valine/">Replace Disqus with Valine for Discussion</a></p>
+</li>
+<li>
+<p><a href="https://blog.ixiaocai.net/posts/Astro-Blog-Customize-4-Waline-Enhancement/">Use Waline for Discussion</a></p>
+</li>
+</ul>]]></content><author><name>Jinchao Li</name></author><category term="Blogging"/><category term="theme"/><summary type="html"><![CDATA[Jekyll Chirpy Theme is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official wiki to realize your own magic modification.]]></summary></entry></feed>

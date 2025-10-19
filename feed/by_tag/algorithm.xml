@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/algorithm.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-10-19T18:16:44+08:00</updated><id>https://jinchaoli.com/feed/by_tag/algorithm.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">基础算法题解模板</title><link href="https://jinchaoli.com/blog/basic-algorithm/" rel="alternate" type="text/html" title="基础算法题解模板"/><published>2025-08-22T20:00:00+08:00</published><updated>2025-09-09T22:41:10+08:00</updated><id>https://jinchaoli.com/blog/basic-algorithm</id><content type="html" xml:base="https://jinchaoli.com/blog/basic-algorithm/"><![CDATA[<h2 id="算法复杂度">算法复杂度</h2>
+
+<h3 id="主定理master-theorem">主定理（Master Theorem）</h3>
+<p>假设有递归关系式：</p>
+\[T(N) = aT(N/b) + f(N), f(N) = N^{\log_b(a)} \log^k(N)\]
+<p>其中，$N$为问题规模，$a$为递归的子问题数量，$N/b$为每个子问题的规模（假设每个子问题的规模基本一样），$f(N)$为递归以外进行的计算工作。</p>
+<p><strong>则其算法复杂度为</strong>：</p>
+\[T(N) = O(N^{\log_b(a)} \log^{(k+1)}N)\]
+<h3 id="常见算法复杂度">常见算法复杂度</h3>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>递归关系式</th>
+<th>复杂度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二分查找</td>
+<td>$T(N) = T(N/2) + O(1)$</td>
+<td>$O(\log(N))$</td>
+</tr>
+<tr>
+<td>二叉树遍历</td>
+<td>$T(N) = 2T(N/2) + O(1)$</td>
+<td>$O(N)$</td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td>$T(N) = 2T(N/2) + O(N)$</td>
+<td>$O(N\log(N))$</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="双指针">双指针</h2>
+
+<p>使用两个指针变量在数组或链表等线性结构上协同移动，避免嵌套循环，将部分 $O(N^2)$ 的算法优化为 $O(N)$。主要分为：</p>
+<ul>
+<li>同向双指针（快慢指针）：一个快指针先行，慢指针跟进，常用于滑动窗口（去重）、链表操作（找中点、判断环、环入口）等。</li>
+<li>相向双指针（对撞指针）：从两端向中间移动，常用于有序数组求和、回文判断、反转数组、数组合并等。</li>
+<li>背向双指针：从中间向两边扩展，常用于回文串、最长子回文等问题。</li>
+</ul>
+<h3 id="算法复杂度-1">算法复杂度</h3>
+<p>通常情况下，时间复杂度 $O(N)$（与最内层循环主体的执行次数有关），空间复杂度：O(1)。</p>
+<h3 id="使用场景">使用场景</h3>
+<ul>
+<li>滑动窗口 (90%)</li>
+<li>时间复杂度要求 $O(N)$ (80%是双指针)</li>
+<li>要求原地操作，只可以使用交换，不能使用额外空间 (80%)</li>
+<li>有子数组 subarray / 子字符串 substring 的关键词 (50%)</li>
+<li>有回文 Palindrome 关键词(50%)</li>
+</ul>
+<h3 id="代码模板">代码模板</h3>
+<ul>
+<li>初始化指针：<code class="language-plaintext highlighter-rouge">left</code>, <code class="language-plaintext highlighter-rouge">right</code>根据方向设置起点</li>
+<li>循环控制：<code class="language-plaintext highlighter-rouge">while</code>或<code class="language-plaintext highlighter-rouge">for</code>控制移动（比如<code class="language-plaintext highlighter-rouge">right</code>扩展，<code class="language-plaintext highlighter-rouge">left</code>收缩）</li>
+<li>状态更新：维护当前窗口或配对状态，根据条件分类讨论</li>
+<li>结果记录：更新答案（相等时、满足条件时）</li>
+<li>边界处理：空数组、单元素、去重跳过等</li>
+</ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre><span class="c1"># 通用双指针框架（适用于数组/列表）
+</span><span class="k">def</span> <span class="nf">two_pointers_template</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>  <span class="c1"># 或其他默认值
+</span>
+    <span class="c1"># Step 1: 初始化指针
+</span>    <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>                    <span class="c1"># 左指针 / 慢指针
+</span>    <span class="c1"># right = 0 或 n - 1，根据方向选择
+</span>
+    <span class="c1"># Step 2: 根据类型选择遍历结构
+</span>    <span class="k">for</span> <span class="n">right</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>      <span class="c1"># 同向：快慢指针；滑动窗口
+</span>    <span class="c1"># while left &lt; right:       # 相向：对撞指针（常用于有序数组）
+</span>    <span class="c1"># while left &lt; n:           # 其他控制条件
+</span>
+        <span class="c1"># Step 3: 扩展或移动右指针后，处理当前窗口/状态
+</span>        <span class="c1"># ... 更新状态
+</span>
+        <span class="c1"># Step 4: 判断是否需要收缩左指针（滑动窗口类）
+</span>        <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span> <span class="ow">and</span> <span class="nf">need_to_move_left</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+            <span class="c1"># ... 更新或记录结果
+</span>            <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># 或：根据条件移动双指针（对撞类）
+</span>        <span class="c1"># if condition:
+</span>        <span class="c1">#     left += 1
+</span>        <span class="c1"># else:
+</span>        <span class="c1">#     right -= 1
+</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h3 id="例题">例题</h3>
+<p><a href="https://leetcode.cn/problems/merge-sorted-array">88. 合并两个有序数组</a></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：给你两个按 非递减顺序 排列的整数数组 `nums1` 和 `nums2`，另有两个整数 `m` 和 `n`，分别表示 `nums1` 和 `nums2` 中的元素数目。请你 合并 `nums2` 到 `nums1` 中，使合并后的数组同样按 非递减顺序 排列。
+🧪样例：输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3；输出：[1,2,2,3,5,6]
+💡重点：从后往前操作可以直接覆盖
+</span><span class="sh">"""</span>
+
+<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">nums1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">nums2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">
+    Do not return anything, modify nums1 in-place instead.
+    </span><span class="sh">"""</span>
+    <span class="c1"># 逆向双指针，从后往前操作可以直接覆盖
+</span>    <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># 同向，但是从后往前
+</span>    <span class="n">tail</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># 需要维护的状态：当前需要处理的索引
+</span>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">p1</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">p2</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">if</span> <span class="n">nums1</span><span class="p">[</span><span class="n">p1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">nums2</span><span class="p">[</span><span class="n">p2</span><span class="p">]:</span>
+            <span class="n">nums1</span><span class="p">[</span><span class="n">tail</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums2</span><span class="p">[</span><span class="n">p2</span><span class="p">]</span>
+            <span class="n">p2</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">tail</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">nums1</span><span class="p">[</span><span class="n">tail</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums1</span><span class="p">[</span><span class="n">p1</span><span class="p">]</span>
+            <span class="n">p1</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">tail</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="c1"># 由于比较，总会有一个数组先结束，对于后结束的一个数组：这里肯定是p2
+</span>    <span class="k">if</span> <span class="n">p2</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">nums1</span><span class="p">[:</span> <span class="n">p2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums2</span><span class="p">[:</span> <span class="n">p2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">nums1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">nums2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="sh">"""</span><span class="s"> 合并双指针，非原地操作。
+    🧪样例：输入：nums1 = [1,2,3], nums2 = [2,5,6]；输出：[1,2,2,3,5,6]
+    </span><span class="sh">"""</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">num1</span><span class="p">),</span> <span class="nf">len</span><span class="p">(</span><span class="n">nums2</span><span class="p">)</span>
+    <span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="c1"># 合并的过程只能操作 i, j 的移动，不要去用 list1.pop(0) 之类的操作
+</span>    <span class="c1"># 因为 pop(0) 是 O(n) 的时间复杂度，而且会改变序号
+</span>    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">m</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">new_list</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_list</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># 合并剩下的数到 new_list 里
+</span>    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">:</span>
+        <span class="n">new_list</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">new_list</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">new_list</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p><a href="https://leetcode.cn/problems/longest-palindromic-substring">5. 最长回文子串</a></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：给你一个字符串 `s`，找到 `s` 中最长的 回文 子串。
+🧪样例：输入s = </span><span class="sh">"</span><span class="s">babad</span><span class="sh">"</span><span class="s">；输出</span><span class="sh">"</span><span class="s">bab</span><span class="sh">"</span><span class="s">或</span><span class="sh">"</span><span class="s">aba</span><span class="sh">"</span><span class="s">。输入：s = </span><span class="sh">"</span><span class="s">cbbd</span><span class="sh">"</span><span class="s">；输出：</span><span class="sh">"</span><span class="s">bb</span><span class="sh">"</span><span class="s">。
+💡重点：
+- 需要同时考虑奇数和偶数长的回文串
+- 中心扩散
+- 这题还可以用动态规划解: 
+    - 状态定义：dp[i][j]表示s[i:j+1]是否为回文
+    - 初始化：dp = [[False for _ in range(size)] for _ in range(size)]
+    - 转移方程：dp[i][j] = dp[i-1][j-1] and s[i] == s[j]
+</span><span class="sh">"""</span>
+<span class="k">def</span> <span class="nf">longestPalindrome</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">s</span>
+    <span class="n">max_s</span><span class="p">,</span> <span class="n">max_len</span> <span class="o">=</span> <span class="sh">""</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">max_len</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">break</span>  <span class="c1"># 提前终止
+</span>        <span class="c1"># 处理奇数长度的回文子串，以i为中心向两边移动
+</span>        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">right</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]:</span>
+                <span class="n">left</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">right</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>  <span class="c1"># 注意所有break的情况
+</span>        <span class="n">cur_len</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">cur_len</span> <span class="o">&gt;</span> <span class="n">max_len</span><span class="p">:</span>
+            <span class="n">max_s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">right</span><span class="p">]</span>
+            <span class="n">max_len</span> <span class="o">=</span> <span class="n">cur_len</span>
+        <span class="c1"># 处理偶数长度的回文子串
+</span>        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">right</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]:</span>
+                <span class="n">left</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">right</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="n">cur_len</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">cur_len</span> <span class="o">&gt;</span> <span class="n">max_len</span><span class="p">:</span>
+            <span class="n">max_s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">right</span><span class="p">]</span>
+            <span class="n">max_len</span> <span class="o">=</span> <span class="n">cur_len</span>
+    <span class="k">return</span> <span class="n">max_s</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<blockquote class="prompt-warn">
+<p>TODO: 完成下面例题</p>
+</blockquote>
+<p><a href="https://leetcode.cn/problems/binary-subarrays-with-sum">930. 和相同的二元子数组</a></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：
+🧪样例：
+💡重点：
+</span><span class="sh">"""</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="查找">查找</h2>
+
+<p>查找是最基础操作，其中最常用的是二分查找，即从有序数组<code class="language-plaintext highlighter-rouge">array</code>中直接寻找某个值<code class="language-plaintext highlighter-rouge">query</code>对应的<code class="language-plaintext highlighter-rouge">index</code>。一般解法：</p>
+<ul>
+<li>双指针：比较<code class="language-plaintext highlighter-rouge">array[mid]</code>和<code class="language-plaintext highlighter-rouge">query</code>的大小（<code class="language-plaintext highlighter-rouge">mid = low + (high-low)//2</code>），从而更新左右指针<code class="language-plaintext highlighter-rouge">low</code>、<code class="language-plaintext highlighter-rouge">high</code>，终止条件:
+<ul>
+<li>(1) 找到了<code class="language-plaintext highlighter-rouge">query</code>（<code class="language-plaintext highlighter-rouge">array[mid] = query</code>）</li>
+<li>(2) 左右指针相遇（<code class="language-plaintext highlighter-rouge">low &gt; high</code>）</li>
+</ul>
+</li>
+<li>递归：分成左右两子数组，如果<code class="language-plaintext highlighter-rouge">array[mid]</code>不等于<code class="language-plaintext highlighter-rouge">query</code>则不断在左或者右子数组里面查找，直到找到了<code class="language-plaintext highlighter-rouge">query</code>或者子数组为空。</li>
+</ul>
+<p>重点在于分类讨论，建议用双闭区间，仔细讨论<code class="language-plaintext highlighter-rouge">array[low:mid]</code>, <code class="language-plaintext highlighter-rouge">array[mid]</code>, <code class="language-plaintext highlighter-rouge">array[mid+1:high+1]</code>的情况，并注意三个数组是否为空。</p>
+<h3 id="算法复杂度-2">算法复杂度</h3>
+<p>时间 $O(\log(N))$。每次只需要查一边，所以子问题数量为1。空间 $O(1)$。</p>
+<h3 id="使用场景-1">使用场景</h3>
+<ul>
+<li>当数组已经排好序 (30-40%是二分)</li>
+<li>当面试官要求你找一个比 $O(N)$ 更小的时间复杂度算法的时候(99%)</li>
+<li>找到数组中的一个分割位置，使得左半部分满足某个条件，右半部分不满足(100%)</li>
+<li>找到一个最大/最小的值使得某个条件被满足(90%)</li>
+</ul>
+<h3 id="代码模板-1">代码模板</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">hash_search</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+    <span class="c1"># 哈希查找，用于无序数组
+</span>    <span class="n">seen</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+        <span class="n">complement</span> <span class="o">=</span> <span class="n">query</span> <span class="o">-</span> <span class="n">val</span>
+        <span class="k">if</span> <span class="n">complement</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">seen</span><span class="p">[</span><span class="n">complement</span><span class="p">],</span> <span class="n">i</span><span class="p">]</span>  <span class="c1"># 如两数之和
+</span>        <span class="n">seen</span><span class="p">[</span><span class="n">val</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s"> Two points. [low, high] will be splitted:
+        (1) [low, mid - 1]
+        (2) [mid]
+        (3) [mid + 1, high]
+    </span><span class="sh">"""</span>
+    <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># 闭区间 [left, right]
+</span>    <span class="k">while</span> <span class="n">low</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="n">low</span> <span class="o">+</span> <span class="p">(</span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>  <span class="c1"># 防溢出
+</span>        <span class="n">val</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span>
+        <span class="c1"># array[low:mid], array[mid], array[mid+1:high+1]
+</span>        <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="n">query</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">mid</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="n">query</span><span class="p">:</span>
+            <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="bp">None</span>
+
+<span class="k">def</span> <span class="nf">binary_search_recur</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s"> Recurrence. [low, high] will be splitted:
+        (1) [low, mid - 1]
+        (2) [mid]
+        (3) [mid + 1, high]
+    </span><span class="sh">"""</span>
+    <span class="k">if</span> <span class="n">low</span> <span class="o">&gt;</span> <span class="n">high</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">mid</span> <span class="o">=</span> <span class="n">low</span> <span class="o">+</span> <span class="p">(</span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>   <span class="c1"># This mid will not break integer range
+</span>    <span class="k">if</span> <span class="n">query</span> <span class="o">&lt;</span> <span class="n">array</span><span class="p">[</span><span class="n">mid</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="nf">binary_search_recur</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">low</span><span class="p">,</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>  <span class="c1"># Go search in the left subarray
+</span>    <span class="k">if</span> <span class="n">query</span> <span class="o">&gt;</span> <span class="n">array</span><span class="p">[</span><span class="n">mid</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="nf">binary_search_recur</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>  <span class="c1"># Go search in the right subarray
+</span>    <span class="k">return</span> <span class="n">mid</span>  <span class="c1"># `array[mid] = query`, stop recurrence
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<h3 id="例题-1">例题</h3>
+<p><a href="https://leetcode.cn/problems/search-in-rotated-sorted-array">33. 搜索旋转排序数组</a></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：给定旋转后的数组 `nums` 和一个整数 `target`，如果 `nums` 中存在这个目标值 `target`，则返回它的下标，否则返回 `-1`。
+🧪样例：输入：`nums = [2,3,4,5,6,7,0,1]`, `target = 0`；输出：`target`的下标为`6`。
+💡重点：
+1. 数组不是有序的，但是是局部有序的。有序的那端一定是最左边小于最右边，无序的那端一定是最左边大于最右边。
+2. 目标是否在有序部分比较好判断`nums[left_] &lt;= target and target &lt; nums[right_]`，如果不满足则落在另一边。
+https://leetcode.cn/problems/search-in-rotated-sorted-array/solutions/2636954/javapython3cer-fen-cha-zhao-you-xu-de-ba-5g7e
+</span><span class="sh">"""</span>
+<span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">low</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">low</span> <span class="o">&lt;=</span> <span class="n">high</span><span class="p">:</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="n">low</span> <span class="o">+</span> <span class="p">(</span><span class="n">high</span> <span class="o">-</span> <span class="n">low</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span>
+        <span class="c1"># print(mid, nums[low:mid], nums[mid], nums[mid+1:high+1])
+</span>        <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">mid</span>
+        <span class="k">if</span> <span class="n">low</span> <span class="o">&lt;</span> <span class="n">mid</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span>
+            <span class="c1"># 左边有序，先判断是否在左边
+</span>            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">low</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">target</span> <span class="ow">and</span> <span class="n">target</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">mid</span> <span class="o">&lt;</span> <span class="n">high</span><span class="p">:</span>
+            <span class="c1"># 右边有序，先判断是否在右边
+</span>            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">target</span> <span class="ow">and</span> <span class="n">target</span> <span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">high</span><span class="p">]:</span>
+                <span class="n">low</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">high</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p><a href="https://leetcode.cn/problems/find-k-closest-elements/">658. 找到 K 个最接近的元素</a></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：给定一个排序好的数组 `arr`，两个整数 `k` 和 `x`，从数组中找到最靠近 `x` 的 `k` 个数。返回的结果必须要是按升序排好的。
+🧪样例：输入：`arr = [1,2,3,4,5]`, `k = 4`, `x = 3`；输出：`[1,2,3,4]`。
+💡重点：
+1. 反向思维，删除最边缘的`n - k`个，每次判断删最左边还是删最右边。
+2. 返回结果要排好序，可以用双指针寻找最优子区间。
+</span><span class="sh">"""</span>
+
+<span class="k">def</span> <span class="nf">findClosestElements</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="c1"># 排除法（双指针）
+</span>    <span class="n">N</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="n">remove_nums</span> <span class="o">=</span> <span class="n">N</span> <span class="o">-</span> <span class="n">k</span>
+    <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">N</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">remove_nums</span><span class="p">:</span>
+        <span class="c1"># 注意：这里等于号的含义，题目中说，差值相等的时候取小的
+</span>        <span class="c1"># 因此相等的时候，尽量缩小右边界
+</span>        <span class="k">if</span> <span class="n">x</span> <span class="o">-</span> <span class="n">arr</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">arr</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">:</span>
+            <span class="n">right</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">remove_nums</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">arr</span><span class="p">[</span><span class="n">left</span><span class="p">:</span><span class="n">left</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="排序">排序</h2>
+
+<h3 id="算法复杂度-3">算法复杂度</h3>
+<p>时间复杂度：</p>
+<ul>
+<li>快速排序：期望 $O(N\log(N))$</li>
+<li>归并排序：期望 $O(N\log(N))$</li>
+</ul>
+<p>空间复杂度：</p>
+<ul>
+<li>快速排序：期望 $O(1)$</li>
+<li>归并排序：期望 $O(N)$</li>
+</ul>
+<h3 id="使用场景-2">使用场景</h3>
+<p>TODO</p>
+<h3 id="代码模板-2">代码模板</h3>
+<p>TODO</p>
+<h3 id="例题-2">例题</h3>
+<p>TODO</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：
+🧪样例：
+💡重点：
+</span><span class="sh">"""</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="动态规划">动态规划</h2>
+
+<p>动态规划四要素：</p>
+<ul>
+<li>状态 (State) – 递归的定义</li>
+<li>方程 (Function) – 递归的拆解</li>
+<li>初始化 (Initialization) – 递归的出口</li>
+<li>答案 (Answer) – 递归的调用</li>
+</ul>
+<p>常见的动态规划类型：</p>
+<ul>
+<li>背包型：给出 <code class="language-plaintext highlighter-rouge">n</code> 个物品及其大小，能否挑选出一些物品装满大小为 <code class="language-plaintext highlighter-rouge">m</code> 的背包
+<ul>
+<li>通常用二维的状态数组<code class="language-plaintext highlighter-rouge">dp[i][j]</code>，表示？？？</li>
+</ul>
+</li>
+<li>区间型：题目中有 <code class="language-plaintext highlighter-rouge">subarray</code> / <code class="language-plaintext highlighter-rouge">substring</code> 的信息，通常大区间依赖小区间
+<ul>
+<li><code class="language-plaintext highlighter-rouge">dp[i][j]</code> 表示数组/字符串中 <code class="language-plaintext highlighter-rouge">i</code>, <code class="language-plaintext highlighter-rouge">j</code> 这一段区间的最优值/可行性/方案总数</li>
+</ul>
+</li>
+<li>匹配型：通常两个字符串的匹配值依赖于两个字符串前缀的匹配值
+<ul>
+<li><code class="language-plaintext highlighter-rouge">dp[i][j]</code> 表示第一个字符串的前 <code class="language-plaintext highlighter-rouge">i</code> 个字符与第二个字符串的前 <code class="language-plaintext highlighter-rouge">j</code> 个字符的状态(max/min/sum/or)</li>
+</ul>
+</li>
+<li>接龙型：给一个接龙规则，求最长的龙有多长
+<ul>
+<li><code class="language-plaintext highlighter-rouge">dp[i]</code> 表示以坐标为 <code class="language-plaintext highlighter-rouge">i</code> 的元素结尾的最长龙的长度</li>
+</ul>
+</li>
+</ul>
+<h3 id="算法复杂度-4">算法复杂度</h3>
+<p>时间复杂度：O(状态总数 * 每个状态的处理耗费)</p>
+<p>空间复杂度：O(状态总数)</p>
+<h3 id="使用场景-3">使用场景</h3>
+<ul>
+<li>求方案总数(90%)</li>
+<li>求最值(80%)</li>
+<li>求可行性(80%)</li>
+</ul>
+<p>不适用的场景：</p>
+<ul>
+<li>找所有具体的方案（准确率 99%）</li>
+<li>输入数据无序(除了背包问题外，准确率 60%~70%)</li>
+<li>暴力算法已经是多项式时间复杂度（准确率 80%）</li>
+</ul>
+<h3 id="代码模板-3">代码模板</h3>
+<p>TODO</p>
+<h3 id="例题-3">例题</h3>
+<p>TODO</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：
+🧪样例：
+💡重点：
+</span><span class="sh">"""</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="贪心算法">贪心算法</h2>
+
+<h3 id="例题-4">例题</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：
+🧪样例：
+💡重点：
+</span><span class="sh">"""</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="宽度优先搜索-bfs">宽度优先搜索 BFS</h2>
+
+<h3 id="算法复杂度-5">算法复杂度</h3>
+<p>时间复杂度：$O(n + m)$, <code class="language-plaintext highlighter-rouge">n</code> 是点数, <code class="language-plaintext highlighter-rouge">m</code> 是边数</p>
+<p>空间复杂度：$O(n)$</p>
+<h3 id="使用场景-4">使用场景</h3>
+<ul>
+<li>拓扑排序(100%)</li>
+<li>出现连通块的关键词(100%)</li>
+<li>分层遍历(100%)</li>
+<li>简单图最短路径(100%)</li>
+<li>给定一个变换规则，从初始状态变到终止状态最少几步(100%)</li>
+</ul>
+<h3 id="代码模板-4">代码模板</h3>
+<p>队列</p>
+<h3 id="例题-5">例题</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：
+🧪样例：
+💡重点：
+</span><span class="sh">"""</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="宽度优先搜索">宽度优先搜索</h2>
+
+<h3 id="算法复杂度-6">算法复杂度</h3>
+<p>时间复杂度：O(方案个数 * 构造每个方案的时间)</p>
+<ul>
+<li>树的遍历： $O(N)$</li>
+<li>排列问题： $O(N! * N)$</li>
+<li>组合问题： $O(2^N * N)$</li>
+</ul>
+<h3 id="使用场景-5">使用场景</h3>
+<ul>
+<li>找满足某个条件的所有方案 (99%)</li>
+<li>二叉树 Binary Tree 的问题 (90%)</li>
+<li>组合问题(95%)
+<ul>
+<li>问题模型：求出所有满足条件的“组合”</li>
+<li>判断条件：组合中的元素是顺序无关的</li>
+</ul>
+</li>
+<li>排列问题 (95%)
+<ul>
+<li>问题模型：求出所有满足条件的“排列”</li>
+<li>判断条件：组合中的元素是顺序“相关”的。</li>
+</ul>
+</li>
+</ul>
+<p>不要用 DFS 的场景:</p>
+<ul>
+<li>连通块问题（一定要用 BFS，否则 StackOverflow）</li>
+<li>拓扑排序（一定要用 BFS，否则 StackOverflow）</li>
+<li>一切 BFS 可以解决的问题</li>
+</ul>
+<h3 id="代码模板-5">代码模板</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">参数列表</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">递归出口</span><span class="p">:</span>
+        <span class="n">记录答案</span>
+        <span class="k">return</span>
+    <span class="k">for</span> <span class="n">所有的拆解可能性</span><span class="p">:</span>
+        <span class="n">修改所有的参数</span>
+        <span class="nf">dfs</span><span class="p">(</span><span class="n">参数列表</span><span class="p">)</span>
+        <span class="n">还原所有被修改过的参数</span>
+    <span class="k">return</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h3 id="例题-6">例题</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：
+🧪样例：
+💡重点：
+</span><span class="sh">"""</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h2 id="参考资源">参考资源</h2>
+<ul>
+<li><a href="https://github.com/ninechapter-algorithm/leetcode-linghu-templete">北大令狐冲的算法小抄</a></li>
+<li><a href="https://github.com/keon/algorithms">Algorithms</a></li>
+<li><a href="https://labuladong.online/algo">labuladong的算法笔记</a></li>
+<li><a href="https://greyireland.gitbook.io/algorithm-pattern">算法模板</a></li>
+</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="algorithm"/><summary type="html"><![CDATA[算法复杂度]]></summary></entry></feed>

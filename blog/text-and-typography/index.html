@@ -1,22 +1,1392 @@
-<!doctype html><html lang="en" ><head><link rel="canonical" href="https://jinchaoli.com/blog/text-and-typography/"><meta charset="utf-8"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7"><meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover" ><link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>" ><title>Text and Typography</title><meta name="author" content="Jinchao Li"><meta name="description" content="Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more." ><meta name="keywords" content="jinchao li, 李锦超, cuhk, 香港中文大学, research, speech and natural language processing"><meta property="og:site_name" content="Text and Typography"><meta property="og:type" content="article"><meta property="og:title" content="Text and Typography | Text and Typography"><meta property="og:url" content="https://jinchaoli.com/blog/text-and-typography/" ><meta property="og:description" content="Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more." ><meta property="og:image" content="https://chirpy-img.netlify.app/commons/devices-mockup.png" ><meta property="og:locale" content="en"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Text and Typography"><meta name="twitter:description" content="Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more." ><meta name="twitter:site" content="@JinchaoLove"><meta name="twitter:creator" content="@JinchaoLove"> <script type="application/ld+json"> { "author": { "@type": "Person", "name": "Jinchao Li" }, "url": "https://jinchaoli.com/blog/text-and-typography/", "@type": "BlogPosting", "description": "Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.", "headline": "Text and Typography", "sameAs": ["https://github.com/JinchaoLove", "https://twitter.com/JinchaoLove", "https://scholar.google.com/citations?hl=en&user=0LWE_dkAAAAJ", "https://www.researchgate.net/profile/Jinchao-Li-3", "https://zhihu.com/people/jinchaoli"], "name": "Jinchao Li", "@context": "https://schema.org" } </script><link href="/assets/lib/fonts/main.css" rel="stylesheet"><link rel="stylesheet" href="/assets/lib/bootstrap/bootstrap.min.css"><link rel="stylesheet" href="/assets/lib/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="/assets/css/theme.css"><link rel="stylesheet" href="/assets/lib/tocbot/tocbot.css"><link defer rel="stylesheet" href="/assets/lib/loading-attribute-polyfill/loading-attribute-polyfill.min.css"><link defer rel="stylesheet" href="/assets/lib/magnific-popup/magnific-popup.css"><link rel="stylesheet" href="/assets/lib/waline/waline.css"> <script type="text/javascript" defer> class ModeToggle { static get MODE_KEY() { return 'mode'; } static get MODE_ATTR() { return 'data-mode'; } static get DARK_MODE() { return 'dark'; } static get LIGHT_MODE() { return 'light'; } static get ID() { return 'mode-toggle'; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } let self = this; /* always follow the system prefers */ this.sysDarkPrefers.addEventListener('change', () => { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.notify(); }); } /* constructor() */ get sysDarkPrefers() { return window.matchMedia('(prefers-color-scheme: dark)'); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; } get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } setDark() { document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { document.documentElement.removeAttribute(ModeToggle.MODE_ATTR); sessionStorage.removeItem(ModeToggle.MODE_KEY); } /* Notify another plugins that the theme mode has changed */ notify() { window.postMessage( { direction: ModeToggle.ID, message: this.modeStatus }, '*' ); } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.notify(); } /* flipMode() */ } /* ModeToggle */ const modeToggle = new ModeToggle(); </script><body><aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end"><header class="profile-wrapper"> <a href="/" id="avatar" class="rounded-circle"><figure><picture> <source class="responsive-img-srcset" srcset=" /assets/img/avatar/Jinchao-480.webp 480w, /assets/img/avatar/Jinchao-800.webp 800w, /assets/img/avatar/Jinchao-1280.webp 1280w, " sizes="95vw" type="image/webp" loading="lazy" data-proofer-ignore > <img src="/assets/img/avatar/Jinchao.png" width="112" height="auto" alt="Jinchao Li" loading="lazy" decoding="async" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" > </picture></figure></a><h1 class="site-title"> <a href="/">Jinchao Li</a></h1><p class="site-subtitle fst-italic mb-0">Jinchao Li's Homepage</p><div class="social"> <a href="javascript:location.href = 'mailto:' + ['jinchaolovefy','gmail.com'].join('@')" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="email" data-bs-original-title="email" link-attr-ignore style="color: #0072c5;" > <i class="fas fa-envelope"></i> </a> <a href="https://scholar.google.com/citations?hl=en&user=SB7xjMoAAAAJ" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="google-scholar" data-bs-original-title="google-scholar" link-attr-ignore target="_blank" rel="noopener noreferrer" style="color: #5c92f6;" > <i class="fa-brands fa-google-scholar"></i> </a> <a href="https://github.com/JinchaoLove" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="github" data-bs-original-title="github" link-attr-ignore target="_blank" rel="noopener noreferrer" > <i class="fab fa-github"></i> </a> <a href="/feed.xml" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="rss" data-bs-original-title="rss" link-attr-ignore style="color: #ee802f;" > <i class="fas fa-rss"></i> </a></div></header><nav class="flex-column flex-grow-1 w-100 ps-0"><ul class="nav"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/publications/" class="nav-link"> <i class="fa-fw fas fa-book"></i> <span>PUBLICATIONS</span> </a><li class="nav-item"> <a href="/space/" class="nav-link"> <i class="fa-fw fas fa-globe"></i> <span>SPACE</span> </a></ul><div class="blog-wrapper d-flex flex-wrap align-items-center w-100"><div class="nav-buttons"> <a id="nav-blog" class="nav-icon" href="/blog/" title="" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Blog" data-bs-original-title="Blog" role="button" > <i class="fa-fw fas fa-edit"></i> </a> <a id="nav-categories" class="nav-icon" href="/blog/categories/" title="" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Categories" data-bs-original-title="Categories" role="button" > <i class="fa-fw fas fa-layer-group"></i> </a> <a id="nav-tags" class="nav-icon" href="/blog/tags/" title="" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Tags" data-bs-original-title="Tags" role="button" > <i class="fa-fw fas fa-tags"></i> </a> <a id="nav-archives" class="nav-icon" href="/blog/archives/" title="" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Archives" data-bs-original-title="Archives" role="button" > <i class="fa-fw fas fa-archive"></i> </a></div><div class="nav-contents"><div class="nav-blog"> <a href="/blog/" class="nav-title"> <i class="fa-fw fas fa-edit"></i> <span>BLOG</span> </a></div><div class="nav-categories"> <a href="/blog/categories/" class="nav-title"> <i class="fa-fw fas fa-layer-group"></i> <span>CATEGORIES</span> </a> <a href="/blog/categories/blogging/" class="tag">Blogging</a> <a href="/blog/categories/demo/" class="tag">Demo</a> <a href="/blog/categories/tutorial/" class="tag">Tutorial</a></div><div class="nav-tags"> <a href="/blog/tags/" class="nav-title"> <i class="fa-fw fas fa-tags"></i> <span>TAGS</span> </a><div class="tag"> <a class="tag-name" href="/blog/tags/getting-started/">getting started<span class="tag-size text-muted">1</span> </a></div><div class="tag"> <a class="tag-name" href="/blog/tags/homepage/">homepage<span class="tag-size text-muted">2</span> </a></div><div class="tag"> <a class="tag-name" href="/blog/tags/theme/">theme<span class="tag-size text-muted">1</span> </a></div><div class="tag"> <a class="tag-name" href="/blog/tags/typography/">typography<span class="tag-size text-muted">1</span> </a></div><div class="tag"> <a class="tag-name" href="/blog/tags/writing/">writing<span class="tag-size text-muted">1</span> </a></div></div><div class="nav-archives"> <a href="/blog/archives/" class="nav-title"> <i class="fa-fw fas fa-archive"></i> <span>ARCHIVES</span> </a><ul><li> <a href="/blog/set-waline-with-tidb/">Configure Waline with TiDB</a><li> <a href="/blog/exchange-homepage-and-about/">Exchange Homepage and About</a><li> <a href="/blog/customize-jekyll-chirpy/">Customize Your Jekyll Chirpy Theme</a><li> <a href="/blog/getting-started/">Getting Started</a><li> <a href="/blog/write-a-new-post/">Writing a New Post</a><li> <a href="/blog/text-and-typography/">Text and Typography</a></ul></div></div></div></nav></aside><header id="topbar-wrapper" aria-label="Top Bar"><div id="topbar" class="d-flex align-items-center justify-content-between px-lg-3 h-100" ><div class="d-flex align-items-center"> <button type="button" id="sidebar-trigger" class="btn btn-link" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Hide/show sidebar" data-bs-original-title="Hide/show sidebar" > <i class="fas fa-map-signs fa-fw"></i> </button><nav id="breadcrumb" aria-label="Breadcrumb"> <span> <a href="/">Home</a> </span> <span> <a href="/blog/">Blog</a> </span> <span>Text and Typography</span></nav><div id="topbar-title"> Text and Typography</div></div><div class="d-flex align-items-center"> <button type="button" id="search-trigger" class="btn btn-link" data-bs-toggle="tooltip" data-bs-placement="left" aria-label="Search (⌘/⌃ + k)" data-bs-original-title="Search (⌘/⌃ + k)" > <i class="fas fa-search fa-fw"></i> </button><div id="search-box"> <search class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" placeholder="Search (⌘/⌃ + k)" tabindex="0" autocomplete="true" list="suggestions" > <datalist id="suggestions"></datalist> </search></div><button type="button" id="search-cancel" class="btn btn-link text-decoration-none" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Cancel (⎋esc)" data-bs-original-title="Cancel (⎋esc)" > <i class="fa fa-times" aria-hidden="true"></i> </button> <span class="icon-border"></span> <button type="button" class="mode-toggle btn light" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Light/dark theme" data-bs-original-title="Light/dark theme" > <i class="fas fa-star-and-crescent"></i> </button> <button type="button" class="mode-toggle btn dark" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Light/dark theme" data-bs-original-title="Light/dark theme" > <i class="fas fa-sun"></i> </button> <span class="icon-border"></span> <button type="button" id="toc-trigger" class="btn btn-link" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Hide/show TOC" data-bs-original-title="Hide/show panel" > <i class="fas fa-list-ul fa-fw"></i> </button></div></div></header><div id="main-wrapper" class="d-flex justify-content-center"><div class="container-fluid d-flex flex-column px-xxl-3"><div class="row flex-grow-1"><main aria-label="Main Content" id="content-wrapper" class="col-10" ><article class="px-1"><header><h1 data-toc-skip>Text and Typography</h1><p class="post-desc fw-light mb-4">Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.</p><div class="post-meta text-muted"> <span> Posted <time data-ts="1565235180" data-df="ll" data-bs-toggle="tooltip" data-bs-placement="bottom" > Aug 8, 2019 </time> </span> <span> Updated <time data-ts="1711288657" data-df="ll" data-bs-toggle="tooltip" data-bs-placement="bottom" > Mar 24, 2024 </time> </span><div class="mt-3 mb-3"> <a href="https://chirpy-img.netlify.app/commons/devices-mockup.png" class="popup img-link" title=""><figure><picture> <img src="https://chirpy-img.netlify.app/commons/devices-mockup.png" class="preview-img" width="1200" height="630" alt="" data-zoomable loading="lazy" decoding="async" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" > </picture></figure></a></div><div class="d-flex justify-content-between"> <span> By <em> <a href="https://github.com/cotes2020/">Cotes Chung</a> </em> </span> <span class="readtime" data-bs-toggle="tooltip" data-bs-placement="bottom" title="594 words" > <em>3 min</em> read</span></div></div></header><div class="content"><h2 id="headings"><a href="#headings" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Headings</span></h2><h1 class="mt-4 mb-0" id="h1---heading">H1 - heading</h1><h2 data-toc-skip="" class="mt-4 mb-0" id="h2---heading">H2 - heading</h2><h3 data-toc-skip="" class="mt-4 mb-0" id="h3---heading">H3 - heading</h3><h4 data-toc-skip="" class="mt-4" id="h4---heading">H4 - heading</h4><h2 id="paragraph"><a href="#paragraph" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Paragraph</span></h2><p>Quisque egestas convallis ipsum, ut sollicitudin risus tincidunt a. Maecenas interdum malesuada egestas. Duis consectetur porta risus, sit amet vulputate urna facilisis ac. Phasellus semper dui non purus ultrices sodales. Aliquam ante lorem, ornare a feugiat ac, finibus nec mauris. Vivamus ut tristique nisi. Sed vel leo vulputate, efficitur risus non, posuere mi. Nullam tincidunt bibendum rutrum. Proin commodo ornare sapien. Vivamus interdum diam sed sapien blandit, sit amet aliquam risus mattis. Nullam arcu turpis, mollis quis laoreet at, placerat id nibh. Suspendisse venenatis eros eros.</p><h2 id="lists"><a href="#lists" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Lists</span></h2><h3 id="ordered-list"><a href="#ordered-list" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Ordered list</span></h3><ol><li>Firstly<li>Secondly<li>Thirdly</ol><h3 id="unordered-list"><a href="#unordered-list" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Unordered list</span></h3><ul><li>Chapter<ul><li>Section<ul><li>Paragraph</ul></ul></ul><h3 id="todo-list"><a href="#todo-list" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">ToDo list</span></h3><ul class="task-list"><li class="task-list-item"><i class="far fa-circle fa-fw"></i>Job<ul class="task-list"><li class="task-list-item"><i class="fas fa-check-circle fa-fw checked"></i>Step 1<li class="task-list-item"><i class="fas fa-check-circle fa-fw checked"></i>Step 2<li class="task-list-item"><i class="far fa-circle fa-fw"></i>Step 3</ul></ul><h3 id="description-list"><a href="#description-list" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Description list</span></h3><dl><dt>Sun<dd>the star around which the earth orbits<dt>Moon<dd>the natural satellite of the earth, visible by reflected light from the sun</dl><h2 id="block-quote"><a href="#block-quote" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Block Quote</span></h2><blockquote><p>This line shows the <em>block quote</em>.</p></blockquote><h2 id="prompts"><a href="#prompts" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Prompts</span></h2><blockquote class="prompt-tip"><p>An example showing the <code class="language-plaintext highlighter-rouge">tip</code> type prompt.</p></blockquote><blockquote class="prompt-info"><p>An example showing the <code class="language-plaintext highlighter-rouge">info</code> type prompt.</p></blockquote><blockquote class="prompt-warning"><p>An example showing the <code class="language-plaintext highlighter-rouge">warning</code> type prompt.</p></blockquote><blockquote class="prompt-danger"><p>An example showing the <code class="language-plaintext highlighter-rouge">danger</code> type prompt.</p></blockquote><h2 id="tables"><a href="#tables" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Tables</span></h2><div class="table-wrapper"><table><thead><tr><th style="text-align: left">Company<th style="text-align: left">Contact<th style="text-align: right">Country<tbody><tr><td style="text-align: left">Alfreds Futterkiste<td style="text-align: left">Maria Anders<td style="text-align: right">Germany<tr><td style="text-align: left">Island Trading<td style="text-align: left">Helen Bennett<td style="text-align: right">UK<tr><td style="text-align: left">Magazzini Alimentari Riuniti<td style="text-align: left">Giovanni Rovelli<td style="text-align: right">Italy</table></div><h2 id="links"><a href="#links" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Links</span></h2><p><a href="http://127.0.0.1:4000">http://127.0.0.1:4000</a></p><h2 id="footnote"><a href="#footnote" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Footnote</span></h2><p>Click the hook will locate the footnote<sup id="fnref:footnote" role="doc-noteref"><a href="#fn:footnote" class="footnote" rel="footnote">1</a></sup>, and here is another footnote<sup id="fnref:fn-nth-2" role="doc-noteref"><a href="#fn:fn-nth-2" class="footnote" rel="footnote">2</a></sup>.</p><h2 id="inline-code"><a href="#inline-code" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Inline code</span></h2><p>This is an example of <code class="language-plaintext highlighter-rouge">Inline Code</code>.</p><h2 id="filepath"><a href="#filepath" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Filepath</span></h2><p>Here is the <code class="language-plaintext filepath highlighter-rouge">/path/to/the/file.extend</code>.</p><h2 id="code-blocks"><a href="#code-blocks" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Code blocks</span></h2><h3 id="common"><a href="#common" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Common</span></h3><div class="language-plaintext highlighter-rouge"><div class="code-header"> <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span><div class="code-header-buttons"><button class="clipboard-btn" aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre><td class="rouge-code"><pre>This is a common code snippet, without syntax highlight and line number.
-</pre></table></code></div></div><h3 id="specific-language"><a href="#specific-language" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Specific Language</span></h3><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span><div class="code-header-buttons"><button class="clipboard-btn" aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<!doctype html>
+
+
+
+<html lang="en">
+<head>
+<link rel="canonical" href="https://jinchaoli.com/blog/text-and-typography/">
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta
+name="theme-color"
+media="(prefers-color-scheme: light)"
+content="#f7f7f7">
+<meta
+name="theme-color"
+media="(prefers-color-scheme: dark)"
+content="#1b1b1e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+<link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+<title>Text and Typography</title>
+<meta name="author" content="Jinchao Li">
+<meta name="description" content="Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.">
+<meta name="keywords" content="jinchao li, 李锦超, cuhk, 香港中文大学, research, speech and natural language processing">
+
+<meta property="og:site_name" content="Text and Typography">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Text and Typography | Text and Typography">
+<meta property="og:url" content="https://jinchaoli.com/blog/text-and-typography/">
+<meta property="og:description" content="Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.">
+<meta property="og:image" content="https://chirpy-img.netlify.app/commons/devices-mockup.png">
+<meta property="og:locale" content="en">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Text and Typography">
+<meta name="twitter:description" content="Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.">
+<meta name="twitter:site" content="@JinchaoLove">
+<meta name="twitter:creator" content="@JinchaoLove">
+
+<script type="application/ld+json">
+    {
+      "author": {
+        "@type": "Person",
+        "name": "Jinchao Li"
+      },
+      "url": "https://jinchaoli.com/blog/text-and-typography/",
+      "@type": " BlogPosting",
+      "description": " Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more. ",
+      "headline": " Text and Typography ",
+      
+        "sameAs": ["https://github.com/JinchaoLove", "https://twitter.com/JinchaoLove", "https://scholar.google.com/citations?hl=en&user=0LWE_dkAAAAJ", "https://www.researchgate.net/profile/Jinchao-Li-3", "https://zhihu.com/people/jinchaoli"],
+        
+        "name": "Jinchao Li",
+        "@context": "https://schema.org"
+      }
+  </script>
+<link href="/assets/lib/fonts/main.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/assets/lib/bootstrap/bootstrap.min.css">
+
+<link rel="stylesheet" href="/assets/lib/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="/assets/css/theme.css">
+
+<link rel="stylesheet" href="/assets/lib/tocbot/tocbot.css">
+
+<link
+defer
+rel="stylesheet"
+href="/assets/lib/loading-attribute-polyfill/loading-attribute-polyfill.min.css">
+
+<link
+defer
+rel="stylesheet"
+href="/assets/lib/magnific-popup/magnific-popup.css">
+
+<link rel="stylesheet" href="/assets/lib/waline/waline.css">
+
+
+<script type="text/javascript" defer>
+  class ModeToggle {
+    static get MODE_KEY() {
+      return 'mode';
+    }
+    static get MODE_ATTR() {
+      return 'data-mode';
+    }
+    static get DARK_MODE() {
+      return 'dark';
+    }
+    static get LIGHT_MODE() {
+      return 'light';
+    }
+    static get ID() {
+      return 'mode-toggle';
+    }
+
+    constructor() {
+      if (this.hasMode) {
+        if (this.isDarkMode) {
+          if (!this.isSysDarkPrefer) {
+            this.setDark();
+          }
+        } else {
+          if (this.isSysDarkPrefer) {
+            this.setLight();
+          }
+        }
+      }
+
+      let self = this;
+
+      /* always follow the system prefers */
+      this.sysDarkPrefers.addEventListener('change', () => {
+        if (self.hasMode) {
+          if (self.isDarkMode) {
+            if (!self.isSysDarkPrefer) {
+              self.setDark();
+            }
+          } else {
+            if (self.isSysDarkPrefer) {
+              self.setLight();
+            }
+          }
+
+          self.clearMode();
+        }
+
+        self.notify();
+      });
+    } /* constructor() */
+
+    get sysDarkPrefers() {
+      return window.matchMedia('(prefers-color-scheme: dark)');
+    }
+
+    get isSysDarkPrefer() {
+      return this.sysDarkPrefers.matches;
+    }
+
+    get isDarkMode() {
+      return this.mode === ModeToggle.DARK_MODE;
+    }
+
+    get isLightMode() {
+      return this.mode === ModeToggle.LIGHT_MODE;
+    }
+
+    get hasMode() {
+      return this.mode != null;
+    }
+
+    get mode() {
+      return sessionStorage.getItem(ModeToggle.MODE_KEY);
+    }
+
+    /* get the current mode on screen */
+    get modeStatus() {
+      if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) {
+        return ModeToggle.DARK_MODE;
+      } else {
+        return ModeToggle.LIGHT_MODE;
+      }
+    }
+
+    setDark() {
+      document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+    }
+
+    setLight() {
+      document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+    }
+
+    clearMode() {
+      document.documentElement.removeAttribute(ModeToggle.MODE_ATTR);
+      sessionStorage.removeItem(ModeToggle.MODE_KEY);
+    }
+
+    /* Notify another plugins that the theme mode has changed */
+    notify() {
+      window.postMessage(
+        {
+          direction: ModeToggle.ID,
+          message: this.modeStatus
+        },
+        '*'
+      );
+    }
+
+    flipMode() {
+      if (this.hasMode) {
+        if (this.isSysDarkPrefer) {
+          if (this.isLightMode) {
+            this.clearMode();
+          } else {
+            this.setLight();
+          }
+        } else {
+          if (this.isDarkMode) {
+            this.clearMode();
+          } else {
+            this.setDark();
+          }
+        }
+      } else {
+        if (this.isSysDarkPrefer) {
+          this.setLight();
+        } else {
+          this.setDark();
+        }
+      }
+
+      this.notify();
+    } /* flipMode() */
+  } /* ModeToggle */
+
+  const modeToggle = new ModeToggle();
+</script>
+<script type="text/javascript" defer>
+  function removeChildBySelector(parent, selector) {
+    const child = parent.querySelector(selector);
+    if (child) {
+      child.remove();
+    }
+  }
+
+  function removeChildByTitle(parent, title) {
+    const child = Array.from(parent.children).find(
+      (el) => el.getAttribute('title') === title
+    );
+    if (child) {
+      child.remove();
+    }
+  }
+
+  window.markmap = {
+    autoLoader: {
+    toolbar: true,
+    onReady: function() {
+      // 等待 toolbar 渲染完成后再操作
+      setTimeout(() => {
+        const toolbar = document.querySelector('.mm-toolbar');
+        if (!toolbar) return;
+
+        removeChildBySelector(toolbar, '.mm-toolbar-brand');
+        removeChildByTitle(toolbar, 'Toggle recursively');
+        removeChildByTitle(toolbar, 'Toggle dark theme');
+      }, 100); // 小延迟确保 DOM 已更新
+    }
+    }
+  };
+</script>
+<script src="/assets/lib/markmap/markmap.js"></script>
+</head>
+<body>
+
+<aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
+<header class="profile-wrapper">
+<a href="/" id="avatar" class="rounded-circle">
+<figure>
+<picture>
+
+<source
+class="responsive-img-srcset"
+srcset="
+/assets/img/avatar/Jinchao-480.webp 480w,
+/assets/img/avatar/Jinchao-800.webp 800w,
+/assets/img/avatar/Jinchao-1280.webp 1280w,
+"
+sizes="95vw"
+type="image/webp"
+loading="lazy"
+data-proofer-ignore
+>
+
+<img
+src="/assets/img/avatar/Jinchao.png"
+width="112"
+height="auto"
+alt="Jinchao Li"
+loading="lazy"
+decoding="async"
+onerror="this.onerror=null;Array.from(this.parentNode.querySelectorAll('source')).forEach(el => el.remove());">
+>
+</picture>
+</figure>
+</a>
+<h1 class="site-title">
+<a href="/">Jinchao Li</a>
+</h1>
+<p class="site-subtitle fst-italic mb-0">Jinchao Li's Homepage</p>
+<div class="social">
+<a
+href="javascript:location.href = 'mailto:' + ['jinchaolovefy','gmail.com'].join('@')"
+data-bs-toggle="tooltip"
+data-bs-placement="top"
+aria-label="email"
+data-bs-original-title="email"
+link-attr-ignore
+style="color: #0072c5;"
+>
+<i class="fas fa-envelope"></i>
+</a>
+<a
+href="https://scholar.google.com/citations?hl=en&user=SB7xjMoAAAAJ"
+data-bs-toggle="tooltip"
+data-bs-placement="top"
+aria-label="google-scholar"
+data-bs-original-title="google-scholar"
+link-attr-ignore
+target="_blank"
+rel="noopener noreferrer"
+style="color: #5c92f6;"
+>
+<i class="fa-brands fa-google-scholar"></i>
+</a>
+<a
+href="https://github.com/JinchaoLove"
+data-bs-toggle="tooltip"
+data-bs-placement="top"
+aria-label="github"
+data-bs-original-title="github"
+link-attr-ignore
+target="_blank"
+rel="noopener noreferrer"
+>
+<i class="fab fa-github"></i>
+</a>
+<a
+href="/feed.xml"
+data-bs-toggle="tooltip"
+data-bs-placement="top"
+aria-label="rss"
+data-bs-original-title="rss"
+link-attr-ignore
+style="color: #ee802f;"
+>
+<i class="fas fa-rss"></i>
+</a>
+</div>
+</header>
+
+<nav class="flex-column flex-grow-1 w-100 ps-0">
+<ul class="nav">
+
+<li class="nav-item">
+<a href="/" class="nav-link">
+<i class="fa-fw fas fa-home"></i>
+<span>HOME</span>
+</a>
+</li>
+
+<li class="nav-item">
+<a href="/publications/" class="nav-link">
+<i class="fa-fw fas fa-book"></i>
+<span>PUBLICATIONS</span>
+</a>
+</li>
+
+<li class="nav-item">
+<a href="/space/" class="nav-link">
+<i class="fa-fw fas fa-globe"></i>
+<span>SPACE</span>
+</a>
+</li>
+
+</ul>
+<div class="blog-wrapper d-flex flex-wrap align-items-center w-100">
+<div class="nav-buttons">
+<a
+id="nav-blog"
+class="nav-icon"
+href="/blog/"
+title=""
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+aria-label="Blog"
+data-bs-original-title="Blog"
+role="button"
+>
+<i class="fa-fw fas fa-edit"></i>
+</a>
+<a
+id="nav-categories"
+class="nav-icon"
+href="/blog/categories/"
+title=""
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+aria-label="Categories"
+data-bs-original-title="Categories"
+role="button"
+>
+<i class="fa-fw fas fa-layer-group"></i>
+</a>
+<a
+id="nav-tags"
+class="nav-icon"
+href="/blog/tags/"
+title=""
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+aria-label="Tags"
+data-bs-original-title="Tags"
+role="button"
+>
+<i class="fa-fw fas fa-tags"></i>
+</a>
+<a
+id="nav-archives"
+class="nav-icon"
+href="/blog/archives/"
+title=""
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+aria-label="Archives"
+data-bs-original-title="Archives"
+role="button"
+>
+<i class="fa-fw fas fa-archive"></i>
+</a>
+</div>
+<div class="nav-contents">
+<div class="nav-blog">
+<a href="/blog/" class="nav-title">
+<i class="fa-fw fas fa-edit"></i>
+<span>BLOG</span>
+</a>
+</div>
+<div class="nav-categories">
+<a href="/blog/categories/" class="nav-title">
+<i class="fa-fw fas fa-layer-group"></i>
+<span>CATEGORIES</span>
+</a>
+<a href="/blog/categories/blogging/" class="tag">Blogging</a>
+<a href="/blog/categories/demo/" class="tag">Demo</a>
+<a href="/blog/categories/study/" class="tag">Study</a>
+</div>
+<div class="nav-tags">
+<a href="/blog/tags/" class="nav-title">
+<i class="fa-fw fas fa-tags"></i>
+<span>TAGS</span>
+</a>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/algorithm/">algorithm<span class="tag-size text-muted">1</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/getting-started/">getting started<span class="tag-size text-muted">1</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/homepage/">homepage<span class="tag-size text-muted">2</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/python/">python<span class="tag-size text-muted">1</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/theme/">theme<span class="tag-size text-muted">1</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/todo/">todo<span class="tag-size text-muted">1</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/typography/">typography<span class="tag-size text-muted">1</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/writing/">writing<span class="tag-size text-muted">1</span>
+</a>
+</div>
+</div>
+<div class="nav-archives">
+<a href="/blog/archives/" class="nav-title">
+<i class="fa-fw fas fa-archive"></i>
+<span>ARCHIVES</span>
+</a>
+<ul>
+<li>
+<a href="/blog/python/">Python Basics</a>
+</li>
+<li>
+<a href="/blog/basic-algorithm/">基础算法题解模板</a>
+</li>
+<li>
+<a href="/blog/todo/">2025年阅读计划</a>
+</li>
+<li>
+<a href="/blog/set-waline-with-tidb/">Configure Waline with TiDB</a>
+</li>
+<li>
+<a href="/blog/exchange-homepage-and-about/">Exchange Homepage and About</a>
+</li>
+<li>
+<a href="/blog/customize-jekyll-chirpy/">Customize Your Jekyll Chirpy Theme</a>
+</li>
+<li>
+<a href="/blog/getting-started/">Getting Started</a>
+</li>
+<li>
+<a href="/blog/write-a-new-post/">Writing a New Post</a>
+</li>
+<li>
+<a href="/blog/text-and-typography/">Text and Typography</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+</nav>
+</aside>
+
+
+<header id="topbar-wrapper" aria-label="Top Bar">
+<div
+id="topbar"
+class="d-flex align-items-center justify-content-between px-lg-3 h-100"
+>
+<div class="d-flex align-items-center">
+<button
+type="button"
+id="sidebar-trigger"
+class="btn btn-link"
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+aria-label="Hide/show sidebar"
+data-bs-original-title="Hide/show sidebar"
+>
+<i class="fas fa-map-signs fa-fw"></i>
+</button>
+<nav id="breadcrumb" aria-label="Breadcrumb">
+<span>
+<a href="/">Home</a>
+</span>
+<span>
+<a href="/blog/">Blog</a>
+</span>
+<span>Text and Typography</span>
+</nav>
+
+<div id="topbar-title">
+Text and Typography
+</div>
+</div>
+<div class="d-flex align-items-center">
+<button
+type="button"
+id="search-trigger"
+class="btn btn-link"
+data-bs-toggle="tooltip"
+data-bs-placement="left"
+aria-label="Search (⌘/⌃ + k)"
+data-bs-original-title="Search (⌘/⌃ + k)"
+>
+<i class="fas fa-search fa-fw"></i>
+</button>
+<div id="search-box">
+<search class="align-items-center">
+<i class="fas fa-search fa-fw"></i>
+<input
+class="form-control"
+id="search-input"
+type="search"
+aria-label="search"
+placeholder="Search (⌘/⌃ + k)"
+tabindex="0"
+autocomplete="true"
+list="suggestions"
+>
+<datalist id="suggestions"></datalist>
+</search>
+</div>
+<button
+type="button"
+id="search-cancel"
+class="btn btn-link text-decoration-none"
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+aria-label="Cancel (⎋esc)"
+data-bs-original-title="Cancel (⎋esc)"
+>
+<i class="fa fa-times" aria-hidden="true"></i>
+</button>
+<span class="icon-border"></span>
+<button
+type="button"
+class="mode-toggle btn light"
+data-bs-toggle="tooltip"
+data-bs-placement="top"
+aria-label="Light/dark theme"
+data-bs-original-title="Light/dark theme"
+>
+<i class="fas fa-star-and-crescent"></i>
+</button>
+<button
+type="button"
+class="mode-toggle btn dark"
+data-bs-toggle="tooltip"
+data-bs-placement="top"
+aria-label="Light/dark theme"
+data-bs-original-title="Light/dark theme"
+>
+<i class="fas fa-sun"></i>
+</button>
+<span class="icon-border"></span>
+<button
+type="button"
+id="toc-trigger"
+class="btn btn-link"
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+aria-label="Hide/show TOC"
+data-bs-original-title="Hide/show panel"
+>
+<i class="fas fa-list-ul fa-fw"></i>
+</button>
+</div>
+</div>
+</header>
+<div id="main-wrapper" class="d-flex justify-content-center">
+<div class="container-fluid d-flex flex-column px-xxl-3">
+<div class="row flex-grow-1">
+<main
+aria-label="Main Content"
+id="content-wrapper"
+class="col-10">
+
+
+
+
+
+
+
+<article class="px-1">
+<header>
+<h1 data-toc-skip>Text and Typography</h1>
+<p class="post-desc fw-light mb-4">Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.</p>
+<div class="post-meta text-muted">
+<div class="d-flex justify-content-between">
+<span style="font-weight: 500;">
+<a href="/mindmap/text-and-typography/" target="_blank">
+<i class="fa fa-external-link" aria-hidden="true"></i>
+View mindmap of this page
+</a>
+</span>
+
+
+
+
+<span
+class="readtime"
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+title="3 min read"
+>About
+<em>599</em>
+words</span>
+</div>
+<div class="d-flex justify-content-between">
+
+<span>
+By
+<em>
+<a href="https://github.com/cotes2020/">Cotes Chung</a>
+</em>
+</span>
+<span>
+
+Posted
+
+<time
+data-ts="1565235180"
+data-df="ll"
+data-bs-toggle="tooltip" data-bs-placement="bottom"
+>
+Aug 8, 2019
+</time>
+
+| Updated
+
+<time
+data-ts="1757428870"
+data-df="ll"
+data-bs-toggle="tooltip" data-bs-placement="bottom"
+>
+Sep 9, 2025
+</time>
+</span>
+</div>
+
+</div>
+<div class="mt-3 mb-3">
+<a href="https://chirpy-img.netlify.app/commons/devices-mockup.png" class="popup img-link" title="">
+<figure>
+<picture>
+
+
+<img
+src="https://chirpy-img.netlify.app/commons/devices-mockup.png"
+class="preview-img"
+width="1200"
+height="630"
+alt=""
+data-zoomable
+loading="lazy"
+decoding="async"
+onerror="this.onerror=null;Array.from(this.parentNode.querySelectorAll('source')).forEach(el => el.remove());">
+>
+</picture>
+</figure>
+</a>
+</div>
+
+</header>
+<div class="content">
+<h2 id="headings"><a href="#headings" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Headings</span></h2>
+
+<h1 class="mt-4 mb-0" id="h1---heading">H1 - heading</h1>
+<h2 data-toc-skip="" class="mt-4 mb-0" id="h2---heading">H2 - heading</h2>
+<h3 data-toc-skip="" class="mt-4 mb-0" id="h3---heading">H3 - heading</h3>
+<h4 data-toc-skip="" class="mt-4" id="h4---heading">H4 - heading</h4>
+
+<h2 id="paragraph"><a href="#paragraph" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Paragraph</span></h2>
+<p>Quisque egestas convallis ipsum, ut sollicitudin risus tincidunt a. Maecenas interdum malesuada egestas. Duis consectetur porta risus, sit amet vulputate urna facilisis ac. Phasellus semper dui non purus ultrices sodales. Aliquam ante lorem, ornare a feugiat ac, finibus nec mauris. Vivamus ut tristique nisi. Sed vel leo vulputate, efficitur risus non, posuere mi. Nullam tincidunt bibendum rutrum. Proin commodo ornare sapien. Vivamus interdum diam sed sapien blandit, sit amet aliquam risus mattis. Nullam arcu turpis, mollis quis laoreet at, placerat id nibh. Suspendisse venenatis eros eros.</p>
+<h2 id="lists"><a href="#lists" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Lists</span></h2>
+<h3 id="ordered-list"><a href="#ordered-list" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Ordered list</span></h3>
+<ol>
+<li>Firstly</li>
+<li>Secondly</li>
+<li>Thirdly</li>
+</ol>
+<h3 id="unordered-list"><a href="#unordered-list" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Unordered list</span></h3>
+<ul>
+<li>Chapter
+<ul>
+<li>Section
+<ul>
+<li>Paragraph</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="todo-list"><a href="#todo-list" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">ToDo list</span></h3>
+<ul class="task-list">
+<li class="task-list-item"><i class="far fa-circle fa-fw"></i>Job
+<ul class="task-list">
+<li class="task-list-item"><i class="fas fa-check-circle fa-fw checked"></i>Step 1</li>
+<li class="task-list-item"><i class="fas fa-check-circle fa-fw checked"></i>Step 2</li>
+<li class="task-list-item"><i class="far fa-circle fa-fw"></i>Step 3</li>
+</ul>
+</li>
+</ul>
+<h3 id="description-list"><a href="#description-list" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Description list</span></h3>
+<dl>
+<dt>Sun</dt>
+<dd>the star around which the earth orbits</dd>
+<dt>Moon</dt>
+<dd>the natural satellite of the earth, visible by reflected light from the sun</dd>
+</dl>
+<h2 id="block-quote"><a href="#block-quote" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Block Quote</span></h2>
+<blockquote>
+<p>This line shows the <em>block quote</em>.</p>
+</blockquote>
+<h2 id="prompts"><a href="#prompts" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Prompts</span></h2>
+<blockquote class="prompt-tip">
+<p>An example showing the <code class="language-plaintext highlighter-rouge">tip</code> type prompt.</p>
+</blockquote>
+<blockquote class="prompt-info">
+<p>An example showing the <code class="language-plaintext highlighter-rouge">info</code> type prompt.</p>
+</blockquote>
+<blockquote class="prompt-warn">
+<p>An example showing the <code class="language-plaintext highlighter-rouge">warn</code> type prompt.</p>
+</blockquote>
+<blockquote class="prompt-danger">
+<p>An example showing the <code class="language-plaintext highlighter-rouge">danger</code> type prompt.</p>
+</blockquote>
+<h2 id="tables"><a href="#tables" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Tables</span></h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align: left">Company</th>
+<th style="text-align: left">Contact</th>
+<th style="text-align: right">Country</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left">Alfreds Futterkiste</td>
+<td style="text-align: left">Maria Anders</td>
+<td style="text-align: right">Germany</td>
+</tr>
+<tr>
+<td style="text-align: left">Island Trading</td>
+<td style="text-align: left">Helen Bennett</td>
+<td style="text-align: right">UK</td>
+</tr>
+<tr>
+<td style="text-align: left">Magazzini Alimentari Riuniti</td>
+<td style="text-align: left">Giovanni Rovelli</td>
+<td style="text-align: right">Italy</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="links"><a href="#links" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Links</span></h2>
+<p><a href="http://127.0.0.1:4000">http://127.0.0.1:4000</a></p>
+<h2 id="footnote"><a href="#footnote" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Footnote</span></h2>
+<p>Click the hook will locate the footnote<sup id="fnref:footnote"><a href="#fn:footnote" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>, and here is another footnote<sup id="fnref:fn-nth-2"><a href="#fn:fn-nth-2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>.</p>
+<h2 id="inline-code"><a href="#inline-code" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Inline code</span></h2>
+<p>This is an example of <code class="language-plaintext highlighter-rouge">Inline Code</code>.</p>
+<h2 id="filepath"><a href="#filepath" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Filepath</span></h2>
+<p>Here is the <code class="language-plaintext filepath highlighter-rouge">/path/to/the/file.extend</code>.</p>
+<h2 id="code-blocks"><a href="#code-blocks" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Code blocks</span></h2>
+<h3 id="common"><a href="#common" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Common</span></h3>
+<div class="language-plaintext highlighter-rouge"><div class="code-header">
+<span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
+<div class="code-header-fold-trigger"></div><div class="code-header-buttons"><button class="clipboard-btn" aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>This is a common code snippet, without syntax highlight and line number.
+</pre></td></tr></tbody></table></code></div></div>
+<h3 id="specific-language"><a href="#specific-language" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Specific Language</span></h3>
+<div class="language-bash highlighter-rouge"><div class="code-header">
+<span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
+<div class="code-header-fold-trigger"></div><div class="code-header-buttons"><button class="clipboard-btn" aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
-</pre><td class="rouge-code"><pre><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-ne</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
+</pre></td><td class="rouge-code"><pre><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-ne</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
   </span><span class="nb">echo</span> <span class="s2">"The command was not successful."</span><span class="p">;</span>
   <span class="c">#do the needful / exit</span>
 <span class="k">fi</span><span class="p">;</span>
-</pre></table></code></div></div><h3 id="specific-filename"><a href="#specific-filename" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Specific filename</span></h3><div file="_sass/jekyll-theme-chirpy.scss" class="language-sass highlighter-rouge"><div class="code-header"> <span data-label-text="_sass/jekyll-theme-chirpy.scss"><i class="far fa-file-code fa-fw"></i></span><div class="code-header-buttons"><button class="clipboard-btn" aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td></tr></tbody></table></code></div></div>
+<h3 id="specific-filename"><a href="#specific-filename" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Specific filename</span></h3>
+<div file="_sass/jekyll-theme-chirpy.scss" class="language-sass highlighter-rouge"><div class="code-header">
+<span data-label-text="_sass/jekyll-theme-chirpy.scss"><i class="far fa-file-code fa-fw"></i></span>
+<div class="code-header-fold-trigger"></div><div class="code-header-buttons"><button class="clipboard-btn" aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
-</pre><td class="rouge-code"><pre><span class="k">@import</span>
+</pre></td><td class="rouge-code"><pre><span class="k">@import</span>
   <span class="s2">"colors/light-typography"</span><span class="o">,</span>
   <span class="s2">"colors/dark-typography"</span><span class="o">;</span>
-</pre></table></code></div></div><h3 id="jupyter-notebook"><a href="#jupyter-notebook" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Jupyter notebook</span></h3><div class="jupyter-notebook" style="position: relative; width: 100%; margin: 0 auto;"><div class="jupyter-notebook-iframe-container"> <iframe src="/assets/jupyter/blog.ipynb.html" style="position: absolute; top: 0; left: 0; border-style: none;" width="100%" height="100%" onload="this.parentElement.style.paddingBottom = (this.contentWindow.document.documentElement.scrollHeight + 10) + 'px'"></iframe></div></div><h2 id="mathematics"><a href="#mathematics" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Mathematics</span></h2><p>The mathematics powered by <a href="https://www.mathjax.org/"><strong>MathJax</strong></a>:</p>\[\begin{equation} \sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6} \label{eq:series} \end{equation}\]<p>We can reference the equation as \eqref{eq:series}.</p><p>When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are</p>\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}\]<h2 id="mermaid-svg"><a href="#mermaid-svg" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Mermaid SVG</span></h2><pre><code class="language-mermaid"> gantt
+</pre></td></tr></tbody></table></code></div></div>
+<h3 id="jupyter-notebook"><a href="#jupyter-notebook" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Jupyter notebook</span></h3>
+<div
+class="jupyter-notebook"
+style="position: relative; width: 100%; margin: 0 auto;">
+<div class="jupyter-notebook-iframe-container">
+<iframe
+src="/assets/jupyter/blog.ipynb.html"
+style="position: absolute; top: 0; left: 0; border-style: none;"
+width="100%"
+height="100%"
+onload="this.parentElement.style.paddingBottom = (this.contentWindow.document.documentElement.scrollHeight + 10) + 'px'"></iframe>
+</div>
+</div>
+<h2 id="mathematics"><a href="#mathematics" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Mathematics</span></h2>
+<p>The mathematics powered by <a href="https://www.mathjax.org/"><strong>MathJax</strong></a>:</p>
+\[\begin{equation}
+\sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6}
+\label{eq:series}
+\end{equation}\]
+<p>We can reference the equation as \eqref{eq:series}.</p>
+<p>When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are</p>
+\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}\]
+<h2 id="mermaid-svg"><a href="#mermaid-svg" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Mermaid SVG</span></h2>
+<pre><code class="language-mermaid"> gantt
   title  Adding GANTT diagram functionality to mermaid
   apple :a, 2017-07-20, 1w
   banana :crit, b, 2017-07-23, 1d
   cherry :active, c, after b a, 1d
-</code></pre><h2 id="images"><a href="#images" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Images</span></h2><h3 id="default-with-caption"><a href="#default-with-caption" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Default (with caption)</span></h3><p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="Desktop View" width="972" height="589" /><br /> <em>Full screen width and center alignment</em></p><h3 id="left-aligned"><a href="#left-aligned" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Left aligned</span></h3><p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="Desktop View" width="972" height="589" class="w-75 normal" /></p><h3 id="float-to-left"><a href="#float-to-left" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Float to left</span></h3><p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="Desktop View" width="972" height="589" class="w-50 left" /><br /> Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.</p><h3 id="float-to-right"><a href="#float-to-right" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Float to right</span></h3><p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="Desktop View" width="972" height="589" class="w-50 right" /><br /> Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.</p><h3 id="darklight-mode--shadow"><a href="#darklight-mode--shadow" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Dark/Light mode &amp; Shadow</span></h3><p>The image below will toggle dark/light mode based on theme preference, notice it has shadows.</p><p><img src="https://chirpy-img.netlify.app/posts/20190808/devtools-light.png" alt="light mode only" class="light w-75 shadow rounded-10" w="1212" h="668" /><br /> <img src="https://chirpy-img.netlify.app/posts/20190808/devtools-dark.png" alt="dark mode only" class="dark w-75 shadow rounded-10" w="1212" h="668" /></p><h2 id="video"><a href="#video" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Video</span></h2><iframe class="embed-video" loading="lazy" src="https://www.youtube.com/embed/Balreaj8Yqs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe><h2 id="reverse-footnote"><a href="#reverse-footnote" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Reverse Footnote</span></h2><div class="footnotes" role="doc-endnotes"><ol><li id="fn:footnote" role="doc-endnote"><p>The footnote source <a href="#fnref:footnote" class="reversefootnote" role="doc-backlink">&#8617;&#xfe0e;</a></p><li id="fn:fn-nth-2" role="doc-endnote"><p>The 2nd footnote source <a href="#fnref:fn-nth-2" class="reversefootnote" role="doc-backlink">&#8617;&#xfe0e;</a></p></ol></div></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw me-1"></i> <a href="/blog/categories/blogging">Blogging</a>, <a href="/blog/categories/demo">Demo</a></div><div class="post-tags mb-3"> <i class="fa fa-tags fa-fw me-1"></i> <a href="/blog/tags/typography" class="post-tag no-text-decoration" >typography</a></div><div class=" post-tail-bottom d-flex justify-content-between align-items-center pb-2 " ><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper d-flex align-items-center"> <span class="share-label text-muted">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=Text%20and%20Typography%20-%20Jinchao%20Li&url=https%3A%2F%2Fjinchaoli.com%2Fblog%2Ftext-and-typography%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter"> <i class="fa-brands fa-square-x-twitter" ></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Text%20and%20Typography%20-%20Jinchao%20Li&u=https%3A%2F%2Fjinchaoli.com%2Fblog%2Ftext-and-typography%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook"> <i class="fab fa-facebook-square" style="color: #316ff6;" ></i> </a> <a href="https://t.me/share/url?url=https%3A%2F%2Fjinchaoli.com%2Fblog%2Ftext-and-typography%2F&text=Text%20and%20Typography%20-%20Jinchao%20Li" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram"> <i class="fab fa-telegram" style="color: #0088cc;" ></i> </a> <button id="copy-link" aria-label="Copy link" class="btn small" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy link" data-title-succeed="Link copied successfully!" > <i class="fa-fw fas fa-link pe-none fs-6"></i> </button> </span></div></div></div></article></main><aside aria-label="Panel" id="panel-wrapper" class="col-2 ps-2 mb-5 text-muted"><div class="access"><section id="access-lastmod"><h2 class="panel-heading">Recently Updated</h2><ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2"><li class="text-truncate lh-lg"> <a href="/blog/set-waline-with-tidb/">Configure Waline with TiDB</a><li class="text-truncate lh-lg"> <a href="/blog/customize-jekyll-chirpy/">Customize Your Jekyll Chirpy Theme</a><li class="text-truncate lh-lg"> <a href="/blog/getting-started/">Getting Started</a></ul></section></div><div class="access"><section><h2 class="panel-heading">Trending Tags</h2><div class="d-flex flex-wrap mt-3 mb-1 me-3"> <a class="post-tag btn btn-outline-primary" href="/blog/tags/homepage/">homepage</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/getting-started/">getting started</a> <a class="post-tag btn btn-outline-primary" href="/blog/tags/theme/">theme</a></div></section></div><section id="toc-wrapper" class="ps-0 pe-4"><h2 class="panel-heading ps-3 pt-2 mb-2">Contents</h2><nav id="toc"></nav></section></aside></div><div class="row"><div id="tail-wrapper" class="col-12 col-xl-10 px-md-3" ><aside id="related-posts" aria-labelledby="related-label"><h3 class="mb-4" id="related-label">Further Reading</h3><nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4"><article class="col"> <a href="/blog/write-a-new-post/" class="post-preview card h-100"><div class="card-body"> <time data-ts="1565244600" data-df="ll" > Aug 8, 2019 </time><h4 class="pt-0 my-2">Writing a New Post</h4><div class="text-muted"><p>This tutorial will guide you how to write a post in the Chirpy template, and it’s worth reading even if you’ve used Jekyll before, as many features require specific variables to be set. Naming and...</p></div></div></a></article><article class="col"> <a href="/blog/getting-started/" class="post-preview card h-100"><div class="card-body"> <time data-ts="1565355300" data-df="ll" > Aug 9, 2019 </time><h4 class="pt-0 my-2">Getting Started</h4><div class="text-muted"><p>Get started with Chirpy basics in this comprehensive overview. You will learn how to install, configure, and use your first Chirpy-based website, as well as deploy it to a web server.</p></div></div></a></article><article class="col"> <a href="/blog/customize-jekyll-chirpy/" class="post-preview card h-100"><div class="card-body"> <time data-ts="1690077600" data-df="ll" > Jul 23, 2023 </time><h4 class="pt-0 my-2">Customize Your Jekyll Chirpy Theme</h4><div class="text-muted"><p>Jekyll Chirpy Theme is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official wiki to realize ...</p></div></div></a></article></nav></aside><nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation"><div class="btn btn-outline-primary disabled" aria-label="Older"><p>-</p></div><a href="/blog/write-a-new-post/" class="btn btn-outline-primary" aria-label="Newer" ><p>Writing a New Post</p></a></nav><div id="waline"></div><script type="module"> import { init } from '/assets/lib/waline/waline.js'; init({ el: '#waline', serverURL: 'https://comment.jinchaoli.com', reaction: [ 'https://unpkg.com/@waline/emojis@1.1.0/qq/qq_heart.gif', 'https://unpkg.com/@waline/emojis@1.1.0/qq/qq_thumbsup.gif', 'https://unpkg.com/@waline/emojis@1.1.0/qq/qq_clap.gif', 'https://unpkg.com/@waline/emojis@1.1.0/qq/qq_grin.gif', 'https://unpkg.com/@waline/emojis@1.1.0/qq/qq_doubt.gif', 'https://unpkg.com/@waline/emojis@1.1.0/qq/qq_sleep.gif', ], search: false, pageview: true, lang: 'en' }); </script><footer aria-label="Site Info" class=" d-flex flex-column justify-content-center text-muted flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3 " ><p>© <time>2025</time> <a href="https://github.com/JinchaoLove">Jinchao Li</a>. <span data-bs-toggle="tooltip" data-bs-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author." >Some rights reserved.</span></p><p>Powered by <a href="https://jekyllrb.com" data-bs-toggle="tooltip" data-bs-placement="top">Jekyll</a> with <a href="https://github.com/JinchaoLove/AcademicChirpy" data-bs-toggle="tooltip" data-bs-placement="top">AcademicChirpy</a> theme.</p></footer></div></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-11 content"><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><aside aria-label="Scroll to Top"> <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow"> <i class="fas fa-angle-up"></i> </button></aside></div><div id="mask"></div><aside id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-animation="true" data-bs-autohide="false" ><div class="toast-header"> <button type="button" class="btn-close ms-auto" data-bs-dismiss="toast" aria-label="Close" ></button></div><div class="toast-body text-center pt-0"><p class="px-2 mb-3">A new version of content is available.</p><button type="button" class="btn btn-primary" aria-label="Update"> Update </button></div></aside><script src="/assets/lib/jquery/jquery.min.js"></script> <script src="/assets/lib/bootstrap/bootstrap.bundle.min.js"></script> <script src="/assets/lib/lunr/lunr.min.js"></script> <script src="/assets/lib/loading-attribute-polyfill/loading-attribute-polyfill.umd.min.js"></script> <script src="/assets/lib/magnific-popup/jquery.magnific-popup.min.js"></script> <script src="/assets/lib/clipboard/clipboard.min.js"></script> <script src="/assets/lib/dayjs/dayjs.min.js"></script> <script src="/assets/lib/dayjs/locale/en.min.js"></script> <script src="/assets/lib/dayjs/plugin/relativeTime.min.js"></script> <script src="/assets/lib/dayjs/plugin/localizedFormat.min.js"></script> <script src="/assets/lib/tocbot/tocbot.min.js"></script> <script src="/assets/lib/mermaid/mermaid.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script async src="/assets/js/just-the-docs.js"></script> <script> /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */ MathJax = { tex: { /* start/end delimiter pairs for in-line math */ inlineMath: [ ['$', '$'], ['\\(', '\\)'] ], /* start/end delimiter pairs for display math */ displayMath: [ ['$$', '$$'], ['\\[', '\\]'] ], /* equation numbering */ tags: 'ams' } }; </script> <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script> <script id="MathJax-script" async src="/assets/lib/mathjax/tex-chtml.js"></script> <script defer src="/assets/js/dist/app.min.js"></script> <script type="text/javascript"> (function () { function updateMermaid(event) { if (event.source === window && event.data && event.data.direction === ModeToggle.ID) { const mode = event.data.message; if (typeof mermaid === 'undefined') { return; } let expectedTheme = mode === ModeToggle.DARK_MODE ? 'dark' : 'default'; let config = { theme: expectedTheme }; /* Re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $('.mermaid').each(function () { let svgCode = $(this).prev().children().html(); $(this).removeAttr('data-processed'); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, '.mermaid'); } } let initTheme = 'default'; const html = document.documentElement; if ( (html.hasAttribute('data-mode') && html.getAttribute('data-mode') === 'dark') || (!html.hasAttribute('data-mode') && window.matchMedia('(prefers-color-scheme: dark)').matches) ) { initTheme = 'dark'; } let mermaidConf = { theme: initTheme /* <default|dark|forest|neutral> */ }; /* Create mermaid tag */ document.querySelectorAll('pre>code.language-mermaid').forEach((elem) => { const svgCode = elem.textContent; const backup = elem.parentElement; backup.classList.add('unloaded'); /* create mermaid node */ let mermaid = document.createElement('pre'); mermaid.classList.add('mermaid'); const text = document.createTextNode(svgCode); mermaid.appendChild(text); backup.after(mermaid); }); mermaid.initialize(mermaidConf); window.addEventListener('message', updateMermaid); })(); </script> <script type="text/javascript"> $(document).ready(function () { $('.mode-toggle').click(function () { let theme = localStorage.getItem('theme'); if (modeToggle.isDarkMode || (!modeToggle.hasMode && modeToggle.isSysDarkPrefer)) { theme = 'dark'; } else { theme = 'light'; } console.log('theme:' + theme); // Set jupyter notebooks themes. let jupyterNotebooks = document.getElementsByClassName('jupyter-notebook-iframe-container'); for (let i = 0; i < jupyterNotebooks.length; i++) { let iframeDocument = jupyterNotebooks[i].getElementsByTagName('iframe')[0].contentWindow.document; let bodyElement = iframeDocument.body; let headElement = iframeDocument.head; // Remove existing theme link elements let existingLinks = headElement.querySelectorAll('link[data-jp-theme-link]'); for (let link of existingLinks) { headElement.removeChild(link); } // Get original style-sheets let styleElements = headElement.querySelectorAll('style'); let variablesElement; for (let style of styleElements) { if (style.innerHTML.includes('The following CSS variables define the main, public API for styling JupyterLab.')) { variablesElement = style; break; } } // console.log(styleElements); // New style-sheets const cssLink = document.createElement('link'); cssLink.setAttribute('data-jp-theme-link', ''); cssLink.rel = 'stylesheet'; cssLink.type = 'text/css'; if (theme == 'dark') { cssLink.href = '/assets/css/jupyter-dark.css'; bodyElement.setAttribute('data-jp-theme-light', 'false'); bodyElement.setAttribute('data-jp-theme-name', 'JupyterLab Dark'); } else { cssLink.href = '/assets/css/jupyter-light.css'; bodyElement.setAttribute('data-jp-theme-light', 'true'); bodyElement.setAttribute('data-jp-theme-name', 'JupyterLab Light'); } // Import the cssLink if (variablesElement) { // variablesElement.insertAdjacentElement('beforebegin', cssLink); variablesElement.insertAdjacentElement('afterend', cssLink); } else { headElement.appendChild(cssLink); } } }); }); </script>
+</code></pre>
+<h2 id="mindmap"><a href="#mindmap" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Mindmap</span></h2>
+<p>View details at <a href="https://github.com/markmap/markmap/blob/master/packages/markmap-view/src/constants.ts">markmap.js.org</a>.</p>
+<div class="markmap">
+<script type="text/template">
+---
+markmap:
+  maxWidth: 300
+  pan: false
+  autoFit: true
+  fitRatio: 0.7
+---
+
+- markmap
+  - lib
+    - Transformer
+    - builtInPlugins
+  - render
+    - fillTemplate
+  - view
+    - Markmap
+    - loadCSS
+    - loadJS
+  - autoloader
+    - autoLoader
+	</script>
+</div>
+<h2 id="images"><a href="#images" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Images</span></h2>
+<h3 id="default-with-caption"><a href="#default-with-caption" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Default (with caption)</span></h3>
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="Desktop View" width="972" height="589"/><br/>
+<em>Full screen width and center alignment</em></p>
+<h3 id="left-aligned"><a href="#left-aligned" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Left aligned</span></h3>
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="Desktop View" width="972" height="589" class="w-75 normal"/></p>
+<h3 id="float-to-left"><a href="#float-to-left" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Float to left</span></h3>
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="Desktop View" width="972" height="589" class="w-50 left"/><br/>
+Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.</p>
+<h3 id="float-to-right"><a href="#float-to-right" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Float to right</span></h3>
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="Desktop View" width="972" height="589" class="w-50 right"/><br/>
+Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.</p>
+<h3 id="darklight-mode--shadow"><a href="#darklight-mode--shadow" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Dark/Light mode &amp; Shadow</span></h3>
+<p>The image below will toggle dark/light mode based on theme preference, notice it has shadows.</p>
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/devtools-light.png" alt="light mode only" class="light w-75 shadow rounded-10" w="1212" h="668"/><br/>
+<img src="https://chirpy-img.netlify.app/posts/20190808/devtools-dark.png" alt="dark mode only" class="dark w-75 shadow rounded-10" w="1212" h="668"/></p>
+<h2 id="video"><a href="#video" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Video</span></h2>
+<iframe class="embed-video" loading="lazy" src="https://www.youtube.com/embed/Balreaj8Yqs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<h2 id="reverse-footnote"><a href="#reverse-footnote" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Reverse Footnote</span></h2>
+<div class="footnotes" role="doc-endnotes">
+<ol>
+<li id="fn:footnote">
+<p>The footnote source <a href="#fnref:footnote" class="reversefootnote" role="doc-backlink">&#8617;&#xfe0e;</a></p>
+</li>
+<li id="fn:fn-nth-2">
+<p>The 2nd footnote source <a href="#fnref:fn-nth-2" class="reversefootnote" role="doc-backlink">&#8617;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="post-tail-wrapper text-muted">
+
+<div class="post-meta mb-3">
+<i class="far fa-folder-open fa-fw me-1"></i>
+<a href="/blog/categories/blogging">Blogging</a>,
+<a href="/blog/categories/demo">Demo</a>
+</div>
+
+<div class="post-tags mb-3">
+<i class="fa fa-tags fa-fw me-1"></i>
+<a
+href="/blog/tags/typography"
+class="post-tag no-text-decoration"
+>typography</a>
+</div>
+<div
+class="
+post-tail-bottom
+d-flex justify-content-between align-items-center pb-2
+"
+>
+<div class="license-wrapper">
+This post is licensed under
+<a href="https://creativecommons.org/licenses/by/4.0/">
+CC BY 4.0
+</a>
+by the author.
+</div>
+
+<div class="share-wrapper d-flex align-items-center">
+<span class="share-label text-muted">Share</span>
+<span class="share-icons">
+<a
+href="https://twitter.com/intent/tweet?text=Text%20and%20Typography%20-%20Jinchao%20Li&url=https%3A%2F%2Fjinchaoli.com%2Fblog%2Ftext-and-typography%2F"
+target="_blank"
+rel="noopener"
+data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+<i
+class="fa-brands fa-square-x-twitter"
+></i>
+</a>
+<a
+href="https://www.facebook.com/sharer/sharer.php?title=Text%20and%20Typography%20-%20Jinchao%20Li&u=https%3A%2F%2Fjinchaoli.com%2Fblog%2Ftext-and-typography%2F"
+target="_blank"
+rel="noopener"
+data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+<i
+class="fab fa-facebook-square"
+style="color: #316ff6;"
+></i>
+</a>
+<a
+href="https://t.me/share/url?url=https%3A%2F%2Fjinchaoli.com%2Fblog%2Ftext-and-typography%2F&text=Text%20and%20Typography%20-%20Jinchao%20Li"
+target="_blank"
+rel="noopener"
+data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
+<i
+class="fab fa-telegram"
+style="color: #0088cc;"
+></i>
+</a>
+<button
+id="copy-link"
+aria-label="Copy link"
+class="btn small"
+data-bs-toggle="tooltip"
+data-bs-placement="top"
+title="Copy link"
+data-title-succeed="Link copied successfully!">
+<i class="fa-fw fas fa-link pe-none fs-6"></i>
+</button>
+</span>
+</div>
+</div>
+
+</div>
+
+</article>
+</main>
+
+<aside
+aria-label="Panel"
+id="panel-wrapper"
+class="col-2 ps-2 mb-5 text-muted">
+<div class="access">
+
+<section id="access-lastmod">
+<h2 class="panel-heading">Recently Updated</h2>
+<ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
+<li class="text-truncate lh-lg">
+<a href="/blog/text-and-typography/">Text and Typography</a>
+</li>
+<li class="text-truncate lh-lg">
+<a href="/blog/write-a-new-post/">Writing a New Post</a>
+</li>
+<li class="text-truncate lh-lg">
+<a href="/blog/set-waline-with-tidb/">Configure Waline with TiDB</a>
+</li>
+</ul>
+</section>
+
+</div>
+<div class="access">
+
+<section>
+<h2 class="panel-heading">Trending Tags</h2>
+<div class="d-flex flex-wrap mt-3 mb-1 me-3">
+<a class="post-tag btn btn-outline-primary" href="/blog/tags/homepage/">homepage</a>
+<a class="post-tag btn btn-outline-primary" href="/blog/tags/algorithm/">algorithm</a>
+<a class="post-tag btn btn-outline-primary" href="/blog/tags/getting-started/">getting started</a>
+</div>
+</section>
+</div>
+<section id="toc-wrapper" class="ps-0 pe-4">
+<h2 class="panel-heading ps-3 pt-2 mb-2">Contents</h2>
+<nav id="toc"></nav>
+</section>
+</aside>
+</div>
+
+<div class="row">
+<div id="tail-wrapper" class="col-12 col-xl-10 px-md-3">
+
+
+
+
+<aside id="related-posts" aria-labelledby="related-label">
+<h3 class="mb-4" id="related-label">Further Reading</h3>
+<nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+<article class="col">
+<a href="/blog/write-a-new-post/" class="post-preview card h-100">
+<div class="card-body">
+
+<time
+data-ts="1565244600"
+data-df="ll"
+>
+Aug 8, 2019
+</time>
+<h4 class="pt-0 my-2">Writing a New Post</h4>
+<div class="text-muted">
+<p>&lt;!-- Remove the line number of the code snippet. --&gt;
+This tutorial will guide you how to write a post in the Chirpy template, and it’s worth reading even if you’ve used Jekyll before, as many f...</p>
+</div>
+</div>
+</a>
+</article>
+<article class="col">
+<a href="/blog/getting-started/" class="post-preview card h-100">
+<div class="card-body">
+
+<time
+data-ts="1565355300"
+data-df="ll"
+>
+Aug 9, 2019
+</time>
+<h4 class="pt-0 my-2">Getting Started</h4>
+<div class="text-muted">
+<p>Get started with Chirpy basics in this comprehensive overview. You will learn how to install, configure, and use your first Chirpy-based website, as well as deploy it to a web server.</p>
+</div>
+</div>
+</a>
+</article>
+<article class="col">
+<a href="/blog/customize-jekyll-chirpy/" class="post-preview card h-100">
+<div class="card-body">
+
+<time
+data-ts="1690077600"
+data-df="ll"
+>
+Jul 23, 2023
+</time>
+<h4 class="pt-0 my-2">Customize Your Jekyll Chirpy Theme</h4>
+<div class="text-muted">
+<p>&lt;!-- Remove the line number of the code snippet. --&gt;
+Jekyll Chirpy Theme is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the...</p>
+</div>
+</div>
+</a>
+</article>
+</nav>
+</aside>
+
+
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+<div class="btn btn-outline-primary disabled" aria-label="Older">
+<p>-</p>
+</div>
+<a
+href="/blog/write-a-new-post/"
+class="btn btn-outline-primary"
+aria-label="Newer"
+>
+<p>Writing a New Post</p>
+</a>
+</nav>
+
+<div id="waline"></div>
+<script type="module">
+  import { init } from "/assets/lib/waline/waline.js";
+
+  init({
+    el: '#waline',
+    serverURL: "https://comment.jinchaoli.com",
+    reaction: [
+      'https://unpkg.com/@waline/emojis@1.1.0/qq/qq_heart.gif',
+      'https://unpkg.com/@waline/emojis@1.1.0/qq/qq_thumbsup.gif',
+      'https://unpkg.com/@waline/emojis@1.1.0/qq/qq_clap.gif',
+      'https://unpkg.com/@waline/emojis@1.1.0/qq/qq_grin.gif',
+      'https://unpkg.com/@waline/emojis@1.1.0/qq/qq_doubt.gif',
+      'https://unpkg.com/@waline/emojis@1.1.0/qq/qq_sleep.gif',
+    ],
+    search: false,
+    pageview: true,
+    lang: 'en'
+  });
+</script>
+
+<footer
+aria-label="Site Info"
+class="
+d-flex flex-column justify-content-center text-muted
+flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
+"
+>
+<p>©
+<time>2025</time>
+<a href="https://github.com/JinchaoLove">Jinchao Li</a>.
+<span
+data-bs-toggle="tooltip"
+data-bs-placement="top"
+title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author."
+>Some rights reserved.</span>
+</p>
+<p>Powered by <a href="https://jekyllrb.com" data-bs-toggle="tooltip"
+data-bs-placement="top">Jekyll</a> with <a href="https://github.com/JinchaoLove/AcademicChirpy" data-bs-toggle="tooltip"
+data-bs-placement="top">AcademicChirpy</a> theme.
+</p>
+</footer>
+</div>
+</div>
+
+<div id="search-result-wrapper" class="d-flex justify-content-center unloaded">
+<div class="col-11 content">
+<div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+</div>
+</div>
+</div>
+<aside aria-label="Scroll to Top">
+<button
+id="back-to-top"
+type="button"
+class="btn btn-lg btn-box-shadow">
+<i class="fas fa-angle-up"></i>
+</button>
+</aside>
+</div>
+<div id="mask"></div>
+<aside
+id="notification"
+class="toast"
+role="alert"
+aria-live="assertive"
+aria-atomic="true"
+data-bs-animation="true"
+data-bs-autohide="false"
+>
+<div class="toast-header">
+<button
+type="button"
+class="btn-close ms-auto"
+data-bs-dismiss="toast"
+aria-label="Close"
+></button>
+</div>
+<div class="toast-body text-center pt-0">
+<p class="px-2 mb-3">A new version of content is available.</p>
+<button type="button" class="btn btn-primary" aria-label="Update">
+Update
+</button>
+</div>
+</aside>
+
+
+
+
+
+
+<script src="/assets/lib/jquery/jquery.min.js"></script>
+<script src="/assets/lib/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="/assets/lib/lunr/lunr.min.js"></script>
+<script src="/assets/lib/loading-attribute-polyfill/loading-attribute-polyfill.umd.min.js"></script>
+<script src="/assets/lib/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/assets/lib/clipboard/clipboard.min.js"></script>
+<script src="/assets/lib/dayjs/dayjs.min.js"></script>
+<script src="/assets/lib/dayjs/locale/en.min.js"></script>
+<script src="/assets/lib/dayjs/plugin/relativeTime.min.js"></script>
+<script src="/assets/lib/dayjs/plugin/localizedFormat.min.js"></script>
+<script src="/assets/lib/tocbot/tocbot.min.js"></script>
+<script src="/assets/lib/mermaid/mermaid.min.js"></script>
+
+<script defer src="/assets/js/dist/post.min.js"></script>
+<script async src="/assets/js/just-the-docs.js"></script>
+
+<script>
+    /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */
+    MathJax = {
+      tex: {
+        /* start/end delimiter pairs for in-line math */
+        inlineMath: [
+          ['$', '$'],
+          ['\\(', '\\)']
+        ],
+        /* start/end delimiter pairs for display math */
+        displayMath: [
+          ['$$', '$$'],
+          ['\\[', '\\]']
+        ],
+        /* equation numbering */
+        tags: 'ams'
+      }
+    };
+  </script>
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+<script
+id="MathJax-script"
+async
+src="/assets/lib/mathjax/tex-chtml.js"></script>
+
+<script defer src="/assets/js/dist/app.min.js"></script>
+
+
+
+<script type="text/javascript">
+  (function () {
+    function updateMermaid(event) {
+      if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
+        const mode = event.data.message;
+
+        if (typeof mermaid === 'undefined') {
+          return;
+        }
+
+        let expectedTheme = mode === ModeToggle.DARK_MODE ? 'dark' : 'default';
+        let config = { theme: expectedTheme };
+
+        /* Re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */
+        $('.mermaid').each(function () {
+          let svgCode = $(this).prev().children().html();
+          $(this).removeAttr('data-processed');
+          $(this).html(svgCode);
+        });
+
+        mermaid.initialize(config);
+        mermaid.init(undefined, '.mermaid');
+      }
+    }
+
+    let initTheme = 'default';
+    const html = document.documentElement;
+
+    if (
+      (html.hasAttribute('data-mode') && html.getAttribute('data-mode') === 'dark') ||
+      (!html.hasAttribute('data-mode') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      initTheme = 'dark';
+    }
+
+    let mermaidConf = {
+      theme: initTheme /* <default|dark|forest|neutral> */
+    };
+
+    /* Create mermaid tag */
+    document.querySelectorAll('pre>code.language-mermaid').forEach((elem) => {
+      const svgCode = elem.textContent;
+      const backup = elem.parentElement;
+      backup.classList.add('unloaded');
+      /* create mermaid node */
+      let mermaid = document.createElement('pre');
+      mermaid.classList.add('mermaid');
+      const text = document.createTextNode(svgCode);
+      mermaid.appendChild(text);
+      backup.after(mermaid);
+    });
+
+    mermaid.initialize(mermaidConf);
+
+    window.addEventListener('message', updateMermaid);
+  })();
+</script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('.mode-toggle').click(function () {
+      let theme = localStorage.getItem('theme');
+      if (modeToggle.isDarkMode || (!modeToggle.hasMode && modeToggle.isSysDarkPrefer)) {
+        theme = 'dark';
+      } else {
+        theme = 'light';
+      }
+      console.log('theme:' + theme);
+
+      // Set jupyter notebooks themes.
+      let jupyterNotebooks = document.getElementsByClassName('jupyter-notebook-iframe-container');
+      for (let i = 0; i < jupyterNotebooks.length; i++) {
+        let iframeDocument = jupyterNotebooks[i].getElementsByTagName('iframe')[0].contentWindow.document;
+        let bodyElement = iframeDocument.body;
+        let headElement = iframeDocument.head;
+
+        // Remove existing theme link elements
+        let existingLinks = headElement.querySelectorAll('link[data-jp-theme-link]');
+        for (let link of existingLinks) {
+          headElement.removeChild(link);
+        }
+
+        // Get original style-sheets
+        let styleElements = headElement.querySelectorAll('style');
+        let variablesElement;
+        for (let style of styleElements) {
+          if (style.innerHTML.includes('The following CSS variables define the main, public API for styling JupyterLab.')) {
+            variablesElement = style;
+            break;
+          }
+        }
+        // console.log(styleElements);
+
+        // New style-sheets
+        const cssLink = document.createElement('link');
+        cssLink.setAttribute('data-jp-theme-link', '');
+        cssLink.rel = 'stylesheet';
+        cssLink.type = 'text/css';
+
+        if (theme == 'dark') {
+          cssLink.href = '/assets/css/jupyter-dark.css';
+          bodyElement.setAttribute('data-jp-theme-light', 'false');
+          bodyElement.setAttribute('data-jp-theme-name', 'JupyterLab Dark');
+        } else {
+          cssLink.href = '/assets/css/jupyter-light.css';
+          bodyElement.setAttribute('data-jp-theme-light', 'true');
+          bodyElement.setAttribute('data-jp-theme-name', 'JupyterLab Light');
+        }
+
+        // Import the cssLink
+        if (variablesElement) {
+          // variablesElement.insertAdjacentElement('beforebegin', cssLink);
+          variablesElement.insertAdjacentElement('afterend', cssLink);
+        } else {
+          headElement.appendChild(cssLink);
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
