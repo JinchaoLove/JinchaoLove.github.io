@@ -1,0 +1,14 @@
+github_themes:  # https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
+  light: default
+  dark: dark
+
+github_users:
+  - JinchaoLove
+
+repo_description_lines_max: 2
+
+github_repos:
+  - JinchaoLove/CUHK-PhD-Thesis-Template
+  - JinchaoLove/AffectiveVocalBurstRecognition
+  - JinchaoLove/NCDdetection_ICASSP2021
+  - JinchaoLove/ChatGPT-Next-Web-Azure

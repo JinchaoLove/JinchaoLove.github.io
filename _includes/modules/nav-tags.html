@@ -1,0 +1,15 @@
+{% assign tags = '' | split: '' %}
+{% for t in site.tags %}
+  {% assign tags = tags | push: t[0] %}
+{% endfor %}
+
+{% assign sorted_tags = tags | sort_natural %}
+
+{% for t in sorted_tags %}
+  <div class="tag">
+    <a class="tag-name" href="{{ t | slugify | url_encode | prepend: '/blog/tags/' | append: '/' | relative_url }}">
+      {{- t -}}
+      <span class="tag-size text-muted">{{ site.tags[t].size }}</span>
+    </a>
+  </div>
+{% endfor %}
