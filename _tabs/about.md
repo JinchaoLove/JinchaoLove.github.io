@@ -23,12 +23,18 @@ My research interests encompass **multimodal AI (speech, language, vision) for s
 > <b>I am actively seeking opportunities in both academia (postdoctoral and research fellow positions) and industry (R&D roles). Interested collaborators are welcome to connect!</b>
 {: .prompt-info }
 
+- 2025.10: Our conference paper in [ACM-MM 2025][gap25] received the Best Paper Award in the workshop
 - 2025.10: Our journal paper ([JSTSP][ad_paper_jstsp25]) is accepted
 - 2025.08: One paper accepted by [ACM-MM 2025][gap25]
-- 2024.12: One paper submitted to journal ([under review][ad_paper_jstsp25])
-- 2023.01: Two papers ([1][ad_paper_icassp23], [2][avb_paper_icassp23]) accepted by ICASSP 2023
-- Fall 2022: Co-teach "Conversational AI systems" (ASR part) with Prof. Meng and other nice colleagues in CUHK
-- 2022.09: Winner of two tasks in the "[ACII Affective Vocal Bursts (A-VB)][avb2022]" competition organized by [Hume AI][hume.ai]
+- <details>
+  <summary>More...</summary>
+
+  <p>2024.12: One paper submitted to journal ([under review][ad_paper_jstsp25])</p>
+  <p>2023.01: Two papers ([1][ad_paper_icassp23], [2][avb_paper_icassp23]) accepted by ICASSP 2023</p>
+  <p>Fall 2022: Co-teach "Conversational AI systems" (ASR part) with Prof. Meng and other nice colleagues in CUHK</p>
+  <p>2022.09: Winner of two tasks in the "[ACII Affective Vocal Bursts (A-VB)][avb2022]" competition organized by [Hume AI][hume.ai]</p>
+
+  </details>
 
 <hr>
 ## [Publications](/publications/)

@@ -20,3 +20,7 @@ countries:
     iso: ARE
     flag: 🇦🇪
     info: Layover check-in at Dubai
+  - name: "Ireland"
+    iso: IRL
+    flag: 🇮🇪
+    info: Research visit
