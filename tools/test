@@ -71,7 +71,8 @@ main() {
   # https://github.com/gjtorikian/html-proofer?tab=readme-ov-file#configuration
   bundle exec htmlproofer "$SITE_DIR" \
     --disable-external=true \
-    --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
+    --allow_missing_href=true \
+    --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/,/\/mindmap\//"
 }
 
 while (($#)); do

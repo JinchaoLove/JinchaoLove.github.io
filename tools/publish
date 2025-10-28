@@ -11,6 +11,7 @@ cd $GH_DIR
 git pull
 # build
 cd $CURRENT_DIR
+rm -rf _site
 bash/build
 # push
 cd _site
