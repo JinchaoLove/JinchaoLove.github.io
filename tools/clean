@@ -2,7 +2,7 @@
 # clean up
 rm -rf ./**/node_modules
 rm -rf ./**/dist
-jekyll clean
+rm -rf _site
 npm cache clear --force
 # npm config delete proxy
 # npm config delete http-proxy

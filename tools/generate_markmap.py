@@ -86,8 +86,8 @@ def convert(path, tgt_dir="mindmap"):
     name = "-".join(name.split('-')[3:])
     if tgt_dir is None:
       tgt_dir = os.path.dirname(path)
-    os.makedirs(tgt_dir, exist_ok=True)
-    html_path = os.path.join(tgt_dir, name + ".html")
+    os.makedirs(os.path.join(tgt_dir, name), exist_ok=True)
+    html_path = os.path.join(tgt_dir, name, "index.html")
 
     # 把markdown转换成html
     with open(path, 'r') as f:
