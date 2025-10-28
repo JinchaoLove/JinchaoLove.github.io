@@ -20,5 +20,5 @@ package-lock.json
 # Misc
 .DS_Store
 assets/js/dist
-mindmap/
-myenv/
+mindmap
+myenv
