@@ -1,0 +1,616 @@
+
+<!DOCTYPE html>
+<html lang="en" class="markmap-dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基础算法题解模板</title>
+    <style>
+      .markmap {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+      }
+      .markmap-dark {
+        background: #27272a;
+        color: white;
+      }
+    </style>
+    <script>
+      window.markmap = {
+        autoLoader: {
+          toolbar: true
+        }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
+  </head>
+  <body>
+    <div class="markmap">
+      <script type="text/template">
+        ---
+        markmap:
+          maxWidth: 300
+          colorFreezeLevel: 3
+          initialExpandLevel: 3
+          pan: false
+          autoFit: true
+          fitRatio: 0.7
+        ---
+
+#基础算法题解模板
+
+## 算法复杂度
+
+<!-- region -->
+
+### 主定理（Master Theorem）
+
+假设有递归关系式：
+
+$$T(N) = aT(N/b) + f(N), f(N) = N^{\log_b(a)} \log^k(N)$$
+
+其中，$N$为问题规模，$a$为递归的子问题数量，$N/b$为每个子问题的规模（假设每个子问题的规模基本一样），$f(N)$为递归以外进行的计算工作。
+
+**则其算法复杂度为**：
+
+$$T(N) = O(N^{\log_b(a)} \log^{(k+1)}N)$$
+
+### 常见算法复杂度
+
+| 算法 | 递归关系式 | 复杂度 |
+| -- | -- | -- |
+| 二分查找 | $T(N) = T(N/2) + O(1)$ | $O(\log(N))$ |
+| 二叉树遍历 | $T(N) = 2T(N/2) + O(1)$ | $O(N)$ |
+| 归并排序 | $T(N) = 2T(N/2) + O(N)$ | $O(N\log(N))$ |
+
+<!-- endregion -->
+
+## 双指针
+
+<!-- region -->
+
+使用两个指针变量在数组或链表等线性结构上协同移动，避免嵌套循环，将部分 $O(N^2)$ 的算法优化为 $O(N)$。主要分为：
+
+- 同向双指针（快慢指针）：一个快指针先行，慢指针跟进，常用于滑动窗口（去重）、链表操作（找中点、判断环、环入口）等。
+- 相向双指针（对撞指针）：从两端向中间移动，常用于有序数组求和、回文判断、反转数组、数组合并等。
+- 背向双指针：从中间向两边扩展，常用于回文串、最长子回文等问题。
+
+### 算法复杂度
+
+通常情况下，时间复杂度 $O(N)$（与最内层循环主体的执行次数有关），空间复杂度：O(1)。
+
+### 使用场景
+
+- 滑动窗口 (90%)
+- 时间复杂度要求 $O(N)$ (80%是双指针)
+- 要求原地操作，只可以使用交换，不能使用额外空间 (80%)
+- 有子数组 subarray / 子字符串 substring 的关键词 (50%)
+- 有回文 Palindrome 关键词(50%)
+
+### 代码模板
+
+- 初始化指针：`left`, `right`根据方向设置起点
+- 循环控制：`while`或`for`控制移动（比如`right`扩展，`left`收缩）
+- 状态更新：维护当前窗口或配对状态，根据条件分类讨论
+- 结果记录：更新答案（相等时、满足条件时）
+- 边界处理：空数组、单元素、去重跳过等
+
+```python
+# 通用双指针框架（适用于数组/列表）
+def two_pointers_template(arr):
+    n = len(arr)
+    if n == 0:
+        return 0  # 或其他默认值
+
+    # Step 1: 初始化指针
+    left = 0                    # 左指针 / 慢指针
+    # right = 0 或 n - 1，根据方向选择
+
+    # Step 2: 根据类型选择遍历结构
+    for right in range(n):      # 同向：快慢指针；滑动窗口
+    # while left < right:       # 相向：对撞指针（常用于有序数组）
+    # while left < n:           # 其他控制条件
+
+        # Step 3: 扩展或移动右指针后，处理当前窗口/状态
+        # ... 更新状态
+
+        # Step 4: 判断是否需要收缩左指针（滑动窗口类）
+        while left <= right and need_to_move_left(arr, left, right):
+            # ... 更新或记录结果
+            left += 1
+
+        # 或：根据条件移动双指针（对撞类）
+        # if condition:
+        #     left += 1
+        # else:
+        #     right -= 1
+
+    return result
+
+```
+
+### 例题
+
+[88. 合并两个有序数组](https://leetcode.cn/problems/merge-sorted-array)
+```python
+"""
+📖描述：给你两个按 非递减顺序 排列的整数数组 `nums1` 和 `nums2`，另有两个整数 `m` 和 `n`，分别表示 `nums1` 和 `nums2` 中的元素数目。请你 合并 `nums2` 到 `nums1` 中，使合并后的数组同样按 非递减顺序 排列。
+🧪样例：输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3；输出：[1,2,2,3,5,6]
+💡重点：从后往前操作可以直接覆盖
+"""
+
+def merge(nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+    """
+    Do not return anything, modify nums1 in-place instead.
+    """
+    # 逆向双指针，从后往前操作可以直接覆盖
+    p1, p2 = m - 1, n - 1  # 同向，但是从后往前
+    tail = m + n - 1  # 需要维护的状态：当前需要处理的索引
+    while True:
+        if p1 < 0 or p2 < 0:
+            break
+        if nums1[p1] <= nums2[p2]:
+            nums1[tail] = nums2[p2]
+            p2 -= 1
+            tail -= 1
+        else:
+            nums1[tail] = nums1[p1]
+            p1 -= 1
+            tail -= 1
+    # 由于比较，总会有一个数组先结束，对于后结束的一个数组：这里肯定是p2
+    if p2 >= 0:
+        nums1[: p2 + 1] = nums2[: p2 + 1]
+
+def merge(nums1: List[int], nums2: List[int]) -> List[int]:
+    """ 合并双指针，非原地操作。
+    🧪样例：输入：nums1 = [1,2,3], nums2 = [2,5,6]；输出：[1,2,2,3,5,6]
+    """
+    m, n = len(num1), len(nums2)
+    new_list = []
+    i, j = 0, 0
+    # 合并的过程只能操作 i, j 的移动，不要去用 list1.pop(0) 之类的操作
+    # 因为 pop(0) 是 O(n) 的时间复杂度，而且会改变序号
+    while True:
+        if i >= m or j >= n:
+            break
+        if nums[i] < nums[j]:
+            new_list.append(nums[i])
+            i += 1
+        else:
+            new_list.append(nums[j])
+            j += 1
+    # 合并剩下的数到 new_list 里
+    while i < m:
+        new_list.append(nums[i])
+        i += 1
+    while j < n:
+        new_list.append(nums[j])
+        j += 1
+    return new_list
+```
+
+[5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring)
+```python
+"""
+📖描述：给你一个字符串 `s`，找到 `s` 中最长的 回文 子串。
+🧪样例：输入s = "babad"；输出"bab"或"aba"。输入：s = "cbbd"；输出："bb"。
+💡重点：
+- 需要同时考虑奇数和偶数长的回文串
+- 中心扩散
+- 这题还可以用动态规划解: 
+    - 状态定义：dp[i][j]表示s[i:j+1]是否为回文
+    - 初始化：dp = [[False for _ in range(size)] for _ in range(size)]
+    - 转移方程：dp[i][j] = dp[i-1][j-1] and s[i] == s[j]
+"""
+def longestPalindrome(s: str) -> str:
+    n = len(s)
+    if n <= 1:
+        return s
+    max_s, max_len = "", 0
+    for i in range(n):
+        if n - 1 - i < (max_len - 1) / 2:
+            break  # 提前终止
+        # 处理奇数长度的回文子串，以i为中心向两边移动
+        left, right = i, i
+        while True:
+            if left < 0 or right > n - 1:
+                break
+            if s[left] == s[right]:
+                left -= 1
+                right += 1
+            else:
+                break  # 注意所有break的情况
+        cur_len = right - left - 1
+        if cur_len > max_len:
+            max_s = s[left + 1 : right]
+            max_len = cur_len
+        # 处理偶数长度的回文子串
+        left, right = i, i + 1
+        while True:
+            if left < 0 or right > n - 1:
+                break
+            if s[left] == s[right]:
+                left -= 1
+                right += 1
+            else:
+                break
+        cur_len = right - left - 1
+        if cur_len > max_len:
+            max_s = s[left + 1 : right]
+            max_len = cur_len
+    return max_s
+```
+
+> TODO: 完成下面例题
+{: .prompt-warn}
+
+[930. 和相同的二元子数组](https://leetcode.cn/problems/binary-subarrays-with-sum)
+```python
+"""
+📖描述：
+🧪样例：
+💡重点：
+"""
+
+```
+
+<!-- endregion -->
+
+## 查找
+
+<!-- region -->
+
+查找是最基础操作，其中最常用的是二分查找，即从有序数组`array`中直接寻找某个值`query`对应的`index`。一般解法：
+
+- 双指针：比较`array[mid]`和`query`的大小（`mid = low + (high-low)//2`），从而更新左右指针`low`、`high`，终止条件:
+  - (1) 找到了`query`（`array[mid] = query`）
+  - (2) 左右指针相遇（`low > high`）
+- 递归：分成左右两子数组，如果`array[mid]`不等于`query`则不断在左或者右子数组里面查找，直到找到了`query`或者子数组为空。
+
+重点在于分类讨论，建议用双闭区间，仔细讨论`array[low:mid]`, `array[mid]`, `array[mid+1:high+1]`的情况，并注意三个数组是否为空。
+
+### 算法复杂度
+
+时间 $O(\log(N))$。每次只需要查一边，所以子问题数量为1。空间 $O(1)$。
+
+### 使用场景
+
+- 当数组已经排好序 (30-40%是二分)
+- 当面试官要求你找一个比 $O(N)$ 更小的时间复杂度算法的时候(99%)
+- 找到数组中的一个分割位置，使得左半部分满足某个条件，右半部分不满足(100%)
+- 找到一个最大/最小的值使得某个条件被满足(90%)
+
+### 代码模板
+
+```python
+def hash_search(arr, query):
+    # 哈希查找，用于无序数组
+    seen = {}
+    for i, val in enumerate(arr):
+        complement = query - val
+        if complement in seen:
+            return [seen[complement], i]  # 如两数之和
+        seen[val] = i
+    return -1
+
+def binary_search(array, query):
+    """ Two points. [low, high] will be splitted:
+        (1) [low, mid - 1]
+        (2) [mid]
+        (3) [mid + 1, high]
+    """
+    low, high = 0, len(array) - 1  # 闭区间 [left, right]
+    while low <= high:
+        mid = low + (high - low) // 2  # 防溢出
+        val = array[mid]
+        # array[low:mid], array[mid], array[mid+1:high+1]
+        if val == query:
+            return mid
+        if val < query:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return None
+
+def binary_search_recur(array, low, high, query):
+    """ Recurrence. [low, high] will be splitted:
+        (1) [low, mid - 1]
+        (2) [mid]
+        (3) [mid + 1, high]
+    """
+    if low > high:
+        return -1
+    mid = low + (high - low) // 2   # This mid will not break integer range
+    if query < array[mid]:
+        return binary_search_recur(array, low, mid - 1, query)  # Go search in the left subarray
+    if query > array[mid]:
+        return binary_search_recur(array, mid + 1, high, query)  # Go search in the right subarray
+    return mid  # `array[mid] = query`, stop recurrence
+```
+
+### 例题
+
+[33. 搜索旋转排序数组](https://leetcode.cn/problems/search-in-rotated-sorted-array)
+
+```python
+"""
+📖描述：给定旋转后的数组 `nums` 和一个整数 `target`，如果 `nums` 中存在这个目标值 `target`，则返回它的下标，否则返回 `-1`。
+🧪样例：输入：`nums = [2,3,4,5,6,7,0,1]`, `target = 0`；输出：`target`的下标为`6`。
+💡重点：
+1. 数组不是有序的，但是是局部有序的。有序的那端一定是最左边小于最右边，无序的那端一定是最左边大于最右边。
+2. 目标是否在有序部分比较好判断`nums[left_] <= target and target < nums[right_]`，如果不满足则落在另一边。
+https://leetcode.cn/problems/search-in-rotated-sorted-array/solutions/2636954/javapython3cer-fen-cha-zhao-you-xu-de-ba-5g7e
+"""
+def search(nums: List[int], target: int) -> int:
+    low, high = 0, len(nums) - 1
+    while low <= high:
+        mid = low + (high - low) // 2
+        val = nums[mid]
+        # print(mid, nums[low:mid], nums[mid], nums[mid+1:high+1])
+        if val == target:
+            return mid
+        if low < mid and nums[low] <= nums[mid - 1]:
+            # 左边有序，先判断是否在左边
+            if nums[low] <= target and target <= nums[mid - 1]:
+                high = mid - 1
+            else:
+                low = mid + 1
+        elif mid < high:
+            # 右边有序，先判断是否在右边
+            if nums[mid + 1] <= target and target <= nums[high]:
+                low = mid + 1
+            else:
+                high = mid - 1
+        else:
+            return -1
+    return -1
+
+```
+
+[658. 找到 K 个最接近的元素](https://leetcode.cn/problems/find-k-closest-elements/)
+```python
+"""
+📖描述：给定一个排序好的数组 `arr`，两个整数 `k` 和 `x`，从数组中找到最靠近 `x` 的 `k` 个数。返回的结果必须要是按升序排好的。
+🧪样例：输入：`arr = [1,2,3,4,5]`, `k = 4`, `x = 3`；输出：`[1,2,3,4]`。
+💡重点：
+1. 反向思维，删除最边缘的`n - k`个，每次判断删最左边还是删最右边。
+2. 返回结果要排好序，可以用双指针寻找最优子区间。
+"""
+
+def findClosestElements(arr: List[int], k: int, x: int) -> List[int]:
+    # 排除法（双指针）
+    N = len(arr)
+    remove_nums = N - k
+    left, right = 0, N - 1
+    while remove_nums:
+        # 注意：这里等于号的含义，题目中说，差值相等的时候取小的
+        # 因此相等的时候，尽量缩小右边界
+        if x - arr[left] <= arr[right] - x:
+            right -= 1
+        else:
+            left += 1
+        remove_nums -= 1
+    return arr[left:left + k]
+```
+
+<!-- endregion -->
+
+## 排序
+
+<!-- region -->
+
+### 算法复杂度
+
+时间复杂度：
+
+- 快速排序：期望 $O(N\log(N))$
+- 归并排序：期望 $O(N\log(N))$
+
+空间复杂度：
+
+- 快速排序：期望 $O(1)$
+- 归并排序：期望 $O(N)$
+
+### 使用场景
+
+TODO
+
+### 代码模板
+
+TODO
+
+### 例题
+
+TODO
+
+```python
+"""
+📖描述：
+🧪样例：
+💡重点：
+"""
+
+```
+
+<!-- endregion -->
+
+## 动态规划
+
+<!-- region -->
+
+动态规划四要素：
+
+- 状态 (State) -- 递归的定义
+- 方程 (Function) -- 递归的拆解
+- 初始化 (Initialization) -- 递归的出口
+- 答案 (Answer) -- 递归的调用
+
+常见的动态规划类型：
+
+- 背包型：给出 `n` 个物品及其大小，能否挑选出一些物品装满大小为 `m` 的背包
+  - 通常用二维的状态数组`dp[i][j]`，表示？？？
+- 区间型：题目中有 `subarray` / `substring` 的信息，通常大区间依赖小区间
+  - `dp[i][j]` 表示数组/字符串中 `i`, `j` 这一段区间的最优值/可行性/方案总数
+- 匹配型：通常两个字符串的匹配值依赖于两个字符串前缀的匹配值
+  - `dp[i][j]` 表示第一个字符串的前 `i` 个字符与第二个字符串的前 `j` 个字符的状态(max/min/sum/or)
+- 接龙型：给一个接龙规则，求最长的龙有多长
+  - `dp[i]` 表示以坐标为 `i` 的元素结尾的最长龙的长度
+
+### 算法复杂度
+
+时间复杂度：O(状态总数 * 每个状态的处理耗费)
+
+空间复杂度：O(状态总数)
+
+### 使用场景
+
+- 求方案总数(90%)
+- 求最值(80%)
+- 求可行性(80%)
+
+不适用的场景：
+
+- 找所有具体的方案（准确率 99%）
+- 输入数据无序(除了背包问题外，准确率 60%~70%)
+- 暴力算法已经是多项式时间复杂度（准确率 80%）
+
+### 代码模板
+
+TODO
+
+### 例题
+
+TODO
+
+```python
+"""
+📖描述：
+🧪样例：
+💡重点：
+"""
+
+```
+
+<!-- endregion -->
+
+## 贪心算法
+
+<!-- region -->
+
+### 例题
+
+```python
+"""
+📖描述：
+🧪样例：
+💡重点：
+"""
+
+```
+
+<!-- endregion -->
+
+## 宽度优先搜索 BFS
+
+<!-- region -->
+
+### 算法复杂度
+
+时间复杂度：$O(n + m)$, `n` 是点数, `m` 是边数
+
+空间复杂度：$O(n)$
+
+### 使用场景
+
+- 拓扑排序(100%)
+- 出现连通块的关键词(100%)
+- 分层遍历(100%)
+- 简单图最短路径(100%)
+- 给定一个变换规则，从初始状态变到终止状态最少几步(100%)
+
+### 代码模板
+
+队列
+
+### 例题
+
+```python
+"""
+📖描述：
+🧪样例：
+💡重点：
+"""
+
+```
+
+<!-- endregion -->
+
+## 宽度优先搜索
+
+<!-- region -->
+
+### 算法复杂度
+
+时间复杂度：O(方案个数 * 构造每个方案的时间)
+
+- 树的遍历： $O(N)$
+- 排列问题： $O(N! * N)$
+- 组合问题： $O(2^N * N)$
+
+### 使用场景
+
+- 找满足某个条件的所有方案 (99%)
+- 二叉树 Binary Tree 的问题 (90%)
+- 组合问题(95%)
+  - 问题模型：求出所有满足条件的“组合”
+  - 判断条件：组合中的元素是顺序无关的
+- 排列问题 (95%)
+  - 问题模型：求出所有满足条件的“排列”
+  - 判断条件：组合中的元素是顺序“相关”的。
+
+不要用 DFS 的场景:
+
+- 连通块问题（一定要用 BFS，否则 StackOverflow）
+- 拓扑排序（一定要用 BFS，否则 StackOverflow）
+- 一切 BFS 可以解决的问题
+
+### 代码模板
+
+```python
+def dfs(参数列表):
+    if 递归出口:
+        记录答案
+        return
+    for 所有的拆解可能性:
+        修改所有的参数
+        dfs(参数列表)
+        还原所有被修改过的参数
+    return
+```
+
+### 例题
+
+```python
+"""
+📖描述：
+🧪样例：
+💡重点：
+"""
+
+```
+
+<!-- endregion -->
+
+## 参考资源
+
+- [北大令狐冲的算法小抄](https://github.com/ninechapter-algorithm/leetcode-linghu-templete)
+- [Algorithms](https://github.com/keon/algorithms)
+- [labuladong的算法笔记](https://labuladong.online/algo)
+- [算法模板](https://greyireland.gitbook.io/algorithm-pattern)
+
+      </script>
+    </div>
+  </body>
+</html>

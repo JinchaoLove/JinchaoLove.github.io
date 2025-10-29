@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/homepage.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-10-29T16:05:40+08:00</updated><id>https://jinchaoli.com/feed/by_tag/homepage.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Configure Waline with TiDB</title><link href="https://jinchaoli.com/blog/set-waline-with-tidb/" rel="alternate" type="text/html" title="Configure Waline with TiDB"/><published>2025-07-27T11:00:00+08:00</published><updated>2025-07-27T11:00:00+08:00</updated><id>https://jinchaoli.com/blog/set-waline-with-tidb</id><content type="html" xml:base="https://jinchaoli.com/blog/set-waline-with-tidb/"><![CDATA[<h2 id="why-waline--tidb">Why Waline + TiDB?</h2>
+<p><a href="https://waline.js.org/">Waline</a> is a lightweight, open-source, privacy-focused, and self-hosted comment system with backend UI and rich features, and <a href="https://tidbcloud.com/">TiDB Cloud</a> offers a scalable, MySQL-compatible database with a generous 5GB free tier – making them a powerful pair for efficient and reliable comment system.</p>
+<h2 id="how-to-set-up-waline-with-tidb-cloud">How to Set Up Waline with TiDB Cloud?</h2>
+<p>Follow these steps to deploy and configure <a href="https://waline.js.org/">Waline</a> using <a href="https://tidbcloud.com/">TiDB Cloud</a> as the database backend.</p>
+<ol>
+<li>
+<p>Create a cluster in <a href="https://tidbcloud.com/">TiDB Database</a> (any name is okay)</p>
+</li>
+<li>
+<p>Connect with the above cluster in your local editor (e.g., VS Code)</p>
+<p>To manage your database and initialize comment tables:</p>
+<ol>
+<li>
+<p>Get Connection Details: In the TiDB Cloud console (Overview of the cluster), click the Connect button (top-right corner). You’ll see the connection parameters <code class="language-plaintext highlighter-rouge">HOST</code>, <code class="language-plaintext highlighter-rouge">PORT</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">PASSWORD</code> (generate and copy it), <code class="language-plaintext highlighter-rouge">DATABASE</code> and <code class="language-plaintext highlighter-rouge">CA</code>.</p>
+</li>
+<li>
+<p>Set Up VS Code: See details in <a href="https://docs.pingcap.com/tidbcloud/dev-guide-gui-vscode-sqltools/">TiDB Developer Guide</a>.</p>
+</li>
+<li>
+<p>Initialize the Waline Database Schema: Copy <a href="https://github.com/walinejs/waline/blob/main/assets/waline.tidb">waline.tidb</a> and execute the entire script in VS Code. The script will create a database named <code class="language-plaintext highlighter-rouge">waline</code> with <code class="language-plaintext highlighter-rouge">wl_Comment</code>, <code class="language-plaintext highlighter-rouge">wl_Counter</code> and <code class="language-plaintext highlighter-rouge">wl_Users</code> in it.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Configure <code class="language-plaintext highlighter-rouge">Environment Variables</code> as listed in <a href="https://waline.js.org/guide/database.html#tidb">Waline Guidebook</a></p>
+</li>
+</ol>
+<blockquote class="prompt-warn">
+<p>When first connecting via VS Code, the default <code class="language-plaintext highlighter-rouge">Database</code> is <code class="language-plaintext highlighter-rouge">test</code>. After running <code class="language-plaintext highlighter-rouge">waline.tidb</code>, the actual database used by Waline is <code class="language-plaintext highlighter-rouge">waline</code>. So in <code class="language-plaintext highlighter-rouge">Environment Variables</code>, set <code class="language-plaintext highlighter-rouge">DATABASE = waline</code>.</p>
+</blockquote>]]></content><author><name>Jinchao Li</name></author><category term="Blogging"/><category term="homepage"/><summary type="html"><![CDATA[Why Waline + TiDB?]]></summary></entry><entry><title type="html">Exchange Homepage and About</title><link href="https://jinchaoli.com/blog/exchange-homepage-and-about/" rel="alternate" type="text/html" title="Exchange Homepage and About"/><published>2023-07-23T10:00:00+08:00</published><updated>2023-07-23T10:00:00+08:00</updated><id>https://jinchaoli.com/blog/exchange-homepage-and-about</id><content type="html" xml:base="https://jinchaoli.com/blog/exchange-homepage-and-about/"><![CDATA[<p>To change the default site homepage as <code class="language-plaintext highlighter-rouge">About</code>, and the original paginator homepage as <code class="language-plaintext highlighter-rouge">Blog</code>. It may be difficult since <a href="https://jekyllrb.com/docs/pagination/">pagination</a> only works within <code class="language-plaintext highlighter-rouge">index.html</code>, see similar <a href="https://github.com/cotes2020/jekyll-theme-chirpy/issues/711">issue</a>.</p>
+<ol>
+<li>
+<p>Modify the front matters with permalink:</p>
+<ul>
+<li>Create a new folder, e.g. <code class="language-plaintext highlighter-rouge">/blog/</code>, and move <code class="language-plaintext highlighter-rouge">index.html</code> inside it.</li>
+<li>Add <code class="language-plaintext highlighter-rouge">permalink: /</code> in the front matter of <code class="language-plaintext highlighter-rouge">/_tabs/about.md</code>.</li>
+</ul>
+</li>
+<li>
+<p>Add <code class="language-plaintext highlighter-rouge">paginate_path</code> in <code class="language-plaintext highlighter-rouge">/_config.yml</code> to point to the folder <code class="language-plaintext highlighter-rouge">/blog/</code></p>
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre> + paginate_path: "/blog/page:num/"
+ ...
+ - permalink: /posts/:title/
+ + permalink: /blog/:title/
+</pre></td></tr></tbody></table></code></pre></div></div>
+</li>
+<li>
+<p>Add <code class="language-plaintext highlighter-rouge">BLOG</code> as a new tab or navigation item, refer to this <a href="https://github.com/cotes2020/jekyll-theme-chirpy/issues/855">issue</a>.</p>
+<ul>
+<li>
+<p>Modify <code class="language-plaintext highlighter-rouge">/_includes/sidebar.html</code></p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>  <span class="c">&lt;!-- home --&gt;</span>
+  - <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item{% if page.layout == 'home' %}{{ "</span> <span class="na">active</span> <span class="err">"</span> <span class="err">}}{%</span> <span class="na">endif</span> <span class="err">%}"</span><span class="nt">&gt;</span>
+  + <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item{% if page.url == '/' | relative_url %}{{ "</span> <span class="na">active</span> <span class="err">"</span> <span class="err">}}{%</span> <span class="na">endif</span> <span class="err">%}"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/' | relative_url }}"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa-fw fas fa-home"</span><span class="nt">&gt;&lt;/i&gt;</span>
+      <span class="nt">&lt;span&gt;</span>{{ site.data.locales[include.lang].tabs.home | upcase }}<span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/li&gt;</span>
+  + <span class="c">&lt;!-- blog --&gt;</span>
+  + <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item{% if page.url == '/blog/' | relative_url %}{{ "</span> <span class="na">active</span> <span class="err">"</span> <span class="err">}}{%</span> <span class="na">endif</span> <span class="err">%}"</span><span class="nt">&gt;</span>
+  +   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/blog/' | relative_url }}"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>
+  +     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa-fw fas fa-pen"</span><span class="nt">&gt;&lt;/i&gt;</span> 
+  +     <span class="nt">&lt;span&gt;</span>BLOG<span class="nt">&lt;/span&gt;</span>
+  +   <span class="nt">&lt;/a&gt;</span>
+  + <span class="nt">&lt;/li&gt;</span>
+  <span class="c">&lt;!-- the real tabs --&gt;</span>
+  {% for tab in site.tabs %}
+  +     {% if tab.url == '/' | relative_url %}{% continue %}{% endif %}
+</pre></td></tr></tbody></table></code></pre></div></div>
+</li>
+<li>
+<p>Modify <code class="language-plaintext highlighter-rouge">/_includes/topbar.html</code></p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>  - {% if paths.size == 0 or page.layout == 'home' %}
+  -   <span class="c">&lt;!-- index page --&gt;</span>
+  + {% if paths.size == 0 %}
+  +   <span class="c">&lt;!-- home page --&gt;</span>
+  ...
+  -           {% elsif page.layout == 'category' or page.layout == 'tag' %}
+  +           {% elsif page.layout == 'category' or page.layout == 'tag' or page.layout == 'home' %}
+</pre></td></tr></tbody></table></code></pre></div></div>
+</li>
+</ul>
+</li>
+<li>
+<p>Replace <code class="language-plaintext highlighter-rouge">page.layout == 'home'</code> with <code class="language-plaintext highlighter-rouge">page.url == '/' or page.url == site.baseurl</code> if needed, including <code class="language-plaintext highlighter-rouge">_layouts/page.html</code>, <code class="language-plaintext highlighter-rouge">_includes/head.html</code>, <code class="language-plaintext highlighter-rouge">/_includes/sidebar.html</code>, and <code class="language-plaintext highlighter-rouge">_includes/topbar.html</code>.</p>
+</li>
+<li>
+<p>(Optional) Modify your style in <code class="language-plaintext highlighter-rouge">/_tabs/about.md</code>. For example, this demo we disable <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">post-meta</code> and <code class="language-plaintext highlighter-rouge">tails</code> in the homepage by assigning bool values <code class="language-plaintext highlighter-rouge">has_title</code>, <code class="language-plaintext highlighter-rouge">has_meta</code> and <code class="language-plaintext highlighter-rouge">has_tail</code> to skip related part in <code class="language-plaintext highlighter-rouge">_layouts/page.html</code> and <code class="language-plaintext highlighter-rouge">_layouts/post.html</code>.</p>
+</li>
+</ol>]]></content><author><name>Jinchao Li</name></author><category term="Blogging"/><category term="homepage"/><summary type="html"><![CDATA[To change the default site homepage as About, and the original paginator homepage as Blog. It may be difficult since pagination only works within index.html, see similar issue.]]></summary></entry></feed>

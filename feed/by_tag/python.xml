@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/python.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-10-29T16:05:40+08:00</updated><id>https://jinchaoli.com/feed/by_tag/python.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Python Basics</title><link href="https://jinchaoli.com/blog/python/" rel="alternate" type="text/html" title="Python Basics"/><published>2025-09-09T22:00:00+08:00</published><updated>2025-09-09T22:00:00+08:00</updated><id>https://jinchaoli.com/blog/python</id><content type="html" xml:base="https://jinchaoli.com/blog/python/"><![CDATA[<h2 id="math">Math</h2>
+<p>在正数时，<code class="language-plaintext highlighter-rouge">int(a / b)</code> 和 <code class="language-plaintext highlighter-rouge">a // b</code> 通常结果相同，但在负数时可能不同：</p>
+<ul>
+<li><code class="language-plaintext highlighter-rouge">int(a / b)</code> 是向零取整（<code class="language-plaintext highlighter-rouge">trunc</code>）。如果你希望总是向零取整，使用 <code class="language-plaintext highlighter-rouge">int(a / b)</code>。</li>
+<li><code class="language-plaintext highlighter-rouge">//</code> 是向下取整（<code class="language-plaintext highlighter-rouge">floor</code>）。如果你希望总是向下取整，使用 <code class="language-plaintext highlighter-rouge">a // b</code>。</li>
+</ul>
+<p>另外，取模运算 <code class="language-plaintext highlighter-rouge">a % b</code>也遵从 <code class="language-plaintext highlighter-rouge">floor</code>法则，<code class="language-plaintext highlighter-rouge">a = (a // b) * b + (a % b)</code> -&gt; <code class="language-plaintext highlighter-rouge">a % b = a - (a // b) * b</code>。</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre>
+<span class="c1"># 向零取整
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 1
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># -1
+</span>
+<span class="c1"># 向下取整
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 1
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># -2
+# floor(-1.5) = -2
+</span>
+<span class="c1"># 取模
+</span><span class="nf">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 1
+</span><span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 2
+# -10 - (-10//3) * 3 = -10 - (-4) * 3 = 2
+</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="arrays">Arrays</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre><span class="c1"># Sublists (aka slicing), 左闭右开
+</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>  <span class="c1"># [2, 3]
+# Similar to for-loop ranges, last index is non-inclusive
+</span>
+<span class="c1"># But no out of bounds error
+</span><span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>  <span class="c1"># [1, 2, 3, 4]
+</span>
+<span class="c1"># Reverse
+</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">nums</span><span class="p">.</span><span class="nf">reverse</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>  <span class="c1"># [3, 2, 1]
+</span>
+<span class="c1"># Sorting (in-place, ascending)
+</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>  <span class="c1"># [3, 4, 5, 7, 8]
+</span>
+<span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>  <span class="c1"># [8, 7, 5, 4, 3]
+</span>
+<span class="c1"># Custom sort (e.g., by length of string)
+</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="sh">"</span><span class="s">bob</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">alice</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">jane</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">doe</span><span class="sh">"</span><span class="p">]</span>
+<span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nf">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>  <span class="c1"># ['bob', 'doe', 'jane', 'alice']
+</span>
+<span class="c1"># 2-D lists
+</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="c1"># This won't work
+# arr = [[0] * 4] * 4
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<blockquote class="prompt-warn">
+<p>python里面的区间基本上是左闭右开，比如range、slicing</p>
+</blockquote>
+<h2 id="strings">Strings</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="c1"># Valid numeric strings can be converted
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="sh">"</span><span class="s">123</span><span class="sh">"</span><span class="p">)</span> <span class="o">+</span> <span class="nf">int</span><span class="p">(</span><span class="sh">"</span><span class="s">123</span><span class="sh">"</span><span class="p">))</span>  <span class="c1"># 246
+</span>
+<span class="c1"># And numbers can be converted to strings
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="mi">123</span><span class="p">))</span>  <span class="c1"># 123123
+</span>
+<span class="c1"># In rare cases you may need the ASCII value of a char
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">ord</span><span class="p">(</span><span class="sh">"</span><span class="s">a</span><span class="sh">"</span><span class="p">))</span>  <span class="c1"># 97
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">ord</span><span class="p">(</span><span class="sh">"</span><span class="s">b</span><span class="sh">"</span><span class="p">))</span>  <span class="c1"># 98
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="queues">Queues</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="c1"># Queues (double ended queue)
+</span><span class="kn">from</span> <span class="n">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="n">queue</span> <span class="o">=</span> <span class="nf">deque</span><span class="p">()</span>
+<span class="n">queue</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">queue</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>  <span class="c1"># deque([1, 2])
+</span>
+<span class="n">queue</span><span class="p">.</span><span class="nf">popleft</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>  <span class="c1"># deque([2])
+</span>
+<span class="n">queue</span><span class="p">.</span><span class="nf">appendleft</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>  <span class="c1"># deque([1, 2])
+</span>
+<span class="n">queue</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>  <span class="c1"># deque([1])
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="heaps">Heaps</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">heapq</span>
+
+<span class="c1"># under the hood are arrays
+</span><span class="n">minHeap</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Min is always at index 0
+</span><span class="nf">print</span><span class="p">(</span><span class="n">minHeap</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 2
+</span>
+<span class="k">while</span> <span class="nf">len</span><span class="p">(</span><span class="n">minHeap</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">minHeap</span><span class="p">))</span>
+<span class="c1"># 2
+# 3
+# 4
+</span>
+<span class="c1"># No max heaps by default, work around is
+# to use min heap and multiply by -1 when push &amp; pop.
+</span><span class="n">maxHeap</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Max is always at index 0
+</span><span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">maxHeap</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 4
+</span>
+<span class="k">while</span> <span class="nf">len</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">))</span>
+<span class="c1"># 4
+# 3
+# 2
+</span>
+<span class="c1"># Build heap from initial values
+</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heapify</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">arr</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
+<span class="c1"># 1
+# 2
+# 4
+# 5
+# 8
+</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://neetcode.io/courses/lessons/python-for-coding-interviews">neetcode</a></li>
+</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="python"/><summary type="html"><![CDATA[Math]]></summary></entry></feed>

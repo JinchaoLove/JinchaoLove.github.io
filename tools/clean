@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# clean up
-rm -rf ./**/node_modules
-rm -rf ./**/dist
-rm -rf _site
-npm cache clear --force
-# npm config delete proxy
-# npm config delete http-proxy
-# npm config delete https-proxy
