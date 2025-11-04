@@ -1,3 +1,5 @@
+---
+---
 // https://github.com/just-the-docs/just-the-docs/blob/01719a8/assets/js/just-the-docs.js
 (function (jtd, undefined) {
 
@@ -24,68 +26,33 @@
 
   function initSearch() {
     var request = new XMLHttpRequest();
-    request.open('GET', '/assets/js/data/search.json', true);
+    request.open('GET', '{{ "/assets/js/data/search.json" | relative_url }}', true);
 
     request.onload = function(){
       if (request.status >= 200 && request.status < 400) {
         var docs = JSON.parse(request.responseText);
 
-        lunr.tokenizer.separator = /[\s/]+/
+        lunr.tokenizer.separator = {{ site.search.tokenizer_separator | default: site.search_tokenizer_separator | default: "/[\s\-/]+/" }}
 
         var index = lunr(function(){
           this.ref('id');
           this.field('title', { boost: 200 });
           this.field('content', { boost: 2 });
+          {%- if site.search.rel_url != false %}
           this.field('relUrl');
+          {%- endif %}
           this.metadataWhitelist = ['position']
 
           var uniqueItems = new Set();
           for (var i in docs) {
-            function htmlToPlainText(htmlString) {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(htmlString, 'text/html');
-    const textContent = getTextFromNode(doc.body);
-    return textContent;
-}
-
-function isCodeBlock(node) {
-    return (
-        node.tagName.toLowerCase() === 'code' ||
-        node.classList.contains('highlight') ||
-        node.classList.contains('highlighter-rouge')
-    );
-}
-
-function getTextFromNode(node) {
-    let text = '';
-    if (node.nodeType === Node.TEXT_NODE) {
-        text += node.textContent;
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-        if (isCodeBlock(node)) {
-            // with tag: child.outerHTML; no tag: child.textContent
-            text += node.textContent;
-        } else {
-            Array.from(node.childNodes).forEach(child => {
-                text += getTextFromNode(child);
-            });
-        }
-    }
-    return text;
-}
-
-function strip_html(htmlString) {
-    // Strip HTML tags from a string
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = htmlString;
-    return tempDiv.textContent || tempDiv.innerText || '';
-}
-
-docs[i].content = htmlToPlainText(docs[i].content).trim();
-// docs[i].content = strip_html(docs[i].content).trim();
-
+            {% include search/custom-index.js %}
             // Avoid duplicated items
             var itemKey;
-              itemKey = `${docs[i].url}-${docs[i].relUrl}`; // -${docs[i].title}-${docs[i].content}
+            {%- if site.search.rel_url != false %}
+              itemKey = `${docs[i].url}-${docs[i].relUrl}`;
+            {%- else %}
+              itemKey = `${docs[i].url}`;
+            {%- endif %} // -${docs[i].title}-${docs[i].content}
             if (!uniqueItems.has(itemKey)) {
               uniqueItems.add(itemKey);
               // Add index
@@ -93,7 +60,9 @@ docs[i].content = htmlToPlainText(docs[i].content).trim();
                 id: i,
                 title: docs[i].title,
                 content: docs[i].content,
+                {%- if site.search.rel_url != false %}
                 relUrl: docs[i].relUrl
+                {%- endif %}
               });
             }
           }
@@ -113,7 +82,7 @@ docs[i].content = htmlToPlainText(docs[i].content).trim();
   }
 
   function searchLoaded(index, docs) {
-    const noResultsText = 'Oops! No results found.';
+    const noResultsText = '{{ site.data.locales[site.lang].search.no_results }}';
 
     var index = index;
     var docs = docs;
@@ -133,9 +102,11 @@ docs[i].content = htmlToPlainText(docs[i].content).trim();
     function hideSearch() {
       btnCancel.click();
     }
+
+    {%- if site.search.shortcut_key %}
       // add event listener on ctrl + <shortcut_key> for showing the search input
       jtd.addEvent(document, 'keydown', function (e) {
-        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        if ((e.ctrlKey || e.metaKey) && e.key === '{{ site.search.shortcut_key }}') {
           e.preventDefault();
           showSearch();
         }
@@ -144,6 +115,7 @@ docs[i].content = htmlToPlainText(docs[i].content).trim();
           hideSearch();
         }
       });
+    {%- endif %}
 
     function update() {
       currentSearchIndex++;
@@ -302,7 +274,7 @@ docs[i].content = htmlToPlainText(docs[i].content).trim();
               var previewEnd = position[0] + position[1];
               var ellipsesBefore = true;
               var ellipsesAfter = true;
-              for (var k = 0; k < 6; k++) {
+              for (var k = 0; k < {{ site.search.preview_words_before | default: 5 }}; k++) {
                 var nextSpace = doc.content.lastIndexOf(' ', previewStart - 2);
                 var nextDot = doc.content.lastIndexOf('. ', previewStart - 2);
                 if ((nextDot >= 0) && (nextDot > nextSpace)) {
@@ -317,7 +289,7 @@ docs[i].content = htmlToPlainText(docs[i].content).trim();
                 }
                 previewStart = nextSpace + 1;
               }
-              for (var k = 0; k < 6; k++) {
+              for (var k = 0; k < {{ site.search.preview_words_after | default: 10 }}; k++) {
                 var nextSpace = doc.content.indexOf(' ', previewEnd + 1);
                 var nextDot = doc.content.indexOf('. ', previewEnd + 1);
                 if ((nextDot >= 0) && (nextDot < nextSpace)) {
@@ -377,7 +349,7 @@ docs[i].content = htmlToPlainText(docs[i].content).trim();
           resultLink.appendChild(resultPreviews);
 
           var content = doc.content;
-          for (var j = 0; j < Math.min(previewPositions.length, 2); j++) {
+          for (var j = 0; j < Math.min(previewPositions.length, {{ site.search.previews | default: 3 }}); j++) {
             var position = previewPositions[j];
 
             var resultPreview = document.createElement('div');
@@ -393,10 +365,13 @@ docs[i].content = htmlToPlainText(docs[i].content).trim();
             }
           }
         }
+
+        {%- if site.search.rel_url != false %}
         var resultRelUrl = document.createElement('span');
         resultRelUrl.classList.add('search-result-rel-url');
         resultRelUrl.innerHTML = '<i class="fa fa-external-link fa-xs" aria-hidden="true"></i>&nbsp;' + doc.relUrl;
         resultTitle.appendChild(resultRelUrl);
+        {%- endif %}
       }
 
       function addHighlightedText(parent, text, start, end, positions) {

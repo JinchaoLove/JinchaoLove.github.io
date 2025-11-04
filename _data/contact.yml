@@ -1,0 +1,37 @@
+#  The contact options.
+
+- type: email
+  icon: "fas fa-envelope"
+  color: "#0072c5"
+  noblank: true # open link in current tab
+
+- type: google-scholar
+  icon: "fa-brands fa-google-scholar"
+  color: "#5c92f6"
+  url: "https://scholar.google.com/citations?hl=en&user=SB7xjMoAAAAJ"
+
+- type: github
+  icon: "fab fa-github"
+
+- type: rss
+  icon: "fas fa-rss"
+  color: "#ee802f"
+  noblank: true
+
+# Uncomment and complete the url below to enable more contact options
+# - type: twitter
+#   icon: "fa-brands fa-x-twitter"
+#   color: "#1da1f2"
+#
+# - type: linkedin
+#   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
+#   url:  ''                  # Fill with your Linkedin homepage
+#   color: "#1074af"
+#
+# - type: zhihu
+#   icon: "fa-brands fa-zhihu"
+#   color: "#0084ff"
+# - type: research-gate
+#   icon: "fa-brands fa-researchgate"
+#   color: "#5bc9bb"
+#   url: "https://www.researchgate.net/profile/Jinchao-Li-3"
