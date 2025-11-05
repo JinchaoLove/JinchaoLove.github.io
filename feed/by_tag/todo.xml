@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/todo.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-11-05T16:00:02+08:00</updated><id>https://jinchaoli.com/feed/by_tag/todo.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">2025年阅读计划</title><link href="https://jinchaoli.com/blog/todo/" rel="alternate" type="text/html" title="2025年阅读计划"/><published>2025-08-19T11:00:00+08:00</published><updated>2025-11-04T14:34:26+08:00</updated><id>https://jinchaoli.com/blog/todo</id><content type="html" xml:base="https://jinchaoli.com/blog/todo/"><![CDATA[<p>2025年阅读计划（先挖坑再填）：</p>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>《学会提问》</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>算法刷题模板</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>炼丹技巧（loss突变怎么办）</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>深度学习
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>各种基础网络结构对比（Attention、Transformer、MoE）</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>强化学习
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>PPO、GRPO、GSPO</li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>各种SSL对比</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>各种Codec对比</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>各种LLM对比</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>各种AudioLLM对比</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>各种多模态模型对比</li>
+</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="todo"/><summary type="html"><![CDATA[2025年阅读计划（先挖坑再填）：]]></summary></entry></feed>
