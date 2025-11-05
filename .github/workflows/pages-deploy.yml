@@ -48,19 +48,11 @@ jobs:
           ruby-version: 3.2
           bundler-cache: true
 
-      - name: Build assets
-        run: pip3 install jupyter && python3 tools/generate_markmap.py convert_all && npm i && npm run build
-
       - name: Build site
-        run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: "production"
+        run: bash tools/build
 
       - name: Test site
-        run: |
-          pip3 install jupyter && bundle exec htmlproofer _site \
-            \-\-disable-external=true \
-            \-\-ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
+        run: bash tools/test
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3

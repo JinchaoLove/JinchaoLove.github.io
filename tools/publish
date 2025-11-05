@@ -11,10 +11,13 @@ cd $GH_DIR
 git pull
 # build
 cd $CURRENT_DIR
-bash/build
+bash tools/build
 # push
-cd _site
-cp -r $GH_DIR/.git .
+cp -r $GH_DIR/.git $GH_DIR/..
+rm -rf $GH_DIR/*
+mv $GH_DIR/../.git $GH_DIR/.git
+cp -r _site/* $GH_DIR
+cd $GH_DIR
 git add .
 git commit -m "gh-pages"
 git push -f origin main
