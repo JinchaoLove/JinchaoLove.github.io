@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           # submodules: true
@@ -36,11 +36,11 @@ jobs:
           # (See: https://github.com/cotes2020/chirpy-starter/tree/main/assets)
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -55,7 +55,7 @@ jobs:
         run: bash tools/test
 
       - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: "_site${{ steps.pages.outputs.base_path }}"
 
