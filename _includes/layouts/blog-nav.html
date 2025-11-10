@@ -1,0 +1,50 @@
+{% capture page_title %}{{ include.title | downcase }}{% endcapture %}
+{% assign items = 'blog,categories,tags,archives' | split: ',' %}
+
+<div class="blog-wrapper{% if blog_active %}{{ " active" }}{% endif %} d-flex flex-wrap align-items-center w-100">
+  <div class="nav-buttons">
+    {% for item in items %}
+      {% if item == 'blog' %}
+        {% assign item_url = '/blog/' | relative_url %}
+      {% else %}
+        {% assign item_url = '/blog/' | append: item | append: '/' | relative_url %}
+      {% endif %}
+      {% assign item_title = site.data.locales[lang].tabs.[item] | Capitalize %}
+      <a
+        id="nav-{{ item }}"
+        class="nav-icon{% if include.url == item_url %}{{ " active" }}{% endif %}"
+        href="{{ item_url }}"
+        title=""
+        data-bs-toggle="tooltip"
+        data-bs-placement="bottom"
+        aria-label="{{ item_title }}"
+        data-bs-original-title="{{ item_title }}"
+        role="button"
+      >
+        <i class="fa-fw {{ site.data.icons[item] }}"></i>
+      </a>
+    {% endfor %}
+  </div>
+
+  <div class="nav-contents">
+    {% for item in items %}
+      {% if item == 'blog' %}
+        {% assign item_url = '/blog/' | relative_url %}
+      {% else %}
+        {% assign item_url = '/blog/' | append: item | append: '/' | relative_url %}
+      {% endif %}
+      <div class="nav-{{ item }}">
+        <a href="{{ item_url }}" class="nav-title{% if include.url == item_url %}{{ " active" }}{% endif %}">
+          <i class="fa-fw {{ site.data.icons[item] }}"></i>
+          <span>{{ site.data.locales[lang].tabs[item] | upcase }}</span>
+        </a>
+        {% unless item == 'blog' %}
+          {% if site.nav_blog %}
+            {% assign _include_path = 'modules/nav-' | append: item | append: '.html' %}
+            {% include_cached {{ _include_path }} %}
+          {% endif %}
+        {% endunless %}
+      </div>
+    {% endfor %}
+  </div>
+</div>

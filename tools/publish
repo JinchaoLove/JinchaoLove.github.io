@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+USER_NAME="JinchaoLove"
+CURRENT_DIR="$(pwd)"
+GH_DIR="$(pwd)/../$USER_NAME.github.io"
+# prepare github pages
+if [ ! -d $GH_DIR ]; then
+    cd ..
+    git clone git@github.com:$USER_NAME/$USER_NAME.github.io.git
+fi
+cd $GH_DIR
+git pull
+# build
+cd $CURRENT_DIR
+bash tools/build
+# push
+cp -r $GH_DIR/.git $GH_DIR/..
+rm -rf $GH_DIR
+mv ./_site $GH_DIR
+mv $GH_DIR/../.git $GH_DIR/.git
+cd $GH_DIR
+git add .
+git commit -m "gh-pages"
+git push -f origin main
+# return
+cd $CURRENT_DIR

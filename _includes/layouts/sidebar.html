@@ -1,0 +1,59 @@
+<!-- The Side Bar -->
+
+<aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
+  <header class="profile-wrapper">
+    <a href="{{ '/' | relative_url }}" id="avatar" class="rounded-circle">
+      {%- if site.avatar != empty and site.avatar -%}
+        {%- capture avatar_url -%}
+          {% include modules/img-url.html src=site.avatar %}
+        {%- endcapture -%}
+        {%
+          include modules/figure.html
+          path=avatar_url
+          width="112"
+          zoomable=false
+          alt="Jinchao Li"
+        %}
+      {%- endif -%}
+    </a>
+
+    <h1 class="site-title">
+      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    </h1>
+    <p class="site-subtitle fst-italic mb-0">{{ site.tagline }}</p>
+
+    <div class="social">
+      {% include modules/social-icons.html %}
+    </div>
+  </header>
+  <!-- .profile-wrapper -->
+
+  <nav class="flex-column flex-grow-1 w-100 ps-0">
+    <ul class="nav">
+      <!-- home -->
+      <li class="nav-item{% if page.url == '/' | relative_url %}{{ " active" }}{% endif %}">
+        <a href="{{ '/' | relative_url }}" class="nav-link">
+          <i class="fa-fw fas fa-home"></i>
+          <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
+        </a>
+      </li>
+      <!-- the real tabs -->
+      {% for tab in site.tabs %}
+        {% if tab.order <= 0 %}{% continue %}{% endif %}
+        {% if tab.url == '/' | relative_url %}{% continue %}{% endif %}
+        {% capture tab_name %}{{ tab.title | downcase }}{% endcapture %}
+        <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
+          <a href="{{ tab.url | relative_url }}" class="nav-link">
+            <i class="fa-fw {{ tab.icon }}"></i>
+            <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
+          </a>
+        </li>
+        <!-- .nav-item -->
+      {% endfor %}
+    </ul>
+
+    {% include layouts/blog-nav.html title=page.title url=page.url %}
+    <!-- .blog-wrapper -->
+  </nav>
+</aside>
+<!-- #sidebar -->

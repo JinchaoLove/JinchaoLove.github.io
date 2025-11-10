@@ -1,0 +1,120 @@
+<!-- JS selector for site. -->
+
+<!-- boolean values -->
+{% assign lazy_polyfill = page.lazy_polyfill | default: site.lazy_polyfill | default: true %}
+{% assign magnific_popup = page.magnific_popup | default: site.magnific_popup | default: true %}
+{% assign clipboard = page.clipboard | default: site.clipboard | default: true %}
+{% assign dayjs = page.dayjs | default: site.dayjs | default: true %}
+{% assign toc = page.toc | default: site.toc | default: true %}
+{% assign h2_or_h3 = false %}
+{% if page.content contains '<h2' or page.content contains '<h3' %}
+  {% assign h2_or_h3 = true %}{% endif %}
+
+<!-- commons -->
+
+{% assign urls = site.data.origin[type].jquery.js | append: ',' | append: site.data.origin[type].bootstrap.js %}
+
+<!-- search -->
+{% assign urls = urls | append: ',' | append: site.data.origin[type].search.js %}
+
+<!-- layout specified -->
+{% if lazy_polyfill %}
+  {% assign urls = urls | append: ',' | append: site.data.origin[type]['lazy-polyfill'].js %}
+{% endif %}
+
+{% if magnific_popup %}
+  {% assign urls = urls | append: ',' | append: site.data.origin[type]['magnific-popup'].js %}
+{% endif %}
+
+{% if clipboard %}
+  {% assign urls = urls | append: ',' | append: site.data.origin[type].clipboard.js %}
+{% endif %}
+
+{% if dayjs %}
+  {% assign locale = include.lang | split: '-' | first %}
+
+  {% assign urls = urls | append: ',' | append: site.data.origin[type].dayjs.js.common | append: ',' | append: site.data.origin[type].dayjs.js.locale | replace: ':LOCALE', locale | append: ',' | append: site.data.origin[type].dayjs.js.relativeTime | append: ',' | append: site.data.origin[type].dayjs.js.localizedFormat
+  %}
+{% endif %}
+
+{% if toc and h2_or_h3 %}
+  {% assign urls = urls | append: ',' | append: site.data.origin[type].toc.js %}
+{% endif %}
+
+{% if page.mermaid %}
+  {% assign urls = urls | append: ',' | append: site.data.origin[type].mermaid.js %}
+{% endif %}
+
+{% include scripts/jsdelivr-combine.html urls=urls %}
+
+{% assign js_dist = '/assets/js/dist/' %}
+
+<!-- link to _javascript -->
+{% case page.layout %}
+  {% when 'home'
+    , 'categories'
+    , 'post'
+    , 'page' %}
+    {% assign js = page.layout %}
+  {% when 'about' %}
+    {% assign js = 'post' %}
+  {% when 'archives'
+    , 'category'
+    , 'tag' %}
+    {% assign js = 'misc' %}
+  {% else %}
+    {% assign js = 'commons' %}
+{% endcase %}
+
+{% capture scripts %}{{ js_dist }}{{ js }}.min.js{% endcapture %}
+<script defer src="{{ scripts | relative_url }}"></script>
+
+<script async src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
+
+{% if page.math %}
+  <!-- MathJax -->
+  <script>
+    /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */
+    MathJax = {
+      tex: {
+        /* start/end delimiter pairs for in-line math */
+        inlineMath: [
+          ['$', '$'],
+          ['\\(', '\\)']
+        ],
+        /* start/end delimiter pairs for display math */
+        displayMath: [
+          ['$$', '$$'],
+          ['\\[', '\\]']
+        ],
+        /* equation numbering */
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script
+    id="MathJax-script"
+    async
+    src="{{ site.data.origin[type].mathjax.js }}"></script>
+{% endif %}
+
+{% if jekyll.environment == 'production' %}
+  <!-- PWA -->
+  {% if site.pwa.enabled %}
+    <script defer src="{{ 'app.min.js' | prepend: js_dist | relative_url }}"></script>
+  {% endif %}
+
+  <!-- GA -->
+  {% if site.google_analytics.id != empty and site.google_analytics.id %}
+    {% include modules/google-analytics.html %}
+  {% endif %}
+{% endif %}
+
+<!-- Other scripts -->
+{%- if site.enable_publication_badges.altmetric %}
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+{%- endif %}
+{%- if site.enable_publication_badges.dimensions %}
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+{%- endif %}

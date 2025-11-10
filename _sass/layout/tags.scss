@@ -1,0 +1,23 @@
+/*
+  Styles for Tab Tags
+*/
+
+.tag {
+  border-radius: 1rem;
+  padding: 0.1rem 0.5rem;
+  margin-right: 0.8rem;
+  letter-spacing: 0;
+  border: 1px solid var(--tag-border) !important;
+  box-shadow: var(--tag-shadow) 0 0 0 1px;
+}
+
+.tag-name {
+  &:hover {
+    @extend %tag-hover;
+  }
+}
+
+.tag-size {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+}

@@ -1,0 +1,31 @@
+{% include origin-type.html %}
+<script src="{{ site.data.origin[type].d3.js }}"></script>
+<script src="{{ site.data.origin[type].topojson.js }}"></script>
+<script src="{{ site.data.origin[type].datamaps.js }}"></script>
+
+<div id="world-map"></div>
+
+<script>
+  var map = new Datamap({
+    element: document.getElementById('world-map'),
+    fills: {
+      defaultFill: 'rgb(169,212,154)',
+      visited: 'rgb(238,146,100)'
+    },
+    data: {
+      {% for country in site.data.visited.countries %}
+        "{{ country.iso }}": {'fillKey': 'visited', 'info': "{{ country.info }}"}{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    },
+    geographyConfig: {
+      highlightFillColor: 'visited',
+      popupTemplate: function(geo, data) {
+        if (data) {
+            return '<div class="hoverinfo"><b>' + geo.properties.name + ': ' + data.info + '</b></div>'
+        } else {
+          return '<div class="hoverinfo"><b>' + geo.properties.name + '</b></div>';
+        }
+        }
+    }
+  });
+</script>

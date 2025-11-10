@@ -1,0 +1,12 @@
+{%- if include.page.bio -%}
+{%- capture newline %}
+{% endcapture -%}
+"{{ i }}": {
+  "doc": {{ include.page.title | jsonify }},
+  "title": {{ 'Short Bio' | jsonify }},
+  "content": {{ include.page.bio | replace: '</h', ' . </h' | replace: '<hr', ' . <hr' | replace: '</p', ' . </p' | replace: '<ul', ' . <ul' | replace: '</ul', ' . </ul' | replace: '<ol', ' . <ol' | replace: '</ol', ' . </ol' | replace: '</tr', ' . </tr' | replace: '<li', ' | <li' | replace: '</li', ' | </li' | replace: '</td', ' | </td' | replace: '<td', ' | <td' | replace: '</th', ' | </th' | replace: '<th', ' | <th' | strip_html | remove: 'Table of contents' | normalize_whitespace | replace: '. . .', '.' | replace: '. .', '.' | replace: '| |', '|' | append: ' ' | jsonify }},
+  "url": "{{ '/#short-bio' | relative_url }}",
+  "relUrl": "{{ '/#short-bio' }}"
+},
+{%- assign i = i | plus: 1 -%}
+{%- endif -%}

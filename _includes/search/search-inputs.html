@@ -1,0 +1,47 @@
+{% assign search_hint = site.data.locales[include.lang].search.hint
+  | append: ' (⌘/⌃ + '
+  | append: site.search.shortcut_key
+  | append: ')'
+%}
+{% assign search_cancel = site.data.locales[include.lang].search.cancel | append: ' (⎋esc)' %}
+
+<button
+  type="button"
+  id="search-trigger"
+  class="btn btn-link"
+  data-bs-toggle="tooltip"
+  data-bs-placement="left"
+  aria-label="{{ search_hint }}"
+  data-bs-original-title="{{ search_hint }}"
+>
+  <i class="fas fa-search fa-fw"></i>
+</button>
+
+<div id="search-box">
+  <search class="align-items-center">
+    <i class="fas fa-search fa-fw"></i>
+    <input
+      class="form-control"
+      id="search-input"
+      type="search"
+      aria-label="search"
+      placeholder="{{ search_hint }}"
+      tabindex="0"
+      autocomplete="true"
+      list="suggestions"
+    >
+    <datalist id="suggestions"></datalist>
+  </search>
+</div>
+
+<button
+  type="button"
+  id="search-cancel"
+  class="btn btn-link text-decoration-none"
+  data-bs-toggle="tooltip"
+  data-bs-placement="bottom"
+  aria-label="{{ search_cancel }}"
+  data-bs-original-title="{{ search_cancel }}"
+>
+  <i class="fa fa-times" aria-hidden="true"></i>
+</button>

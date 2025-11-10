@@ -1,0 +1,62 @@
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('.mode-toggle').click(function () {
+      let theme = localStorage.getItem('theme');
+      if (modeToggle.isDarkMode || (!modeToggle.hasMode && modeToggle.isSysDarkPrefer)) {
+        theme = 'dark';
+      } else {
+        theme = 'light';
+      }
+      console.log('theme:' + theme);
+
+      // Set jupyter notebooks themes.
+      let jupyterNotebooks = document.getElementsByClassName('jupyter-notebook-iframe-container');
+      for (let i = 0; i < jupyterNotebooks.length; i++) {
+        let iframeDocument = jupyterNotebooks[i].getElementsByTagName('iframe')[0].contentWindow.document;
+        let bodyElement = iframeDocument.body;
+        let headElement = iframeDocument.head;
+
+        // Remove existing theme link elements
+        let existingLinks = headElement.querySelectorAll('link[data-jp-theme-link]');
+        for (let link of existingLinks) {
+          headElement.removeChild(link);
+        }
+
+        // Get original style-sheets
+        let styleElements = headElement.querySelectorAll('style');
+        let variablesElement;
+        for (let style of styleElements) {
+          if (style.innerHTML.includes('The following CSS variables define the main, public API for styling JupyterLab.')) {
+            variablesElement = style;
+            break;
+          }
+        }
+        // console.log(styleElements);
+
+        // New style-sheets
+        const cssLink = document.createElement('link');
+        cssLink.setAttribute('data-jp-theme-link', '');
+        cssLink.rel = 'stylesheet';
+        cssLink.type = 'text/css';
+
+        if (theme == 'dark') {
+          cssLink.href = '{{ "/assets/css/jupyter-dark.css" | relative_url }}';
+          bodyElement.setAttribute('data-jp-theme-light', 'false');
+          bodyElement.setAttribute('data-jp-theme-name', 'JupyterLab Dark');
+        } else {
+          cssLink.href = '{{ "/assets/css/jupyter-light.css" | relative_url }}';
+          bodyElement.setAttribute('data-jp-theme-light', 'true');
+          bodyElement.setAttribute('data-jp-theme-name', 'JupyterLab Light');
+        }
+
+        // Import the cssLink
+        if (variablesElement) {
+          // variablesElement.insertAdjacentElement('beforebegin', cssLink);
+          variablesElement.insertAdjacentElement('afterend', cssLink);
+        } else {
+          headElement.appendChild(cssLink);
+        }
+      }
+    });
+  });
+</script>

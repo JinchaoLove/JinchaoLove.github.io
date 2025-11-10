@@ -1,0 +1,36 @@
+/*
+ * The SCSS variables
+ */
+
+/* sidebar */
+
+$sidebar-width: 200px !default; /* the basic width */
+$sidebar-width-large: 300px !default; /* screen width: >= 1650px */
+$sb-btn-gap: 0.5rem !default;
+$sb-btn-gap-lg: 0.8rem !default;
+$btn-size: 1.75rem;
+$btn-mb: 0.5rem;
+$btn-border-width: 3px;
+
+/* other framework sizes */
+
+$main-content-max-width: 1500px !default;
+$topbar-height: 2.5rem !default;
+$footer-height: 5rem !default;
+$footer-height-large: 6rem !default; /* screen width: < 850px */
+$base-radius: 0.625rem !default;
+$back2top-size: 2.5rem !default;
+
+/* syntax highlight */
+
+$code-font-size: 0.85rem !default;
+$code-header-height: 2.25rem !default;
+$code-dot-size: 0.75rem !default;
+$code-dot-gap: 0.5rem !default;
+$code-icon-width: 1.75rem !default;
+
+/* fonts */
+
+$font-family-base: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-heading: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-code: Menlo, Monaco, 'Courier New', monospace !default;

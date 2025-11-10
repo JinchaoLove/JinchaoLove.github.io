@@ -1,0 +1,21 @@
+---
+layout: default
+# All the Tags of posts.
+dayjs: false
+panel_includes:
+  - update-list
+  - trending-tags
+---
+{% include lang.html %}
+{% assign tab_key = page.title | downcase %}
+{% assign title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
+<h1 class="dynamic-title">
+  {% if page.icon %}
+    <i class="{{ page.icon }}"></i>
+  {% endif %}
+  {{ title }}
+</h1>
+
+<div id="tags" class="d-flex flex-wrap mx-xl-2">
+  {% include modules/nav-tags.html %}
+</div>
