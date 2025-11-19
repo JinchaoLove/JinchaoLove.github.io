@@ -1,0 +1,833 @@
+<!doctype html>
+
+
+
+<html lang="en">
+<head>
+<link rel="canonical" href="https://jinchaoli.com/blog/tags/python/">
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta
+name="theme-color"
+media="(prefers-color-scheme: light)"
+content="#f7f7f7">
+<meta
+name="theme-color"
+media="(prefers-color-scheme: dark)"
+content="#1b1b1e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+<link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+<title>python</title>
+<meta name="author" content="Jinchao Li">
+<meta name="description" content="Jinchao Li's Homepage">
+<meta name="keywords" content="jinchao li, 李锦超, cuhk, 香港中文大学, research, speech and natural language processing">
+
+<meta property="og:site_name" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python | python">
+<meta property="og:url" content="https://jinchaoli.com/blog/tags/python/">
+<meta property="og:description" content="Jinchao Li's Homepage">
+<meta property="og:locale" content="en">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python">
+<meta name="twitter:description" content="Jinchao Li's Homepage">
+<meta name="twitter:site" content="@JinchaoLove">
+<meta name="twitter:creator" content="@JinchaoLove">
+
+<script type="application/ld+json">
+    {
+      "author": {
+        "@type": "Person",
+        "name": "Jinchao Li"
+      },
+      "url": "https://jinchaoli.com/blog/tags/python/",
+      "@type": " BlogPosting",
+      "description": "Jinchao Li's Homepage",
+      "headline": " python ",
+      
+        "sameAs": ["https://github.com/JinchaoLove", "https://twitter.com/JinchaoLove", "https://scholar.google.com/citations?hl=en&user=0LWE_dkAAAAJ", "https://www.researchgate.net/profile/Jinchao-Li-3", "https://zhihu.com/people/jinchaoli"],
+        
+        "name": "Jinchao Li",
+        "@context": "https://schema.org"
+      }
+  </script>
+<link href="/assets/lib/fonts/main.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/assets/lib/bootstrap/bootstrap.min.css">
+
+<link rel="stylesheet" href="/assets/lib/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="/assets/css/theme.css">
+
+<link rel="stylesheet" href="/assets/lib/tocbot/tocbot.css">
+
+<link
+defer
+rel="stylesheet"
+href="/assets/lib/loading-attribute-polyfill/loading-attribute-polyfill.min.css">
+
+<link
+defer
+rel="stylesheet"
+href="/assets/lib/magnific-popup/magnific-popup.css">
+
+<link rel="stylesheet" href="/assets/lib/waline/waline.css">
+
+
+<script type="text/javascript" defer>
+  class ModeToggle {
+    static get MODE_KEY() {
+      return 'mode';
+    }
+    static get MODE_ATTR() {
+      return 'data-mode';
+    }
+    static get DARK_MODE() {
+      return 'dark';
+    }
+    static get LIGHT_MODE() {
+      return 'light';
+    }
+    static get ID() {
+      return 'mode-toggle';
+    }
+
+    constructor() {
+      if (this.hasMode) {
+        if (this.isDarkMode) {
+          if (!this.isSysDarkPrefer) {
+            this.setDark();
+          }
+        } else {
+          if (this.isSysDarkPrefer) {
+            this.setLight();
+          }
+        }
+      }
+
+      let self = this;
+
+      /* always follow the system prefers */
+      this.sysDarkPrefers.addEventListener('change', () => {
+        if (self.hasMode) {
+          if (self.isDarkMode) {
+            if (!self.isSysDarkPrefer) {
+              self.setDark();
+            }
+          } else {
+            if (self.isSysDarkPrefer) {
+              self.setLight();
+            }
+          }
+
+          self.clearMode();
+        }
+
+        self.notify();
+      });
+    } /* constructor() */
+
+    get sysDarkPrefers() {
+      return window.matchMedia('(prefers-color-scheme: dark)');
+    }
+
+    get isSysDarkPrefer() {
+      return this.sysDarkPrefers.matches;
+    }
+
+    get isDarkMode() {
+      return this.mode === ModeToggle.DARK_MODE;
+    }
+
+    get isLightMode() {
+      return this.mode === ModeToggle.LIGHT_MODE;
+    }
+
+    get hasMode() {
+      return this.mode != null;
+    }
+
+    get mode() {
+      return sessionStorage.getItem(ModeToggle.MODE_KEY);
+    }
+
+    /* get the current mode on screen */
+    get modeStatus() {
+      if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) {
+        return ModeToggle.DARK_MODE;
+      } else {
+        return ModeToggle.LIGHT_MODE;
+      }
+    }
+
+    setDark() {
+      document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
+    }
+
+    setLight() {
+      document.documentElement.setAttribute(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE);
+      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
+    }
+
+    clearMode() {
+      document.documentElement.removeAttribute(ModeToggle.MODE_ATTR);
+      sessionStorage.removeItem(ModeToggle.MODE_KEY);
+    }
+
+    /* Notify another plugins that the theme mode has changed */
+    notify() {
+      window.postMessage(
+        {
+          direction: ModeToggle.ID,
+          message: this.modeStatus
+        },
+        '*'
+      );
+    }
+
+    flipMode() {
+      if (this.hasMode) {
+        if (this.isSysDarkPrefer) {
+          if (this.isLightMode) {
+            this.clearMode();
+          } else {
+            this.setLight();
+          }
+        } else {
+          if (this.isDarkMode) {
+            this.clearMode();
+          } else {
+            this.setDark();
+          }
+        }
+      } else {
+        if (this.isSysDarkPrefer) {
+          this.setLight();
+        } else {
+          this.setDark();
+        }
+      }
+
+      this.notify();
+    } /* flipMode() */
+  } /* ModeToggle */
+
+  const modeToggle = new ModeToggle();
+</script>
+<script type="text/javascript" defer>
+  function removeChildBySelector(parent, selector) {
+    const child = parent.querySelector(selector);
+    if (child) {
+      child.remove();
+    }
+  }
+
+  function removeChildByTitle(parent, title) {
+    const child = Array.from(parent.children).find(
+      (el) => el.getAttribute('title') === title
+    );
+    if (child) {
+      child.remove();
+    }
+  }
+
+  window.markmap = {
+    autoLoader: {
+    toolbar: true,
+    onReady: function() {
+      // 等待 toolbar 渲染完成后再操作
+      setTimeout(() => {
+        const toolbar = document.querySelector('.mm-toolbar');
+        if (!toolbar) return;
+
+        removeChildBySelector(toolbar, '.mm-toolbar-brand');
+        removeChildByTitle(toolbar, 'Toggle recursively');
+        removeChildByTitle(toolbar, 'Toggle dark theme');
+      }, 100); // 小延迟确保 DOM 已更新
+    }
+    }
+  };
+</script>
+<script src="/assets/lib/markmap/markmap.js"></script>
+</head>
+<body>
+
+<aside aria-label="Sidebar" id="sidebar" class="d-flex flex-column align-items-end">
+<header class="profile-wrapper">
+<a href="/" id="avatar" class="rounded-circle">
+<figure>
+<picture>
+
+<source
+class="responsive-img-srcset"
+srcset="
+/assets/img/avatar/Jinchao-480.webp 480w,
+/assets/img/avatar/Jinchao-800.webp 800w,
+/assets/img/avatar/Jinchao-1280.webp 1280w,
+"
+sizes="95vw"
+type="image/webp"
+loading="lazy"
+data-proofer-ignore
+>
+
+<img
+src="/assets/img/avatar/Jinchao.png"
+width="112"
+height="auto"
+alt="Jinchao Li"
+loading="lazy"
+decoding="async"
+onerror="this.onerror=null;Array.from(this.parentNode.querySelectorAll('source')).forEach(el => el.remove());"
+>
+</picture>
+</figure>
+</a>
+<h1 class="site-title">
+<a href="/">Jinchao Li</a>
+</h1>
+<p class="site-subtitle fst-italic mb-0">Jinchao Li's Homepage</p>
+<div class="social">
+<a
+href="javascript:location.href = 'mailto:' + ['jinchaolovefy','gmail.com'].join('@')"
+data-bs-toggle="tooltip"
+data-bs-placement="top"
+aria-label="email"
+data-bs-original-title="email"
+link-attr-ignore
+style="color: #0072c5;"
+>
+<i class="fas fa-envelope"></i>
+</a>
+<a
+href="https://scholar.google.com/citations?hl=en&user=SB7xjMoAAAAJ"
+data-bs-toggle="tooltip"
+data-bs-placement="top"
+aria-label="google-scholar"
+data-bs-original-title="google-scholar"
+link-attr-ignore
+target="_blank"
+rel="noopener noreferrer"
+style="color: #5c92f6;"
+>
+<i class="fa-brands fa-google-scholar"></i>
+</a>
+<a
+href="https://github.com/JinchaoLove"
+data-bs-toggle="tooltip"
+data-bs-placement="top"
+aria-label="github"
+data-bs-original-title="github"
+link-attr-ignore
+target="_blank"
+rel="noopener noreferrer"
+>
+<i class="fab fa-github"></i>
+</a>
+<a
+href="/feed.xml"
+data-bs-toggle="tooltip"
+data-bs-placement="top"
+aria-label="rss"
+data-bs-original-title="rss"
+link-attr-ignore
+style="color: #ee802f;"
+>
+<i class="fas fa-rss"></i>
+</a>
+</div>
+</header>
+
+<nav class="flex-column flex-grow-1 w-100 ps-0">
+<ul class="nav">
+
+<li class="nav-item">
+<a href="/" class="nav-link">
+<i class="fa-fw fas fa-home"></i>
+<span>HOME</span>
+</a>
+</li>
+
+<li class="nav-item">
+<a href="/publications/" class="nav-link">
+<i class="fa-fw fas fa-book"></i>
+<span>PUBLICATIONS</span>
+</a>
+</li>
+
+<li class="nav-item">
+<a href="/space/" class="nav-link">
+<i class="fa-fw fas fa-globe"></i>
+<span>SPACE</span>
+</a>
+</li>
+
+</ul>
+<div class="blog-wrapper d-flex flex-wrap align-items-center w-100">
+<div class="nav-buttons">
+<a
+id="nav-blog"
+class="nav-icon"
+href="/blog/"
+title=""
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+aria-label="Blog"
+data-bs-original-title="Blog"
+role="button"
+>
+<i class="fa-fw fas fa-edit"></i>
+</a>
+<a
+id="nav-categories"
+class="nav-icon"
+href="/blog/categories/"
+title=""
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+aria-label="Categories"
+data-bs-original-title="Categories"
+role="button"
+>
+<i class="fa-fw fas fa-layer-group"></i>
+</a>
+<a
+id="nav-tags"
+class="nav-icon"
+href="/blog/tags/"
+title=""
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+aria-label="Tags"
+data-bs-original-title="Tags"
+role="button"
+>
+<i class="fa-fw fas fa-tags"></i>
+</a>
+<a
+id="nav-archives"
+class="nav-icon"
+href="/blog/archives/"
+title=""
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+aria-label="Archives"
+data-bs-original-title="Archives"
+role="button"
+>
+<i class="fa-fw fas fa-archive"></i>
+</a>
+</div>
+<div class="nav-contents">
+<div class="nav-blog">
+<a href="/blog/" class="nav-title">
+<i class="fa-fw fas fa-edit"></i>
+<span>BLOG</span>
+</a>
+</div>
+<div class="nav-categories">
+<a href="/blog/categories/" class="nav-title">
+<i class="fa-fw fas fa-layer-group"></i>
+<span>CATEGORIES</span>
+</a>
+<a href="/blog/categories/blogging/" class="tag">Blogging</a>
+<a href="/blog/categories/demo/" class="tag">Demo</a>
+<a href="/blog/categories/study/" class="tag">Study</a>
+</div>
+<div class="nav-tags">
+<a href="/blog/tags/" class="nav-title">
+<i class="fa-fw fas fa-tags"></i>
+<span>TAGS</span>
+</a>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/algorithm/">algorithm<span class="tag-size text-muted">1</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/getting-started/">getting started<span class="tag-size text-muted">1</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/homepage/">homepage<span class="tag-size text-muted">2</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/python/">python<span class="tag-size text-muted">1</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/theme/">theme<span class="tag-size text-muted">1</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/todo/">todo<span class="tag-size text-muted">1</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/typography/">typography<span class="tag-size text-muted">1</span>
+</a>
+</div>
+<div class="tag">
+<a class="tag-name" href="/blog/tags/writing/">writing<span class="tag-size text-muted">1</span>
+</a>
+</div>
+</div>
+<div class="nav-archives">
+<a href="/blog/archives/" class="nav-title">
+<i class="fa-fw fas fa-archive"></i>
+<span>ARCHIVES</span>
+</a>
+<ul>
+<li>
+<a href="/blog/python/">Python Basics</a>
+</li>
+<li>
+<a href="/blog/basic-algorithm/">基础算法题解模板</a>
+</li>
+<li>
+<a href="/blog/todo/">2025年阅读计划</a>
+</li>
+<li>
+<a href="/blog/set-waline-with-tidb/">Configure Waline with TiDB</a>
+</li>
+<li>
+<a href="/blog/exchange-homepage-and-about/">Exchange Homepage and About</a>
+</li>
+<li>
+<a href="/blog/customize-jekyll-chirpy/">Customize Your Jekyll Chirpy Theme</a>
+</li>
+<li>
+<a href="/blog/getting-started/">Getting Started</a>
+</li>
+<li>
+<a href="/blog/write-a-new-post/">Writing a New Post</a>
+</li>
+<li>
+<a href="/blog/text-and-typography/">Text and Typography</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+</nav>
+</aside>
+
+
+<header id="topbar-wrapper" aria-label="Top Bar">
+<div
+id="topbar"
+class="d-flex align-items-center justify-content-between px-lg-3 h-100"
+>
+<div class="d-flex align-items-center">
+<button
+type="button"
+id="sidebar-trigger"
+class="btn btn-link"
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+aria-label="Hide/show sidebar"
+data-bs-original-title="Hide/show sidebar"
+>
+<i class="fas fa-map-signs fa-fw"></i>
+</button>
+<nav id="breadcrumb" aria-label="Breadcrumb">
+<span>
+<a href="/">Home</a>
+</span>
+<span>
+<a href="/blog/">Blog</a>
+</span>
+<span>
+<a href="/blog/tags/">Tags</a>
+</span>
+<span>python</span>
+</nav>
+
+<div id="topbar-title">
+python
+</div>
+</div>
+<div class="d-flex align-items-center">
+<button
+type="button"
+id="search-trigger"
+class="btn btn-link"
+data-bs-toggle="tooltip"
+data-bs-placement="left"
+aria-label="Search (⌘/⌃ + k)"
+data-bs-original-title="Search (⌘/⌃ + k)"
+>
+<i class="fas fa-search fa-fw"></i>
+</button>
+<div id="search-box">
+<search class="align-items-center">
+<i class="fas fa-search fa-fw"></i>
+<input
+class="form-control"
+id="search-input"
+type="search"
+aria-label="search"
+placeholder="Search (⌘/⌃ + k)"
+tabindex="0"
+autocomplete="true"
+list="suggestions"
+>
+<datalist id="suggestions"></datalist>
+</search>
+</div>
+<button
+type="button"
+id="search-cancel"
+class="btn btn-link text-decoration-none"
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+aria-label="Cancel (⎋esc)"
+data-bs-original-title="Cancel (⎋esc)"
+>
+<i class="fa fa-times" aria-hidden="true"></i>
+</button>
+<span class="icon-border"></span>
+<button
+type="button"
+class="mode-toggle btn light"
+data-bs-toggle="tooltip"
+data-bs-placement="top"
+aria-label="Light/dark theme"
+data-bs-original-title="Light/dark theme"
+>
+<i class="fas fa-star-and-crescent"></i>
+</button>
+<button
+type="button"
+class="mode-toggle btn dark"
+data-bs-toggle="tooltip"
+data-bs-placement="top"
+aria-label="Light/dark theme"
+data-bs-original-title="Light/dark theme"
+>
+<i class="fas fa-sun"></i>
+</button>
+<span class="icon-border"></span>
+<button
+type="button"
+id="toc-trigger"
+class="btn btn-link"
+data-bs-toggle="tooltip"
+data-bs-placement="bottom"
+aria-label="Hide/show TOC"
+data-bs-original-title="Hide/show panel"
+>
+<i class="fas fa-list-ul fa-fw"></i>
+</button>
+</div>
+</div>
+</header>
+<div id="main-wrapper" class="d-flex justify-content-center">
+<div class="container-fluid d-flex flex-column px-xxl-3">
+<div class="row flex-grow-1">
+<main
+aria-label="Main Content"
+id="content-wrapper"
+class="col-10">
+
+
+
+
+
+
+
+<div id="page-tag">
+<h1 class="ps-lg-2">
+<i class="fa fa-tag fa-fw text-muted"></i>
+python
+<span class="lead text-muted ps-2">1</span>
+</h1>
+<ul class="content ps-0">
+<li class="d-flex justify-content-between px-md-3">
+<a href="/blog/python/">Python Basics</a>
+<span class="dash flex-grow-1"></span>
+
+<time
+class="text-muted small text-nowrap"
+data-ts="1757426400"
+data-df="ll"
+>
+Sep 9, 2025
+</time>
+</li>
+</ul>
+</div>
+</main>
+
+<aside
+aria-label="Panel"
+id="panel-wrapper"
+class="col-2 ps-2 mb-5 text-muted">
+<div class="access">
+
+<section id="access-lastmod">
+<h2 class="panel-heading">Recently Updated</h2>
+<ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
+<li class="text-truncate lh-lg">
+<a href="/blog/basic-algorithm/">基础算法题解模板</a>
+</li>
+<li class="text-truncate lh-lg">
+<a href="/blog/todo/">2025年阅读计划</a>
+</li>
+<li class="text-truncate lh-lg">
+<a href="/blog/set-waline-with-tidb/">Configure Waline with TiDB</a>
+</li>
+</ul>
+</section>
+
+</div>
+<div class="access">
+
+<section>
+<h2 class="panel-heading">Trending Tags</h2>
+<div class="d-flex flex-wrap mt-3 mb-1 me-3">
+<a class="post-tag btn btn-outline-primary" href="/blog/tags/homepage/">homepage</a>
+<a class="post-tag btn btn-outline-primary" href="/blog/tags/algorithm/">algorithm</a>
+<a class="post-tag btn btn-outline-primary" href="/blog/tags/getting-started/">getting started</a>
+</div>
+</section>
+</div>
+</aside>
+</div>
+
+<div style="height: 2rem;"></div>
+
+<div id="search-result-wrapper" class="d-flex justify-content-center unloaded">
+<div class="col-11 content">
+<div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+</div>
+</div>
+</div>
+<aside aria-label="Scroll to Top">
+<button
+id="back-to-top"
+type="button"
+class="btn btn-lg btn-box-shadow">
+<i class="fas fa-angle-up"></i>
+</button>
+</aside>
+</div>
+<div id="mask"></div>
+<aside
+id="notification"
+class="toast"
+role="alert"
+aria-live="assertive"
+aria-atomic="true"
+data-bs-animation="true"
+data-bs-autohide="false"
+>
+<div class="toast-header">
+<button
+type="button"
+class="btn-close ms-auto"
+data-bs-dismiss="toast"
+aria-label="Close"
+></button>
+</div>
+<div class="toast-body text-center pt-0">
+<p class="px-2 mb-3">A new version of content is available.</p>
+<button type="button" class="btn btn-primary" aria-label="Update">
+Update
+</button>
+</div>
+</aside>
+
+
+
+
+
+
+<script src="/assets/lib/jquery/jquery.min.js"></script>
+<script src="/assets/lib/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="/assets/lib/lunr/lunr.min.js"></script>
+<script src="/assets/lib/loading-attribute-polyfill/loading-attribute-polyfill.umd.min.js"></script>
+<script src="/assets/lib/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="/assets/lib/clipboard/clipboard.min.js"></script>
+<script src="/assets/lib/dayjs/dayjs.min.js"></script>
+<script src="/assets/lib/dayjs/locale/en.min.js"></script>
+<script src="/assets/lib/dayjs/plugin/relativeTime.min.js"></script>
+<script src="/assets/lib/dayjs/plugin/localizedFormat.min.js"></script>
+
+<script defer src="/assets/js/dist/misc.min.js"></script>
+<script async src="/assets/js/just-the-docs.js"></script>
+
+<script defer src="/assets/js/dist/app.min.js"></script>
+
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('.mode-toggle').click(function () {
+      let theme = localStorage.getItem('theme');
+      if (modeToggle.isDarkMode || (!modeToggle.hasMode && modeToggle.isSysDarkPrefer)) {
+        theme = 'dark';
+      } else {
+        theme = 'light';
+      }
+      console.log('theme:' + theme);
+
+      // Set jupyter notebooks themes.
+      let jupyterNotebooks = document.getElementsByClassName('jupyter-notebook-iframe-container');
+      for (let i = 0; i < jupyterNotebooks.length; i++) {
+        let iframeDocument = jupyterNotebooks[i].getElementsByTagName('iframe')[0].contentWindow.document;
+        let bodyElement = iframeDocument.body;
+        let headElement = iframeDocument.head;
+
+        // Remove existing theme link elements
+        let existingLinks = headElement.querySelectorAll('link[data-jp-theme-link]');
+        for (let link of existingLinks) {
+          headElement.removeChild(link);
+        }
+
+        // Get original style-sheets
+        let styleElements = headElement.querySelectorAll('style');
+        let variablesElement;
+        for (let style of styleElements) {
+          if (style.innerHTML.includes('The following CSS variables define the main, public API for styling JupyterLab.')) {
+            variablesElement = style;
+            break;
+          }
+        }
+        // console.log(styleElements);
+
+        // New style-sheets
+        const cssLink = document.createElement('link');
+        cssLink.setAttribute('data-jp-theme-link', '');
+        cssLink.rel = 'stylesheet';
+        cssLink.type = 'text/css';
+
+        if (theme == 'dark') {
+          cssLink.href = '/assets/css/jupyter-dark.css';
+          bodyElement.setAttribute('data-jp-theme-light', 'false');
+          bodyElement.setAttribute('data-jp-theme-name', 'JupyterLab Dark');
+        } else {
+          cssLink.href = '/assets/css/jupyter-light.css';
+          bodyElement.setAttribute('data-jp-theme-light', 'true');
+          bodyElement.setAttribute('data-jp-theme-name', 'JupyterLab Light');
+        }
+
+        // Import the cssLink
+        if (variablesElement) {
+          // variablesElement.insertAdjacentElement('beforebegin', cssLink);
+          variablesElement.insertAdjacentElement('afterend', cssLink);
+        } else {
+          headElement.appendChild(cssLink);
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
