@@ -1,4 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/algorithm.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-11-27T10:06:19+08:00</updated><id>https://jinchaoli.com/feed/by_tag/algorithm.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">基础算法题解模板</title><link href="https://jinchaoli.com/blog/basic-algorithm/" rel="alternate" type="text/html" title="基础算法题解模板"/><published>2025-08-22T20:00:00+08:00</published><updated>2025-09-09T22:41:10+08:00</updated><id>https://jinchaoli.com/blog/basic-algorithm</id><content type="html" xml:base="https://jinchaoli.com/blog/basic-algorithm/"><![CDATA[<h2 id="算法复杂度">算法复杂度</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/algorithm.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-11-27T18:41:01+08:00</updated><id>https://jinchaoli.com/feed/by_tag/algorithm.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">基础算法题解模板</title><link href="https://jinchaoli.com/blog/basic-algorithm/" rel="alternate" type="text/html" title="基础算法题解模板"/><published>2025-08-22T20:00:00+08:00</published><updated>2025-11-27T18:40:36+08:00</updated><id>https://jinchaoli.com/blog/basic-algorithm</id><content type="html" xml:base="https://jinchaoli.com/blog/basic-algorithm/"><![CDATA[
+<h2 id="框架概括">框架概括</h2>
+<h3 id="整体框架">整体框架</h3>
+<ul>
+<li>数据结构（增删查改）
+<ul>
+<li>数组（顺序存储）
+<ul>
+<li>动态数组</li>
+<li>字符串</li>
+<li>哈希表</li>
+<li>…</li>
+</ul>
+</li>
+<li>链表（链式存储）
+<ul>
+<li>单/双链表</li>
+<li>树</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算法（穷举）
+<ul>
+<li>如何避免遗漏
+<ul>
+<li>回溯算法</li>
+<li>动态规划</li>
+<li>DFS</li>
+<li>BFS</li>
+<li>…</li>
+</ul>
+</li>
+<li>如何避免冗余
+<ul>
+<li>二分</li>
+<li>滑动窗口</li>
+<li>贪心</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="各类数据结构的遍历">各类数据结构的遍历</h3>
+<ol>
+<li>
+<p>数组的遍历，线性迭代结构：</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre> <span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)):</span>
+         <span class="c1"># 迭代访问 arr[i]
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+</li>
+<li>
+<p>链表的遍历，兼具迭代和递归结构：</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre> <span class="c1"># 基本的单链表节点
+</span> <span class="k">class</span> <span class="nc">ListNode</span><span class="p">:</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+         <span class="n">self</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+         <span class="n">self</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">None</span>
+
+ <span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+     <span class="n">p</span> <span class="o">=</span> <span class="n">head</span>
+     <span class="k">while</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+         <span class="c1"># 迭代访问 p.val
+</span>         <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="nb">next</span>
+
+ <span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+     <span class="c1"># 递归访问 head.val
+</span>     <span class="nf">traverse</span><span class="p">(</span><span class="n">head</span><span class="p">.</span><span class="nb">next</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</li>
+<li>
+<p>二叉树的遍历，典型的非线性递归遍历结构：</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre> <span class="c1"># 基本的二叉树节点
+</span> <span class="k">class</span> <span class="nc">TreeNode</span><span class="p">:</span>
+     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+         <span class="n">self</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+         <span class="n">self</span><span class="p">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
+         <span class="n">self</span><span class="p">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
+
+ <span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">):</span>
+     <span class="nf">traverse</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">left</span><span class="p">)</span>
+     <span class="nf">traverse</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">right</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+</li>
+</ol>
+<h2 id="算法复杂度">算法复杂度</h2>
 
 <h3 id="主定理master-theorem">主定理（Master Theorem）</h3>
 <p>假设有递归关系式：</p>
@@ -92,7 +209,7 @@
 30
 31
 </pre></td><td class="rouge-code"><pre><span class="c1"># 通用双指针框架（适用于数组/列表）
-</span><span class="k">def</span> <span class="nf">two_pointers_template</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+</span><span class="k">def</span> <span class="nf">two_pointers</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>  <span class="c1"># 或其他默认值
@@ -234,6 +351,75 @@
         <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">new_list</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+<p><a href="https://leetcode.cn/problems/merge-two-sorted-lists">21. 合并两个有序链表</a></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre><span class="c1"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+</span><span class="k">def</span> <span class="nf">mergeTwoLists</span><span class="p">(</span><span class="n">list1</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">,</span> <span class="n">list2</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListNode</span><span class="p">:</span>
+    <span class="n">dummy</span> <span class="o">=</span> <span class="nc">ListNode</span><span class="p">()</span>  <span class="c1"># 虚拟头结点，它的唯一作用就是提供一个起始点，让 p 可以不断向后连接节点
+</span>    <span class="n">p</span> <span class="o">=</span> <span class="n">dummy</span>  <span class="c1"># p 指向虚拟链表的末尾
+</span>    <span class="n">p1</span> <span class="o">=</span> <span class="n">l1</span>
+    <span class="n">p2</span> <span class="o">=</span> <span class="n">l2</span>
+
+    <span class="k">while</span> <span class="n">p1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">p2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span> 
+        <span class="c1"># 比较 p1 和 p2 两个指针
+</span>        <span class="c1"># 将值较小的的节点接到 p 指针
+</span>        <span class="k">if</span> <span class="n">p1</span><span class="p">.</span><span class="n">val</span> <span class="o">&gt;</span> <span class="n">p2</span><span class="p">.</span><span class="n">val</span><span class="p">:</span>
+            <span class="n">p</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">p2</span>
+            <span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span><span class="p">.</span><span class="nb">next</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">p1</span>
+            <span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span><span class="p">.</span><span class="nb">next</span>
+        <span class="c1"># p 指针不断前进
+</span>        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="nb">next</span>
+
+    <span class="k">if</span> <span class="n">p1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">p</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">p1</span>
+
+    <span class="k">if</span> <span class="n">p2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">p</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">p2</span>
+
+    <span class="k">return</span> <span class="n">dummy</span><span class="p">.</span><span class="nb">next</span>  <span class="c1"># 注意：不是返回指针 p，而是返回链表的头部，也就是 dummy.next
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<blockquote class="prompt-info">
+<p>虚拟头结点 <br/>
+代码中用到了一个链表的算法题中是很常见的「虚拟头结点」技巧，也就是 dummy 节点。<br/>
+当遇到需要创造一条新链表的情况，可以使用虚拟头结点简化边界情况的处理。<br/>
+如果不使用 dummy 虚拟节点，代码会复杂一些，需要额外处理指针 p 为空的情况。<br/>
+而有了 dummy 节点这个占位符，可以避免处理空指针的情况，降低代码的复杂性。</p>
+</blockquote>
 <p><a href="https://leetcode.cn/problems/longest-palindromic-substring">5. 最长回文子串</a></p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -350,6 +536,297 @@
 
 </pre></td></tr></tbody></table></code></pre></div></div>
 
+
+<h2 id="滑动窗口">滑动窗口</h2>
+<p>滑动窗口可以归为快慢双指针，一快一慢两个指针前后相随，中间的部分就是窗口。滑动窗口算法技巧主要用来解决子数组问题，比如让你寻找符合某个条件的最长/最短子数组。</p>
+<p>与普通的快慢指针（嵌套循环，O（N^2））不同的是，滑动窗口（队列）维护的元素只进入/移出一次（指针 left, right 只增不减），所以复杂度为O(N)。算法的重点在于判断是否要把 left 移动。</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre></td><td class="rouge-code"><pre><span class="c1"># 滑动窗口模板
+</span><span class="k">def</span> <span class="nf">sliding_window</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="c1"># 用合适的数据结构记录窗口中的数据，根据具体场景变通
+</span>    <span class="c1"># 比如说，我想记录窗口中元素出现的次数，就用 map
+</span>    <span class="c1"># 如果我想记录窗口中的元素和，就可以只用一个 int
+</span>    <span class="n">window</span> <span class="o">=</span> <span class="nf">set</span><span class="p">()</span>
+
+    <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">right</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="c1"># c 是将移入窗口的字符
+</span>        <span class="n">c</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]</span>
+        <span class="n">window</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="c1"># 增大窗口
+</span>        <span class="n">right</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># 进行窗口内数据的一系列更新
+</span>        <span class="bp">...</span>
+
+        <span class="c1"># 判断左侧窗口是否要收缩
+</span>        <span class="k">while</span> <span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span> <span class="ow">and</span> <span class="nf">window_needs_shrink</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+            <span class="c1"># 把 s[left] 移出窗口
+</span>            <span class="n">window</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">])</span>
+            <span class="c1"># 缩小窗口
+</span>            <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="c1"># 进行窗口内数据的一系列更新
+</span>            <span class="bp">...</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>基于这个框架，遇到子串/子数组相关的题目，你只需要回答以下三个问题：</p>
+<ol>
+<li>
+<p>什么时候应该移动 right 扩大窗口？窗口加入字符时，应该更新哪些数据？</p>
+</li>
+<li>
+<p>什么时候窗口应该暂停扩大，开始移动 left 缩小窗口？从窗口移出字符时，应该更新哪些数据？</p>
+</li>
+<li>
+<p>什么时候应该更新结果？</p>
+</li>
+</ol>
+<h3 id="例题-1">例题</h3>
+<p><a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters">3. 无重复字符的最长子串</a></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：给定一个字符串 s ，请你找出其中不含有重复字符的 最长 子串 的长度。
+🧪样例：
+    输入: s = </span><span class="sh">"</span><span class="s">abcabcbb</span><span class="sh">"</span><span class="s">
+    输出: 3 
+    解释: 因为无重复字符的最长子串是 </span><span class="sh">"</span><span class="s">abc</span><span class="sh">"</span><span class="s">，所以其长度为 3。注意 </span><span class="sh">"</span><span class="s">bca</span><span class="sh">"</span><span class="s"> 和 </span><span class="sh">"</span><span class="s">cab</span><span class="sh">"</span><span class="s"> 也是正确答案。
+💡重点：滑动窗口最重要的是指针只增不减
+</span><span class="sh">"""</span>
+<span class="c1"># 错误用法
+# 下面这种写法没有保证每个元素只处理一次（l递增，但r会回退），就是暴力的嵌套循环，复杂度为 O(N^2)
+</span><span class="k">def</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">substr</span> <span class="o">=</span> <span class="p">{</span><span class="n">s</span><span class="p">[</span><span class="n">l</span><span class="p">]}</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">r</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">substr</span><span class="p">:</span>
+                <span class="n">substr</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">r</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">substr</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">ans</span>
+
+<span class="c1"># 正确用法 1
+# r只增不减：O(N), 23ms
+</span><span class="k">def</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">right</span><span class="p">,</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">left</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">substr</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">:</span><span class="n">right</span><span class="p">]</span>
+        <span class="k">while</span> <span class="bp">True</span> <span class="ow">and</span> <span class="n">right</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]</span> <span class="ow">in</span> <span class="n">substr</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">right</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">substr</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">:</span><span class="n">right</span><span class="p">]</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">substr</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">ans</span>
+
+<span class="c1"># 正确用法 2
+# window维护每个字符出现的次数, 删除 s[left] 直至 win[s[right]] &lt;= 1, O(N), 76ms
+</span><span class="k">def</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">win</span><span class="p">,</span> <span class="n">ans</span> <span class="o">=</span> <span class="nf">dict</span><span class="p">(),</span> <span class="mi">0</span>
+    <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">right</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="n">win</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]]</span> <span class="o">=</span> <span class="n">win</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="c1"># 滑动左指针直到win[s[right]]&lt;=1
+</span>        <span class="k">while</span> <span class="n">win</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">right</span><span class="p">]]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">win</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">left</span><span class="p">]]</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">left</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">right</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">ans</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p><a href="https://leetcode.cn/problems/permutation-in-string">567. 字符串的排列</a></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：给你两个字符串 s1 和 s2 ，写一个函数来判断 s2 是否包含 s1 的 排列。如果是，返回 true ；否则，返回 false 。
+🧪样例：
+    输入：s1 = </span><span class="sh">"</span><span class="s">abb</span><span class="sh">"</span><span class="s"> s2 = </span><span class="sh">"</span><span class="s">eidbabooo</span><span class="sh">"</span><span class="s">
+    输出：true
+    解释：s2 包含 s1 的排列之一 (</span><span class="sh">"</span><span class="s">bab</span><span class="sh">"</span><span class="s">).
+💡重点：
+</span><span class="sh">"""</span>
+
+<span class="c1"># 错误解法
+# 暴力枚举，每次循环都重新计算Counter，时间复杂度 O(N^2)
+</span><span class="k">def</span> <span class="nf">checkInclusion</span><span class="p">(</span><span class="n">s1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="n">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+    <span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">s1</span><span class="p">),</span> <span class="nf">len</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+    <span class="n">ref</span> <span class="o">=</span> <span class="nc">Counter</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+    <span class="c1"># 窗长始终为N
+</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+        <span class="n">substr</span> <span class="o">=</span> <span class="n">s2</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">N</span><span class="p">]</span>
+        <span class="n">win</span> <span class="o">=</span> <span class="nc">Counter</span><span class="p">(</span><span class="n">substr</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">win</span> <span class="o">==</span> <span class="n">ref</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+
+<span class="c1"># 正确解法
+# 不需要每次都重新计算，只需要更新 left 和 right 的计数，时间复杂度 O(N)
+</span><span class="k">def</span> <span class="nf">checkInclusion</span><span class="p">(</span><span class="n">s1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">s2</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">M</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">s1</span><span class="p">),</span> <span class="nf">len</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">N</span> <span class="o">&gt;</span> <span class="n">M</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="n">ref</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">s1</span><span class="p">:</span>
+        <span class="n">ref</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">ref</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">window</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">window</span><span class="p">[</span><span class="n">s2</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">window</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">s2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="n">right</span> <span class="o">=</span> <span class="n">N</span>
+    <span class="k">while</span> <span class="n">right</span> <span class="o">&lt;</span> <span class="n">M</span><span class="p">:</span>
+        <span class="c1"># print(window)
+</span>        <span class="k">if</span> <span class="n">window</span> <span class="o">==</span> <span class="n">ref</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">s2</span><span class="p">[</span><span class="n">right</span><span class="p">]</span>
+        <span class="n">old</span> <span class="o">=</span> <span class="n">s2</span><span class="p">[</span><span class="n">right</span> <span class="o">-</span> <span class="n">N</span><span class="p">]</span>
+        <span class="c1"># 维护滑动窗
+</span>        <span class="n">window</span><span class="p">[</span><span class="n">new</span><span class="p">]</span> <span class="o">=</span> <span class="n">window</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">new</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">window</span><span class="p">[</span><span class="n">old</span><span class="p">]</span> <span class="o">=</span> <span class="n">window</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">window</span><span class="p">[</span><span class="n">old</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">window</span><span class="p">[</span><span class="n">old</span><span class="p">]</span>
+        <span class="n">right</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">window</span> <span class="o">==</span> <span class="n">ref</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">True</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
 <h2 id="查找">查找</h2>
 
 <p>查找是最基础操作，其中最常用的是二分查找，即从有序数组<code class="language-plaintext highlighter-rouge">array</code>中直接寻找某个值<code class="language-plaintext highlighter-rouge">query</code>对应的<code class="language-plaintext highlighter-rouge">index</code>。一般解法：</p>
@@ -460,7 +937,7 @@
         <span class="k">return</span> <span class="nf">binary_search_recur</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>  <span class="c1"># Go search in the right subarray
 </span>    <span class="k">return</span> <span class="n">mid</span>  <span class="c1"># `array[mid] = query`, stop recurrence
 </span></pre></td></tr></tbody></table></code></pre></div></div>
-<h3 id="例题-1">例题</h3>
+<h3 id="例题-2">例题</h3>
 <p><a href="https://leetcode.cn/problems/search-in-rotated-sorted-array">33. 搜索旋转排序数组</a></p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -573,6 +1050,186 @@ https://leetcode.cn/problems/search-in-rotated-sorted-array/solutions/2636954/ja
         <span class="n">remove_nums</span> <span class="o">-=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">arr</span><span class="p">[</span><span class="n">left</span><span class="p">:</span><span class="n">left</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+<p><a href="https://leetcode.cn/problems/kth-largest-element-in-an-array">215. 数组中的第K个最大元素</a></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+</pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
+📖描述：
+    给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
+    请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
+    你必须设计并实现时间复杂度为 O(n) 的算法解决此问题。
+🧪样例：
+    输入: [3,2,1,5,6,4], k = 2
+    输出: 5
+
+    输入: [3,2,3,1,2,4,5,5,6], k = 4
+    输出: 4
+💡重点：
+</span><span class="sh">"""</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">left</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">right</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sh">"""</span><span class="s">
+        在子数组 [left, right] 中随机选择一个基准元素 pivot
+        根据 pivot 重新排列子数组 [left, right]
+        重新排列后，&lt;= pivot 的元素都在 pivot 的左侧，&gt;= pivot 的元素都在 pivot 的右侧
+        返回 pivot 在重新排列后的 nums 中的下标
+        特别地，如果子数组的所有元素都等于 pivot，我们会返回子数组的中心下标，避免退化
+        </span><span class="sh">"""</span>
+
+        <span class="c1"># 1. 在子数组 [left, right] 中随机选择一个基准元素 pivot
+</span>        <span class="n">i</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="nf">randint</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+        <span class="n">pivot</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># 把 pivot 与子数组第一个元素交换，避免 pivot 干扰后续划分，从而简化实现逻辑
+</span>        <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">left</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">left</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="c1"># 2. 相向双指针遍历子数组 [left + 1, right]
+</span>        <span class="c1"># 循环不变量：在循环过程中，子数组的数据分布始终如下图
+</span>        <span class="c1"># [ pivot | &lt;=pivot | 尚未遍历 | &gt;=pivot ]
+</span>        <span class="c1">#   ^                 ^     ^         ^
+</span>        <span class="c1">#   left              i     j         right
+</span>
+        <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">right</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">j</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">:</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="c1"># 此时 nums[i] &gt;= pivot
+</span>
+            <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">j</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">pivot</span><span class="p">:</span>
+                <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="c1"># 此时 nums[j] &lt;= pivot
+</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">j</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="c1"># 维持循环不变量
+</span>            <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="c1"># 循环结束后
+</span>        <span class="c1"># [ pivot | &lt;=pivot | &gt;=pivot ]
+</span>        <span class="c1">#   ^             ^   ^     ^
+</span>        <span class="c1">#   left          j   i     right
+</span>
+        <span class="c1"># 3. 把 pivot 与 nums[j] 交换，完成划分（partition）
+</span>        <span class="c1"># 为什么与 j 交换？
+</span>        <span class="c1"># 如果与 i 交换，可能会出现 i = right + 1 的情况，已经下标越界了，无法交换
+</span>        <span class="c1"># 另一个原因是如果 nums[i] &gt; pivot，交换会导致一个大于 pivot 的数出现在子数组最左边，不是有效划分
+</span>        <span class="c1"># 与 j 交换，即使 j = left，交换也不会出错
+</span>        <span class="n">nums</span><span class="p">[</span><span class="n">left</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">left</span><span class="p">]</span>
+
+        <span class="c1"># 交换后
+</span>        <span class="c1"># [ &lt;=pivot | pivot | &gt;=pivot ]
+</span>        <span class="c1">#               ^
+</span>        <span class="c1">#               j
+</span>
+        <span class="c1"># 返回 pivot 的下标
+</span>        <span class="k">return</span> <span class="n">j</span>
+
+    <span class="k">def</span> <span class="nf">findKthLargest</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="n">target_index</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">k</span>  <span class="c1"># 第 k 大元素在升序数组中的下标是 n - k
+</span>        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># 闭区间
+</span>        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">partition</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">target_index</span><span class="p">:</span>
+                <span class="c1"># 找到第 k 大元素
+</span>                <span class="k">return</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="n">target_index</span><span class="p">:</span>
+                <span class="c1"># 第 k 大元素在 [left, i - 1] 中
+</span>                <span class="n">right</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># 第 k 大元素在 [i + 1, right] 中
+</span>                <span class="n">left</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
 
 <h2 id="排序">排序</h2>
 
@@ -591,7 +1248,7 @@ https://leetcode.cn/problems/search-in-rotated-sorted-array/solutions/2636954/ja
 <p>TODO</p>
 <h3 id="代码模板-2">代码模板</h3>
 <p>TODO</p>
-<h3 id="例题-2">例题</h3>
+<h3 id="例题-3">例题</h3>
 <p>TODO</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -656,7 +1313,7 @@ https://leetcode.cn/problems/search-in-rotated-sorted-array/solutions/2636954/ja
 </ul>
 <h3 id="代码模板-3">代码模板</h3>
 <p>TODO</p>
-<h3 id="例题-3">例题</h3>
+<h3 id="例题-4">例题</h3>
 <p>TODO</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
@@ -674,7 +1331,7 @@ https://leetcode.cn/problems/search-in-rotated-sorted-array/solutions/2636954/ja
 
 <h2 id="贪心算法">贪心算法</h2>
 
-<h3 id="例题-4">例题</h3>
+<h3 id="例题-5">例题</h3>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -704,7 +1361,7 @@ https://leetcode.cn/problems/search-in-rotated-sorted-array/solutions/2636954/ja
 </ul>
 <h3 id="代码模板-4">代码模板</h3>
 <p>队列</p>
-<h3 id="例题-5">例题</h3>
+<h3 id="例题-6">例题</h3>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -771,7 +1428,7 @@ https://leetcode.cn/problems/search-in-rotated-sorted-array/solutions/2636954/ja
         <span class="n">还原所有被修改过的参数</span>
     <span class="k">return</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
-<h3 id="例题-6">例题</h3>
+<h3 id="例题-7">例题</h3>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -792,4 +1449,4 @@ https://leetcode.cn/problems/search-in-rotated-sorted-array/solutions/2636954/ja
 <li><a href="https://github.com/keon/algorithms">Algorithms</a></li>
 <li><a href="https://labuladong.online/algo">labuladong的算法笔记</a></li>
 <li><a href="https://greyireland.gitbook.io/algorithm-pattern">算法模板</a></li>
-</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="algorithm"/><summary type="html"><![CDATA[算法复杂度]]></summary></entry></feed>
+</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="algorithm"/><summary type="html"><![CDATA[框架概括]]></summary></entry></feed>

@@ -41,6 +41,81 @@
 
 #基础算法题解模板
 
+<!-- region -->
+## 框架概括
+
+### 整体框架
+
+- 数据结构（增删查改）
+  - 数组（顺序存储）
+    - 动态数组
+    - 字符串
+    - 哈希表
+    - ...
+  - 链表（链式存储）
+    - 单/双链表
+    - 树
+    - ...
+
+- 算法（穷举）
+  - 如何避免遗漏
+    - 回溯算法
+    - 动态规划
+    - DFS
+    - BFS
+    - ...
+  - 如何避免冗余
+    - 二分
+    - 滑动窗口
+    - 贪心
+    - ...
+
+### 各类数据结构的遍历
+
+1. 数组的遍历，线性迭代结构：
+
+    ```python
+    def traverse(arr: List[int]):
+        for i in range(len(arr)):
+            # 迭代访问 arr[i]
+    ```
+
+2. 链表的遍历，兼具迭代和递归结构：
+
+    ```python
+    # 基本的单链表节点
+    class ListNode:
+        def __init__(self, val):
+            self.val = val
+            self.next = None
+
+    def traverse(head: ListNode) -> None:
+        p = head
+        while p is not None:
+            # 迭代访问 p.val
+            p = p.next
+
+    def traverse(head: ListNode) -> None:
+        # 递归访问 head.val
+        traverse(head.next)
+    ```
+
+3. 二叉树的遍历，典型的非线性递归遍历结构：
+
+    ```python
+    # 基本的二叉树节点
+    class TreeNode:
+        def __init__(self, val=0, left=None, right=None):
+            self.val = val
+            self.left = left
+            self.right = right
+
+    def traverse(root: TreeNode):
+        traverse(root.left)
+        traverse(root.right)
+    ```
+<!-- endregion -->
+
 ## 算法复杂度
 
 <!-- region -->
@@ -99,7 +174,7 @@ $$T(N) = O(N^{\log_b(a)} \log^{(k+1)}N)$$
 
 ```python
 # 通用双指针框架（适用于数组/列表）
-def two_pointers_template(arr):
+def two_pointers(arr):
     n = len(arr)
     if n == 0:
         return 0  # 或其他默认值
@@ -191,6 +266,46 @@ def merge(nums1: List[int], nums2: List[int]) -> List[int]:
     return new_list
 ```
 
+[21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists)
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+def mergeTwoLists(list1: ListNode, list2: ListNode) -> ListNode:
+    dummy = ListNode()  # 虚拟头结点，它的唯一作用就是提供一个起始点，让 p 可以不断向后连接节点
+    p = dummy  # p 指向虚拟链表的末尾
+    p1 = l1
+    p2 = l2
+
+    while p1 is not None and p2 is not None: 
+        # 比较 p1 和 p2 两个指针
+        # 将值较小的的节点接到 p 指针
+        if p1.val > p2.val:
+            p.next = p2
+            p2 = p2.next
+        else:
+            p.next = p1
+            p1 = p1.next
+        # p 指针不断前进
+        p = p.next
+
+    if p1 is not None:
+        p.next = p1
+
+    if p2 is not None:
+        p.next = p2
+
+    return dummy.next  # 注意：不是返回指针 p，而是返回链表的头部，也就是 dummy.next
+```
+> 虚拟头结点  
+> 代码中用到了一个链表的算法题中是很常见的「虚拟头结点」技巧，也就是 dummy 节点。
+> 当遇到需要创造一条新链表的情况，可以使用虚拟头结点简化边界情况的处理。
+> 如果不使用 dummy 虚拟节点，代码会复杂一些，需要额外处理指针 p 为空的情况。
+> 而有了 dummy 节点这个占位符，可以避免处理空指针的情况，降低代码的复杂性。
+{: .prompt-info}
+
 [5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring)
 ```python
 """
@@ -254,6 +369,171 @@ def longestPalindrome(s: str) -> str:
 💡重点：
 """
 
+```
+
+<!-- endregion -->
+
+<!-- region -->
+
+## 滑动窗口
+
+滑动窗口可以归为快慢双指针，一快一慢两个指针前后相随，中间的部分就是窗口。滑动窗口算法技巧主要用来解决子数组问题，比如让你寻找符合某个条件的最长/最短子数组。
+
+与普通的快慢指针（嵌套循环，O（N^2））不同的是，滑动窗口（队列）维护的元素只进入/移出一次（指针 left, right 只增不减），所以复杂度为O(N)。算法的重点在于判断是否要把 left 移动。
+
+```python
+# 滑动窗口模板
+def sliding_window(s: str):
+    # 用合适的数据结构记录窗口中的数据，根据具体场景变通
+    # 比如说，我想记录窗口中元素出现的次数，就用 map
+    # 如果我想记录窗口中的元素和，就可以只用一个 int
+    window = set()
+
+    left, right = 0, 0
+    while right < len(s):
+        # c 是将移入窗口的字符
+        c = s[right]
+        window.add(c)
+        # 增大窗口
+        right += 1
+        # 进行窗口内数据的一系列更新
+        ...
+
+        # 判断左侧窗口是否要收缩
+        while left < right and window_needs_shrink(s, left, right):
+            # 把 s[left] 移出窗口
+            window.remove(s[left])
+            # 缩小窗口
+            left += 1
+            # 进行窗口内数据的一系列更新
+            ...
+```
+
+基于这个框架，遇到子串/子数组相关的题目，你只需要回答以下三个问题：
+
+1. 什么时候应该移动 right 扩大窗口？窗口加入字符时，应该更新哪些数据？
+
+2. 什么时候窗口应该暂停扩大，开始移动 left 缩小窗口？从窗口移出字符时，应该更新哪些数据？
+
+3. 什么时候应该更新结果？
+
+### 例题
+
+[3. 无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters)
+```python
+"""
+📖描述：给定一个字符串 s ，请你找出其中不含有重复字符的 最长 子串 的长度。
+🧪样例：
+    输入: s = "abcabcbb"
+    输出: 3 
+    解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。注意 "bca" 和 "cab" 也是正确答案。
+💡重点：滑动窗口最重要的是指针只增不减
+"""
+# 错误用法
+# 下面这种写法没有保证每个元素只处理一次（l递增，但r会回退），就是暴力的嵌套循环，复杂度为 O(N^2)
+def lengthOfLongestSubstring(s: str) -> int:
+    N = len(s)
+    ans = 0
+    for l in range(N):
+        substr = {s[l]}
+        for r in range(l + 1, N):
+            if s[r] not in substr:
+                substr.add(s[r])
+            else:
+                break
+        ans = max(ans, len(substr))
+    return ans
+
+# 正确用法 1
+# r只增不减：O(N), 23ms
+def lengthOfLongestSubstring(s: str) -> int:
+    N = len(s)
+    right, ans = 0, 0
+    for left in range(N):
+        substr = s[left:right]
+        while True and right < N:
+            if s[right] in substr:
+                break
+            else:
+                right += 1
+                substr = s[left:right]
+        ans = max(ans, len(substr))
+    return ans
+
+# 正确用法 2
+# window维护每个字符出现的次数, 删除 s[left] 直至 win[s[right]] <= 1, O(N), 76ms
+def lengthOfLongestSubstring(s: str) -> int:
+    win, ans = dict(), 0
+    left, right = 0, 0
+    while right < len(s):
+        win[s[right]] = win.get(s[right], 0) + 1
+        # 滑动左指针直到win[s[right]]<=1
+        while win[s[right]] > 1:
+            win[s[left]] -= 1
+            left += 1
+        ans = max(ans, right - left + 1)
+        right += 1
+    return ans
+```
+
+[567. 字符串的排列](https://leetcode.cn/problems/permutation-in-string)
+```python
+"""
+📖描述：给你两个字符串 s1 和 s2 ，写一个函数来判断 s2 是否包含 s1 的 排列。如果是，返回 true ；否则，返回 false 。
+🧪样例：
+    输入：s1 = "abb" s2 = "eidbabooo"
+    输出：true
+    解释：s2 包含 s1 的排列之一 ("bab").
+💡重点：
+"""
+
+# 错误解法
+# 暴力枚举，每次循环都重新计算Counter，时间复杂度 O(N^2)
+def checkInclusion(s1: str, s2: str) -> bool:
+    from collections import Counter
+
+    N, M = len(s1), len(s2)
+    ref = Counter(s1)
+    # 窗长始终为N
+    for i in range(M):
+        substr = s2[i: i + N]
+        win = Counter(substr)
+        if win == ref:
+            return True
+    return False
+
+# 正确解法
+# 不需要每次都重新计算，只需要更新 left 和 right 的计数，时间复杂度 O(N)
+def checkInclusion(s1: str, s2: str) -> bool:
+    N, M = len(s1), len(s2)
+    if N > M:
+        return False
+
+    ref = {}
+    for c in s1:
+        ref[c] = ref.get(c, 0) + 1
+
+    window = {}
+    for i in range(N):
+        window[s2[i]] = window.get(s2[i], 0) + 1
+
+    right = N
+    while right < M:
+        # print(window)
+        if window == ref:
+            return True
+        new = s2[right]
+        old = s2[right - N]
+        # 维护滑动窗
+        window[new] = window.get(new, 0) + 1
+        window[old] = window.get(old, 0) - 1
+        if window[old] == 0:
+            del window[old]
+        right += 1
+
+    if window == ref:
+        return True
+    return False
 ```
 
 <!-- endregion -->
@@ -333,7 +613,6 @@ def binary_search_recur(array, low, high, query):
 ### 例题
 
 [33. 搜索旋转排序数组](https://leetcode.cn/problems/search-in-rotated-sorted-array)
-
 ```python
 """
 📖描述：给定旋转后的数组 `nums` 和一个整数 `target`，如果 `nums` 中存在这个目标值 `target`，则返回它的下标，否则返回 `-1`。
@@ -393,6 +672,99 @@ def findClosestElements(arr: List[int], k: int, x: int) -> List[int]:
             left += 1
         remove_nums -= 1
     return arr[left:left + k]
+```
+
+[215. 数组中的第K个最大元素](https://leetcode.cn/problems/kth-largest-element-in-an-array)
+```python
+"""
+📖描述：
+    给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
+    请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
+    你必须设计并实现时间复杂度为 O(n) 的算法解决此问题。
+🧪样例：
+    输入: [3,2,1,5,6,4], k = 2
+    输出: 5
+
+    输入: [3,2,3,1,2,4,5,5,6], k = 4
+    输出: 4
+💡重点：
+"""
+class Solution:
+    def partition(self, nums: List[int], left: int, right: int) -> int:
+        """
+        在子数组 [left, right] 中随机选择一个基准元素 pivot
+        根据 pivot 重新排列子数组 [left, right]
+        重新排列后，<= pivot 的元素都在 pivot 的左侧，>= pivot 的元素都在 pivot 的右侧
+        返回 pivot 在重新排列后的 nums 中的下标
+        特别地，如果子数组的所有元素都等于 pivot，我们会返回子数组的中心下标，避免退化
+        """
+
+        # 1. 在子数组 [left, right] 中随机选择一个基准元素 pivot
+        i = random.randint(left, right)
+        pivot = nums[i]
+        # 把 pivot 与子数组第一个元素交换，避免 pivot 干扰后续划分，从而简化实现逻辑
+        nums[i], nums[left] = nums[left], nums[i]
+
+        # 2. 相向双指针遍历子数组 [left + 1, right]
+        # 循环不变量：在循环过程中，子数组的数据分布始终如下图
+        # [ pivot | <=pivot | 尚未遍历 | >=pivot ]
+        #   ^                 ^     ^         ^
+        #   left              i     j         right
+
+        i, j = left + 1, right
+        while True:
+            while i <= j and nums[i] < pivot:
+                i += 1
+            # 此时 nums[i] >= pivot
+
+            while i <= j and nums[j] > pivot:
+                j -= 1
+            # 此时 nums[j] <= pivot
+
+            if i >= j:
+                break
+
+            # 维持循环不变量
+            nums[i], nums[j] = nums[j], nums[i]
+            i += 1
+            j -= 1
+
+        # 循环结束后
+        # [ pivot | <=pivot | >=pivot ]
+        #   ^             ^   ^     ^
+        #   left          j   i     right
+
+        # 3. 把 pivot 与 nums[j] 交换，完成划分（partition）
+        # 为什么与 j 交换？
+        # 如果与 i 交换，可能会出现 i = right + 1 的情况，已经下标越界了，无法交换
+        # 另一个原因是如果 nums[i] > pivot，交换会导致一个大于 pivot 的数出现在子数组最左边，不是有效划分
+        # 与 j 交换，即使 j = left，交换也不会出错
+        nums[left], nums[j] = nums[j], nums[left]
+
+        # 交换后
+        # [ <=pivot | pivot | >=pivot ]
+        #               ^
+        #               j
+
+        # 返回 pivot 的下标
+        return j
+
+    def findKthLargest(self, nums: list[int], k: int) -> int:
+        n = len(nums)
+        target_index = n - k  # 第 k 大元素在升序数组中的下标是 n - k
+        left, right = 0, n - 1  # 闭区间
+        while True:
+            i = self.partition(nums, left, right)
+            if i == target_index:
+                # 找到第 k 大元素
+                return nums[i]
+            if i > target_index:
+                # 第 k 大元素在 [left, i - 1] 中
+                right = i - 1
+            else:
+                # 第 k 大元素在 [i + 1, right] 中
+                left = i + 1
+
 ```
 
 <!-- endregion -->
