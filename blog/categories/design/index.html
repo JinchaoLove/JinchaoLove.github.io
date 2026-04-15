@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-<link rel="canonical" href="https://jinchaoli.com/blog/exchange-homepage-and-about/">
+<link rel="canonical" href="https://jinchaoli.com/blog/categories/design/">
 
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,20 +19,20 @@ content="#1b1b1e">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
 <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
-<title>Exchange Homepage and About</title>
+<title>Design</title>
 <meta name="author" content="Jinchao Li">
 <meta name="description" content="Jinchao Li's Homepage">
 <meta name="keywords" content="jinchao li, 李锦超, cuhk, 香港中文大学, research, speech and natural language processing">
 
-<meta property="og:site_name" content="Exchange Homepage and About">
+<meta property="og:site_name" content="Design">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Exchange Homepage and About | Exchange Homepage and About">
-<meta property="og:url" content="https://jinchaoli.com/blog/exchange-homepage-and-about/">
+<meta property="og:title" content="Design | Design">
+<meta property="og:url" content="https://jinchaoli.com/blog/categories/design/">
 <meta property="og:description" content="Jinchao Li's Homepage">
 <meta property="og:locale" content="en">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Exchange Homepage and About">
+<meta name="twitter:title" content="Design">
 <meta name="twitter:description" content="Jinchao Li's Homepage">
 <meta name="twitter:site" content="@JinchaoLove">
 <meta name="twitter:creator" content="@JinchaoLove">
@@ -43,10 +43,10 @@ content="#1b1b1e">
         "@type": "Person",
         "name": "Jinchao Li"
       },
-      "url": "https://jinchaoli.com/blog/exchange-homepage-and-about/",
+      "url": "https://jinchaoli.com/blog/categories/design/",
       "@type": " BlogPosting",
       "description": "Jinchao Li's Homepage",
-      "headline": " Exchange Homepage and About ",
+      "headline": " Design ",
       
         "sameAs": ["https://github.com/JinchaoLove", "https://twitter.com/JinchaoLove", "https://scholar.google.com/citations?hl=en&user=0LWE_dkAAAAJ", "https://www.researchgate.net/profile/Jinchao-Li-3", "https://zhihu.com/people/jinchaoli"],
         
@@ -528,11 +528,14 @@ data-bs-original-title="Hide/show sidebar"
 <span>
 <a href="/blog/">Blog</a>
 </span>
-<span>Exchange Homepage and About</span>
+<span>
+<a href="/blog/categories/">Categories</a>
+</span>
+<span>Design</span>
 </nav>
 
 <div id="topbar-title">
-Exchange Homepage and About
+Design
 </div>
 </div>
 <div class="d-flex align-items-center">
@@ -616,7 +619,7 @@ data-bs-original-title="Hide/show panel"
 <main
 aria-label="Main Content"
 id="content-wrapper"
-class="col-10">
+class="col-12 px-xl-1">
 
 
 
@@ -624,385 +627,56 @@ class="col-10">
 
 
 
-<article class="px-1">
-<header>
-<h1 data-toc-skip>Exchange Homepage and About</h1>
-
-<div class="post-meta text-muted">
-<div class="d-flex justify-content-between">
-<span class="post-meta-mindmap-link">
-<a href="/mindmap/exchange-homepage-and-about/" target="_blank">
-<i class="fa fa-external-link" aria-hidden="true"></i>
-View mindmap of this page
-</a>
-</span>
-
-
-
-
-<span
-class="readtime"
-data-bs-toggle="tooltip"
-data-bs-placement="bottom"
-title="1 min read"
->About
-<em>344</em>
-words</span>
-</div>
-<div class="d-flex justify-content-between">
-
-<span>
-By
-<em>
-<a href="https://github.com/JinchaoLove/">Jinchao Li</a>
-</em>
-</span>
-<span>
-
-Posted
+<div id="page-category">
+<h1 class="ps-lg-2">
+<i class="far fa-folder-open fa-fw text-muted"></i>
+Design
+<span class="lead text-muted ps-2">3</span>
+</h1>
+<ul class="content ps-0">
+<li class="d-flex justify-content-between px-md-3">
+<a href="/blog/set-waline-with-tidb/">Configure Waline with TiDB</a>
+<span class="dash flex-grow-1"></span>
 
 <time
-data-ts="1690077600"
-data-df="ll"
-data-bs-toggle="tooltip" data-bs-placement="bottom"
->
-Jul 23, 2023
-</time>
-
-| Updated
-
-<time
-data-ts="1776238801"
-data-df="ll"
-data-bs-toggle="tooltip" data-bs-placement="bottom"
->
-Apr 15, 2026
-</time>
-</span>
-</div>
-
-</div>
-
-</header>
-<div class="content">
-<p>To change the default site homepage as <code class="language-plaintext highlighter-rouge">About</code>, and the original paginator homepage as <code class="language-plaintext highlighter-rouge">Blog</code>. It may be difficult since <a href="https://jekyllrb.com/docs/pagination/">pagination</a> only works within <code class="language-plaintext highlighter-rouge">index.html</code>, see similar <a href="https://github.com/cotes2020/jekyll-theme-chirpy/issues/711">issue</a>.</p>
-<ol>
-<li>
-<p>Modify the front matters with permalink:</p>
-<ul>
-<li>Create a new folder, e.g. <code class="language-plaintext highlighter-rouge">/blog/</code>, and move <code class="language-plaintext highlighter-rouge">index.html</code> inside it.</li>
-<li>Add <code class="language-plaintext highlighter-rouge">permalink: /</code> in the front matter of <code class="language-plaintext highlighter-rouge">/_tabs/about.md</code>.</li>
-</ul>
-</li>
-<li>
-<p>Add <code class="language-plaintext highlighter-rouge">paginate_path</code> in <code class="language-plaintext highlighter-rouge">/_config.yml</code> to point to the folder <code class="language-plaintext highlighter-rouge">/blog/</code></p>
-<div class="language-diff highlighter-rouge"><div class="code-header">
-<span data-label-text="Diff"><i class="fas fa-code fa-fw small"></i></span>
-<div class="code-header-fold-trigger"></div><div class="code-header-buttons"><button class="clipboard-btn" aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre> + paginate_path: "/blog/page:num/"
- ...
- - permalink: /posts/:title/
- + permalink: /blog/:title/
-</pre></td></tr></tbody></table></code></div></div>
-</li>
-<li>
-<p>Add <code class="language-plaintext highlighter-rouge">BLOG</code> as a new tab or navigation item, refer to this <a href="https://github.com/cotes2020/jekyll-theme-chirpy/issues/855">issue</a>.</p>
-<ul>
-<li>
-<p>Modify <code class="language-plaintext highlighter-rouge">/_includes/sidebar.html</code></p>
-<div class="language-html highlighter-rouge"><div class="code-header">
-<span data-label-text="HTML"><i class="fas fa-code fa-fw small"></i></span>
-<div class="code-header-fold-trigger"></div><div class="code-header-buttons"><button class="clipboard-btn" aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-</pre></td><td class="rouge-code"><pre>  <span class="c">&lt;!-- home --&gt;</span>
-  - <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item{% if page.layout == 'home' %}{{ "</span> <span class="na">active</span> <span class="err">"</span> <span class="err">}}{%</span> <span class="na">endif</span> <span class="err">%}"</span><span class="nt">&gt;</span>
-  + <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item{% if page.url == '/' | relative_url %}{{ "</span> <span class="na">active</span> <span class="err">"</span> <span class="err">}}{%</span> <span class="na">endif</span> <span class="err">%}"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/' | relative_url }}"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa-fw fas fa-home"</span><span class="nt">&gt;&lt;/i&gt;</span>
-      <span class="nt">&lt;span&gt;</span>{{ site.data.locales[include.lang].tabs.home | upcase }}<span class="nt">&lt;/span&gt;</span>
-  <span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;/li&gt;</span>
-  + <span class="c">&lt;!-- blog --&gt;</span>
-  + <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item{% if page.url == '/blog/' | relative_url %}{{ "</span> <span class="na">active</span> <span class="err">"</span> <span class="err">}}{%</span> <span class="na">endif</span> <span class="err">%}"</span><span class="nt">&gt;</span>
-  +   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{ '/blog/' | relative_url }}"</span> <span class="na">class=</span><span class="s">"nav-link"</span><span class="nt">&gt;</span>
-  +     <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"fa-fw fas fa-pen"</span><span class="nt">&gt;&lt;/i&gt;</span> 
-  +     <span class="nt">&lt;span&gt;</span>BLOG<span class="nt">&lt;/span&gt;</span>
-  +   <span class="nt">&lt;/a&gt;</span>
-  + <span class="nt">&lt;/li&gt;</span>
-  <span class="c">&lt;!-- the real tabs --&gt;</span>
-  {% for tab in site.tabs %}
-  +     {% if tab.url == '/' | relative_url %}{% continue %}{% endif %}
-</pre></td></tr></tbody></table></code></div></div>
-</li>
-<li>
-<p>Modify <code class="language-plaintext highlighter-rouge">/_includes/topbar.html</code></p>
-<div class="language-html highlighter-rouge"><div class="code-header">
-<span data-label-text="HTML"><i class="fas fa-code fa-fw small"></i></span>
-<div class="code-header-fold-trigger"></div><div class="code-header-buttons"><button class="clipboard-btn" aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-</pre></td><td class="rouge-code"><pre>  - {% if paths.size == 0 or page.layout == 'home' %}
-  -   <span class="c">&lt;!-- index page --&gt;</span>
-  + {% if paths.size == 0 %}
-  +   <span class="c">&lt;!-- home page --&gt;</span>
-  ...
-  -           {% elsif page.layout == 'category' or page.layout == 'tag' %}
-  +           {% elsif page.layout == 'category' or page.layout == 'tag' or page.layout == 'home' %}
-</pre></td></tr></tbody></table></code></div></div>
-</li>
-</ul>
-</li>
-<li>
-<p>Replace <code class="language-plaintext highlighter-rouge">page.layout == 'home'</code> with <code class="language-plaintext highlighter-rouge">page.url == '/' or page.url == site.baseurl</code> if needed, including <code class="language-plaintext highlighter-rouge">_layouts/page.html</code>, <code class="language-plaintext highlighter-rouge">_includes/head.html</code>, <code class="language-plaintext highlighter-rouge">/_includes/sidebar.html</code>, and <code class="language-plaintext highlighter-rouge">_includes/topbar.html</code>.</p>
-</li>
-<li>
-<p>(Optional) Modify your style in <code class="language-plaintext highlighter-rouge">/_tabs/about.md</code>. For example, this demo we disable <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">post-meta</code> and <code class="language-plaintext highlighter-rouge">tails</code> in the homepage by assigning bool values <code class="language-plaintext highlighter-rouge">has_title</code>, <code class="language-plaintext highlighter-rouge">has_meta</code> and <code class="language-plaintext highlighter-rouge">has_tail</code> to skip related part in <code class="language-plaintext highlighter-rouge">_layouts/page.html</code> and <code class="language-plaintext highlighter-rouge">_layouts/post.html</code>.</p>
-</li>
-</ol>
-</div>
-<div class="post-tail-wrapper text-muted">
-
-<div class="post-meta mb-3">
-<i class="far fa-folder-open fa-fw me-1"></i>
-<a href="/blog/categories/blogging">Blogging</a>,
-<a href="/blog/categories/design">Design</a>
-</div>
-
-<div class="post-tags mb-3">
-<i class="fa fa-tags fa-fw me-1"></i>
-<a
-href="/blog/tags/homepage"
-class="tag-chip"
->homepage</a>
-</div>
-<div
-class="
-post-tail-bottom
-d-flex justify-content-between align-items-center pb-2
-"
->
-<div class="license-wrapper">
-This post is licensed under
-<a href="https://creativecommons.org/licenses/by/4.0/">
-CC BY 4.0
-</a>
-by the author.
-</div>
-
-<div class="share-wrapper d-flex align-items-center">
-<span class="share-label text-muted">Share</span>
-<span class="share-icons">
-<a
-href="https://twitter.com/intent/tweet?text=Exchange%20Homepage%20and%20About%20-%20Jinchao%20Li&url=https%3A%2F%2Fjinchaoli.com%2Fblog%2Fexchange-homepage-and-about%2F"
-target="_blank"
-rel="noopener"
-data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
-<i
-class="fa-brands fa-square-x-twitter"
-></i>
-</a>
-<a
-href="https://www.facebook.com/sharer/sharer.php?title=Exchange%20Homepage%20and%20About%20-%20Jinchao%20Li&u=https%3A%2F%2Fjinchaoli.com%2Fblog%2Fexchange-homepage-and-about%2F"
-target="_blank"
-rel="noopener"
-data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
-<i
-class="fab fa-facebook-square"
-style="color: #316ff6;"
-></i>
-</a>
-<a
-href="https://t.me/share/url?url=https%3A%2F%2Fjinchaoli.com%2Fblog%2Fexchange-homepage-and-about%2F&text=Exchange%20Homepage%20and%20About%20-%20Jinchao%20Li"
-target="_blank"
-rel="noopener"
-data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
-<i
-class="fab fa-telegram"
-style="color: #0088cc;"
-></i>
-</a>
-<button
-id="copy-link"
-aria-label="Copy link"
-class="btn small"
-data-bs-toggle="tooltip"
-data-bs-placement="top"
-title="Copy link"
-data-title-succeed="Link copied successfully!">
-<i class="fa-fw fas fa-link pe-none fs-6"></i>
-</button>
-</span>
-</div>
-</div>
-
-</div>
-
-</article>
-</main>
-
-<aside
-aria-label="Panel"
-id="panel-wrapper"
-class="col-2 ps-2 mb-5 text-muted">
-<div class="access">
-
-<section id="access-lastmod">
-<h2 class="panel-heading">Recently Updated</h2>
-<ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
-<li class="text-truncate lh-lg">
-<a href="/blog/python/">Python Basics</a>
-</li>
-<li class="text-truncate lh-lg">
-<a href="/blog/basic-algorithm/">基础算法题解模板</a>
-</li>
-<li class="text-truncate lh-lg">
-<a href="/blog/todo/">年度阅读计划</a>
-</li>
-</ul>
-</section>
-
-</div>
-<div class="access">
-
-<section>
-<h2 class="panel-heading">Trending Tags</h2>
-<div class="d-flex flex-wrap mt-3 mb-1 me-3">
-<a class="tag-chip" href="/blog/tags/homepage/">homepage</a>
-<a class="tag-chip" href="/blog/tags/algorithm/">algorithm</a>
-<a class="tag-chip" href="/blog/tags/demo/">demo</a>
-</div>
-</section>
-</div>
-</aside>
-</div>
-
-<div class="row">
-<div id="tail-wrapper" class="col-12 col-xl-10 px-md-3">
-
-
-
-
-<aside id="related-posts" aria-labelledby="related-label">
-<h3 class="mb-4" id="related-label">Further Reading</h3>
-<nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
-<article class="col">
-<a href="/blog/set-waline-with-tidb/" class="post-preview card h-100">
-<div class="card-body">
-
-<time
+class="text-muted small text-nowrap"
 data-ts="1753585200"
 data-df="ll"
 >
 Jul 27, 2025
 </time>
-<h4 class="pt-0 my-2">Configure Waline with TiDB</h4>
-<div class="text-muted">
-<p>Why Waline + TiDB?
-Waline is a lightweight, open-source, privacy-focused, and self-hosted comment system with backend UI and rich features, and TiDB Cloud offers a scalable, MySQL-compatible datab...</p>
-</div>
-</div>
-</a>
-</article>
-<article class="col">
-<a href="/blog/customize-jekyll-chirpy/" class="post-preview card h-100">
-<div class="card-body">
+</li>
+<li class="d-flex justify-content-between px-md-3">
+<a href="/blog/exchange-homepage-and-about/">Exchange Homepage and About</a>
+<span class="dash flex-grow-1"></span>
 
 <time
+class="text-muted small text-nowrap"
 data-ts="1690077600"
 data-df="ll"
 >
 Jul 23, 2023
 </time>
-<h4 class="pt-0 my-2">Customize Your Jekyll Chirpy Theme</h4>
-<div class="text-muted">
-<p>Jekyll Chirpy Theme is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official wiki to realize ...</p>
-</div>
-</div>
-</a>
-</article>
-<article class="col">
-<a href="/blog/text-and-typography/" class="post-preview card h-100">
-<div class="card-body">
+</li>
+<li class="d-flex justify-content-between px-md-3">
+<a href="/blog/customize-jekyll-chirpy/">Customize Your Jekyll Chirpy Theme</a>
+<span class="dash flex-grow-1"></span>
 
 <time
-data-ts="1565235180"
+class="text-muted small text-nowrap"
+data-ts="1690077600"
 data-df="ll"
 >
-Aug 8, 2019
+Jul 23, 2023
 </time>
-<h4 class="pt-0 my-2">Text and Typography</h4>
-<div class="text-muted">
-<p>Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.</p>
+</li>
+</ul>
 </div>
+</main>
+
 </div>
-</a>
-</article>
-</nav>
-</aside>
 
-
-<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
-<a
-href="/blog/customize-jekyll-chirpy/"
-class="btn btn-outline-primary"
-aria-label="Older"
->
-<p>Customize Your Jekyll Chirpy Theme</p>
-</a>
-<a
-href="/blog/set-waline-with-tidb/"
-class="btn btn-outline-primary"
-aria-label="Newer"
->
-<p>Configure Waline with TiDB</p>
-</a>
-</nav>
-
-<div id="waline"></div>
-<script type="module">
-  import { init } from "/assets/lib/waline/waline.js";
-
-  init({
-    el: '#waline',
-    serverURL: "https://comment.jinchaoli.com",
-    reaction: [
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_heart.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_thumbsup.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_clap.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_grin.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_doubt.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_sleep.gif',
-    ],
-    search: false,
-    pageview: true,
-    lang: 'en'
-  });
-</script>
-</div>
-</div>
+<div class="content-bottom-spacer"></div>
 
 <div id="search-result-wrapper" class="d-flex justify-content-center unloaded">
 <div class="col-11 content">
