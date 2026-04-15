@@ -211,9 +211,10 @@ def two_pointers(arr):
 [88. 合并两个有序数组](https://leetcode.cn/problems/merge-sorted-array)
 ```python
 """
-📖描述：给你两个按 非递减顺序 排列的整数数组 `nums1` 和 `nums2`，另有两个整数 `m` 和 `n`，分别表示 `nums1` 和 `nums2` 中的元素数目。请你 合并 `nums2` 到 `nums1` 中，使合并后的数组同样按 非递减顺序 排列。
+📖描述：给你两个按 非递减顺序 排列的整数数组 `nums1` 和 `nums2`，另有两个整数 `m` 和 `n`，分别表示 `nums1` 和 `nums2` 中的元素数目。
+    请你 合并 `nums2` 到 `nums1` 中，使合并后的数组同样按 非递减顺序 排列。
 🧪样例：输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3；输出：[1,2,2,3,5,6]
-💡重点：从后往前操作可以直接覆盖
+💡重点：从后往前操作可以直接覆盖。
 """
 
 def merge(nums1: List[int], m: int, nums2: List[int], n: int) -> None:
@@ -302,8 +303,7 @@ def mergeTwoLists(list1: ListNode, list2: ListNode) -> ListNode:
 > 虚拟头结点  
 > 代码中用到了一个链表的算法题中是很常见的「虚拟头结点」技巧，也就是 dummy 节点。
 > 当遇到需要创造一条新链表的情况，可以使用虚拟头结点简化边界情况的处理。
-> 如果不使用 dummy 虚拟节点，代码会复杂一些，需要额外处理指针 p 为空的情况。
-> 而有了 dummy 节点这个占位符，可以避免处理空指针的情况，降低代码的复杂性。
+> 如果不使用 dummy 虚拟节点，代码会复杂一些，需要额外处理指针 p 为空的情况。而有了 dummy 节点这个占位符，可以避免处理空指针的情况，降低代码的复杂性。
 {: .prompt-info}
 
 [5. 最长回文子串](https://leetcode.cn/problems/longest-palindromic-substring)

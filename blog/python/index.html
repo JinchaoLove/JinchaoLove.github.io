@@ -1,7 +1,5 @@
 <!doctype html>
 
-
-
 <html lang="en">
 <head>
 <link rel="canonical" href="https://jinchaoli.com/blog/python/">
@@ -645,7 +643,7 @@ class="col-10">
 
 <div class="post-meta text-muted">
 <div class="d-flex justify-content-between">
-<span style="font-weight: 500;">
+<span class="post-meta-mindmap-link">
 <a href="/mindmap/python/" target="_blank">
 <i class="fa fa-external-link" aria-hidden="true"></i>
 View mindmap of this page
@@ -1286,10 +1284,10 @@ class="col-2 ps-2 mb-5 text-muted">
 <h2 class="panel-heading">Recently Updated</h2>
 <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
 <li class="text-truncate lh-lg">
-<a href="/blog/python/">Python Basics</a>
+<a href="/blog/basic-algorithm/">基础算法题解模板</a>
 </li>
 <li class="text-truncate lh-lg">
-<a href="/blog/basic-algorithm/">基础算法题解模板</a>
+<a href="/blog/python/">Python Basics</a>
 </li>
 <li class="text-truncate lh-lg">
 <a href="/blog/getting-started/">Getting Started</a>
@@ -1512,66 +1510,92 @@ src="/assets/lib/mathjax/tex-chtml.js"></script>
 
 
 <script type="text/javascript">
-  $(document).ready(function () {
-    $('.mode-toggle').click(function () {
-      let theme = localStorage.getItem('theme');
-      if (modeToggle.isDarkMode || (!modeToggle.hasMode && modeToggle.isSysDarkPrefer)) {
-        theme = 'dark';
-      } else {
-        theme = 'light';
-      }
-      console.log('theme:' + theme);
+  /**
+   * Jupyter Notebook theme switcher (dual-iframe, height-auto approach).
+   *
+   * Strategy:
+   *  - Both iframes start display:none.
+   *  - On DOMContentLoaded (or theme toggle), we show the active iframe and
+   *    resize it to fit its content.
+   *  - Height is measured AFTER the iframe is visible, using a small retry
+   *    loop so we handle slow-loading iframes reliably.
+   */
+  (function () {
+    function getCurrentTheme() {
+      var stored = sessionStorage.getItem('mode');
+      if (stored === 'dark')  return 'dark';
+      if (stored === 'light') return 'light';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
 
-      // Set jupyter notebooks themes.
-      let jupyterNotebooks = document.getElementsByClassName('jupyter-notebook-iframe-container');
-      for (let i = 0; i < jupyterNotebooks.length; i++) {
-        let iframeDocument = jupyterNotebooks[i].getElementsByTagName('iframe')[0].contentWindow.document;
-        let bodyElement = iframeDocument.body;
-        let headElement = iframeDocument.head;
+    /**
+     * Fit an iframe's height to its content document.
+     * Retries up to `maxTries` times with `interval` ms between attempts,
+     * because offsetHeight can be 0 right after display:block is set.
+     */
+    function fitHeight(iframe, tries, maxTries, interval) {
+      tries = tries || 0;
+      maxTries = maxTries || 20;
+      interval = interval || 100;
 
-        // Remove existing theme link elements
-        let existingLinks = headElement.querySelectorAll('link[data-jp-theme-link]');
-        for (let link of existingLinks) {
-          headElement.removeChild(link);
-        }
-
-        // Get original style-sheets
-        let styleElements = headElement.querySelectorAll('style');
-        let variablesElement;
-        for (let style of styleElements) {
-          if (style.innerHTML.includes('The following CSS variables define the main, public API for styling JupyterLab.')) {
-            variablesElement = style;
-            break;
+      try {
+        var doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (!doc || doc.readyState !== 'complete') {
+          // Not loaded yet – attach a one-time load listener instead
+          if (tries === 0) {
+            iframe.addEventListener('load', function onLoad() {
+              iframe.removeEventListener('load', onLoad);
+              fitHeight(iframe, 0, maxTries, interval);
+            });
           }
+          return;
         }
-        // console.log(styleElements);
-
-        // New style-sheets
-        const cssLink = document.createElement('link');
-        cssLink.setAttribute('data-jp-theme-link', '');
-        cssLink.rel = 'stylesheet';
-        cssLink.type = 'text/css';
-
-        if (theme == 'dark') {
-          cssLink.href = '/assets/css/jupyter-dark.css';
-          bodyElement.setAttribute('data-jp-theme-light', 'false');
-          bodyElement.setAttribute('data-jp-theme-name', 'JupyterLab Dark');
-        } else {
-          cssLink.href = '/assets/css/jupyter-light.css';
-          bodyElement.setAttribute('data-jp-theme-light', 'true');
-          bodyElement.setAttribute('data-jp-theme-name', 'JupyterLab Light');
+        // Use body.offsetHeight (content height) not scrollHeight/documentElement
+        // which equals the iframe viewport height when html/body have no explicit height.
+        var body = doc.body;
+        var main = doc.querySelector('main') || body;
+        // offsetHeight measures the actual rendered content, not the viewport
+        var h = main.offsetHeight || body.offsetHeight;
+        if (h > 20) {
+          iframe.style.height = (h + 20) + 'px';
+          return;
         }
+      } catch (e) { return; }
 
-        // Import the cssLink
-        if (variablesElement) {
-          // variablesElement.insertAdjacentElement('beforebegin', cssLink);
-          variablesElement.insertAdjacentElement('afterend', cssLink);
-        } else {
-          headElement.appendChild(cssLink);
-        }
+      // scrollHeight not ready yet – retry
+      if (tries < maxTries) {
+        setTimeout(function () { fitHeight(iframe, tries + 1, maxTries, interval); }, interval);
+      }
+    }
+
+    /** Show the correct iframe, hide the other. */
+    function applyTheme(theme) {
+      document.querySelectorAll('.jupyter-notebook').forEach(function (wrapper) {
+        var lightFrame = wrapper.querySelector('.jupyter-iframe-light');
+        var darkFrame  = wrapper.querySelector('.jupyter-iframe-dark');
+        if (!lightFrame || !darkFrame) return;
+
+        var showFrame = theme === 'dark' ? darkFrame  : lightFrame;
+        var hideFrame = theme === 'dark' ? lightFrame : darkFrame;
+
+        hideFrame.style.display = 'none';
+        showFrame.style.display = 'block';
+
+        // Measure height now that the iframe is visible
+        fitHeight(showFrame);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      applyTheme(getCurrentTheme());
+    });
+
+    window.addEventListener('message', function (event) {
+      if (event.data && event.data.direction === 'mode-toggle') {
+        applyTheme(event.data.message);
       }
     });
-  });
+  })();
 </script>
 </body>
 </html>

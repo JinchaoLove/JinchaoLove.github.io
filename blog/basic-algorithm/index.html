@@ -1,7 +1,5 @@
 <!doctype html>
 
-
-
 <html lang="en">
 <head>
 <link rel="canonical" href="https://jinchaoli.com/blog/basic-algorithm/">
@@ -645,7 +643,7 @@ class="col-10">
 
 <div class="post-meta text-muted">
 <div class="d-flex justify-content-between">
-<span style="font-weight: 500;">
+<span class="post-meta-mindmap-link">
 <a href="/mindmap/basic-algorithm/" target="_blank">
 <i class="fa fa-external-link" aria-hidden="true"></i>
 View mindmap of this page
@@ -661,7 +659,7 @@ data-bs-toggle="tooltip"
 data-bs-placement="bottom"
 title="36 min read"
 >About
-<em>6552</em>
+<em>6554</em>
 words</span>
 </div>
 <div class="d-flex justify-content-between">
@@ -687,11 +685,11 @@ Aug 22, 2025
 | Updated
 
 <time
-data-ts="1764240036"
+data-ts="1764345332"
 data-df="ll"
 data-bs-toggle="tooltip" data-bs-placement="bottom"
 >
-Nov 27, 2025
+Nov 28, 2025
 </time>
 </span>
 </div>
@@ -1008,10 +1006,12 @@ Nov 27, 2025
 52
 53
 54
+55
 </pre></td><td class="rouge-code"><pre><span class="sh">"""</span><span class="s">
-📖描述：给你两个按 非递减顺序 排列的整数数组 `nums1` 和 `nums2`，另有两个整数 `m` 和 `n`，分别表示 `nums1` 和 `nums2` 中的元素数目。请你 合并 `nums2` 到 `nums1` 中，使合并后的数组同样按 非递减顺序 排列。
+📖描述：给你两个按 非递减顺序 排列的整数数组 `nums1` 和 `nums2`，另有两个整数 `m` 和 `n`，分别表示 `nums1` 和 `nums2` 中的元素数目。
+    请你 合并 `nums2` 到 `nums1` 中，使合并后的数组同样按 非递减顺序 排列。
 🧪样例：输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3；输出：[1,2,2,3,5,6]
-💡重点：从后往前操作可以直接覆盖
+💡重点：从后往前操作可以直接覆盖。
 </span><span class="sh">"""</span>
 
 <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">nums1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">m</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">nums2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
@@ -1131,8 +1131,7 @@ Nov 27, 2025
 <p>虚拟头结点 <br/>
 代码中用到了一个链表的算法题中是很常见的「虚拟头结点」技巧，也就是 dummy 节点。<br/>
 当遇到需要创造一条新链表的情况，可以使用虚拟头结点简化边界情况的处理。<br/>
-如果不使用 dummy 虚拟节点，代码会复杂一些，需要额外处理指针 p 为空的情况。<br/>
-而有了 dummy 节点这个占位符，可以避免处理空指针的情况，降低代码的复杂性。</p>
+如果不使用 dummy 虚拟节点，代码会复杂一些，需要额外处理指针 p 为空的情况。而有了 dummy 节点这个占位符，可以避免处理空指针的情况，降低代码的复杂性。</p>
 </blockquote>
 <p><a href="https://leetcode.cn/problems/longest-palindromic-substring">5. 最长回文子串</a></p>
 <div class="language-python highlighter-rouge"><div class="code-header">
@@ -2284,10 +2283,10 @@ class="col-2 ps-2 mb-5 text-muted">
 <h2 class="panel-heading">Recently Updated</h2>
 <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
 <li class="text-truncate lh-lg">
-<a href="/blog/python/">Python Basics</a>
+<a href="/blog/basic-algorithm/">基础算法题解模板</a>
 </li>
 <li class="text-truncate lh-lg">
-<a href="/blog/basic-algorithm/">基础算法题解模板</a>
+<a href="/blog/python/">Python Basics</a>
 </li>
 <li class="text-truncate lh-lg">
 <a href="/blog/getting-started/">Getting Started</a>
@@ -2544,66 +2543,92 @@ src="/assets/lib/mathjax/tex-chtml.js"></script>
 
 
 <script type="text/javascript">
-  $(document).ready(function () {
-    $('.mode-toggle').click(function () {
-      let theme = localStorage.getItem('theme');
-      if (modeToggle.isDarkMode || (!modeToggle.hasMode && modeToggle.isSysDarkPrefer)) {
-        theme = 'dark';
-      } else {
-        theme = 'light';
-      }
-      console.log('theme:' + theme);
+  /**
+   * Jupyter Notebook theme switcher (dual-iframe, height-auto approach).
+   *
+   * Strategy:
+   *  - Both iframes start display:none.
+   *  - On DOMContentLoaded (or theme toggle), we show the active iframe and
+   *    resize it to fit its content.
+   *  - Height is measured AFTER the iframe is visible, using a small retry
+   *    loop so we handle slow-loading iframes reliably.
+   */
+  (function () {
+    function getCurrentTheme() {
+      var stored = sessionStorage.getItem('mode');
+      if (stored === 'dark')  return 'dark';
+      if (stored === 'light') return 'light';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
 
-      // Set jupyter notebooks themes.
-      let jupyterNotebooks = document.getElementsByClassName('jupyter-notebook-iframe-container');
-      for (let i = 0; i < jupyterNotebooks.length; i++) {
-        let iframeDocument = jupyterNotebooks[i].getElementsByTagName('iframe')[0].contentWindow.document;
-        let bodyElement = iframeDocument.body;
-        let headElement = iframeDocument.head;
+    /**
+     * Fit an iframe's height to its content document.
+     * Retries up to `maxTries` times with `interval` ms between attempts,
+     * because offsetHeight can be 0 right after display:block is set.
+     */
+    function fitHeight(iframe, tries, maxTries, interval) {
+      tries = tries || 0;
+      maxTries = maxTries || 20;
+      interval = interval || 100;
 
-        // Remove existing theme link elements
-        let existingLinks = headElement.querySelectorAll('link[data-jp-theme-link]');
-        for (let link of existingLinks) {
-          headElement.removeChild(link);
-        }
-
-        // Get original style-sheets
-        let styleElements = headElement.querySelectorAll('style');
-        let variablesElement;
-        for (let style of styleElements) {
-          if (style.innerHTML.includes('The following CSS variables define the main, public API for styling JupyterLab.')) {
-            variablesElement = style;
-            break;
+      try {
+        var doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (!doc || doc.readyState !== 'complete') {
+          // Not loaded yet – attach a one-time load listener instead
+          if (tries === 0) {
+            iframe.addEventListener('load', function onLoad() {
+              iframe.removeEventListener('load', onLoad);
+              fitHeight(iframe, 0, maxTries, interval);
+            });
           }
+          return;
         }
-        // console.log(styleElements);
-
-        // New style-sheets
-        const cssLink = document.createElement('link');
-        cssLink.setAttribute('data-jp-theme-link', '');
-        cssLink.rel = 'stylesheet';
-        cssLink.type = 'text/css';
-
-        if (theme == 'dark') {
-          cssLink.href = '/assets/css/jupyter-dark.css';
-          bodyElement.setAttribute('data-jp-theme-light', 'false');
-          bodyElement.setAttribute('data-jp-theme-name', 'JupyterLab Dark');
-        } else {
-          cssLink.href = '/assets/css/jupyter-light.css';
-          bodyElement.setAttribute('data-jp-theme-light', 'true');
-          bodyElement.setAttribute('data-jp-theme-name', 'JupyterLab Light');
+        // Use body.offsetHeight (content height) not scrollHeight/documentElement
+        // which equals the iframe viewport height when html/body have no explicit height.
+        var body = doc.body;
+        var main = doc.querySelector('main') || body;
+        // offsetHeight measures the actual rendered content, not the viewport
+        var h = main.offsetHeight || body.offsetHeight;
+        if (h > 20) {
+          iframe.style.height = (h + 20) + 'px';
+          return;
         }
+      } catch (e) { return; }
 
-        // Import the cssLink
-        if (variablesElement) {
-          // variablesElement.insertAdjacentElement('beforebegin', cssLink);
-          variablesElement.insertAdjacentElement('afterend', cssLink);
-        } else {
-          headElement.appendChild(cssLink);
-        }
+      // scrollHeight not ready yet – retry
+      if (tries < maxTries) {
+        setTimeout(function () { fitHeight(iframe, tries + 1, maxTries, interval); }, interval);
+      }
+    }
+
+    /** Show the correct iframe, hide the other. */
+    function applyTheme(theme) {
+      document.querySelectorAll('.jupyter-notebook').forEach(function (wrapper) {
+        var lightFrame = wrapper.querySelector('.jupyter-iframe-light');
+        var darkFrame  = wrapper.querySelector('.jupyter-iframe-dark');
+        if (!lightFrame || !darkFrame) return;
+
+        var showFrame = theme === 'dark' ? darkFrame  : lightFrame;
+        var hideFrame = theme === 'dark' ? lightFrame : darkFrame;
+
+        hideFrame.style.display = 'none';
+        showFrame.style.display = 'block';
+
+        // Measure height now that the iframe is visible
+        fitHeight(showFrame);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      applyTheme(getCurrentTheme());
+    });
+
+    window.addEventListener('message', function (event) {
+      if (event.data && event.data.direction === 'mode-toggle') {
+        applyTheme(event.data.message);
       }
     });
-  });
+  })();
 </script>
 </body>
 </html>
