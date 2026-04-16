@@ -487,10 +487,29 @@ docs[i].content = htmlToPlainText(docs[i].content).trim();
   }
 
 
-  // Document ready
+  // Document ready — lazy-load search only when user interacts with it
 
   jtd.onReady(function(){
-    initSearch();
+    var searchTrigger = document.getElementById('search-trigger');
+    var searchInput   = document.getElementById('search-input');
+    var initialized   = false;
+
+    function lazyInitSearch() {
+      if (!initialized) {
+        initialized = true;
+        initSearch();
+      }
+    }
+
+    if (searchTrigger) searchTrigger.addEventListener('click', lazyInitSearch);
+    if (searchInput)   searchInput.addEventListener('focus', lazyInitSearch);
+
+    // Support keyboard shortcut ⌘/⌃ + k
+    document.addEventListener('keydown', function(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        lazyInitSearch();
+      }
+    });
   });
 
 })(window.jtd = window.jtd || {});

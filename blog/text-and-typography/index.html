@@ -63,7 +63,8 @@ content="#1b1b1e">
 <link rel="stylesheet" href="/assets/lib/fontawesome-free/css/all.min.css">
 <link rel="stylesheet" href="/assets/css/theme.css">
 
-<link rel="stylesheet" href="/assets/lib/tocbot/tocbot.css">
+<link rel="stylesheet" href="/assets/lib/tocbot/tocbot.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/assets/lib/tocbot/tocbot.css"></noscript>
 
 <link
 defer
@@ -71,11 +72,13 @@ rel="stylesheet"
 href="/assets/lib/loading-attribute-polyfill/loading-attribute-polyfill.min.css">
 
 <link
-defer
 rel="stylesheet"
-href="/assets/lib/magnific-popup/magnific-popup.css">
+href="/assets/lib/magnific-popup/magnific-popup.css"
+media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/assets/lib/magnific-popup/magnific-popup.css"></noscript>
 
-<link rel="stylesheet" href="/assets/lib/waline/waline.css">
+<link rel="stylesheet" href="/assets/lib/waline/waline.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/assets/lib/waline/waline.css"></noscript>
 
 
 <script type="text/javascript" defer>
@@ -332,22 +335,15 @@ style="color: #ee802f;"
 </a>
 </li>
 
-</ul>
-<div class="blog-wrapper d-flex flex-wrap align-items-center w-100">
-<div class="nav-buttons">
-<a
-id="nav-blog"
-class="nav-icon"
-href="/blog/"
-title=""
-data-bs-toggle="tooltip"
-data-bs-placement="bottom"
-aria-label="Blog"
-data-bs-original-title="Blog"
-role="button"
->
+<li class="nav-item active">
+<a href="/blog/" class="nav-link">
 <i class="fa-fw fas fa-edit"></i>
+<span>BLOG</span>
 </a>
+</li>
+</ul>
+<div class="blog-wrapper active d-flex flex-wrap align-items-center w-100">
+<div class="nav-buttons">
 <a
 id="nav-categories"
 class="nav-icon"
@@ -389,12 +385,6 @@ role="button"
 </a>
 </div>
 <div class="nav-contents">
-<div class="nav-blog">
-<a href="/blog/" class="nav-title">
-<i class="fa-fw fas fa-edit"></i>
-<span>BLOG</span>
-</a>
-</div>
 <div class="nav-categories">
 <a href="/blog/categories/" class="nav-title">
 <i class="fa-fw fas fa-layer-group"></i>
@@ -1165,18 +1155,18 @@ Update
 
 
 
-<script src="/assets/lib/jquery/jquery.min.js"></script>
-<script src="/assets/lib/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="/assets/lib/lunr/lunr.min.js"></script>
-<script src="/assets/lib/loading-attribute-polyfill/loading-attribute-polyfill.umd.min.js"></script>
-<script src="/assets/lib/magnific-popup/jquery.magnific-popup.min.js"></script>
-<script src="/assets/lib/clipboard/clipboard.min.js"></script>
-<script src="/assets/lib/dayjs/dayjs.min.js"></script>
-<script src="/assets/lib/dayjs/locale/en.min.js"></script>
-<script src="/assets/lib/dayjs/plugin/relativeTime.min.js"></script>
-<script src="/assets/lib/dayjs/plugin/localizedFormat.min.js"></script>
-<script src="/assets/lib/tocbot/tocbot.min.js"></script>
-<script src="/assets/lib/mermaid/mermaid.min.js"></script>
+<script defer src="/assets/lib/jquery/jquery.min.js"></script>
+<script defer src="/assets/lib/bootstrap/bootstrap.bundle.min.js"></script>
+<script defer src="/assets/lib/lunr/lunr.min.js"></script>
+<script defer src="/assets/lib/loading-attribute-polyfill/loading-attribute-polyfill.umd.min.js"></script>
+<script defer src="/assets/lib/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script defer src="/assets/lib/clipboard/clipboard.min.js"></script>
+<script defer src="/assets/lib/dayjs/dayjs.min.js"></script>
+<script defer src="/assets/lib/dayjs/locale/en.min.js"></script>
+<script defer src="/assets/lib/dayjs/plugin/relativeTime.min.js"></script>
+<script defer src="/assets/lib/dayjs/plugin/localizedFormat.min.js"></script>
+<script defer src="/assets/lib/tocbot/tocbot.min.js"></script>
+<script defer src="/assets/lib/mermaid/mermaid.min.js"></script>
 
 <script defer src="/assets/js/dist/commons.min.js"></script>
 <script async src="/assets/js/just-the-docs.js"></script>
