@@ -130,17 +130,23 @@ This is an example of `Inline Code`.
 
 ## Filepath
 
-Here is the `/path/to/the/file.extend`{: .filepath}.
+Here is the `/path/to/the/filename`{: .filepath}.
 
 ## Code blocks
 
+Code blocks support syntax highlighting, one-click copying, collapsing-expanding, and dark/light theme switching.
+
 ### Common
+
+A plain code block with no language specified:
 
 ```
 This is a common code snippet, without syntax highlight and line number.
 ```
 
 ### Specific Language
+
+Specify the language after the opening backticks (e.g. ```` ```bash ````) to enable syntax highlighting and line numbers.
 
 ```bash
 if [ $? -ne 0 ]; then
@@ -151,6 +157,8 @@ fi;
 
 ### Specific filename
 
+Add `{: file='filename'}` right after the closing backticks to display a filename label on the code block.
+
 ```sass
 @import
   "colors/light-typography",
@@ -159,6 +167,8 @@ fi;
 {: file='_sass/jekyll-theme-chirpy.scss'}
 
 ### Jupyter notebook
+
+Embed a Jupyter notebook directly into the post using the `jupyter_notebook` tag.
 
 {::nomarkdown}
 {% jupyter_notebook "/assets/jupyter/blog.ipynb" %}
@@ -193,7 +203,7 @@ $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
 
 ## Mindmap
 
-View details at [markmap.js.org](https://github.com/markmap/markmap/blob/master/packages/markmap-view/src/constants.ts).
+View [markmap.js.org](https://github.com/markmap/markmap/blob/master/packages/markmap-view/src/constants.ts) for configuration details.
 
 <div class="markmap">
 	<script type="text/template">

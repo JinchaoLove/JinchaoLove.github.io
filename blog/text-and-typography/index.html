@@ -593,6 +593,15 @@ View mindmap of this page
 </a>
 </span>
 
+<span>
+By
+<em>
+<a href="https://github.com/cotes2020/">Cotes Chung</a>
+</em>
+</span>
+</div>
+<div class="d-flex justify-content-between">
+
 
 
 
@@ -602,17 +611,8 @@ data-bs-toggle="tooltip"
 data-bs-placement="bottom"
 title="3 min read"
 >About
-<em>599</em>
+<em>665</em>
 words</span>
-</div>
-<div class="d-flex justify-content-between">
-
-<span>
-By
-<em>
-<a href="https://github.com/cotes2020/">Cotes Chung</a>
-</em>
-</span>
 <span>
 
 Posted
@@ -628,11 +628,11 @@ Aug 8, 2019
 | Updated
 
 <time
-data-ts="1776238801"
+data-ts="1776376373"
 data-df="ll"
 data-bs-toggle="tooltip" data-bs-placement="bottom"
 >
-Apr 15, 2026
+Apr 17, 2026
 </time>
 </span>
 </div>
@@ -759,15 +759,18 @@ onerror="this.onerror=null;Array.from(this.parentNode.querySelectorAll('source')
 <h2 id="inline-code"><a href="#inline-code" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Inline code</span></h2>
 <p>This is an example of <code class="language-plaintext highlighter-rouge">Inline Code</code>.</p>
 <h2 id="filepath"><a href="#filepath" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Filepath</span></h2>
-<p>Here is the <code class="language-plaintext filepath highlighter-rouge">/path/to/the/file.extend</code>.</p>
+<p>Here is the <code class="language-plaintext filepath highlighter-rouge">/path/to/the/filename</code>.</p>
 <h2 id="code-blocks"><a href="#code-blocks" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Code blocks</span></h2>
+<p>Code blocks support syntax highlighting, one-click copying, collapsing-expanding, and dark/light theme switching.</p>
 <h3 id="common"><a href="#common" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Common</span></h3>
+<p>A plain code block with no language specified:</p>
 <div class="language-plaintext highlighter-rouge"><div class="code-header">
 <span data-label-text="Plaintext"><i class="fas fa-code fa-fw small"></i></span>
 <div class="code-header-fold-trigger"></div><div class="code-header-buttons"><button class="clipboard-btn" aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 </pre></td><td class="rouge-code"><pre>This is a common code snippet, without syntax highlight and line number.
 </pre></td></tr></tbody></table></code></div></div>
 <h3 id="specific-language"><a href="#specific-language" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Specific Language</span></h3>
+<p>Specify the language after the opening backticks (e.g. <code class="language-plaintext highlighter-rouge">```bash</code>) to enable syntax highlighting and line numbers.</p>
 <div class="language-bash highlighter-rouge"><div class="code-header">
 <span data-label-text="Shell"><i class="fas fa-code fa-fw small"></i></span>
 <div class="code-header-fold-trigger"></div><div class="code-header-buttons"><button class="clipboard-btn" aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -780,6 +783,7 @@ onerror="this.onerror=null;Array.from(this.parentNode.querySelectorAll('source')
 <span class="k">fi</span><span class="p">;</span>
 </pre></td></tr></tbody></table></code></div></div>
 <h3 id="specific-filename"><a href="#specific-filename" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Specific filename</span></h3>
+<p>Add <code class="language-plaintext highlighter-rouge">{: file='filename'}</code> right after the closing backticks to display a filename label on the code block.</p>
 <div file="_sass/jekyll-theme-chirpy.scss" class="language-sass highlighter-rouge"><div class="code-header">
 <span data-label-text="_sass/jekyll-theme-chirpy.scss"><i class="far fa-file-code fa-fw"></i></span>
 <div class="code-header-fold-trigger"></div><div class="code-header-buttons"><button class="clipboard-btn" aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
@@ -790,6 +794,7 @@ onerror="this.onerror=null;Array.from(this.parentNode.querySelectorAll('source')
   <span class="s2">"colors/dark-typography"</span><span class="o">;</span>
 </pre></td></tr></tbody></table></code></div></div>
 <h3 id="jupyter-notebook"><a href="#jupyter-notebook" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Jupyter notebook</span></h3>
+<p>Embed a Jupyter notebook directly into the post using the <code class="language-plaintext highlighter-rouge">jupyter_notebook</code> tag.</p>
 <div class="jupyter-notebook" data-light-src="/assets/jupyter/blog.ipynb.light.html" data-dark-src="/assets/jupyter/blog.ipynb.dark.html">
 <div class="code-header">
 <span data-label-text="Jupyter Notebook"><i class="fas fa-code fa-fw small"></i></span>
@@ -833,7 +838,7 @@ style="display:none;">
   cherry :active, c, after b a, 1d
 </code></pre>
 <h2 id="mindmap"><a href="#mindmap" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Mindmap</span></h2>
-<p>View details at <a href="https://github.com/markmap/markmap/blob/master/packages/markmap-view/src/constants.ts">markmap.js.org</a>.</p>
+<p>View <a href="https://github.com/markmap/markmap/blob/master/packages/markmap-view/src/constants.ts">markmap.js.org</a> for configuration details.</p>
 <div class="markmap">
 <script type="text/template">
 ---
@@ -875,7 +880,24 @@ Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecena
 <p><img src="https://chirpy-img.netlify.app/posts/20190808/devtools-light.png" alt="light mode only" class="light w-75 shadow rounded-10" w="1212" h="668"/><br/>
 <img src="https://chirpy-img.netlify.app/posts/20190808/devtools-dark.png" alt="dark mode only" class="dark w-75 shadow rounded-10" w="1212" h="668"/></p>
 <h2 id="video"><a href="#video" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Video</span></h2>
-<iframe class="embed-video" loading="lazy" src="https://www.youtube.com/embed/Balreaj8Yqs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<div class="yt-lite embed-video" data-id="Balreaj8Yqs" onclick="
+var iframe=document.createElement('iframe');
+iframe.setAttribute('src', 'https://www.youtube.com/embed/' + this.dataset.id + '?autoplay=1');
+iframe.setAttribute('title', 'YouTube video player');
+iframe.setAttribute('frameborder', '0');
+iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+iframe.setAttribute('allowfullscreen', '');
+iframe.className = 'embed-video';
+this.parentNode.replaceChild(iframe, this);
+">
+<img src="https://i.ytimg.com/vi/Balreaj8Yqs/hqdefault.jpg" alt="YouTube video thumbnail" loading="lazy"/>
+<button class="yt-play-btn" aria-label="Play video">
+<svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M66.5 7.7c-.8-2.9-3-5.1-5.8-5.8C55.8 0 34 0 34 0S12.2 0 7.3 1.9C4.5 2.6 2.3 4.9 1.5 7.7 0 12.8 0 24 0 24s0 11.2 1.5 16.3c.8 2.9 3 5.1 5.8 5.8C12.2 48 34 48 34 48s21.8 0 26.7-1.9c2.8-.8 5-3 5.8-5.8C68 35.2 68 24 68 24s0-11.2-1.5-16.3z" fill="#f00"/>
+<path d="M45 24 27 14v20" fill="#fff"/>
+</svg>
+</button>
+</div>
 <h2 id="reverse-footnote"><a href="#reverse-footnote" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Reverse Footnote</span></h2>
 <div class="footnotes" role="doc-endnotes">
 <ol>
@@ -890,31 +912,13 @@ Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecena
 </div>
 <div class="post-tail-wrapper text-muted">
 
-<div class="post-meta mb-3">
+<div class="post-tail-bottom d-flex justify-content-between align-items-center pb-2">
+<div class="post-meta d-flex flex-wrap align-items-center gap-1">
 <i class="far fa-folder-open fa-fw me-1"></i>
-<a href="/blog/categories/blogging">Blogging</a>,
-<a href="/blog/categories/demo">Demo</a>
-</div>
-
-<div class="post-tags mb-3">
-<i class="fa fa-tags fa-fw me-1"></i>
-<a
-href="/blog/tags/typography"
-class="tag-chip"
->typography</a>
-</div>
-<div
-class="
-post-tail-bottom
-d-flex justify-content-between align-items-center pb-2
-"
->
-<div class="license-wrapper">
-This post is licensed under
-<a href="https://creativecommons.org/licenses/by/4.0/">
-CC BY 4.0
-</a>
-by the author.
+<a href="/blog/categories/blogging" class="tag-chip">Blogging</a>
+<a href="/blog/categories/demo" class="tag-chip">Demo</a>
+<span class="ms-2"><i class="fa fa-tags fa-fw me-1"></i></span>
+<a href="/blog/tags/typography" class="tag-chip">typography</a>
 </div>
 
 <div class="share-wrapper d-flex align-items-center">
@@ -963,6 +967,14 @@ data-title-succeed="Link copied successfully!">
 </div>
 </div>
 
+
+<div class="license-wrapper pt-2">
+This post is licensed under
+<a href="https://creativecommons.org/licenses/by/4.0/">
+CC BY 4.0
+</a>
+by the author.
+</div>
 </div>
 
 </article>
@@ -978,13 +990,13 @@ class="col-2 ps-2 mb-5 text-muted">
 <h2 class="panel-heading">Recently Updated</h2>
 <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
 <li class="text-truncate lh-lg">
+<a href="/blog/text-and-typography/">Text and Typography</a>
+</li>
+<li class="text-truncate lh-lg">
 <a href="/blog/python/">Python Basics</a>
 </li>
 <li class="text-truncate lh-lg">
 <a href="/blog/basic-algorithm/">基础算法题解模板</a>
-</li>
-<li class="text-truncate lh-lg">
-<a href="/blog/todo/">年度阅读计划</a>
 </li>
 </ul>
 </section>
@@ -1256,6 +1268,41 @@ src="/assets/lib/mathjax/tex-chtml.js"></script>
     window.addEventListener('message', updateMermaid);
   })();
 </script>
+<script type="text/javascript" defer>
+  function removeChildBySelector(parent, selector) {
+    const child = parent.querySelector(selector);
+    if (child) {
+      child.remove();
+    }
+  }
+
+  function removeChildByTitle(parent, title) {
+    const child = Array.from(parent.children).find(
+      (el) => el.getAttribute('title') === title
+    );
+    if (child) {
+      child.remove();
+    }
+  }
+
+  window.markmap = {
+    autoLoader: {
+    toolbar: true,
+    onReady: function() {
+      // 等待 toolbar 渲染完成后再操作
+      setTimeout(() => {
+        const toolbar = document.querySelector('.mm-toolbar');
+        if (!toolbar) return;
+
+        removeChildBySelector(toolbar, '.mm-toolbar-brand');
+        removeChildByTitle(toolbar, 'Toggle recursively');
+        removeChildByTitle(toolbar, 'Toggle dark theme');
+      }, 100); // 小延迟确保 DOM 已更新
+    }
+    }
+  };
+</script>
+<script src="/assets/lib/markmap/markmap.js"></script>
 <script type="text/javascript">
   /**
    * Jupyter Notebook theme switcher (dual-iframe, height-auto approach).
