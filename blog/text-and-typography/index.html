@@ -63,11 +63,11 @@ media="print" onload="this.media='all'">
 <noscript><link href="/assets/lib/fonts/main.css" rel="stylesheet"></noscript>
 
 
-<link rel="stylesheet" href="/assets/lib/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/lib/bootstrap/bootstrap.min.css" blocking="render">
 
-<link rel="stylesheet" href="/assets/lib/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="/assets/lib/fontawesome-free/css/all.min.css" blocking="render">
 
-<link rel="stylesheet" href="/assets/css/theme.css">
+<link rel="stylesheet" href="/assets/css/theme.css" blocking="render">
 
 <link rel="stylesheet" href="/assets/lib/tocbot/tocbot.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/assets/lib/tocbot/tocbot.css"></noscript>
@@ -88,7 +88,7 @@ media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/assets/lib/waline/waline.css"></noscript>
 
 
-<script type="text/javascript" defer>
+<script type="text/javascript" blocking="render">
   class ModeToggle {
     static get MODE_KEY() {
       return 'mode';
