@@ -1,551 +1,127 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-04-24T17:10:27+08:00</updated><id>https://jinchaoli.com/feed.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Python基础</title><link href="https://jinchaoli.com/blog/python/" rel="alternate" type="text/html" title="Python基础"/><published>2026-04-24T00:00:00+08:00</published><updated>2026-04-24T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/python</id><content type="html" xml:base="https://jinchaoli.com/blog/python/"><![CDATA[<h2 id="lists">Lists</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-</pre></td><td class="rouge-code"><pre><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
-<span class="c1"># Common Operations
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># Find index
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>     <span class="c1"># Add to end
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Add 10 from left (at index 0 which is start)
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>     <span class="c1"># Remove value
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>         <span class="c1"># Remove &amp; return last element
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">()</span>        <span class="c1"># In-place sort (TimSort: O(n log n))
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># In-place reverse (High to low)
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">reverse</span><span class="p">()</span>     <span class="c1"># In-place reverse
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">copy</span><span class="p">()</span>        <span class="c1"># Return shallow copy
-</span>
-<span class="c1"># List Slicing
-</span><span class="n">arr</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">:</span><span class="n">step</span><span class="p">]</span>  <span class="c1"># Generic slice syntax
-</span><span class="n">arr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>    <span class="c1"># Last item
-</span><span class="n">arr</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Reverse list
-</span><span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>    <span class="c1"># Everything after index 1
-</span><span class="n">arr</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>    <span class="c1"># First three elements
-</span>
-<span class="c1"># Sublists (aka slicing), 左闭右开
-</span><span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>   <span class="c1"># [2]
-# Similar to for-loop ranges, last index is non-inclusive
-# But no out of bounds error
-</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># [1, 2, 3]
-</span>
-<span class="c1"># Custom sort (e.g., by length of string)
-</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="sh">"</span><span class="s">bob</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">alice</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">jane</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">doe</span><span class="sh">"</span><span class="p">]</span>
-<span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nf">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>  <span class="c1"># ['bob', 'doe', 'jane', 'alice']
-</span>
-<span class="c1"># 2-D lists
-</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
+<!DOCTYPE html>
+<html lang="en" class="markmap-dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+算法基础</title>
+    <style>
+      .markmap {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+      }
+      .markmap-dark {
+        background: #27272a;
+        color: white;
+      }
+    </style>
+    <script>
+      window.markmap = {
+        autoLoader: {
+          toolbar: true
+        }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
+  </head>
+  <body>
+    <div class="markmap">
+      <script type="text/template">
+        ---
+        markmap:
+          maxWidth: 300
+          colorFreezeLevel: 3
+          initialExpandLevel: 3
+          pan: false
+          autoFit: true
+          fitRatio: 0.7
+        ---
 
-<span class="c1"># This won't work
-# arr = [[0] * 4] * 4
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<blockquote class="prompt-warn">
-<p>python里面的区间基本上是左闭右开，比如range、slicing</p>
-</blockquote>
-<h2 id="tuples">Tuples</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</pre></td><td class="rouge-code"><pre><span class="c1"># Tuples are immutable lists
-</span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+#算法基础
 
-<span class="c1"># Essential Operations
-</span><span class="n">t</span><span class="p">.</span><span class="nf">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># Count occurrences of value
-</span><span class="n">t</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>      <span class="c1"># Find first index of value
-</span>
-<span class="c1"># Useful Patterns
-</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># Tuple unpacking
-</span><span class="n">coords</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>  <span class="c1"># Tuple in collections
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="sets">Sets</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-</pre></td><td class="rouge-code"><pre><span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>
+<!-- region -->
 
-<span class="c1"># Common Operations
-</span><span class="n">s</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>             <span class="c1"># Add element
-</span><span class="n">s</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>          <span class="c1"># Remove (raises error if missing)
-</span><span class="n">s</span><span class="p">.</span><span class="nf">discard</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>         <span class="c1"># Remove (no error if missing)
-</span><span class="n">s</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>              <span class="c1"># Remove and return arbitrary element
-</span>
-<span class="c1"># Set Operations
-</span><span class="n">a</span><span class="p">.</span><span class="nf">union</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>           <span class="c1"># Elements in a OR b
-</span><span class="n">a</span><span class="p">.</span><span class="nf">intersection</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>    <span class="c1"># Elements in a AND b
-</span><span class="n">a</span><span class="p">.</span><span class="nf">difference</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>      <span class="c1"># Elements in a but NOT in b
-</span><span class="n">a</span><span class="p">.</span><span class="nf">symmetric_difference</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># Elements in a OR b but NOT both
-</span><span class="n">a</span><span class="p">.</span><span class="nf">issubset</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>        <span class="c1"># True if all elements of a are in b
-</span><span class="n">a</span><span class="p">.</span><span class="nf">issuperset</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>      <span class="c1"># True if all elements of b are in a
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="strings">Strings</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-</pre></td><td class="rouge-code"><pre><span class="n">s</span> <span class="o">=</span> <span class="sh">"</span><span class="s">hello world</span><span class="sh">"</span>
-
-<span class="c1"># Essential Methods
-</span><span class="n">s</span><span class="p">.</span><span class="nf">split</span><span class="p">()</span>            <span class="c1"># Split on whitespace
-</span><span class="n">s</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sh">'</span><span class="s">,</span><span class="sh">'</span><span class="p">)</span>         <span class="c1"># Split on comma
-</span><span class="n">s</span><span class="p">.</span><span class="nf">strip</span><span class="p">()</span>            <span class="c1"># Remove leading/trailing whitespace
-</span><span class="n">s</span><span class="p">.</span><span class="nf">lower</span><span class="p">()</span>            <span class="c1"># Convert to lowercase
-</span><span class="n">s</span><span class="p">.</span><span class="nf">upper</span><span class="p">()</span>            <span class="c1"># Convert to uppercase
-</span><span class="n">s</span><span class="p">.</span><span class="nf">isalnum</span><span class="p">()</span>          <span class="c1"># Check if alphanumeric
-</span><span class="n">s</span><span class="p">.</span><span class="nf">isalpha</span><span class="p">()</span>          <span class="c1"># Check if alphabetic
-</span><span class="n">s</span><span class="p">.</span><span class="nf">isdigit</span><span class="p">()</span>          <span class="c1"># Check if all digits
-</span><span class="n">s</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="sh">'</span><span class="s">sub</span><span class="sh">'</span><span class="p">)</span>        <span class="c1"># Index of substring (-1 if not found)
-</span><span class="n">s</span><span class="p">.</span><span class="nf">count</span><span class="p">(</span><span class="sh">'</span><span class="s">sub</span><span class="sh">'</span><span class="p">)</span>       <span class="c1"># Count occurrences
-</span><span class="n">s</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sh">'</span><span class="s">old</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">new</span><span class="sh">'</span><span class="p">)</span>  <span class="c1"># Replace all occurrences
-</span>
-<span class="c1"># ASCII Conversion
-</span><span class="nf">ord</span><span class="p">(</span><span class="sh">'</span><span class="s">a</span><span class="sh">'</span><span class="p">)</span>             <span class="c1"># Char to ASCII (97)
-</span><span class="nf">chr</span><span class="p">(</span><span class="mi">97</span><span class="p">)</span>              <span class="c1"># ASCII to char ('a')
-</span>
-<span class="c1"># Valid numeric strings can be converted
-</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="sh">"</span><span class="s">123</span><span class="sh">"</span><span class="p">)</span> <span class="o">+</span> <span class="nf">int</span><span class="p">(</span><span class="sh">"</span><span class="s">123</span><span class="sh">"</span><span class="p">))</span>  <span class="c1"># 246
-</span>
-<span class="c1"># And numbers can be converted to strings
-</span><span class="nf">print</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="mi">123</span><span class="p">))</span>  <span class="c1"># 123123
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="queues">Queues</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-</pre></td><td class="rouge-code"><pre><span class="c1"># Queues (double ended queue)
-</span><span class="kn">from</span> <span class="n">collections</span> <span class="kn">import</span> <span class="n">deque</span>
-
-<span class="c1"># Perfect for BFS - O(1) operations on both ends
-</span><span class="n">d</span> <span class="o">=</span> <span class="nf">deque</span><span class="p">()</span>
-<span class="n">d</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>          <span class="c1"># Add right
-</span><span class="n">d</span><span class="p">.</span><span class="nf">appendleft</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>      <span class="c1"># Add left
-</span><span class="n">d</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>              <span class="c1"># Remove right
-</span><span class="n">d</span><span class="p">.</span><span class="nf">popleft</span><span class="p">()</span>          <span class="c1"># Remove left
-</span><span class="n">d</span><span class="p">.</span><span class="nf">extend</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>    <span class="c1"># Extend right
-</span><span class="n">d</span><span class="p">.</span><span class="nf">extendleft</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span><span class="c1"># Extend left
-</span><span class="n">d</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>          <span class="c1"># Rotate n steps right (negative for left)
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="heaps">Heaps</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">heapq</span>
-
-<span class="c1"># MinHeap Operations - All O(log n) except heapify
-</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heapify</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>          <span class="c1"># Convert to heap in-place: O(n)
-</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>      <span class="c1"># Add element: O(log n)
-</span><span class="n">smallest</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>  <span class="c1"># Remove smallest: O(log n)
-</span>
-<span class="c1"># MaxHeap Trick: Multiply by -1
-</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">]</span>    <span class="c1"># Convert to maxheap: O(n)
-</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heapify</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>          <span class="c1"># O(n)
-</span><span class="n">largest</span> <span class="o">=</span> <span class="o">-</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>  <span class="c1"># Get largest: O(log n)
-</span>
-<span class="c1"># Advanced Operations
-</span><span class="n">k_largest</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">nlargest</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">nums</span><span class="p">)</span>    <span class="c1"># O(n * log k)
-</span><span class="n">k_smallest</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">nsmallest</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">nums</span><span class="p">)</span>  <span class="c1"># O(n * log k)
-</span>
-<span class="c1"># Custom Priority Queue
-</span><span class="n">heap</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="p">(</span><span class="n">priority</span><span class="p">,</span> <span class="n">item</span><span class="p">))</span>  <span class="c1"># Sort by priority
-</span>
-<span class="c1"># Under the hood are arrays
-</span><span class="n">minHeap</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-
-<span class="c1"># Min is always at index 0
-</span><span class="nf">print</span><span class="p">(</span><span class="n">minHeap</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 2
-</span>
-<span class="k">while</span> <span class="nf">len</span><span class="p">(</span><span class="n">minHeap</span><span class="p">):</span>
-    <span class="nf">print</span><span class="p">(</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">minHeap</span><span class="p">))</span>
-<span class="c1"># 2
-# 3
-# 4
-</span>
-<span class="c1"># No max heaps by default, work around is
-# to use min heap and multiply by -1 when push &amp; pop.
-</span><span class="n">maxHeap</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="c1"># Max is always at index 0
-</span><span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">maxHeap</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 4
-</span>
-<span class="k">while</span> <span class="nf">len</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">):</span>
-    <span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">))</span>
-<span class="c1"># 4
-# 3
-# 2
-</span>
-<span class="c1"># Build heap from initial values
-</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heapify</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<span class="k">while</span> <span class="n">arr</span><span class="p">:</span>
-    <span class="nf">print</span><span class="p">(</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
-<span class="c1"># 1
-# 2
-# 4
-# 5
-# 8
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="built-in-functions">Built-in Functions</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-</pre></td><td class="rouge-code"><pre><span class="c1"># Iteration Helpers
-</span><span class="nf">enumerate</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>        <span class="c1"># Index + value pairs
-</span><span class="nf">zip</span><span class="p">(</span><span class="n">lst1</span><span class="p">,</span> <span class="n">lst2</span><span class="p">)</span>      <span class="c1"># Parallel iteration
-</span><span class="nf">map</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">lst</span><span class="p">)</span>         <span class="c1"># Apply function to all elements
-</span><span class="nf">filter</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">lst</span><span class="p">)</span>      <span class="c1"># Keep elements where fn returns True
-</span><span class="nf">any</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>             <span class="c1"># True if any element is True
-</span><span class="nf">all</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>             <span class="c1"># True if all elements are True
-</span>
-<span class="c1"># Binary Search
-</span><span class="kn">import</span> <span class="n">bisect</span>
-
-<span class="n">bisect</span><span class="p">.</span><span class="nf">bisect</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>     <span class="c1"># Find insertion point
-</span><span class="n">bisect</span><span class="p">.</span><span class="nf">bisect_left</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="c1"># Find leftmost insertion point
-</span><span class="n">bisect</span><span class="p">.</span><span class="nf">insort</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>     <span class="c1"># Insert maintaining sort
-</span>
-<span class="c1"># Type Conversion
-</span><span class="nf">int</span><span class="p">(</span><span class="sh">'</span><span class="s">42</span><span class="sh">'</span><span class="p">)</span>            <span class="c1"># String to int
-</span><span class="nf">str</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>              <span class="c1"># Int to string
-</span><span class="nf">list</span><span class="p">(</span><span class="sh">'</span><span class="s">abc</span><span class="sh">'</span><span class="p">)</span>          <span class="c1"># String to list
-</span><span class="sh">''</span><span class="p">.</span><span class="nf">join</span><span class="p">([</span><span class="sh">'</span><span class="s">a</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">b</span><span class="sh">'</span><span class="p">])</span>   <span class="c1"># List to string
-</span><span class="nf">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>         <span class="c1"># List to set
-</span>
-<span class="c1"># Math
-</span><span class="nf">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>              <span class="c1"># Absolute value
-</span><span class="nf">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>            <span class="c1"># Power
-</span><span class="nf">round</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>    <span class="c1"># Round to decimals
-</span><span class="nf">divmod</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>        <span class="c1"># (3, 1) - returns (quotient, remainder)
-</span>
-<span class="c1"># Binary representation
-</span><span class="nf">bin</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>              <span class="c1"># '0b1010'
-</span><span class="nf">format</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="sh">'</span><span class="s">b</span><span class="sh">'</span><span class="p">)</span>      <span class="c1"># '1010' (without prefix)
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="math">Math</h2>
-<p>在正数时，<code class="language-plaintext highlighter-rouge">int(a / b)</code> 和 <code class="language-plaintext highlighter-rouge">a // b</code> 通常结果相同，但在负数时可能不同：</p>
-<ul>
-<li><code class="language-plaintext highlighter-rouge">int(a / b)</code> 是向零取整（<code class="language-plaintext highlighter-rouge">trunc</code>）。如果你希望总是向零取整，使用 <code class="language-plaintext highlighter-rouge">int(a / b)</code>。</li>
-<li><code class="language-plaintext highlighter-rouge">//</code> 是向下取整（<code class="language-plaintext highlighter-rouge">floor</code>）。如果你希望总是向下取整，使用 <code class="language-plaintext highlighter-rouge">a // b</code>。</li>
-</ul>
-<p>另外，取模运算 <code class="language-plaintext highlighter-rouge">a % b</code>也遵从 <code class="language-plaintext highlighter-rouge">floor</code>法则，<code class="language-plaintext highlighter-rouge">a = (a // b) * b + (a % b)</code> -&gt; <code class="language-plaintext highlighter-rouge">a % b = a - (a // b) * b</code>。</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-</pre></td><td class="rouge-code"><pre><span class="c1"># 向零取整
-</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 1
-</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># -1
-</span>
-<span class="c1"># 向下取整
-</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 1
-</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># -2
-# floor(-1.5) = -2
-</span>
-<span class="c1"># 取模
-</span><span class="nf">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 1
-</span><span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 2
-# -10 - (-10//3) * 3 = -10 - (-4) * 3 = 2
-</span>
-<span class="kn">import</span> <span class="n">math</span>
-
-<span class="c1"># Constants
-</span><span class="n">math</span><span class="p">.</span><span class="n">pi</span>       <span class="c1"># 3.141592653589793
-</span><span class="n">math</span><span class="p">.</span><span class="n">e</span>        <span class="c1"># 2.718281828459045
-</span>
-<span class="c1"># Common Functions
-</span><span class="n">math</span><span class="p">.</span><span class="nf">ceil</span><span class="p">(</span><span class="mf">2.3</span><span class="p">)</span>        <span class="c1"># 3 - Smallest integer greater than x
-</span><span class="n">math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="mf">2.3</span><span class="p">)</span>       <span class="c1"># 2 - Largest integer less than x
-</span><span class="n">math</span><span class="p">.</span><span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>        <span class="c1"># Greatest common divisor
-</span><span class="n">math</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">base</span><span class="p">)</span>     <span class="c1"># Logarithm with specified base
-</span><span class="n">math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>          <span class="c1"># Square root
-</span><span class="n">math</span><span class="p">.</span><span class="nf">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>        <span class="c1"># x^y (prefer x ** y for integers)
-</span>
-<span class="c1"># Trigonometry
-</span><span class="n">math</span><span class="p">.</span><span class="nf">degrees</span><span class="p">(</span><span class="n">rad</span><span class="p">)</span>     <span class="c1"># Convert radians to degrees
-</span><span class="n">math</span><span class="p">.</span><span class="nf">radians</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>     <span class="c1"># Convert degrees to radians
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://github.com/0xCodeFuture/CheetSheet-Python">CheetSheet-Python</a></li>
-<li><a href="https://neetcode.io/courses/lessons/python-for-coding-interviews">neetcode</a></li>
-</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="Algorithm"/><category term="python"/><summary type="html"><![CDATA[Lists]]></summary></entry><entry><title type="html">算法基础</title><link href="https://jinchaoli.com/blog/" rel="alternate" type="text/html" title="算法基础"/><published>2026-04-24T00:00:00+08:00</published><updated>2026-04-24T00:00:00+08:00</updated><id>https://jinchaoli.com/</id><content type="html" xml:base="https://jinchaoli.com/blog/"><![CDATA[
 <h2 id="框架概括">框架概括</h2>
+
 <h3 id="整体框架">整体框架</h3>
+
 <ul>
-<li>数据结构（增删查改）
-<ul>
-<li>数组（顺序存储）
-<ul>
-<li>动态数组</li>
-<li>字符串</li>
-<li>哈希表</li>
-<li>…</li>
+  <li>数据结构（增删查改）
+    <ul>
+      <li>数组（顺序存储）
+        <ul>
+          <li>动态数组</li>
+          <li>字符串</li>
+          <li>哈希表</li>
+          <li>…</li>
+        </ul>
+      </li>
+      <li>链表（链式存储）
+        <ul>
+          <li>单/双链表</li>
+          <li>树</li>
+          <li>…</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>算法（穷举）
+    <ul>
+      <li>如何避免遗漏
+        <ul>
+          <li>回溯算法</li>
+          <li>动态规划</li>
+          <li>DFS</li>
+          <li>BFS</li>
+          <li>…</li>
+        </ul>
+      </li>
+      <li>如何避免冗余
+        <ul>
+          <li>二分</li>
+          <li>滑动窗口</li>
+          <li>贪心</li>
+          <li>…</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
-</li>
-<li>链表（链式存储）
-<ul>
-<li>单/双链表</li>
-<li>树</li>
-<li>…</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>算法（穷举）
-<ul>
-<li>如何避免遗漏
-<ul>
-<li>回溯算法</li>
-<li>动态规划</li>
-<li>DFS</li>
-<li>BFS</li>
-<li>…</li>
-</ul>
-</li>
-<li>如何避免冗余
-<ul>
-<li>二分</li>
-<li>滑动窗口</li>
-<li>贪心</li>
-<li>…</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+
 <h3 id="各类数据结构的遍历">各类数据结构的遍历</h3>
+
 <ol>
-<li>数组的遍历，线性迭代结构：
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+  <li>数组的遍历，线性迭代结构：
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 </pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)):</span>
      <span class="c1"># 迭代访问 arr[i]
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-</li>
-<li>链表的遍历，兼具迭代和递归结构：<br/>
+</span></pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>链表的遍历，兼具迭代和递归结构：<br />
 ```python
-<h1 id="基本的单链表节点">基本的单链表节点</h1>
-<p>class ListNode:<br/>
-def <strong>init</strong>(self, val):<br/>
-self.val = val<br/>
-self.next = None</p>
-</li>
+    <h1 id="基本的单链表节点">基本的单链表节点</h1>
+    <p>class ListNode:<br />
+ def <strong>init</strong>(self, val):<br />
+     self.val = val<br />
+     self.next = None</p>
+  </li>
 </ol>
-<p>def traverse(head: ListNode) -&gt; None:<br/>
-p = head<br/>
-while p is not None:<br/>
-# 迭代访问 p.val<br/>
-p = p.next</p>
-<p>def traverse(head: ListNode) -&gt; None:<br/>
-# 递归访问 head.val<br/>
-traverse(head.next)</p>
+
+<p>def traverse(head: ListNode) -&gt; None:<br />
+    p = head<br />
+    while p is not None:<br />
+        # 迭代访问 p.val<br />
+        p = p.next</p>
+
+<p>def traverse(head: ListNode) -&gt; None:<br />
+    # 递归访问 head.val<br />
+    traverse(head.next)</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -574,68 +150,91 @@ def traverse(root: TreeNode):
     traverse(root.right)
 </pre></td></tr></tbody></table></code></pre></div></div>
 
+<!-- endregion -->
+
 <h2 id="算法复杂度">算法复杂度</h2>
 
+<!-- region -->
+
 <h3 id="主定理master-theorem">主定理（Master Theorem）</h3>
+
 <p>假设有递归关系式：</p>
+
 <p>$<code class="language-plaintext highlighter-rouge">T(N) = aT(N/b) + f(N), f(N) = N^{\log_b(a)} \log^k(N)</code>$</p>
+
 <p>其中，$N$为问题规模，$a$为递归的子问题数量，$N/b$为每个子问题的规模（假设每个子问题的规模基本一样），$f(N)$为递归以外进行的计算工作。</p>
+
 <p><strong>则其算法复杂度为</strong>：</p>
+
 <p>$<code class="language-plaintext highlighter-rouge">T(N) = O(N^{\log_b(a)} \log^{(k+1)}N)</code>$</p>
+
 <h3 id="常见算法复杂度">常见算法复杂度</h3>
+
 <table>
-<thead>
-<tr>
-<th>算法</th>
-<th>递归关系式</th>
-<th>复杂度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>二分查找</td>
-<td>$T(N) = T(N/2) + O(1)$</td>
-<td>$O(\log(N))$</td>
-</tr>
-<tr>
-<td>二叉树遍历</td>
-<td>$T(N) = 2T(N/2) + O(1)$</td>
-<td>$O(N)$</td>
-</tr>
-<tr>
-<td>归并排序</td>
-<td>$T(N) = 2T(N/2) + O(N)$</td>
-<td>$O(N\log(N))$</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th>算法</th>
+      <th>递归关系式</th>
+      <th>复杂度</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>二分查找</td>
+      <td>$T(N) = T(N/2) + O(1)$</td>
+      <td>$O(\log(N))$</td>
+    </tr>
+    <tr>
+      <td>二叉树遍历</td>
+      <td>$T(N) = 2T(N/2) + O(1)$</td>
+      <td>$O(N)$</td>
+    </tr>
+    <tr>
+      <td>归并排序</td>
+      <td>$T(N) = 2T(N/2) + O(N)$</td>
+      <td>$O(N\log(N))$</td>
+    </tr>
+  </tbody>
 </table>
+
+<!-- endregion -->
 
 <h2 id="双指针">双指针</h2>
 
+<!-- region -->
+
 <p>使用两个指针变量在数组或链表等线性结构上协同移动，避免嵌套循环，将部分 $O(N^2)$ 的算法优化为 $O(N)$。主要分为：</p>
+
 <ul>
-<li>同向双指针（快慢指针）：一个快指针先行，慢指针跟进，常用于滑动窗口（去重）、链表操作（找中点、判断环、环入口）等。</li>
-<li>相向双指针（对撞指针）：从两端向中间移动，常用于有序数组求和、回文判断、反转数组、数组合并等。</li>
-<li>背向双指针：从中间向两边扩展，常用于回文串、最长子回文等问题。</li>
+  <li>同向双指针（快慢指针）：一个快指针先行，慢指针跟进，常用于滑动窗口（去重）、链表操作（找中点、判断环、环入口）等。</li>
+  <li>相向双指针（对撞指针）：从两端向中间移动，常用于有序数组求和、回文判断、反转数组、数组合并等。</li>
+  <li>背向双指针：从中间向两边扩展，常用于回文串、最长子回文等问题。</li>
 </ul>
+
 <h3 id="算法复杂度-1">算法复杂度</h3>
+
 <p>通常情况下，时间复杂度 $O(N)$（与最内层循环主体的执行次数有关），空间复杂度：O(1)。</p>
+
 <h3 id="使用场景">使用场景</h3>
+
 <ul>
-<li>滑动窗口 (90%)</li>
-<li>时间复杂度要求 $O(N)$ (80%是双指针)</li>
-<li>要求原地操作，只可以使用交换，不能使用额外空间 (80%)</li>
-<li>有子数组 subarray / 子字符串 substring 的关键词 (50%)</li>
-<li>有回文 Palindrome 关键词(50%)</li>
+  <li>滑动窗口 (90%)</li>
+  <li>时间复杂度要求 $O(N)$ (80%是双指针)</li>
+  <li>要求原地操作，只可以使用交换，不能使用额外空间 (80%)</li>
+  <li>有子数组 subarray / 子字符串 substring 的关键词 (50%)</li>
+  <li>有回文 Palindrome 关键词(50%)</li>
 </ul>
+
 <h3 id="代码模板">代码模板</h3>
+
 <ul>
-<li>初始化指针：<code class="language-plaintext highlighter-rouge">left</code>, <code class="language-plaintext highlighter-rouge">right</code>根据方向设置起点</li>
-<li>循环控制：<code class="language-plaintext highlighter-rouge">while</code>或<code class="language-plaintext highlighter-rouge">for</code>控制移动（比如<code class="language-plaintext highlighter-rouge">right</code>扩展，<code class="language-plaintext highlighter-rouge">left</code>收缩）</li>
-<li>状态更新：维护当前窗口或配对状态，根据条件分类讨论</li>
-<li>结果记录：更新答案（相等时、满足条件时）</li>
-<li>边界处理：空数组、单元素、去重跳过等</li>
+  <li>初始化指针：<code class="language-plaintext highlighter-rouge">left</code>, <code class="language-plaintext highlighter-rouge">right</code>根据方向设置起点</li>
+  <li>循环控制：<code class="language-plaintext highlighter-rouge">while</code>或<code class="language-plaintext highlighter-rouge">for</code>控制移动（比如<code class="language-plaintext highlighter-rouge">right</code>扩展，<code class="language-plaintext highlighter-rouge">left</code>收缩）</li>
+  <li>状态更新：维护当前窗口或配对状态，根据条件分类讨论</li>
+  <li>结果记录：更新答案（相等时、满足条件时）</li>
+  <li>边界处理：空数组、单元素、去重跳过等</li>
 </ul>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -697,8 +296,11 @@ def traverse(root: TreeNode):
 </span>
     <span class="k">return</span> <span class="n">result</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+
 <h3 id="例题">例题</h3>
+
 <p><a href="https://leetcode.cn/problems/merge-sorted-array">88. 合并两个有序数组</a></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -810,7 +412,9 @@ def traverse(root: TreeNode):
         <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">new_list</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+
 <p><a href="https://leetcode.cn/problems/merge-two-sorted-lists">21. 合并两个有序链表</a></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -872,10 +476,13 @@ def traverse(root: TreeNode):
 
     <span class="k">return</span> <span class="n">dummy</span><span class="p">.</span><span class="nb">next</span>  <span class="c1"># 注意：不是返回指针 p，而是返回链表的头部，也就是 dummy.next
 </span></pre></td></tr></tbody></table></code></pre></div></div>
+
 <blockquote>
-<p>虚拟头结点</p>
+  <p>虚拟头结点</p>
 </blockquote>
+
 <p><a href="https://leetcode.cn/problems/longest-palindromic-substring">5. 最长回文子串</a></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -973,7 +580,9 @@ def traverse(root: TreeNode):
             <span class="n">max_len</span> <span class="o">=</span> <span class="n">cur_len</span>
     <span class="k">return</span> <span class="n">max_s</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+
 <p><a href="https://leetcode.cn/problems/binary-subarrays-with-sum">930. 和相同的二元子数组</a></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -1066,10 +675,16 @@ def traverse(root: TreeNode):
     <span class="k">return</span> <span class="nf">atMost</span><span class="p">(</span><span class="n">goal</span><span class="p">)</span> <span class="o">-</span> <span class="nf">atMost</span><span class="p">(</span><span class="n">goal</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
+<!-- endregion -->
+
+<!-- region -->
 
 <h2 id="滑动窗口">滑动窗口</h2>
+
 <p>滑动窗口可以归为快慢双指针，一快一慢两个指针前后相随，中间的部分就是窗口。滑动窗口算法技巧主要用来解决子数组问题，比如让你寻找符合某个条件的最长/最短子数组。</p>
+
 <p>与普通的快慢指针（嵌套循环，O（N^2））不同的是，滑动窗口（队列）维护的元素只进入/移出一次（指针 left, right 只增不减），所以复杂度为O(N)。算法的重点在于判断是否要把 left 移动。</p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -1121,14 +736,19 @@ def traverse(root: TreeNode):
             <span class="c1"># 进行窗口内数据的一系列更新
 </span>            <span class="bp">...</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+
 <p>基于这个框架，遇到子串/子数组相关的题目，你只需要回答以下三个问题：</p>
+
 <ol>
-<li>什么时候应该移动 right 扩大窗口？窗口加入字符时，应该更新哪些数据？</li>
-<li>什么时候窗口应该暂停扩大，开始移动 left 缩小窗口？从窗口移出字符时，应该更新哪些数据？</li>
-<li>什么时候应该更新结果？</li>
+  <li>什么时候应该移动 right 扩大窗口？窗口加入字符时，应该更新哪些数据？</li>
+  <li>什么时候窗口应该暂停扩大，开始移动 left 缩小窗口？从窗口移出字符时，应该更新哪些数据？</li>
+  <li>什么时候应该更新结果？</li>
 </ol>
+
 <h3 id="例题-1">例题</h3>
+
 <p><a href="https://leetcode.cn/problems/longest-substring-without-repeating-characters">3. 无重复字符的最长子串</a></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -1236,7 +856,9 @@ def traverse(root: TreeNode):
         <span class="n">right</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">ans</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+
 <p><a href="https://leetcode.cn/problems/permutation-in-string">567. 字符串的排列</a></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -1351,29 +973,41 @@ def traverse(root: TreeNode):
     <span class="k">return</span> <span class="bp">False</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
+<!-- endregion -->
+
 <h2 id="查找">查找</h2>
 
+<!-- region -->
+
 <p>查找是最基础操作，其中最常用的是二分查找，即从有序数组<code class="language-plaintext highlighter-rouge">array</code>中直接寻找某个值<code class="language-plaintext highlighter-rouge">query</code>对应的<code class="language-plaintext highlighter-rouge">index</code>。一般解法：</p>
+
 <ul>
-<li>双指针：比较<code class="language-plaintext highlighter-rouge">array[mid]</code>和<code class="language-plaintext highlighter-rouge">query</code>的大小（<code class="language-plaintext highlighter-rouge">mid = low + (high-low)//2</code>），从而更新左右指针<code class="language-plaintext highlighter-rouge">low</code>、<code class="language-plaintext highlighter-rouge">high</code>，终止条件:
-<ul>
-<li>(1) 找到了<code class="language-plaintext highlighter-rouge">query</code>（<code class="language-plaintext highlighter-rouge">array[mid] = query</code>）</li>
-<li>(2) 左右指针相遇（<code class="language-plaintext highlighter-rouge">low &gt; high</code>）</li>
+  <li>双指针：比较<code class="language-plaintext highlighter-rouge">array[mid]</code>和<code class="language-plaintext highlighter-rouge">query</code>的大小（<code class="language-plaintext highlighter-rouge">mid = low + (high-low)//2</code>），从而更新左右指针<code class="language-plaintext highlighter-rouge">low</code>、<code class="language-plaintext highlighter-rouge">high</code>，终止条件:
+    <ul>
+      <li>(1) 找到了<code class="language-plaintext highlighter-rouge">query</code>（<code class="language-plaintext highlighter-rouge">array[mid] = query</code>）</li>
+      <li>(2) 左右指针相遇（<code class="language-plaintext highlighter-rouge">low &gt; high</code>）</li>
+    </ul>
+  </li>
+  <li>递归：分成左右两子数组，如果<code class="language-plaintext highlighter-rouge">array[mid]</code>不等于<code class="language-plaintext highlighter-rouge">query</code>则不断在左或者右子数组里面查找，直到找到了<code class="language-plaintext highlighter-rouge">query</code>或者子数组为空。</li>
 </ul>
-</li>
-<li>递归：分成左右两子数组，如果<code class="language-plaintext highlighter-rouge">array[mid]</code>不等于<code class="language-plaintext highlighter-rouge">query</code>则不断在左或者右子数组里面查找，直到找到了<code class="language-plaintext highlighter-rouge">query</code>或者子数组为空。</li>
-</ul>
+
 <p>重点在于分类讨论，建议用双闭区间，仔细讨论<code class="language-plaintext highlighter-rouge">array[low:mid]</code>, <code class="language-plaintext highlighter-rouge">array[mid]</code>, <code class="language-plaintext highlighter-rouge">array[mid+1:high+1]</code>的情况，并注意三个数组是否为空。</p>
+
 <h3 id="算法复杂度-2">算法复杂度</h3>
+
 <p>时间 $O(\log(N))$。每次只需要查一边，所以子问题数量为1。空间 $O(1)$。</p>
+
 <h3 id="使用场景-1">使用场景</h3>
+
 <ul>
-<li>当数组已经排好序 (30-40%是二分)</li>
-<li>当面试官要求你找一个比 $O(N)$ 更小的时间复杂度算法的时候(99%)</li>
-<li>找到数组中的一个分割位置，使得左半部分满足某个条件，右半部分不满足(100%)</li>
-<li>找到一个最大/最小的值使得某个条件被满足(90%)</li>
+  <li>当数组已经排好序 (30-40%是二分)</li>
+  <li>当面试官要求你找一个比 $O(N)$ 更小的时间复杂度算法的时候(99%)</li>
+  <li>找到数组中的一个分割位置，使得左半部分满足某个条件，右半部分不满足(100%)</li>
+  <li>找到一个最大/最小的值使得某个条件被满足(90%)</li>
 </ul>
+
 <h3 id="代码模板-1">代码模板</h3>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -1461,8 +1095,11 @@ def traverse(root: TreeNode):
         <span class="k">return</span> <span class="nf">binary_search_recur</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>  <span class="c1"># Go search in the right subarray
 </span>    <span class="k">return</span> <span class="n">mid</span>  <span class="c1"># `array[mid] = query`, stop recurrence
 </span></pre></td></tr></tbody></table></code></pre></div></div>
+
 <h3 id="例题-2">例题</h3>
+
 <p><a href="https://leetcode.cn/problems/search-in-rotated-sorted-array">33. 搜索旋转排序数组</a></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -1526,7 +1163,9 @@ def traverse(root: TreeNode):
             <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
     <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+
 <p><a href="https://leetcode.cn/problems/find-k-closest-elements/">658. 找到 K 个最接近的元素</a></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -1572,7 +1211,9 @@ def traverse(root: TreeNode):
         <span class="n">remove_nums</span> <span class="o">-=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">arr</span><span class="p">[</span><span class="n">left</span><span class="p">:</span><span class="n">left</span> <span class="o">+</span> <span class="n">k</span><span class="p">]</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+
 <p><a href="https://leetcode.cn/problems/kth-largest-element-in-an-array">215. 数组中的第K个最大元素</a></p>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -1751,290 +1392,30 @@ def traverse(root: TreeNode):
 </span>                <span class="n">left</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
 
+<!-- endregion -->
+
 <h2 id="排序">排序</h2>
 
-<h3 id="算法复杂度-3">算法复杂度</h3>
-<p>时间复杂度：</p>
-<ul>
-<li>快速排序：期望 $O(N\log(N))$</li>
-<li>归并排序：期望 $O(N\log(N))$</li>
-</ul>
-<p>空间复杂度：</p>
-<ul>
-<li>快速排序：期望 $O(1)$</li>
-<li>归并排序：期望 $O(N)$</li>
-</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="Algorithm"/><category term="algorithm"/><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Hello, Notion!</title><link href="https://jinchaoli.com/blog/hello-notion/" rel="alternate" type="text/html" title="Hello, Notion!"/><published>2026-04-23T00:00:00+08:00</published><updated>2026-04-23T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/hello-notion</id><content type="html" xml:base="https://jinchaoli.com/blog/hello-notion/"><![CDATA[<h1 id="text-and-typography">Text and Typography</h1>
-<h2 id="headings">Headings</h2>
-<h1 class="mt-4 mb-0" id="h1---heading">H1 - heading</h1>
-<h2 id="h2---heading" data-toc-skip="" class="mt-4 mb-0">H2 - heading</h2>
-<h3 id="h3---heading" data-toc-skip="" class="mt-4 mb-0">H3 - heading</h3>
-<h3 id="h4---heading" data-toc-skip="" class="mt-4">H4 - heading</h3>
-<h2 id="paragraph">Paragraph</h2>
-<p>Quisque egestas convallis ipsum, ut sollicitudin risus tincidunt a. Maecenas interdum malesuada egestas. Duis consectetur porta risus, sit amet vulputate urna facilisis ac. Phasellus semper dui non purus ultrices sodales. Aliquam ante lorem, ornare a feugiat ac, finibus nec mauris. Vivamus ut tristique nisi. Sed vel leo vulputate, efficitur risus non, posuere mi. Nullam tincidunt bibendum rutrum. Proin commodo ornare sapien. Vivamus interdum diam sed sapien blandit, sit amet aliquam risus mattis. Nullam arcu turpis, mollis quis laoreet at, placerat id nibh. Suspendisse venenatis eros eros.</p>
-<h2 id="lists">Lists</h2>
-<h3 id="ordered-list">Ordered list</h3>
-<ol>
-<li>Firstly</li>
-<li>Secondly</li>
-<li>Thirdly</li>
-</ol>
-<h3 id="unordered-list">Unordered list</h3>
-<ul>
-<li>Chapter
-<ul>
-<li>Section
-<ul>
-<li>Paragraph</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="todo-list">ToDo list</h3>
-<ul class="task-list">
-<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>Job
-<ul class="task-list">
-<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked"/>Step 1</li>
-<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked"/>Step 2</li>
-<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>Step 3</li>
-</ul>
-</li>
-</ul>
-<h3 id="description-list">Description list</h3>
-<dl>
-<dt>Sun</dt>
-<dd>the star around which the earth orbits</dd>
-<dt>Moon</dt>
-<dd>the natural satellite of the earth, visible by reflected light from the sun</dd>
-</dl>
-<h2 id="block-quote">Block Quote</h2>
-<blockquote>
-<p>This line shows the <em>block quote</em>.</p>
-</blockquote>
-<h2 id="prompts">Prompts</h2>
-<blockquote class="prompt-tip">
-<p>An example showing the <code class="language-plaintext highlighter-rouge">tip</code> type prompt.</p>
-</blockquote>
-<blockquote class="prompt-info">
-<p>An example showing the <code class="language-plaintext highlighter-rouge">info</code> type prompt.</p>
-</blockquote>
-<blockquote class="prompt-warn">
-<p>An example showing the <code class="language-plaintext highlighter-rouge">warn</code> type prompt.</p>
-</blockquote>
-<blockquote class="prompt-danger">
-<p>An example showing the <code class="language-plaintext highlighter-rouge">danger</code> type prompt.</p>
-</blockquote>
-<h2 id="tables">Tables</h2>
-<table>
-<thead>
-<tr>
-<th>Company</th>
-<th>Contact</th>
-<th>Country</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Alfreds Futterkiste</td>
-<td>Maria Anders</td>
-<td>Germany</td>
-</tr>
-<tr>
-<td>Island Trading</td>
-<td>Helen Bennett</td>
-<td>UK</td>
-</tr>
-<tr>
-<td>Magazzini Alimentari Riuniti</td>
-<td>Giovanni Rovelli</td>
-<td>Italy</td>
-</tr>
-</tbody>
-</table>
-<h2 id="links">Links</h2>
-<p><a href="http://127.0.0.1:4000/">http://127.0.0.1:4000</a></p>
-<h2 id="footnote">Footnote</h2>
-<p>Click the hook will locate the footnote<sup id="fnref:footnote"><a href="#fn:footnote" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>, and here is another footnote<sup id="fnref:fn-nth-2"><a href="#fn:fn-nth-2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>.</p>
-<h2 id="inline-code">Inline code</h2>
-<p>This is an example of <code class="language-plaintext highlighter-rouge">Inline Code</code>.</p>
-<h2 id="filepath">Filepath</h2>
-<p>Here is the <code class="language-plaintext filepath highlighter-rouge">/path/to/the/filename</code>.</p>
-<h2 id="code-blocks">Code blocks</h2>
-<p>Code blocks support syntax highlighting, one-click copying, collapsing-expanding, and dark/light theme switching.</p>
-<h3 id="common">Common</h3>
-<p>A plain code block with no language specified:</p>
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>This is a common code snippet, without syntax highlight and line number.
-</pre></td></tr></tbody></table></code></pre></div></div>
-<h3 id="specific-language">Specific Language</h3>
-<p>Specify the language after the opening backticks (e.g. ````bash`) to enable syntax highlighting and line numbers.</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-ne</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
-  </span><span class="nb">echo</span> <span class="s2">"The command was not successful."</span><span class="p">;</span>
-  <span class="c">#do the needful / exit</span>
-<span class="k">fi</span><span class="p">;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<h3 id="specific-filename">Specific filename</h3>
-<p>Add <code class="language-plaintext highlighter-rouge">{: file='filename'}</code> right after the closing backticks to display a filename label on the code block.</p>
-<div file="_sass/jekyll-theme-chirpy.scss" class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="k">@import</span>
-  <span class="s2">"colors/light-typography"</span><span class="o">,</span>
-  <span class="s2">"colors/dark-typography"</span><span class="o">;</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-<h3 id="jupyter-notebook">Jupyter notebook</h3>
-<p>Embed a Jupyter notebook directly into the post using the <code class="language-plaintext highlighter-rouge">jupyter_notebook</code> tag.</p>
-<div class="jupyter-notebook" data-light-src="/assets/jupyter/blog.ipynb.light.html" data-dark-src="/assets/jupyter/blog.ipynb.dark.html">
-<div class="code-header">
-<span data-label-text="Jupyter Notebook"><i class="fas fa-code fa-fw small"></i></span>
-<div class="code-header-fold-trigger jupyter-fold-trigger"></div>
-<div class="code-header-buttons">
-<button class="fold-btn jupyter-fold-btn" data-bs-original-title="Collapse">
-<i class="fas fa-chevron-up"></i>
-</button>
-<button class="clipboard-btn jupyter-clipboard-btn" aria-label="copy" data-title-succeed="Copied!">
-<i class="far fa-clipboard"></i>
-</button>
-</div>
-</div>
-<div class="jupyter-notebook-iframe-container">
-<iframe class="jupyter-iframe jupyter-iframe-light" src="/assets/jupyter/blog.ipynb.light.html" style="display:none;">
-</iframe>
-<iframe class="jupyter-iframe jupyter-iframe-dark" src="/assets/jupyter/blog.ipynb.dark.html" style="display:none;">
-</iframe>
-</div>
-</div>
-<h2 id="mathematics">Mathematics</h2>
-<p>The mathematics powered by <strong><a href="https://www.mathjax.org/">MathJax</a></strong>:</p>
-\[\begin{equation}
-\sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6}
-\label{eq:series}
-\end{equation}\]
-<p>We can reference the equation as \eqref{eq:series}.</p>
-<p>When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are</p>
-\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}\]
-<h2 id="mermaid-svg">Mermaid SVG</h2>
-<pre><code class="language-mermaid"> gantt
-  title  Adding GANTT diagram functionality to mermaid
-  apple :a, 2017-07-20, 1w
-  banana :crit, b, 2017-07-23, 1d
-  cherry :active, c, after b a, 1d
-</code></pre>
-<h2 id="mindmap">Mindmap</h2>
-<p>View <a href="https://github.com/markmap/markmap/blob/master/packages/markmap-view/src/constants.ts">markmap.js.org</a> for configuration details.</p>
-<div class="markmap">
-<script type="text/template">
----
-markmap:
-  maxWidth: 300
-  pan: false
-  autoFit: true
-  fitRatio: 0.7
----
+<!-- region -->
 
-- markmap
-  - lib
-    - Transformer
-    - builtInPlugins
-  - render
-    - fillTemplate
-  - view
-    - Markmap
-    - loadCSS
-    - loadJS
-  - autoloader
-    - autoLoader
-	</script>
-</div>
-<h2 id="images">Images</h2>
-<h3 id="default-with-caption">Default (with caption)</h3>
-<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="" width="972" height="589"/></p>
-<p><em>Full screen width and center alignment</em></p>
-<h3 id="left-aligned">Left aligned</h3>
-<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="" width="972" height="589" class="w-75 normal"/></p>
-<h3 id="float-to-left">Float to left</h3>
-<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="" width="972" height="589" class="w-50 left"/><br/>
-Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.</p>
-<h3 id="float-to-right">Float to right</h3>
-<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="" width="972" height="589" class="w-50 right"/><br/>
-Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.</p>
-<h3 id="darklight-mode--shadow">Dark/Light mode &amp; Shadow</h3>
-<p>The image below will toggle dark/light mode based on theme preference, notice it has shadows.</p>
-<p><img src="https://chirpy-img.netlify.app/posts/20190808/devtools-light.png" alt="" class="light w-75 shadow rounded-10" w="1212" h="668"/></p>
-<p><img src="https://chirpy-img.netlify.app/posts/20190808/devtools-dark.png" alt="" class="dark w-75 shadow rounded-10" w="1212" h="668"/></p>
-<h2 id="video">Video</h2>
-<div class="yt-lite embed-video" data-id="Balreaj8Yqs" onclick="
-var iframe=document.createElement('iframe');
-iframe.setAttribute('src', 'https://www.youtube.com/embed/' + this.dataset.id + '?autoplay=1');
-iframe.setAttribute('title', 'YouTube video player');
-iframe.setAttribute('frameborder', '0');
-iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-iframe.setAttribute('allowfullscreen', '');
-iframe.className = 'embed-video';
-this.parentNode.replaceChild(iframe, this);
-">
-<img src="https://i.ytimg.com/vi/Balreaj8Yqs/hqdefault.jpg" alt="YouTube video thumbnail" loading="lazy"/>
-<button class="yt-play-btn" aria-label="Play video">
-<svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
-<path d="M66.5 7.7c-.8-2.9-3-5.1-5.8-5.8C55.8 0 34 0 34 0S12.2 0 7.3 1.9C4.5 2.6 2.3 4.9 1.5 7.7 0 12.8 0 24 0 24s0 11.2 1.5 16.3c.8 2.9 3 5.1 5.8 5.8C12.2 48 34 48 34 48s21.8 0 26.7-1.9c2.8-.8 5-3 5.8-5.8C68 35.2 68 24 68 24s0-11.2-1.5-16.3z" fill="#f00"/>
-<path d="M45 24 27 14v20" fill="#fff"/>
-</svg>
-</button>
-</div>
-<h2 id="reverse-footnote">Reverse Footnote</h2>
-<p><br/></p>
-<div class="footnotes" role="doc-endnotes">
-<ol>
-<li id="fn:footnote">
-<p>The footnote source <a href="#fnref:footnote" class="reversefootnote" role="doc-backlink">&#8617;&#xfe0e;</a></p>
-</li>
-<li id="fn:fn-nth-2">
-<p>The 2nd footnote source <a href="#fnref:fn-nth-2" class="reversefootnote" role="doc-backlink">&#8617;&#xfe0e;</a></p>
-</li>
-</ol>
-</div>]]></content><author><name>Jinchao Li</name></author><category term="Blogging"/><category term="demo"/><summary type="html"><![CDATA[Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more using Notion.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://chirpy-img.netlify.app/commons/devices-mockup.png"/><media:content medium="image" url="https://chirpy-img.netlify.app/commons/devices-mockup.png" xmlns:media="http://search.yahoo.com/mrss/"/></entry><entry><title type="html">Configure Waline with TiDB</title><link href="https://jinchaoli.com/blog/set-waline-with-tidb/" rel="alternate" type="text/html" title="Configure Waline with TiDB"/><published>2025-07-27T11:00:00+08:00</published><updated>2026-04-15T15:40:01+08:00</updated><id>https://jinchaoli.com/blog/set-waline-with-tidb</id><content type="html" xml:base="https://jinchaoli.com/blog/set-waline-with-tidb/"><![CDATA[<h2 id="why-waline--tidb">Why Waline + TiDB?</h2>
-<p><a href="https://waline.js.org/">Waline</a> is a lightweight, open-source, privacy-focused, and self-hosted comment system with backend UI and rich features, and <a href="https://tidbcloud.com/">TiDB Cloud</a> offers a scalable, MySQL-compatible database with a generous 5GB free tier – making them a powerful pair for efficient and reliable comment system.</p>
-<h2 id="how-to-set-up-waline-with-tidb-cloud">How to Set Up Waline with TiDB Cloud?</h2>
-<p>Follow these steps to deploy and configure <a href="https://waline.js.org/">Waline</a> using <a href="https://tidbcloud.com/">TiDB Cloud</a> as the database backend.</p>
-<ol>
-<li>
-<p>Create a cluster in <a href="https://tidbcloud.com/">TiDB Database</a> (any name is okay)</p>
-</li>
-<li>
-<p>Connect with the above cluster in your local editor (e.g., VS Code)</p>
-<p>To manage your database and initialize comment tables:</p>
-<ol>
-<li>
-<p>Get Connection Details: In the TiDB Cloud console (Overview of the cluster), click the Connect button (top-right corner). You’ll see the connection parameters <code class="language-plaintext highlighter-rouge">HOST</code>, <code class="language-plaintext highlighter-rouge">PORT</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">PASSWORD</code> (generate and copy it), <code class="language-plaintext highlighter-rouge">DATABASE</code> and <code class="language-plaintext highlighter-rouge">CA</code>.</p>
-</li>
-<li>
-<p>Set Up VS Code: See details in <a href="https://docs.pingcap.com/tidbcloud/dev-guide-gui-vscode-sqltools/">TiDB Developer Guide</a>.</p>
-</li>
-<li>
-<p>Initialize the Waline Database Schema: Copy <a href="https://github.com/walinejs/waline/blob/main/assets/waline.tidb">waline.tidb</a> and execute the entire script in VS Code. The script will create a database named <code class="language-plaintext highlighter-rouge">waline</code> with <code class="language-plaintext highlighter-rouge">wl_Comment</code>, <code class="language-plaintext highlighter-rouge">wl_Counter</code> and <code class="language-plaintext highlighter-rouge">wl_Users</code> in it.</p>
-</li>
-</ol>
-</li>
-<li>
-<p>Configure <code class="language-plaintext highlighter-rouge">Environment Variables</code> as listed in <a href="https://waline.js.org/guide/database.html#tidb">Waline Guidebook</a></p>
-</li>
-</ol>
-<blockquote class="prompt-warn">
-<p>When first connecting via VS Code, the default <code class="language-plaintext highlighter-rouge">Database</code> is <code class="language-plaintext highlighter-rouge">test</code>. After running <code class="language-plaintext highlighter-rouge">waline.tidb</code>, the actual database used by Waline is <code class="language-plaintext highlighter-rouge">waline</code>. So in <code class="language-plaintext highlighter-rouge">Environment Variables</code>, set <code class="language-plaintext highlighter-rouge">DATABASE = waline</code>.</p>
-</blockquote>]]></content><author><name>Jinchao Li</name></author><category term="Blogging"/><category term="Design"/><category term="homepage"/><summary type="html"><![CDATA[Why Waline + TiDB?]]></summary></entry><entry><title type="html">Customize Your Jekyll Chirpy Theme</title><link href="https://jinchaoli.com/blog/customize-jekyll-chirpy/" rel="alternate" type="text/html" title="Customize Your Jekyll Chirpy Theme"/><published>2023-07-23T10:00:00+08:00</published><updated>2026-04-15T15:40:01+08:00</updated><id>https://jinchaoli.com/blog/customize-jekyll-chirpy</id><content type="html" xml:base="https://jinchaoli.com/blog/customize-jekyll-chirpy/"><![CDATA[<p><a href="https://github.com/cotes2020/jekyll-theme-chirpy">Jekyll Chirpy Theme</a> is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official <a href="https://github.com/cotes2020/jekyll-theme-chirpy/wiki">wiki</a> to realize your own magic modification.</p>
-<p>This blog introduces some basic tutorials to customize your own Chirpy theme, suitable for those friends who are not satisfied with the Chirpy configuration and want more blogging functions. Welcome to <a href="https://github.com/JinchaoLove/jekyll-chirpy-demo/issues">issue</a> or <a href="https://github.com/JinchaoLove/jekyll-chirpy-demo/pulls">join us</a> to help others build blogs.</p>
+<h3 id="算法复杂度-3">算法复杂度</h3>
+
+<p>时间复杂度：</p>
+
 <ul>
-<li>
-<p><a href="/blog/exchange-homepage-and-about/">Exchange Homepage and About</a></p>
-</li>
-<li>
-<p><a href="https://nihil.cc/posts/use_valine/">Replace Disqus with Valine for Discussion</a></p>
-</li>
-<li>
-<p><a href="https://blog.ixiaocai.net/posts/Astro-Blog-Customize-4-Waline-Enhancement/">Use Waline for Discussion</a></p>
-</li>
-</ul>]]></content><author><name>Jinchao Li</name></author><category term="Blogging"/><category term="Design"/><category term="theme"/><summary type="html"><![CDATA[Jekyll Chirpy Theme is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official wiki to realize your own magic modification.]]></summary></entry></feed>
+  <li>快速排序：期望 $O(N\log(N))$</li>
+  <li>归并排序：期望 $O(N\log(N))$</li>
+</ul>
+
+<p>空间复杂度：</p>
+
+<ul>
+  <li>快速排序：期望 $O(1)$</li>
+  <li>归并排序：期望 $O(N)$</li>
+</ul>
+
+
+      </script>
+    </div>
+  </body>
+</html>
