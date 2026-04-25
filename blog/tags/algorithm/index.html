@@ -2,7 +2,7 @@
 
 <html lang="en">
 <head>
-<link rel="canonical" href="https://jinchaoli.com/blog/set-waline-with-tidb/">
+<link rel="canonical" href="https://jinchaoli.com/blog/tags/algorithm/">
 
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -19,20 +19,20 @@ content="#1b1b1e">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
 <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
-<title>Configure Waline with TiDB</title>
+<title>algorithm</title>
 <meta name="author" content="Jinchao Li">
 <meta name="description" content="Jinchao Li's Homepage">
 <meta name="keywords" content="jinchao li, 李锦超, cuhk, 香港中文大学, research, speech and natural language processing">
 
-<meta property="og:site_name" content="Configure Waline with TiDB">
+<meta property="og:site_name" content="algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Configure Waline with TiDB | Configure Waline with TiDB">
-<meta property="og:url" content="https://jinchaoli.com/blog/set-waline-with-tidb/">
+<meta property="og:title" content="algorithm | algorithm">
+<meta property="og:url" content="https://jinchaoli.com/blog/tags/algorithm/">
 <meta property="og:description" content="Jinchao Li's Homepage">
 <meta property="og:locale" content="en">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Configure Waline with TiDB">
+<meta name="twitter:title" content="algorithm">
 <meta name="twitter:description" content="Jinchao Li's Homepage">
 <meta name="twitter:site" content="@JinchaoLove">
 <meta name="twitter:creator" content="@JinchaoLove">
@@ -43,10 +43,10 @@ content="#1b1b1e">
         "@type": "Person",
         "name": "Jinchao Li"
       },
-      "url": "https://jinchaoli.com/blog/set-waline-with-tidb/",
+      "url": "https://jinchaoli.com/blog/tags/algorithm/",
       "@type": "BlogPosting",
       "description": "Jinchao Li's Homepage",
-      "headline": "Configure Waline with TiDB",
+      "headline": "algorithm",
       
         "sameAs": ["https://github.com/JinchaoLove", "https://twitter.com/JinchaoLove", "https://scholar.google.com/citations?hl=en&user=0LWE_dkAAAAJ", "https://www.researchgate.net/profile/Jinchao-Li-3", "https://zhihu.com/people/jinchaoli"],
         
@@ -489,11 +489,14 @@ data-bs-original-title="Hide/show sidebar"
 <span>
 <a href="/blog/">Blog</a>
 </span>
-<span>Configure Waline with TiDB</span>
+<span>
+<a href="/blog/tags/">Tags</a>
+</span>
+<span>algorithm</span>
 </nav>
 
 <div id="topbar-title">
-Configure Waline with TiDB
+algorithm
 </div>
 </div>
 <div class="d-flex align-items-center">
@@ -586,168 +589,27 @@ class="col-10">
 
 
 
-
-
-<article class="px-1">
-<header>
-<h1 data-toc-skip>Configure Waline with TiDB</h1>
-
-<div class="post-meta text-muted">
-<div class="d-flex justify-content-between">
-<span class="post-meta-mindmap-link">
-<a href="/mindmap/set-waline-with-tidb/" target="_blank">
-<i class="fa fa-external-link" aria-hidden="true"></i>
-View mindmap of this page
-</a>
-</span>
-
-<span>
-By
-<em>
-<a href="https://github.com/JinchaoLove/">Jinchao Li</a>
-</em>
-</span>
-</div>
-<div class="d-flex justify-content-between">
-
-
-
-
-<span
-class="readtime"
-data-bs-toggle="tooltip"
-data-bs-placement="bottom"
-title="1 min read"
->About
-<em>211</em>
-words</span>
-<span>
-
-Posted
+<div id="page-tag">
+<h1 class="ps-lg-2">
+<i class="fa fa-tag fa-fw text-muted"></i>
+algorithm
+<span class="lead text-muted ps-2">1</span>
+</h1>
+<ul class="content ps-0">
+<li class="d-flex justify-content-between px-md-3">
+<a href="/blog/34c01bb206368002b1b5f9172b0cd5a5/">算法基础</a>
+<span class="dash flex-grow-1"></span>
 
 <time
-data-ts="1753585200"
+class="text-muted small text-nowrap"
+data-ts="1776960000"
 data-df="ll"
-data-bs-toggle="tooltip" data-bs-placement="bottom"
 >
-Jul 27, 2025
+Apr 24, 2026
 </time>
-
-| Updated
-
-<time
-data-ts="1776238801"
-data-df="ll"
-data-bs-toggle="tooltip" data-bs-placement="bottom"
->
-Apr 15, 2026
-</time>
-</span>
-</div>
-
-</div>
-
-</header>
-<div class="content">
-<h2 id="why-waline--tidb"><a href="#why-waline--tidb" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">Why Waline + TiDB?</span></h2>
-<p><a href="https://waline.js.org/">Waline</a> is a lightweight, open-source, privacy-focused, and self-hosted comment system with backend UI and rich features, and <a href="https://tidbcloud.com/">TiDB Cloud</a> offers a scalable, MySQL-compatible database with a generous 5GB free tier – making them a powerful pair for efficient and reliable comment system.</p>
-<h2 id="how-to-set-up-waline-with-tidb-cloud"><a href="#how-to-set-up-waline-with-tidb-cloud" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2">How to Set Up Waline with TiDB Cloud?</span></h2>
-<p>Follow these steps to deploy and configure <a href="https://waline.js.org/">Waline</a> using <a href="https://tidbcloud.com/">TiDB Cloud</a> as the database backend.</p>
-<ol>
-<li>
-<p>Create a cluster in <a href="https://tidbcloud.com/">TiDB Database</a> (any name is okay)</p>
 </li>
-<li>
-<p>Connect with the above cluster in your local editor (e.g., VS Code)</p>
-<p>To manage your database and initialize comment tables:</p>
-<ol>
-<li>
-<p>Get Connection Details: In the TiDB Cloud console (Overview of the cluster), click the Connect button (top-right corner). You’ll see the connection parameters <code class="language-plaintext highlighter-rouge">HOST</code>, <code class="language-plaintext highlighter-rouge">PORT</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">PASSWORD</code> (generate and copy it), <code class="language-plaintext highlighter-rouge">DATABASE</code> and <code class="language-plaintext highlighter-rouge">CA</code>.</p>
-</li>
-<li>
-<p>Set Up VS Code: See details in <a href="https://docs.pingcap.com/tidbcloud/dev-guide-gui-vscode-sqltools/">TiDB Developer Guide</a>.</p>
-</li>
-<li>
-<p>Initialize the Waline Database Schema: Copy <a href="https://github.com/walinejs/waline/blob/main/assets/waline.tidb">waline.tidb</a> and execute the entire script in VS Code. The script will create a database named <code class="language-plaintext highlighter-rouge">waline</code> with <code class="language-plaintext highlighter-rouge">wl_Comment</code>, <code class="language-plaintext highlighter-rouge">wl_Counter</code> and <code class="language-plaintext highlighter-rouge">wl_Users</code> in it.</p>
-</li>
-</ol>
-</li>
-<li>
-<p>Configure <code class="language-plaintext highlighter-rouge">Environment Variables</code> as listed in <a href="https://waline.js.org/guide/database.html#tidb">Waline Guidebook</a></p>
-</li>
-</ol>
-<blockquote class="prompt-warn">
-<p>When first connecting via VS Code, the default <code class="language-plaintext highlighter-rouge">Database</code> is <code class="language-plaintext highlighter-rouge">test</code>. After running <code class="language-plaintext highlighter-rouge">waline.tidb</code>, the actual database used by Waline is <code class="language-plaintext highlighter-rouge">waline</code>. So in <code class="language-plaintext highlighter-rouge">Environment Variables</code>, set <code class="language-plaintext highlighter-rouge">DATABASE = waline</code>.</p>
-</blockquote>
+</ul>
 </div>
-<div class="post-tail-wrapper text-muted">
-
-<div class="post-tail-bottom d-flex justify-content-between align-items-center pb-2">
-<div class="post-meta d-flex flex-wrap align-items-center gap-1">
-<i class="far fa-folder-open fa-fw me-1"></i>
-<a href="/blog/categories/blogging" class="tag-chip">Blogging</a>
-<a href="/blog/categories/design" class="tag-chip">Design</a>
-<span class="ms-2"><i class="fa fa-tags fa-fw me-1"></i></span>
-<a href="/blog/tags/homepage" class="tag-chip">homepage</a>
-</div>
-
-<div class="share-wrapper d-flex align-items-center">
-<span class="share-label text-muted">Share</span>
-<span class="share-icons">
-<a
-href="https://twitter.com/intent/tweet?text=Configure%20Waline%20with%20TiDB%20-%20Jinchao%20Li&url=https%3A%2F%2Fjinchaoli.com%2Fblog%2Fset-waline-with-tidb%2F"
-target="_blank"
-rel="noopener"
-data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
-<i
-class="fa-brands fa-square-x-twitter"
-></i>
-</a>
-<a
-href="https://www.facebook.com/sharer/sharer.php?title=Configure%20Waline%20with%20TiDB%20-%20Jinchao%20Li&u=https%3A%2F%2Fjinchaoli.com%2Fblog%2Fset-waline-with-tidb%2F"
-target="_blank"
-rel="noopener"
-data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
-<i
-class="fab fa-facebook-square"
-style="color: #316ff6;"
-></i>
-</a>
-<a
-href="https://t.me/share/url?url=https%3A%2F%2Fjinchaoli.com%2Fblog%2Fset-waline-with-tidb%2F&text=Configure%20Waline%20with%20TiDB%20-%20Jinchao%20Li"
-target="_blank"
-rel="noopener"
-data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
-<i
-class="fab fa-telegram"
-style="color: #0088cc;"
-></i>
-</a>
-<button
-id="copy-link"
-aria-label="Copy link"
-class="btn small"
-data-bs-toggle="tooltip"
-data-bs-placement="top"
-title="Copy link"
-data-title-succeed="Link copied successfully!">
-<i class="fa-fw fas fa-link pe-none fs-6"></i>
-</button>
-</span>
-</div>
-</div>
-
-
-<div class="license-wrapper pt-2">
-This post is licensed under
-<a href="https://creativecommons.org/licenses/by/4.0/">
-CC BY 4.0
-</a>
-by the author.
-</div>
-</div>
-
-</article>
 </main>
 
 <aside
@@ -783,117 +645,10 @@ class="col-2 ps-2 mb-5 text-muted">
 </div>
 </section>
 </div>
-<section id="toc-wrapper" class="ps-0 pe-4">
-<h2 class="panel-heading ps-3 pt-2 mb-2">Contents</h2>
-<nav id="toc"></nav>
-</section>
 </aside>
 </div>
 
-<div class="row">
-<div id="tail-wrapper" class="col-12 col-xl-10 px-md-3">
-
-
-
-
-<aside id="related-posts" aria-labelledby="related-label">
-<h3 class="mb-4" id="related-label">Further Reading</h3>
-<nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
-<article class="col">
-<a href="/blog/exchange-homepage-and-about/" class="post-preview card h-100">
-<div class="card-body">
-
-<time
-data-ts="1690077600"
-data-df="ll"
->
-Jul 23, 2023
-</time>
-<h4 class="pt-0 my-2">Exchange Homepage and About</h4>
-<div class="text-muted">
-<p>To change the default site homepage as About, and the original paginator homepage as Blog. It may be difficult since pagination only works within index.html, see similar issue.
-Modify the ...</p>
-</div>
-</div>
-</a>
-</article>
-<article class="col">
-<a href="/blog/customize-jekyll-chirpy/" class="post-preview card h-100">
-<div class="card-body">
-
-<time
-data-ts="1690077600"
-data-df="ll"
->
-Jul 23, 2023
-</time>
-<h4 class="pt-0 my-2">Customize Your Jekyll Chirpy Theme</h4>
-<div class="text-muted">
-<p>Jekyll Chirpy Theme is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official wiki to realize ...</p>
-</div>
-</div>
-</a>
-</article>
-<article class="col">
-<a href="/blog/text-and-typography/" class="post-preview card h-100">
-<div class="card-body">
-
-<time
-data-ts="1565235180"
-data-df="ll"
->
-Aug 8, 2019
-</time>
-<h4 class="pt-0 my-2">Text and Typography</h4>
-<div class="text-muted">
-<p>Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.</p>
-</div>
-</div>
-</a>
-</article>
-</nav>
-</aside>
-
-
-<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
-<a
-href="/blog/exchange-homepage-and-about/"
-class="btn btn-outline-primary"
-aria-label="Older"
->
-<p>Exchange Homepage and About</p>
-</a>
-<a
-href="/blog/34c01bb206368002b1b5f9172b0cd5a5/"
-class="btn btn-outline-primary"
-aria-label="Newer"
->
-<p>算法基础</p>
-</a>
-</nav>
-
-<div id="waline"></div>
-<script type="module">
-  import { init } from "/assets/lib/waline/waline.js";
-
-  init({
-    el: '#waline',
-    serverURL: "https://comment.jinchaoli.com",
-    reaction: [
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_heart.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_thumbsup.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_clap.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_grin.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_doubt.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_sleep.gif',
-    ],
-    search: false,
-    pageview: true,
-    lang: 'en'
-  });
-</script>
-</div>
-</div>
+<div class="content-bottom-spacer"></div>
 
 <div id="search-result-wrapper" class="d-flex justify-content-center unloaded">
 <div class="col-11 content">
@@ -952,7 +707,6 @@ Update
 <script defer src="/assets/lib/dayjs/locale/en.min.js"></script>
 <script defer src="/assets/lib/dayjs/plugin/relativeTime.min.js"></script>
 <script defer src="/assets/lib/dayjs/plugin/localizedFormat.min.js"></script>
-<script defer src="/assets/lib/tocbot/tocbot.min.js"></script>
 
 <script defer src="/assets/js/dist/commons.min.js"></script>
 <script async src="/assets/js/just-the-docs.js"></script>

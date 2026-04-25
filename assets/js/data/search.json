@@ -902,6 +902,24 @@
         }
       ,
         "110": {
+          "doc": "algorithm",
+          "title": "algorithm",
+          "content": null,
+          "url": "/blog/tags/algorithm/",
+          
+          "relUrl": "/blog/tags/algorithm/"
+        }
+      ,
+        "111": {
+          "doc": "python",
+          "title": "python",
+          "content": null,
+          "url": "/blog/tags/python/",
+          
+          "relUrl": "/blog/tags/python/"
+        }
+      ,
+        "112": {
           "doc": "Blogging",
           "title": "Blogging",
           "content": null,
@@ -910,7 +928,7 @@
           "relUrl": "/blog/categories/blogging/"
         }
       ,
-        "111": {
+        "113": {
           "doc": "Demo",
           "title": "Demo",
           "content": null,
@@ -919,12 +937,30 @@
           "relUrl": "/blog/categories/demo/"
         }
       ,
-        "112": {
+        "114": {
           "doc": "Design",
           "title": "Design",
           "content": null,
           "url": "/blog/categories/design/",
           
           "relUrl": "/blog/categories/design/"
+        }
+      ,
+        "115": {
+          "doc": "Study",
+          "title": "Study",
+          "content": null,
+          "url": "/blog/categories/study/",
+          
+          "relUrl": "/blog/categories/study/"
+        }
+      ,
+        "116": {
+          "doc": "Algorithm",
+          "title": "Algorithm",
+          "content": null,
+          "url": "/blog/categories/algorithm/",
+          
+          "relUrl": "/blog/categories/algorithm/"
         }
 }
