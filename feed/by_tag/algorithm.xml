@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/algorithm.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-04-25T18:03:06+08:00</updated><id>https://jinchaoli.com/feed/by_tag/algorithm.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">算法基础</title><link href="https://jinchaoli.com/blog/34c01bb206368002b1b5f9172b0cd5a5/" rel="alternate" type="text/html" title="算法基础"/><published>2026-04-24T00:00:00+08:00</published><updated>2026-04-24T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/34c01bb206368002b1b5f9172b0cd5a5</id><content type="html" xml:base="https://jinchaoli.com/blog/34c01bb206368002b1b5f9172b0cd5a5/"><![CDATA[
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/algorithm.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-04-25T20:20:27+08:00</updated><id>https://jinchaoli.com/feed/by_tag/algorithm.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">算法基础</title><link href="https://jinchaoli.com/blog/34c01bb206368002b1b5f9172b0cd5a5/" rel="alternate" type="text/html" title="算法基础"/><published>2026-04-24T00:00:00+08:00</published><updated>2026-04-24T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/34c01bb206368002b1b5f9172b0cd5a5</id><content type="html" xml:base="https://jinchaoli.com/blog/34c01bb206368002b1b5f9172b0cd5a5/"><![CDATA[
 <h2 id="框架概括">框架概括</h2>
 <h3 id="整体框架">整体框架</h3>
 <ul>
@@ -50,28 +50,12 @@
 2
 3
 </pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
- <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)):</span>
-     <span class="c1"># 迭代访问 arr[i]
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)):</span>
+        <span class="c1"># 迭代访问 arr[i]
 </span></pre></td></tr></tbody></table></code></pre></div></div>
 </li>
-<li>链表的遍历，兼具迭代和递归结构：<br/>
-```python
-<h1 id="基本的单链表节点">基本的单链表节点</h1>
-<p>class ListNode:<br/>
-def <strong>init</strong>(self, val):<br/>
-self.val = val<br/>
-self.next = None</p>
-</li>
-</ol>
-<p>def traverse(head: ListNode) -&gt; None:<br/>
-p = head<br/>
-while p is not None:<br/>
-# 迭代访问 p.val<br/>
-p = p.next</p>
-<p>def traverse(head: ListNode) -&gt; None:<br/>
-# 递归访问 head.val<br/>
-traverse(head.next)</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<li>链表的遍历，兼具迭代和递归结构：
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -84,29 +68,58 @@ traverse(head.next)</p>
 11
 12
 13
-</pre></td><td class="rouge-code"><pre>
-3. 二叉树的遍历，典型的非线性递归遍历结构：
-```python
-# 基本的二叉树节点
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="c1"># 基本的单链表节点
+</span><span class="k">class</span> <span class="nc">ListNode</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="n">self</span><span class="p">.</span><span class="nb">next</span> <span class="o">=</span> <span class="bp">None</span>
 
-def traverse(root: TreeNode):
-    traverse(root.left)
-    traverse(root.right)
+<span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">head</span>
+    <span class="k">while</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c1"># 迭代访问 p.val
+</span>        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">.</span><span class="nb">next</span>
+
+<span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="c1"># 递归访问 head.val
+</span>    <span class="nf">traverse</span><span class="p">(</span><span class="n">head</span><span class="p">.</span><span class="nb">next</span><span class="p">)</span>
 </pre></td></tr></tbody></table></code></pre></div></div>
+</li>
+<li>二叉树的遍历，典型的非线性递归遍历结构：
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="c1"># 基本的二叉树节点
+</span><span class="k">class</span> <span class="nc">TreeNode</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
+
+<span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="n">TreeNode</span><span class="p">):</span>
+    <span class="nf">traverse</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">left</span><span class="p">)</span>
+    <span class="nf">traverse</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="n">right</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+</li>
+</ol>
 
 <h2 id="算法复杂度">算法复杂度</h2>
 
 <h3 id="主定理master-theorem">主定理（Master Theorem）</h3>
 <p>假设有递归关系式：</p>
-\[T(N) = aT(N/b) + f(N), f(N) = N^{\log_b(a)} \log^k(N)\]
+<p>$T(N) = aT(N/b) + f(N), f(N) = N^{\log_b(a)} \log^k(N)$</p>
 <p>其中，$N$为问题规模，$a$为递归的子问题数量，$N/b$为每个子问题的规模（假设每个子问题的规模基本一样），$f(N)$为递归以外进行的计算工作。</p>
 <p><strong>则其算法复杂度为</strong>：</p>
-\[T(N) = O(N^{\log_b(a)} \log^{(k+1)}N)\]
+<p>$T(N) = O(N^{\log_b(a)} \log^{(k+1)}N)$</p>
 <h3 id="常见算法复杂度">常见算法复杂度</h3>
 <table>
 <thead>
