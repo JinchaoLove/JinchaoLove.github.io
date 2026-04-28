@@ -1,123 +1,479 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-04-28T10:19:00+08:00</updated><id>https://jinchaoli.com/feed.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">DeepSeek-V4与流形撕裂(转)</title><link href="https://jinchaoli.com/blog/34d01bb2063680aea86ce542b090e24c/" rel="alternate" type="text/html" title="DeepSeek-V4与流形撕裂(转)"/><published>2026-04-25T00:00:00+08:00</published><updated>2026-04-25T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/34d01bb2063680aea86ce542b090e24c</id><content type="html" xml:base="https://jinchaoli.com/blog/34d01bb2063680aea86ce542b090e24c/"><![CDATA[<h1 id="single-token-geometry-deepseek-v4-and-manifold-tearing"><strong>Single Token Geometry: DeepSeek V4 and Manifold Tearing</strong></h1>
-<h3 id="单标几何deepseek-v4-与流形撕裂">单标几何：DeepSeek V4 与流形撕裂</h3>
-<p><strong><a href="https://substack.com/@deepmanifold">Deep Manifold</a></strong></p>
-<p><strong>Apr 25, 2026</strong></p>
-<p>I was preparing <em>Single Token Geometry: Data Complexity,</em> the second entry in this series , when DeepSeek V4 dropped. I set it aside immediately.</p>
-<p>What caught my attention wasn’t the benchmark numbers, impressive as they are. It was a paragraph buried in Section 4.2.3 of the technical report:</p>
-<blockquote>
-<p><em>“We identified that the occurrence of spikes is consistently tied to outliers in the MoE layers, and the routing mechanism itself appears to exacerbate the emergence of these outliers.”</em></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-04-28T10:29:36+08:00</updated><id>https://jinchaoli.com/feed.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Python基础</title><link href="https://jinchaoli.com/blog/34c01bb20636805f8244c65c4a2aedd0/" rel="alternate" type="text/html" title="Python基础"/><published>2026-04-24T00:00:00+08:00</published><updated>2026-04-24T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/34c01bb20636805f8244c65c4a2aedd0</id><content type="html" xml:base="https://jinchaoli.com/blog/34c01bb20636805f8244c65c4a2aedd0/"><![CDATA[<h2 id="lists">Lists</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="c1"># Common Operations
+</span><span class="n">arr</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># Find index
+</span><span class="n">arr</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>     <span class="c1"># Add to end
+</span><span class="n">arr</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Add 10 from left (at index 0 which is start)
+</span><span class="n">arr</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>     <span class="c1"># Remove value
+</span><span class="n">arr</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>         <span class="c1"># Remove &amp; return last element
+</span><span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">()</span>        <span class="c1"># In-place sort (TimSort: O(n log n))
+</span><span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># In-place reverse (High to low)
+</span><span class="n">arr</span><span class="p">.</span><span class="nf">reverse</span><span class="p">()</span>     <span class="c1"># In-place reverse
+</span><span class="n">arr</span><span class="p">.</span><span class="nf">copy</span><span class="p">()</span>        <span class="c1"># Return shallow copy
+</span>
+<span class="c1"># List Slicing
+</span><span class="n">arr</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">:</span><span class="n">step</span><span class="p">]</span>  <span class="c1"># Generic slice syntax
+</span><span class="n">arr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>    <span class="c1"># Last item
+</span><span class="n">arr</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Reverse list
+</span><span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>    <span class="c1"># Everything after index 1
+</span><span class="n">arr</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>    <span class="c1"># First three elements
+</span>
+<span class="c1"># Sublists (aka slicing), 左闭右开
+</span><span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>   <span class="c1"># [2]
+# Similar to for-loop ranges, last index is non-inclusive
+# But no out of bounds error
+</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># [1, 2, 3]
+</span>
+<span class="c1"># Custom sort (e.g., by length of string)
+</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="sh">"</span><span class="s">bob</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">alice</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">jane</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">doe</span><span class="sh">"</span><span class="p">]</span>
+<span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nf">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>  <span class="c1"># ['bob', 'doe', 'jane', 'alice']
+</span>
+<span class="c1"># 2-D lists
+</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="c1"># This won't work
+# arr = [[0] * 4] * 4
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<blockquote class="prompt-warn">
+<p>python里面的区间基本上是左闭右开，比如range、slicing</p>
 </blockquote>
-<p>And then, with unusual candor:</p>
-<blockquote>
-<p><em>“Although a comprehensive theoretical understanding of their underlying mechanisms remains an open question for now, we are sharing them openly to foster further exploration by the community.”</em></p>
-</blockquote>
-<p>I appreciate DeepSeek’s transparency here. They found three empirical fixes that work. They admitted they don’t fully understand why. And they published anyway. That intellectual honesty is rare, and it’s exactly the kind of opening that geometric thinking is built for.</p>
-<p>This post is my attempt to supply part of what they left open: a geometric account of what training instability <em>is</em> in a system like DeepSeek V4, and why their mitigations work.</p>
-<p>The thesis is simple and I want to state it plainly upfront:</p>
-<p><strong>Loss spikes in MoE training are not optimization failures. They are manifold tears.</strong></p>
-<p>我原本正在准备《单标几何：数据复杂性》这个系列的第二篇, 这时 DeepSeek V4 发布了。于是我立刻把原来的文章放到一边。</p>
-<p>真正吸引我注意的，并不是那些令人印象深刻的基准测试数字，而是技术报告第 4.2.3 节中埋着的一段话：</p>
-<blockquote>
-<p>“我们发现，尖峰的出现始终与 MoE 层中的异常值相关，而路由机制本身似乎会加剧这些异常值的产生。”</p>
-</blockquote>
-<p>然后，他们又以一种少见的坦诚写道：</p>
-<blockquote>
-<p>“尽管目前我们对这些方法背后的机制尚缺乏完整的理论理解，但我们仍将它们公开分享，以促进社区进一步探索。”</p>
-</blockquote>
-<p>我非常欣赏 DeepSeek 在这里的透明度。他们找到了三种有效的经验性修复方法。他们承认自己并不完全理解其原因。然后他们仍然选择发表出来。这种智识上的诚实并不常见，而这正是几何思考可以进入的地方。</p>
-<p>这篇文章就是我试图补上他们留下的那一部分：为 DeepSeek V4 这样的系统中的训练不稳定性，提供一种几何解释；并说明为什么他们的缓解方法会起作用。</p>
-<p>本文的核心论点很简单，我想在开头直接说清楚：</p>
-<p><strong>MoE 训练中的损失峰值不是优化失败。它们是流形撕裂。</strong></p>
-<hr/>
-<h2 id="what-is-a-manifold-tear"><strong>What Is a Manifold Tear?</strong></h2>
-<p>Before we can call something a tear, we need to be precise about what a manifold is and what it requires.</p>
-<p>A <strong>manifold</strong> is a space that is <em>locally</em> Euclidean. The canonical example is the surface of the Earth: globally curved and non-Euclidean, but zoom in far enough on any point and it looks flat, like a patch of ℝ². More formally, a topological manifold requires that every point has a neighborhood homeomorphic to ℝⁿ. A smooth manifold further requires that the transition maps between overlapping neighborhoods, called <em>charts</em>, are differentiable. A Riemannian manifold additionally equips the space with a metric tensor, giving you notions of distance and curvature.</p>
-<p>The key requirement at the foundation of all of this is <strong>continuity</strong>. Not just continuity :smoothness. The whole apparatus of differential geometry, and crucially the whole apparatus of gradient-based optimization, assumes that the space being traversed is smooth enough to support derivatives everywhere.</p>
-<p><strong>A manifold tear is a violation of this assumption.</strong> Precisely: a tear occurs when a map between manifold regions fails to be continuous — when a point has no well-defined image, or when nearby points are sent to regions that are not nearby in the target space. A tear is not a large deformation. A large deformation of a manifold is still a manifold. A tear is a <em>discontinuity</em>, the manifold’s local Euclidean structure breaks down at the torn point.</p>
-<p>In the context of a transformer’s residual stream, we can define this operationally:</p>
-<blockquote>
-<p><em>A manifold tear in a transformer’s residual stream is a discontinuity in the layer-to-layer transport map, induced by a discrete routing decision that is inconsistent with the local geometry of the representation manifold at that point.</em></p>
-</blockquote>
-<p>Now let’s see exactly how that happens in DeepSeek V4 and how the three mitigations each address a different stage of the same failure cascade.</p>
-<h2 id="什么是流形撕裂"><strong>什么是流形撕裂？</strong></h2>
-<p>在我们把某种现象称为“撕裂”之前，必须先明确：什么是流形？它需要满足什么条件？</p>
-<p>流形是一个<strong>局部欧几里得</strong>的空间。最经典的例子是地球表面：从整体看，它是弯曲的、非欧几里得的；但如果你在任意一点足够放大，它看起来就是平坦的, 像一小片 ℝ²。更形式化地说，一个拓扑流形要求每一个点都有一个邻域，并且这个邻域与 ℝ² 同胚。一个光滑流形进一步要求重叠邻域之间的转换映射, 也就是坐标图之间的转换, 是可微的。黎曼流形则在此基础上进一步为空间配备度量张量，从而赋予距离和曲率的概念。</p>
-<p>所有这些结构的基础要求，都是<strong>连续性</strong>。不只是连续性，而是光滑性。整个微分几何的装置，尤其是整个基于梯度的优化装置，都默认被穿行的空间足够光滑，因而处处可以支持导数。</p>
-<p>流形撕裂就是对这一假设的破坏。更准确地说：当流形区域之间的某个映射不再连续时，撕裂就发生, 也就是说，某个点没有良好定义的像，或者彼此相近的点被送到了目标空间中并不相近的区域。撕裂不是大的形变。一个流形即使发生很大的形变，仍然可以是流形。撕裂是不连续性, 在被撕裂的点上，流形的局部欧几里得结构失效了。</p>
-<p>在 Transformer 的残差流语境中，我们可以操作性地定义它：</p>
-<blockquote>
-<p>Transformer 残差流中的流形撕裂，是层与层之间传输映射中的一种不连续性；这种不连续性由离散路由决策诱发，而该路由决策与该点处表征流形的局部几何不一致。</p>
-</blockquote>
-<p>现在，让我们具体看看这一点在 DeepSeek V4 中是如何发生的, 以及它的三种缓解方法，如何分别处理同一个失效级联中的不同阶段。</p>
-<hr/>
-<h2 id="the-geometry-of-the-residual-stream"><strong>The Geometry of the Residual Stream</strong></h2>
-<p>Think of a single token passing through a transformer. At each layer, its hidden state is a point in ℝᵈ , a high-dimensional vector. As the token passes through successive layers, this point traces a trajectory through representation space. The claim that this trajectory lives on a manifold is implicit in how we train: gradient descent assumes a smooth loss landscape, backpropagation assumes differentiable operations everywhere, and the expressive power of deep networks comes precisely from learning smooth, structured transformations of this space.</p>
-<p>In a standard transformer, every token passes through the same FFN at each layer. The map from layer <em>l</em> to layer <em>l+1</em> is the same for all tokens. The manifold deforms, but it deforms <em>continuously</em> — the same function applied everywhere.</p>
-<p>In a <strong>Mixture-of-Experts</strong> (MoE) transformer like DeepSeek V4, this changes fundamentally. At each MoE layer, a router examines the token’s hidden state and routes it to one or more experts, a discrete, Top-k selection from hundreds of possible FFNs. The composite map from hidden state to new hidden state is now:</p>
-<blockquote>
-<p>hidden state → routing decision → expert application → new hidden state</p>
-</blockquote>
-<p>The routing decision is <strong>discontinuous by construction</strong>. It is a discrete selector. A token sitting at position x in representation space gets routed to expert E₁. A token at position x + ε , infinitesimally close, might get routed to expert E₂. These two experts were trained on different regions of the manifold. Their outputs are not guaranteed to be close to each other.</p>
-<p>This means the layer-to-layer transport map has <strong>discontinuities at routing boundaries</strong>. The manifold is already torn, structurally, at every expert boundary. This is not a bug — it is the price of the MoE architecture’s efficiency. But it is a latent geometric fragility that becomes catastrophic under the right conditions.</p>
-<h2 id="残差流的几何"><strong>残差流的几何</strong></h2>
-<p>想象一个单标正在穿过一个 Transformer。在每一层，它的隐藏状态都是 ℝᵈ中的一个点: 一个高维向量。随着这个单标穿过连续的层，这个点就在表征空间中划出一条轨迹。我们说这条轨迹生活在某个流形上，这一点其实隐含在训练方式之中：梯度下降假设损失景观是光滑的；反向传播假设所有操作处处可微；而深度网络的表达能力，恰恰来自于它能够学习这个空间上的光滑、有结构的变换。</p>
-<p>在标准 Transformer 中，每个单标在每一层都会经过同一个 FFN。从第 <em>l</em> 层到第 <em>l+1</em> 层的映射，对所有单标来说都是同一个映射。流形会形变，但它是连续形变, 同一个函数作用在整个空间上。</p>
-<p>但在像 DeepSeek V4 这样的 Mixture-of-Experts（MoE）Transformer 中，情况发生了根本变化。在每一个 MoE 层，路由器会检查单标的隐藏状态，并将它路由到一个或多个专家, 也就是从数百个可能的 FFN 中进行一次离散的 Top-k 选择。于是，从隐藏状态到新隐藏状态的复合映射变成了：</p>
-<blockquote>
-<p><em>隐藏状态  →  路由决策  →  专家作用  →  新的隐藏状态</em></p>
-</blockquote>
-<p>路由决策在构造上就是不连续的。它是一个离散选择器。位于表征空间中某一点 x 的单标，可能被路由到专家 x + ε。而位于 E₁ 的另一个单标——哪怕它与 x 无限接近——也可能被路由到专家 E₂。这两个专家是在流形的不同区域上训练出来的。它们的输出并不保证彼此接近。</p>
-<p>这意味着，层与层之间的传输映射在路由边界处存在不连续性。从结构上说，流形在每一个专家边界处都已经存在撕裂的可能。这并不是一个 bug，而是 MoE 架构效率所付出的代价。但它是一种潜在的几何脆弱性；在合适的条件下，这种脆弱性会变成灾难性的训练不稳定。</p>
-<hr/>
-<h2 id="the-failure-cascade"><strong>The Failure Cascade</strong></h2>
-<p>The paper’s observation, that spikes are tied to outliers in MoE layers, and that routing exacerbates them, describes a specific failure cascade. Geometrically, it unfolds in three stages:</p>
-<p><strong>Stage 1: Local curvature spike.</strong> An activation in an MoE expert grows very large. The SwiGLU gate or linear component produces an extreme value. This is not yet a tear — it is a region of very high curvature on the representation manifold. The local geometry is still technically defined, but it is poorly conditioned. Small changes in input produce large changes in output. The optimizer’s gradient step, calibrated for normal curvature, begins to overshoot.</p>
-<p><strong>Stage 2: Chart inconsistency.</strong> The router, updating synchronously with the backbone, now operates on a shifted manifold. At step t, the backbone parameters θₜ define a representation space Mₜ. But the router, which just updated, is making routing decisions as if the manifold were Mₜ₋₁. A token at position x on Mₜ gets routed as if it were on a manifold that no longer exists. This is a <strong>chart inconsistency</strong>: the coordinate chart (the routing assignment) no longer matches the local geometry of the point being mapped. The token is being sent to the wrong expert for where it actually lives in the representation space.</p>
-<p><strong>Stage 3: Tear amplification.</strong> The misrouted token enters an expert that wasn’t trained on its region of the manifold. The expert produces an outlier output — a point far from where the token should be in the next layer’s representation space. This discontinuous jump is the tear. And if the residual mapping matrices are expansive (spectral norm &gt; 1), the tear grows as it propagates through subsequent layers. By layer L, a token that was slightly misrouted has been thrown far from its correct manifold region. The loss spike is the accumulated geometric damage becoming visible in the training objective.</p>
-<p>This is the cascade: <strong>high curvature → chart inconsistency → routing boundary discontinuity → tear amplification → loss spike.</strong></p>
-<p>DeepSeek V4’s three mitigations each interrupt this cascade at a different stage.</p>
-<h2 id="失效级联"><strong>失效级联</strong></h2>
-<p>论文中的观察 残差尖峰与 MoE 层中的异常值相关，而路由机制会加剧这些异常值——描述的是一个具体的失效级联。从几何上看，它分为三个阶段：</p>
-<p><strong>阶段一：局部曲率尖峰。</strong>MoE 专家中的某个激活值变得非常大。SwiGLU 的门控项或线性项产生了一个极端值。这还不是撕裂: 它是表征流形上一块曲率极高的区域。局部几何在技术上仍然是有定义的，但条件已经很差。输入中的微小变化，会导致输出中的巨大变化。原本按照正常曲率校准的优化器梯度步长，开始发生过冲。</p>
-<p><strong>阶段二：坐标图不一致。</strong>路由器与主干网络同步更新，于是它现在作用在一个已经发生位移的流形上。在第 t步，主干参数 θₜ 定义了一个表征空间 Mₜ。但刚刚更新过的路由器，却像是在流形 Mₜ₋₁ 上做路由决策。位于 Mₜ上某一点 x 的单标，被当作仍位于一个已经不存在的流形上来路由。这就是坐标图不一致：坐标图，也就是路由分配，已经不再匹配该点被映射时的局部几何。这个单标被送到了一个并不适合它当前表征位置的专家那里。</p>
-<p><strong>阶段三：撕裂放大。</strong>被错误路由的单标进入了一个并不是在它所在流形区域上训练出来的专家。这个专家产生了一个异常输出, 也就是一个远离该单标在下一层表征空间中本应到达位置的点。这个不连续跳跃，就是撕裂。而如果残差映射矩阵是扩张性的，也就是谱范数大于 1，那么这种撕裂会在后续层传播时不断放大。到第 L层时，一个原本只是轻微错路由的单标，已经被抛离了它正确的流形区域。残差尖峰，就是这种累积的几何损伤在训练目标中的显现。</p>
-<p>这就是整个级联：</p>
-<p>高曲率  →  坐标图不一致  →  路由边界不连续  →  撕裂放大  →  残差尖峰</p>
-<p>DeepSeek V4 的三种缓解方法，正是在这个级联的不同阶段将其打断。</p>
-<hr/>
-<h2 id="mitigation-1-swiglu-clamping-bounding-local-curvature"><strong>Mitigation 1: SwiGLU Clamping, Bounding Local Curvature</strong></h2>
-<p>This is the earliest intervention, attacking Stage 1 before the cascade begins.</p>
-<p>The SwiGLU activation computes:</p>
-<blockquote>
-<p>SwiGLU(x, g) = x · σ(g) · g</p>
-</blockquote>
-<p>When either the linear component x or the gate g becomes very large, the local curvature of the loss surface spikes. Mathematically, curvature is related to the second derivative of the map — and when activations are extreme, second derivatives become extreme. The optimizer’s gradient step assumes the loss landscape is locally well-approximated by its first-order Taylor expansion. High curvature violates this assumption. The step overshoots. The next gradient is wildly miscalibrated. The cascade is initiated.</p>
-<p>DeepSeek V4 clamps the linear component to <strong>[−10, 10]</strong> and caps the gate at <strong>10</strong>. Geometrically, this is a <strong>curvature bound</strong>: it enforces that no single point in the activation space can develop extreme local curvature. The manifold remains smooth enough at every point that gradient steps stay valid.</p>
-<p>Think of it as a <strong>chart boundary condition</strong>. A chart in differential geometry is only valid within a bounded region — you cannot use a single flat map to cover the entire Earth. SwiGLU clamping is enforcing that activations stay within the region where the local chart (the linear approximation used by the optimizer) remains valid. Step outside that region, and the chart breaks down. The clamp keeps you inside.</p>
-<p>The paper notes this works without compromising performance — which makes geometric sense. Clamping doesn’t restrict the manifold’s expressivity; it restricts the <em>curvature</em> of any single point. The manifold can still be highly complex and nonlinear globally. It just can’t have singular points locally.</p>
-<h2 id="缓解方法一swiglu-clamping-约束局部曲率"><strong>缓解方法一：SwiGLU Clamping, 约束局部曲率</strong></h2>
-<p>这是最早发生作用的干预方式，它在级联开始之前就攻击了阶段一。</p>
-<p>SwiGLU 激活计算的是：</p>
-<blockquote>
-<p>SwiGLU(x, g) = x · σ(g) · g</p>
-</blockquote>
-<p>当线性项 xxx 或门控项 ggg 变得非常大时，损失曲面的局部曲率就会出现尖峰。从数学上说，曲率与映射的二阶导数相关——而当激活值变得极端时，二阶导数也会变得极端。优化器的梯度步，默认损失景观在局部可以被一阶泰勒展开很好地近似。高曲率破坏了这一假设。于是梯度步发生过冲。下一步的梯度被严重误校准。整个失效级联由此被启动。</p>
-<p>DeepSeek V4 将线性项限制在 <strong>[−10, 10] </strong>范围内，并将门控项的上界限制为 10。从几何上看，这就是一种<strong>曲率约束</strong>：它强制激活空间中的任何单个点都不能发展出极端的局部曲率。于是，流形在每个点上都保持足够光滑，使梯度步仍然有效。</p>
-<p>可以把它理解为一种<strong>坐标图边界条件</strong>。在微分几何中，一个坐标图只在某个有界区域内有效——你不能用一张平面地图覆盖整个地球。SwiGLU clamping 强制激活值停留在这样一个区域内：在这个区域中，优化器所使用的局部坐标图，也就是线性近似，仍然有效。一旦走出这个区域，坐标图就会失效。clamp 的作用，就是把你留在这个区域之内。</p>
-<p>论文指出，这种方法不会损害模型性能——这在几何上是说得通的。Clamping 并不限制流形的表达能力；它限制的是任何单个点的曲率。流形在全局上仍然可以高度复杂、强非线性。它只是不能在局部产生奇异点。</p>
-<hr/>
-<h2 id="mitigation-2-anticipatory-routing-preventing-chart-inconsistency"><strong>Mitigation 2: Anticipatory Routing, Preventing Chart Inconsistency</strong></h2>
-<p>Where SwiGLU clamping addresses the precondition, Anticipatory Routing attacks Stage 2 directly: the moment of chart inconsistency.</p>
-<p>Recall the problem: at training step t, the backbone parameters θₜ define the current representation manifold Mₜ. If the router also updates to θₜ simultaneously, it is now making routing decisions based on a manifold that is <em>being constructed in real time</em>. The routing chart and the geometric chart are out of sync.</p>
-<p>Anticipatory Routing enforces a <strong>temporal consistency condition</strong>: at step t, routing decisions are made using the historical parameters θₜ₋Δₜ. The router operates on the snapshot of the manifold that produced the current token representations. In differential geometry terms, this is analogous to a <strong>connection</strong> — a rule for parallel-transporting objects along the manifold in a consistent way. You don’t route a vector using the geometry at the destination; you route it using the geometry at the source.</p>
-<p>The implementation is elegant: the data for step t is fetched in advance at step t − Δt, and routing indices are precomputed and cached. The router never sees the manifold mid-update. The discrete chart (routing assignment) and the continuous chart (representation geometry) remain synchronized.</p>
-<p>The dynamic activation is particularly revealing. The system detects loss spikes and <em>then</em> activates Anticipatory Routing for a stabilization period before reverting to standard training. This is the system monitoring for chart inconsistency and applying the consistency condition on demand — a feedback loop that treats geometric misalignment as a detectable, correctable event rather than an inevitable one.</p>
-<h2 id="缓解方法二anticipatory-routing-防止坐标图不一致"><strong>缓解方法二：Anticipatory Routing, 防止坐标图不一致</strong></h2>
-<p>如果说 SwiGLU clamping 处理的是失效级联的前提条件，那么 Anticipatory Routing 直接攻击的就是阶段二：坐标图不一致发生的那个瞬间。</p>
-<p>回忆一下问题所在：在训练第 t 步，主干网络参数 θₜ₋Δₜ 定义了当前的表征流形 Mₜ。如果路由器也同时更新到 θₜ₋Δₜ，那么它就在一个正在实时构造的流形上做路由决策。路由坐标图与几何坐标图因此发生了不同步。</p>
-<p>Anticipatory Routing 强制引入一种<strong>时间一致性条件</strong>：在第 t 步，路由决策使用历史参数 θₜ₋Δₜ 来完成。也就是说，路由器作用在产生当前单标表征的那个流形快照上。用微分几何的话说，这类似于一种<strong>联络</strong>, 一种沿着流形一致地平行移动对象的规则。你不应该用目的地处的几何来路由一个向量；你应该用源点处的几何来路由它。</p>
-<p>它的实现很优雅：第 t 步的数据会在第 θₜ₋Δₜ 步提前取出，路由索引也会被预先计算并缓存。这样，路由器永远不会看到一个正在更新中的流形。离散坐标图，也就是路由分配；以及连续坐标图，也就是表征几何，因而保持同步。</p>
-<p>它的动态激活机制尤其值得注意。系统会检测残差尖峰，然后在一段稳定化期间启用 Anticipatory Routing，之后再回到标准训练。这等于系统在监测坐标图不一致，并按需施加一致性条件, 这是一种反馈回路，它把几何错位视为一种可检测、可修正的事件，而不是不可避免的宿命。</p>]]></content><author><name>Deep Manifold</name></author><category term="Study"/><category term="training"/><category term="moe"/><summary type="html"><![CDATA[原文https://substack.com/home/post/p-195402224，侵删。]]></summary></entry><entry><title type="html">算法基础</title><link href="https://jinchaoli.com/blog/34c01bb206368002b1b5f9172b0cd5a5/" rel="alternate" type="text/html" title="算法基础"/><published>2026-04-24T00:00:00+08:00</published><updated>2026-04-24T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/34c01bb206368002b1b5f9172b0cd5a5</id><content type="html" xml:base="https://jinchaoli.com/blog/34c01bb206368002b1b5f9172b0cd5a5/"><![CDATA[
+<h2 id="tuples">Tuples</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="c1"># Tuples are immutable lists
+</span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Essential Operations
+</span><span class="n">t</span><span class="p">.</span><span class="nf">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># Count occurrences of value
+</span><span class="n">t</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>      <span class="c1"># Find first index of value
+</span>
+<span class="c1"># Useful Patterns
+</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># Tuple unpacking
+</span><span class="n">coords</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>  <span class="c1"># Tuple in collections
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="sets">Sets</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>
+
+<span class="c1"># Common Operations
+</span><span class="n">s</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>             <span class="c1"># Add element
+</span><span class="n">s</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>          <span class="c1"># Remove (raises error if missing)
+</span><span class="n">s</span><span class="p">.</span><span class="nf">discard</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>         <span class="c1"># Remove (no error if missing)
+</span><span class="n">s</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>              <span class="c1"># Remove and return arbitrary element
+</span>
+<span class="c1"># Set Operations
+</span><span class="n">a</span><span class="p">.</span><span class="nf">union</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>           <span class="c1"># Elements in a OR b
+</span><span class="n">a</span><span class="p">.</span><span class="nf">intersection</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>    <span class="c1"># Elements in a AND b
+</span><span class="n">a</span><span class="p">.</span><span class="nf">difference</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>      <span class="c1"># Elements in a but NOT in b
+</span><span class="n">a</span><span class="p">.</span><span class="nf">symmetric_difference</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># Elements in a OR b but NOT both
+</span><span class="n">a</span><span class="p">.</span><span class="nf">issubset</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>        <span class="c1"># True if all elements of a are in b
+</span><span class="n">a</span><span class="p">.</span><span class="nf">issuperset</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>      <span class="c1"># True if all elements of b are in a
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="strings">Strings</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre><span class="n">s</span> <span class="o">=</span> <span class="sh">"</span><span class="s">hello world</span><span class="sh">"</span>
+
+<span class="c1"># Essential Methods
+</span><span class="n">s</span><span class="p">.</span><span class="nf">split</span><span class="p">()</span>            <span class="c1"># Split on whitespace
+</span><span class="n">s</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sh">'</span><span class="s">,</span><span class="sh">'</span><span class="p">)</span>         <span class="c1"># Split on comma
+</span><span class="n">s</span><span class="p">.</span><span class="nf">strip</span><span class="p">()</span>            <span class="c1"># Remove leading/trailing whitespace
+</span><span class="n">s</span><span class="p">.</span><span class="nf">lower</span><span class="p">()</span>            <span class="c1"># Convert to lowercase
+</span><span class="n">s</span><span class="p">.</span><span class="nf">upper</span><span class="p">()</span>            <span class="c1"># Convert to uppercase
+</span><span class="n">s</span><span class="p">.</span><span class="nf">isalnum</span><span class="p">()</span>          <span class="c1"># Check if alphanumeric
+</span><span class="n">s</span><span class="p">.</span><span class="nf">isalpha</span><span class="p">()</span>          <span class="c1"># Check if alphabetic
+</span><span class="n">s</span><span class="p">.</span><span class="nf">isdigit</span><span class="p">()</span>          <span class="c1"># Check if all digits
+</span><span class="n">s</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="sh">'</span><span class="s">sub</span><span class="sh">'</span><span class="p">)</span>        <span class="c1"># Index of substring (-1 if not found)
+</span><span class="n">s</span><span class="p">.</span><span class="nf">count</span><span class="p">(</span><span class="sh">'</span><span class="s">sub</span><span class="sh">'</span><span class="p">)</span>       <span class="c1"># Count occurrences
+</span><span class="n">s</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sh">'</span><span class="s">old</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">new</span><span class="sh">'</span><span class="p">)</span>  <span class="c1"># Replace all occurrences
+</span>
+<span class="c1"># ASCII Conversion
+</span><span class="nf">ord</span><span class="p">(</span><span class="sh">'</span><span class="s">a</span><span class="sh">'</span><span class="p">)</span>             <span class="c1"># Char to ASCII (97)
+</span><span class="nf">chr</span><span class="p">(</span><span class="mi">97</span><span class="p">)</span>              <span class="c1"># ASCII to char ('a')
+</span>
+<span class="c1"># Valid numeric strings can be converted
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="sh">"</span><span class="s">123</span><span class="sh">"</span><span class="p">)</span> <span class="o">+</span> <span class="nf">int</span><span class="p">(</span><span class="sh">"</span><span class="s">123</span><span class="sh">"</span><span class="p">))</span>  <span class="c1"># 246
+</span>
+<span class="c1"># And numbers can be converted to strings
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="mi">123</span><span class="p">))</span>  <span class="c1"># 123123
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="queues">Queues</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="c1"># Queues (double ended queue)
+</span><span class="kn">from</span> <span class="n">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="c1"># Perfect for BFS - O(1) operations on both ends
+</span><span class="n">d</span> <span class="o">=</span> <span class="nf">deque</span><span class="p">()</span>
+<span class="n">d</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>          <span class="c1"># Add right
+</span><span class="n">d</span><span class="p">.</span><span class="nf">appendleft</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>      <span class="c1"># Add left
+</span><span class="n">d</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>              <span class="c1"># Remove right
+</span><span class="n">d</span><span class="p">.</span><span class="nf">popleft</span><span class="p">()</span>          <span class="c1"># Remove left
+</span><span class="n">d</span><span class="p">.</span><span class="nf">extend</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>    <span class="c1"># Extend right
+</span><span class="n">d</span><span class="p">.</span><span class="nf">extendleft</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span><span class="c1"># Extend left
+</span><span class="n">d</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>          <span class="c1"># Rotate n steps right (negative for left)
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="heaps">Heaps</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">heapq</span>
+
+<span class="c1"># MinHeap Operations - All O(log n) except heapify
+</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heapify</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>          <span class="c1"># Convert to heap in-place: O(n)
+</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>      <span class="c1"># Add element: O(log n)
+</span><span class="n">smallest</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>  <span class="c1"># Remove smallest: O(log n)
+</span>
+<span class="c1"># MaxHeap Trick: Multiply by -1
+</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">]</span>    <span class="c1"># Convert to maxheap: O(n)
+</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heapify</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>          <span class="c1"># O(n)
+</span><span class="n">largest</span> <span class="o">=</span> <span class="o">-</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>  <span class="c1"># Get largest: O(log n)
+</span>
+<span class="c1"># Advanced Operations
+</span><span class="n">k_largest</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">nlargest</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">nums</span><span class="p">)</span>    <span class="c1"># O(n * log k)
+</span><span class="n">k_smallest</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">nsmallest</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">nums</span><span class="p">)</span>  <span class="c1"># O(n * log k)
+</span>
+<span class="c1"># Custom Priority Queue
+</span><span class="n">heap</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="p">(</span><span class="n">priority</span><span class="p">,</span> <span class="n">item</span><span class="p">))</span>  <span class="c1"># Sort by priority
+</span>
+<span class="c1"># Under the hood are arrays
+</span><span class="n">minHeap</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Min is always at index 0
+</span><span class="nf">print</span><span class="p">(</span><span class="n">minHeap</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 2
+</span>
+<span class="k">while</span> <span class="nf">len</span><span class="p">(</span><span class="n">minHeap</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">minHeap</span><span class="p">))</span>
+<span class="c1"># 2
+# 3
+# 4
+</span>
+<span class="c1"># No max heaps by default, work around is
+# to use min heap and multiply by -1 when push &amp; pop.
+</span><span class="n">maxHeap</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Max is always at index 0
+</span><span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">maxHeap</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 4
+</span>
+<span class="k">while</span> <span class="nf">len</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">))</span>
+<span class="c1"># 4
+# 3
+# 2
+</span>
+<span class="c1"># Build heap from initial values
+</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">heapq</span><span class="p">.</span><span class="nf">heapify</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">arr</span><span class="p">:</span>
+    <span class="nf">print</span><span class="p">(</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
+<span class="c1"># 1
+# 2
+# 4
+# 5
+# 8
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="built-in-functions">Built-in Functions</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre><span class="c1"># Iteration Helpers
+</span><span class="nf">enumerate</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>        <span class="c1"># Index + value pairs
+</span><span class="nf">zip</span><span class="p">(</span><span class="n">lst1</span><span class="p">,</span> <span class="n">lst2</span><span class="p">)</span>      <span class="c1"># Parallel iteration
+</span><span class="nf">map</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">lst</span><span class="p">)</span>         <span class="c1"># Apply function to all elements
+</span><span class="nf">filter</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">lst</span><span class="p">)</span>      <span class="c1"># Keep elements where fn returns True
+</span><span class="nf">any</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>             <span class="c1"># True if any element is True
+</span><span class="nf">all</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>             <span class="c1"># True if all elements are True
+</span>
+<span class="c1"># Binary Search
+</span><span class="kn">import</span> <span class="n">bisect</span>
+
+<span class="n">bisect</span><span class="p">.</span><span class="nf">bisect</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>     <span class="c1"># Find insertion point
+</span><span class="n">bisect</span><span class="p">.</span><span class="nf">bisect_left</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="c1"># Find leftmost insertion point
+</span><span class="n">bisect</span><span class="p">.</span><span class="nf">insort</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>     <span class="c1"># Insert maintaining sort
+</span>
+<span class="c1"># Type Conversion
+</span><span class="nf">int</span><span class="p">(</span><span class="sh">'</span><span class="s">42</span><span class="sh">'</span><span class="p">)</span>            <span class="c1"># String to int
+</span><span class="nf">str</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>              <span class="c1"># Int to string
+</span><span class="nf">list</span><span class="p">(</span><span class="sh">'</span><span class="s">abc</span><span class="sh">'</span><span class="p">)</span>          <span class="c1"># String to list
+</span><span class="sh">''</span><span class="p">.</span><span class="nf">join</span><span class="p">([</span><span class="sh">'</span><span class="s">a</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">b</span><span class="sh">'</span><span class="p">])</span>   <span class="c1"># List to string
+</span><span class="nf">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>         <span class="c1"># List to set
+</span>
+<span class="c1"># Math
+</span><span class="nf">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>              <span class="c1"># Absolute value
+</span><span class="nf">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>            <span class="c1"># Power
+</span><span class="nf">round</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>    <span class="c1"># Round to decimals
+</span><span class="nf">divmod</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>        <span class="c1"># (3, 1) - returns (quotient, remainder)
+</span>
+<span class="c1"># Binary representation
+</span><span class="nf">bin</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>              <span class="c1"># '0b1010'
+</span><span class="nf">format</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="sh">'</span><span class="s">b</span><span class="sh">'</span><span class="p">)</span>      <span class="c1"># '1010' (without prefix)
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="math">Math</h2>
+<p>在正数时，<code class="language-plaintext highlighter-rouge">int(a / b)</code> 和 <code class="language-plaintext highlighter-rouge">a // b</code> 通常结果相同，但在负数时可能不同：</p>
+<ul>
+<li><code class="language-plaintext highlighter-rouge">int(a / b)</code> 是向零取整（<code class="language-plaintext highlighter-rouge">trunc</code>）。如果你希望总是向零取整，使用 <code class="language-plaintext highlighter-rouge">int(a / b)</code>。</li>
+<li><code class="language-plaintext highlighter-rouge">//</code> 是向下取整（<code class="language-plaintext highlighter-rouge">floor</code>）。如果你希望总是向下取整，使用 <code class="language-plaintext highlighter-rouge">a // b</code>。</li>
+</ul>
+<p>另外，取模运算 <code class="language-plaintext highlighter-rouge">a % b</code>也遵从 <code class="language-plaintext highlighter-rouge">floor</code>法则，<code class="language-plaintext highlighter-rouge">a = (a // b) * b + (a % b)</code> -&gt; <code class="language-plaintext highlighter-rouge">a % b = a - (a // b) * b</code>。</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre><span class="c1"># 向零取整
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 1
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># -1
+</span>
+<span class="c1"># 向下取整
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 1
+</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># -2
+# floor(-1.5) = -2
+</span>
+<span class="c1"># 取模
+</span><span class="nf">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 1
+</span><span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 2
+# -10 - (-10//3) * 3 = -10 - (-4) * 3 = 2
+</span>
+<span class="kn">import</span> <span class="n">math</span>
+
+<span class="c1"># Constants
+</span><span class="n">math</span><span class="p">.</span><span class="n">pi</span>       <span class="c1"># 3.141592653589793
+</span><span class="n">math</span><span class="p">.</span><span class="n">e</span>        <span class="c1"># 2.718281828459045
+</span>
+<span class="c1"># Common Functions
+</span><span class="n">math</span><span class="p">.</span><span class="nf">ceil</span><span class="p">(</span><span class="mf">2.3</span><span class="p">)</span>        <span class="c1"># 3 - Smallest integer greater than x
+</span><span class="n">math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="mf">2.3</span><span class="p">)</span>       <span class="c1"># 2 - Largest integer less than x
+</span><span class="n">math</span><span class="p">.</span><span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>        <span class="c1"># Greatest common divisor
+</span><span class="n">math</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">base</span><span class="p">)</span>     <span class="c1"># Logarithm with specified base
+</span><span class="n">math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>          <span class="c1"># Square root
+</span><span class="n">math</span><span class="p">.</span><span class="nf">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>        <span class="c1"># x^y (prefer x ** y for integers)
+</span>
+<span class="c1"># Trigonometry
+</span><span class="n">math</span><span class="p">.</span><span class="nf">degrees</span><span class="p">(</span><span class="n">rad</span><span class="p">)</span>     <span class="c1"># Convert radians to degrees
+</span><span class="n">math</span><span class="p">.</span><span class="nf">radians</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>     <span class="c1"># Convert degrees to radians
+</span></pre></td></tr></tbody></table></code></pre></div></div>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://github.com/0xCodeFuture/CheetSheet-Python">CheetSheet-Python</a></li>
+<li><a href="https://neetcode.io/courses/lessons/python-for-coding-interviews">neetcode</a></li>
+</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="Algorithm"/><category term="python"/><summary type="html"><![CDATA[Lists]]></summary></entry><entry><title type="html">算法基础</title><link href="https://jinchaoli.com/blog/34c01bb206368002b1b5f9172b0cd5a5/" rel="alternate" type="text/html" title="算法基础"/><published>2026-04-24T00:00:00+08:00</published><updated>2026-04-24T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/34c01bb206368002b1b5f9172b0cd5a5</id><content type="html" xml:base="https://jinchaoli.com/blog/34c01bb206368002b1b5f9172b0cd5a5/"><![CDATA[
 <h2 id="框架概括">框架概括</h2>
 <h3 id="整体框架">整体框架</h3>
 <ul>
@@ -1420,482 +1776,7 @@
 <ul>
 <li>快速排序：期望 $O(1)$</li>
 <li>归并排序：期望 $O(N)$</li>
-</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="Algorithm"/><category term="algorithm"/><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Python基础</title><link href="https://jinchaoli.com/blog/34c01bb20636805f8244c65c4a2aedd0/" rel="alternate" type="text/html" title="Python基础"/><published>2026-04-24T00:00:00+08:00</published><updated>2026-04-24T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/34c01bb20636805f8244c65c4a2aedd0</id><content type="html" xml:base="https://jinchaoli.com/blog/34c01bb20636805f8244c65c4a2aedd0/"><![CDATA[<h2 id="lists">Lists</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-</pre></td><td class="rouge-code"><pre><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-
-<span class="c1"># Common Operations
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># Find index
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>     <span class="c1"># Add to end
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Add 10 from left (at index 0 which is start)
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>     <span class="c1"># Remove value
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>         <span class="c1"># Remove &amp; return last element
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">()</span>        <span class="c1"># In-place sort (TimSort: O(n log n))
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># In-place reverse (High to low)
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">reverse</span><span class="p">()</span>     <span class="c1"># In-place reverse
-</span><span class="n">arr</span><span class="p">.</span><span class="nf">copy</span><span class="p">()</span>        <span class="c1"># Return shallow copy
-</span>
-<span class="c1"># List Slicing
-</span><span class="n">arr</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">stop</span><span class="p">:</span><span class="n">step</span><span class="p">]</span>  <span class="c1"># Generic slice syntax
-</span><span class="n">arr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>    <span class="c1"># Last item
-</span><span class="n">arr</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Reverse list
-</span><span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>    <span class="c1"># Everything after index 1
-</span><span class="n">arr</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>    <span class="c1"># First three elements
-</span>
-<span class="c1"># Sublists (aka slicing), 左闭右开
-</span><span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>   <span class="c1"># [2]
-# Similar to for-loop ranges, last index is non-inclusive
-# But no out of bounds error
-</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># [1, 2, 3]
-</span>
-<span class="c1"># Custom sort (e.g., by length of string)
-</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="sh">"</span><span class="s">bob</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">alice</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">jane</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">doe</span><span class="sh">"</span><span class="p">]</span>
-<span class="n">arr</span><span class="p">.</span><span class="nf">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nf">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>  <span class="c1"># ['bob', 'doe', 'jane', 'alice']
-</span>
-<span class="c1"># 2-D lists
-</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
-
-<span class="c1"># This won't work
-# arr = [[0] * 4] * 4
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<blockquote class="prompt-warn">
-<p>python里面的区间基本上是左闭右开，比如range、slicing</p>
-</blockquote>
-<h2 id="tuples">Tuples</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</pre></td><td class="rouge-code"><pre><span class="c1"># Tuples are immutable lists
-</span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># Essential Operations
-</span><span class="n">t</span><span class="p">.</span><span class="nf">count</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># Count occurrences of value
-</span><span class="n">t</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>      <span class="c1"># Find first index of value
-</span>
-<span class="c1"># Useful Patterns
-</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># Tuple unpacking
-</span><span class="n">coords</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)]</span>  <span class="c1"># Tuple in collections
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="sets">Sets</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-</pre></td><td class="rouge-code"><pre><span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}</span>
-
-<span class="c1"># Common Operations
-</span><span class="n">s</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>             <span class="c1"># Add element
-</span><span class="n">s</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>          <span class="c1"># Remove (raises error if missing)
-</span><span class="n">s</span><span class="p">.</span><span class="nf">discard</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>         <span class="c1"># Remove (no error if missing)
-</span><span class="n">s</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>              <span class="c1"># Remove and return arbitrary element
-</span>
-<span class="c1"># Set Operations
-</span><span class="n">a</span><span class="p">.</span><span class="nf">union</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>           <span class="c1"># Elements in a OR b
-</span><span class="n">a</span><span class="p">.</span><span class="nf">intersection</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>    <span class="c1"># Elements in a AND b
-</span><span class="n">a</span><span class="p">.</span><span class="nf">difference</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>      <span class="c1"># Elements in a but NOT in b
-</span><span class="n">a</span><span class="p">.</span><span class="nf">symmetric_difference</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># Elements in a OR b but NOT both
-</span><span class="n">a</span><span class="p">.</span><span class="nf">issubset</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>        <span class="c1"># True if all elements of a are in b
-</span><span class="n">a</span><span class="p">.</span><span class="nf">issuperset</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>      <span class="c1"># True if all elements of b are in a
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="strings">Strings</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-</pre></td><td class="rouge-code"><pre><span class="n">s</span> <span class="o">=</span> <span class="sh">"</span><span class="s">hello world</span><span class="sh">"</span>
-
-<span class="c1"># Essential Methods
-</span><span class="n">s</span><span class="p">.</span><span class="nf">split</span><span class="p">()</span>            <span class="c1"># Split on whitespace
-</span><span class="n">s</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="sh">'</span><span class="s">,</span><span class="sh">'</span><span class="p">)</span>         <span class="c1"># Split on comma
-</span><span class="n">s</span><span class="p">.</span><span class="nf">strip</span><span class="p">()</span>            <span class="c1"># Remove leading/trailing whitespace
-</span><span class="n">s</span><span class="p">.</span><span class="nf">lower</span><span class="p">()</span>            <span class="c1"># Convert to lowercase
-</span><span class="n">s</span><span class="p">.</span><span class="nf">upper</span><span class="p">()</span>            <span class="c1"># Convert to uppercase
-</span><span class="n">s</span><span class="p">.</span><span class="nf">isalnum</span><span class="p">()</span>          <span class="c1"># Check if alphanumeric
-</span><span class="n">s</span><span class="p">.</span><span class="nf">isalpha</span><span class="p">()</span>          <span class="c1"># Check if alphabetic
-</span><span class="n">s</span><span class="p">.</span><span class="nf">isdigit</span><span class="p">()</span>          <span class="c1"># Check if all digits
-</span><span class="n">s</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="sh">'</span><span class="s">sub</span><span class="sh">'</span><span class="p">)</span>        <span class="c1"># Index of substring (-1 if not found)
-</span><span class="n">s</span><span class="p">.</span><span class="nf">count</span><span class="p">(</span><span class="sh">'</span><span class="s">sub</span><span class="sh">'</span><span class="p">)</span>       <span class="c1"># Count occurrences
-</span><span class="n">s</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sh">'</span><span class="s">old</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">new</span><span class="sh">'</span><span class="p">)</span>  <span class="c1"># Replace all occurrences
-</span>
-<span class="c1"># ASCII Conversion
-</span><span class="nf">ord</span><span class="p">(</span><span class="sh">'</span><span class="s">a</span><span class="sh">'</span><span class="p">)</span>             <span class="c1"># Char to ASCII (97)
-</span><span class="nf">chr</span><span class="p">(</span><span class="mi">97</span><span class="p">)</span>              <span class="c1"># ASCII to char ('a')
-</span>
-<span class="c1"># Valid numeric strings can be converted
-</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="sh">"</span><span class="s">123</span><span class="sh">"</span><span class="p">)</span> <span class="o">+</span> <span class="nf">int</span><span class="p">(</span><span class="sh">"</span><span class="s">123</span><span class="sh">"</span><span class="p">))</span>  <span class="c1"># 246
-</span>
-<span class="c1"># And numbers can be converted to strings
-</span><span class="nf">print</span><span class="p">(</span><span class="nf">str</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="mi">123</span><span class="p">))</span>  <span class="c1"># 123123
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="queues">Queues</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-</pre></td><td class="rouge-code"><pre><span class="c1"># Queues (double ended queue)
-</span><span class="kn">from</span> <span class="n">collections</span> <span class="kn">import</span> <span class="n">deque</span>
-
-<span class="c1"># Perfect for BFS - O(1) operations on both ends
-</span><span class="n">d</span> <span class="o">=</span> <span class="nf">deque</span><span class="p">()</span>
-<span class="n">d</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>          <span class="c1"># Add right
-</span><span class="n">d</span><span class="p">.</span><span class="nf">appendleft</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>      <span class="c1"># Add left
-</span><span class="n">d</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>              <span class="c1"># Remove right
-</span><span class="n">d</span><span class="p">.</span><span class="nf">popleft</span><span class="p">()</span>          <span class="c1"># Remove left
-</span><span class="n">d</span><span class="p">.</span><span class="nf">extend</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>    <span class="c1"># Extend right
-</span><span class="n">d</span><span class="p">.</span><span class="nf">extendleft</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span><span class="c1"># Extend left
-</span><span class="n">d</span><span class="p">.</span><span class="nf">rotate</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>          <span class="c1"># Rotate n steps right (negative for left)
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="heaps">Heaps</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-</pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">heapq</span>
-
-<span class="c1"># MinHeap Operations - All O(log n) except heapify
-</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heapify</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>          <span class="c1"># Convert to heap in-place: O(n)
-</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>      <span class="c1"># Add element: O(log n)
-</span><span class="n">smallest</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>  <span class="c1"># Remove smallest: O(log n)
-</span>
-<span class="c1"># MaxHeap Trick: Multiply by -1
-</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">]</span>    <span class="c1"># Convert to maxheap: O(n)
-</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heapify</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>          <span class="c1"># O(n)
-</span><span class="n">largest</span> <span class="o">=</span> <span class="o">-</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>  <span class="c1"># Get largest: O(log n)
-</span>
-<span class="c1"># Advanced Operations
-</span><span class="n">k_largest</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">nlargest</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">nums</span><span class="p">)</span>    <span class="c1"># O(n * log k)
-</span><span class="n">k_smallest</span> <span class="o">=</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">nsmallest</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">nums</span><span class="p">)</span>  <span class="c1"># O(n * log k)
-</span>
-<span class="c1"># Custom Priority Queue
-</span><span class="n">heap</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">heap</span><span class="p">,</span> <span class="p">(</span><span class="n">priority</span><span class="p">,</span> <span class="n">item</span><span class="p">))</span>  <span class="c1"># Sort by priority
-</span>
-<span class="c1"># Under the hood are arrays
-</span><span class="n">minHeap</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">minHeap</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-
-<span class="c1"># Min is always at index 0
-</span><span class="nf">print</span><span class="p">(</span><span class="n">minHeap</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 2
-</span>
-<span class="k">while</span> <span class="nf">len</span><span class="p">(</span><span class="n">minHeap</span><span class="p">):</span>
-    <span class="nf">print</span><span class="p">(</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">minHeap</span><span class="p">))</span>
-<span class="c1"># 2
-# 3
-# 4
-</span>
-<span class="c1"># No max heaps by default, work around is
-# to use min heap and multiply by -1 when push &amp; pop.
-</span><span class="n">maxHeap</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heappush</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="c1"># Max is always at index 0
-</span><span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">maxHeap</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 4
-</span>
-<span class="k">while</span> <span class="nf">len</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">):</span>
-    <span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">maxHeap</span><span class="p">))</span>
-<span class="c1"># 4
-# 3
-# 2
-</span>
-<span class="c1"># Build heap from initial values
-</span><span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-<span class="n">heapq</span><span class="p">.</span><span class="nf">heapify</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<span class="k">while</span> <span class="n">arr</span><span class="p">:</span>
-    <span class="nf">print</span><span class="p">(</span><span class="n">heapq</span><span class="p">.</span><span class="nf">heappop</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
-<span class="c1"># 1
-# 2
-# 4
-# 5
-# 8
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="built-in-functions">Built-in Functions</h2>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-</pre></td><td class="rouge-code"><pre><span class="c1"># Iteration Helpers
-</span><span class="nf">enumerate</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>        <span class="c1"># Index + value pairs
-</span><span class="nf">zip</span><span class="p">(</span><span class="n">lst1</span><span class="p">,</span> <span class="n">lst2</span><span class="p">)</span>      <span class="c1"># Parallel iteration
-</span><span class="nf">map</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">lst</span><span class="p">)</span>         <span class="c1"># Apply function to all elements
-</span><span class="nf">filter</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">lst</span><span class="p">)</span>      <span class="c1"># Keep elements where fn returns True
-</span><span class="nf">any</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>             <span class="c1"># True if any element is True
-</span><span class="nf">all</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>             <span class="c1"># True if all elements are True
-</span>
-<span class="c1"># Binary Search
-</span><span class="kn">import</span> <span class="n">bisect</span>
-
-<span class="n">bisect</span><span class="p">.</span><span class="nf">bisect</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>     <span class="c1"># Find insertion point
-</span><span class="n">bisect</span><span class="p">.</span><span class="nf">bisect_left</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="c1"># Find leftmost insertion point
-</span><span class="n">bisect</span><span class="p">.</span><span class="nf">insort</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>     <span class="c1"># Insert maintaining sort
-</span>
-<span class="c1"># Type Conversion
-</span><span class="nf">int</span><span class="p">(</span><span class="sh">'</span><span class="s">42</span><span class="sh">'</span><span class="p">)</span>            <span class="c1"># String to int
-</span><span class="nf">str</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>              <span class="c1"># Int to string
-</span><span class="nf">list</span><span class="p">(</span><span class="sh">'</span><span class="s">abc</span><span class="sh">'</span><span class="p">)</span>          <span class="c1"># String to list
-</span><span class="sh">''</span><span class="p">.</span><span class="nf">join</span><span class="p">([</span><span class="sh">'</span><span class="s">a</span><span class="sh">'</span><span class="p">,</span><span class="sh">'</span><span class="s">b</span><span class="sh">'</span><span class="p">])</span>   <span class="c1"># List to string
-</span><span class="nf">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>         <span class="c1"># List to set
-</span>
-<span class="c1"># Math
-</span><span class="nf">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>              <span class="c1"># Absolute value
-</span><span class="nf">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>            <span class="c1"># Power
-</span><span class="nf">round</span><span class="p">(</span><span class="mf">3.14159</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>    <span class="c1"># Round to decimals
-</span><span class="nf">divmod</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>        <span class="c1"># (3, 1) - returns (quotient, remainder)
-</span>
-<span class="c1"># Binary representation
-</span><span class="nf">bin</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>              <span class="c1"># '0b1010'
-</span><span class="nf">format</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="sh">'</span><span class="s">b</span><span class="sh">'</span><span class="p">)</span>      <span class="c1"># '1010' (without prefix)
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="math">Math</h2>
-<p>在正数时，<code class="language-plaintext highlighter-rouge">int(a / b)</code> 和 <code class="language-plaintext highlighter-rouge">a // b</code> 通常结果相同，但在负数时可能不同：</p>
-<ul>
-<li><code class="language-plaintext highlighter-rouge">int(a / b)</code> 是向零取整（<code class="language-plaintext highlighter-rouge">trunc</code>）。如果你希望总是向零取整，使用 <code class="language-plaintext highlighter-rouge">int(a / b)</code>。</li>
-<li><code class="language-plaintext highlighter-rouge">//</code> 是向下取整（<code class="language-plaintext highlighter-rouge">floor</code>）。如果你希望总是向下取整，使用 <code class="language-plaintext highlighter-rouge">a // b</code>。</li>
-</ul>
-<p>另外，取模运算 <code class="language-plaintext highlighter-rouge">a % b</code>也遵从 <code class="language-plaintext highlighter-rouge">floor</code>法则，<code class="language-plaintext highlighter-rouge">a = (a // b) * b + (a % b)</code> -&gt; <code class="language-plaintext highlighter-rouge">a % b = a - (a // b) * b</code>。</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-</pre></td><td class="rouge-code"><pre><span class="c1"># 向零取整
-</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 1
-</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># -1
-</span>
-<span class="c1"># 向下取整
-</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 1
-</span><span class="nf">print</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># -2
-# floor(-1.5) = -2
-</span>
-<span class="c1"># 取模
-</span><span class="nf">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 1
-</span><span class="nf">print</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 2
-# -10 - (-10//3) * 3 = -10 - (-4) * 3 = 2
-</span>
-<span class="kn">import</span> <span class="n">math</span>
-
-<span class="c1"># Constants
-</span><span class="n">math</span><span class="p">.</span><span class="n">pi</span>       <span class="c1"># 3.141592653589793
-</span><span class="n">math</span><span class="p">.</span><span class="n">e</span>        <span class="c1"># 2.718281828459045
-</span>
-<span class="c1"># Common Functions
-</span><span class="n">math</span><span class="p">.</span><span class="nf">ceil</span><span class="p">(</span><span class="mf">2.3</span><span class="p">)</span>        <span class="c1"># 3 - Smallest integer greater than x
-</span><span class="n">math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="mf">2.3</span><span class="p">)</span>       <span class="c1"># 2 - Largest integer less than x
-</span><span class="n">math</span><span class="p">.</span><span class="nf">gcd</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>        <span class="c1"># Greatest common divisor
-</span><span class="n">math</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">base</span><span class="p">)</span>     <span class="c1"># Logarithm with specified base
-</span><span class="n">math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>          <span class="c1"># Square root
-</span><span class="n">math</span><span class="p">.</span><span class="nf">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>        <span class="c1"># x^y (prefer x ** y for integers)
-</span>
-<span class="c1"># Trigonometry
-</span><span class="n">math</span><span class="p">.</span><span class="nf">degrees</span><span class="p">(</span><span class="n">rad</span><span class="p">)</span>     <span class="c1"># Convert radians to degrees
-</span><span class="n">math</span><span class="p">.</span><span class="nf">radians</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>     <span class="c1"># Convert degrees to radians
-</span></pre></td></tr></tbody></table></code></pre></div></div>
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://github.com/0xCodeFuture/CheetSheet-Python">CheetSheet-Python</a></li>
-<li><a href="https://neetcode.io/courses/lessons/python-for-coding-interviews">neetcode</a></li>
-</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="Algorithm"/><category term="python"/><summary type="html"><![CDATA[Lists]]></summary></entry><entry><title type="html">Hello, Notion!</title><link href="https://jinchaoli.com/blog/34c01bb2063680cfbe9aed82dff9e04e/" rel="alternate" type="text/html" title="Hello, Notion!"/><published>2026-04-23T00:00:00+08:00</published><updated>2026-04-23T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/34c01bb2063680cfbe9aed82dff9e04e</id><content type="html" xml:base="https://jinchaoli.com/blog/34c01bb2063680cfbe9aed82dff9e04e/"><![CDATA[<h1 id="text-and-typography">Text and Typography</h1>
+</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="Algorithm"/><category term="algorithm"/><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Hello, Notion!</title><link href="https://jinchaoli.com/blog/34c01bb2063680cfbe9aed82dff9e04e/" rel="alternate" type="text/html" title="Hello, Notion!"/><published>2026-04-23T00:00:00+08:00</published><updated>2026-04-23T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/34c01bb2063680cfbe9aed82dff9e04e</id><content type="html" xml:base="https://jinchaoli.com/blog/34c01bb2063680cfbe9aed82dff9e04e/"><![CDATA[<h1 id="text-and-typography">Text and Typography</h1>
 <h2 id="headings">Headings</h2>
 <h1 class="mt-4 mb-0" id="h1---heading">H1 - heading</h1>
 <h2 id="h2---heading" data-toc-skip="" class="mt-4 mb-0">H2 - heading</h2>
@@ -2157,4 +2038,16 @@ this.parentNode.replaceChild(iframe, this);
 </ol>
 <blockquote class="prompt-warn">
 <p>When first connecting via VS Code, the default <code class="language-plaintext highlighter-rouge">Database</code> is <code class="language-plaintext highlighter-rouge">test</code>. After running <code class="language-plaintext highlighter-rouge">waline.tidb</code>, the actual database used by Waline is <code class="language-plaintext highlighter-rouge">waline</code>. So in <code class="language-plaintext highlighter-rouge">Environment Variables</code>, set <code class="language-plaintext highlighter-rouge">DATABASE = waline</code>.</p>
-</blockquote>]]></content><author><name>Jinchao Li</name></author><category term="Blogging"/><category term="Design"/><category term="homepage"/><summary type="html"><![CDATA[Why Waline + TiDB?]]></summary></entry></feed>
+</blockquote>]]></content><author><name>Jinchao Li</name></author><category term="Blogging"/><category term="Design"/><category term="homepage"/><summary type="html"><![CDATA[Why Waline + TiDB?]]></summary></entry><entry><title type="html">Customize Your Jekyll Chirpy Theme</title><link href="https://jinchaoli.com/blog/customize-jekyll-chirpy/" rel="alternate" type="text/html" title="Customize Your Jekyll Chirpy Theme"/><published>2023-07-23T10:00:00+08:00</published><updated>2026-04-15T15:40:01+08:00</updated><id>https://jinchaoli.com/blog/customize-jekyll-chirpy</id><content type="html" xml:base="https://jinchaoli.com/blog/customize-jekyll-chirpy/"><![CDATA[<p><a href="https://github.com/cotes2020/jekyll-theme-chirpy">Jekyll Chirpy Theme</a> is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official <a href="https://github.com/cotes2020/jekyll-theme-chirpy/wiki">wiki</a> to realize your own magic modification.</p>
+<p>This blog introduces some basic tutorials to customize your own Chirpy theme, suitable for those friends who are not satisfied with the Chirpy configuration and want more blogging functions. Welcome to <a href="https://github.com/JinchaoLove/jekyll-chirpy-demo/issues">issue</a> or <a href="https://github.com/JinchaoLove/jekyll-chirpy-demo/pulls">join us</a> to help others build blogs.</p>
+<ul>
+<li>
+<p><a href="/blog/exchange-homepage-and-about/">Exchange Homepage and About</a></p>
+</li>
+<li>
+<p><a href="https://nihil.cc/posts/use_valine/">Replace Disqus with Valine for Discussion</a></p>
+</li>
+<li>
+<p><a href="https://blog.ixiaocai.net/posts/Astro-Blog-Customize-4-Waline-Enhancement/">Use Waline for Discussion</a></p>
+</li>
+</ul>]]></content><author><name>Jinchao Li</name></author><category term="Blogging"/><category term="Design"/><category term="theme"/><summary type="html"><![CDATA[Jekyll Chirpy Theme is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official wiki to realize your own magic modification.]]></summary></entry></feed>
