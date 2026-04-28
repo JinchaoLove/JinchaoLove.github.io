@@ -955,4 +955,112 @@
           
           "relUrl": "/blog/categories/algorithm/"
         }
+      ,
+        "116": {
+          "doc": "typography",
+          "title": "typography",
+          "content": null,
+          "url": "/blog/tags/typography/",
+          
+          "relUrl": "/blog/tags/typography/"
+        }
+      ,
+        "117": {
+          "doc": "writing",
+          "title": "writing",
+          "content": null,
+          "url": "/blog/tags/writing/",
+          
+          "relUrl": "/blog/tags/writing/"
+        }
+      ,
+        "118": {
+          "doc": "demo",
+          "title": "demo",
+          "content": null,
+          "url": "/blog/tags/demo/",
+          
+          "relUrl": "/blog/tags/demo/"
+        }
+      ,
+        "119": {
+          "doc": "theme",
+          "title": "theme",
+          "content": null,
+          "url": "/blog/tags/theme/",
+          
+          "relUrl": "/blog/tags/theme/"
+        }
+      ,
+        "120": {
+          "doc": "homepage",
+          "title": "homepage",
+          "content": null,
+          "url": "/blog/tags/homepage/",
+          
+          "relUrl": "/blog/tags/homepage/"
+        }
+      ,
+        "121": {
+          "doc": "algorithm",
+          "title": "algorithm",
+          "content": null,
+          "url": "/blog/tags/algorithm/",
+          
+          "relUrl": "/blog/tags/algorithm/"
+        }
+      ,
+        "122": {
+          "doc": "python",
+          "title": "python",
+          "content": null,
+          "url": "/blog/tags/python/",
+          
+          "relUrl": "/blog/tags/python/"
+        }
+      ,
+        "123": {
+          "doc": "Blogging",
+          "title": "Blogging",
+          "content": null,
+          "url": "/blog/categories/blogging/",
+          
+          "relUrl": "/blog/categories/blogging/"
+        }
+      ,
+        "124": {
+          "doc": "Demo",
+          "title": "Demo",
+          "content": null,
+          "url": "/blog/categories/demo/",
+          
+          "relUrl": "/blog/categories/demo/"
+        }
+      ,
+        "125": {
+          "doc": "Design",
+          "title": "Design",
+          "content": null,
+          "url": "/blog/categories/design/",
+          
+          "relUrl": "/blog/categories/design/"
+        }
+      ,
+        "126": {
+          "doc": "Study",
+          "title": "Study",
+          "content": null,
+          "url": "/blog/categories/study/",
+          
+          "relUrl": "/blog/categories/study/"
+        }
+      ,
+        "127": {
+          "doc": "Algorithm",
+          "title": "Algorithm",
+          "content": null,
+          "url": "/blog/categories/algorithm/",
+          
+          "relUrl": "/blog/categories/algorithm/"
+        }
 }
