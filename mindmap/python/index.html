@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="en" class="markmap-dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Basics</title>
+    <style>
+      .markmap {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+      }
+      .markmap-dark {
+        background: #27272a;
+        color: white;
+      }
+    </style>
+    <script>
+      window.markmap = {
+        autoLoader: {
+          toolbar: true
+        }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
+  </head>
+  <body>
+    <div class="markmap">
+      <script type="text/template">
+        ---
+        markmap:
+          maxWidth: 300
+          colorFreezeLevel: 3
+          initialExpandLevel: 3
+          pan: false
+          autoFit: true
+          fitRatio: 0.7
+        ---
+
+#Python Basics
+
+## Lists
+
+```python
+arr = [1, 2, 3]
+
+# Common Operations
+arr.index(1)      # Find index
+arr.append(1)     # Add to end
+arr.insert(0,10)  # Add 10 from left (at index 0 which is start)
+arr.remove(3)     # Remove value
+arr.pop()         # Remove & return last element
+arr.sort()        # In-place sort (TimSort: O(n log n))
+arr.sort(reverse=True)  # In-place reverse (High to low)
+arr.reverse()     # In-place reverse
+arr.copy()        # Return shallow copy
+
+# List Slicing
+arr[start:stop:step]  # Generic slice syntax
+arr[-1]    # Last item
+arr[::-1]  # Reverse list
+arr[1:]    # Everything after index 1
+arr[:3]    # First three elements
+
+# Sublists (aka slicing), 左闭右开
+arr[1:2]   # [2]
+# Similar to for-loop ranges, last index is non-inclusive
+# But no out of bounds error
+arr[0:10]  # [1, 2, 3]
+
+# Custom sort (e.g., by length of string)
+arr = ["bob", "alice", "jane", "doe"]
+arr.sort(key=lambda x: len(x))
+print(arr)  # ['bob', 'doe', 'jane', 'alice']
+
+# 2-D lists
+arr = [[0] * 4 for i in range(4)]
+print(arr)
+print(arr[0][0], arr[3][3])
+
+# This won't work
+# arr = [[0] * 4] * 4
+```
+
+> python里面的区间基本上是左闭右开，比如range、slicing
+{: .prompt-warn}
+
+## Tuples
+
+```python
+# Tuples are immutable lists
+t = (1, 2, 3, 1)
+
+# Essential Operations
+t.count(1)      # Count occurrences of value
+t.index(2)      # Find first index of value
+
+# Useful Patterns
+x, y = (1, 2)   # Tuple unpacking
+coords = [(1,2), (3,4)]  # Tuple in collections
+```
+
+## Sets
+
+```python
+s = {1,2,3}
+
+# Common Operations
+s.add(4)             # Add element
+s.remove(4)          # Remove (raises error if missing)
+s.discard(4)         # Remove (no error if missing)
+s.pop()              # Remove and return arbitrary element
+
+# Set Operations
+a.union(b)           # Elements in a OR b
+a.intersection(b)    # Elements in a AND b
+a.difference(b)      # Elements in a but NOT in b
+a.symmetric_difference(b)  # Elements in a OR b but NOT both
+a.issubset(b)        # True if all elements of a are in b
+a.issuperset(b)      # True if all elements of b are in a
+```
+
+## Strings
+
+```python
+s = "hello world"
+
+# Essential Methods
+s.split()            # Split on whitespace
+s.split(',')         # Split on comma
+s.strip()            # Remove leading/trailing whitespace
+s.lower()            # Convert to lowercase
+s.upper()            # Convert to uppercase
+s.isalnum()          # Check if alphanumeric
+s.isalpha()          # Check if alphabetic
+s.isdigit()          # Check if all digits
+s.find('sub')        # Index of substring (-1 if not found)
+s.count('sub')       # Count occurrences
+s.replace('old', 'new')  # Replace all occurrences
+
+# ASCII Conversion
+ord('a')             # Char to ASCII (97)
+chr(97)              # ASCII to char ('a')
+
+# Valid numeric strings can be converted
+print(int("123") + int("123"))  # 246
+
+# And numbers can be converted to strings
+print(str(123) + str(123))  # 123123
+```
+
+## Queues
+
+```python
+# Queues (double ended queue)
+from collections import deque
+
+# Perfect for BFS - O(1) operations on both ends
+d = deque()
+d.append(1)          # Add right
+d.appendleft(2)      # Add left
+d.pop()              # Remove right
+d.popleft()          # Remove left
+d.extend([1,2,3])    # Extend right
+d.extendleft([1,2,3])# Extend left
+d.rotate(n)          # Rotate n steps right (negative for left)
+```
+
+## Heaps
+
+```python
+import heapq
+
+# MinHeap Operations - All O(log n) except heapify
+nums = [3,1,4,1,5]
+heapq.heapify(nums)          # Convert to heap in-place: O(n)
+heapq.heappush(nums, 2)      # Add element: O(log n)
+smallest = heapq.heappop(nums)  # Remove smallest: O(log n)
+
+# MaxHeap Trick: Multiply by -1
+nums = [-x for x in nums]    # Convert to maxheap: O(n)
+heapq.heapify(nums)          # O(n)
+largest = -heapq.heappop(nums)  # Get largest: O(log n)
+
+# Advanced Operations
+k_largest = heapq.nlargest(k, nums)    # O(n * log k)
+k_smallest = heapq.nsmallest(k, nums)  # O(n * log k)
+
+# Custom Priority Queue
+heap = []
+heapq.heappush(heap, (priority, item))  # Sort by priority
+
+# Under the hood are arrays
+minHeap = []
+heapq.heappush(minHeap, 3)
+heapq.heappush(minHeap, 2)
+heapq.heappush(minHeap, 4)
+
+# Min is always at index 0
+print(minHeap[0])  # 2
+
+while len(minHeap):
+    print(heapq.heappop(minHeap))
+# 2
+# 3
+# 4
+
+# No max heaps by default, work around is
+# to use min heap and multiply by -1 when push & pop.
+maxHeap = []
+heapq.heappush(maxHeap, -3)
+heapq.heappush(maxHeap, -2)
+heapq.heappush(maxHeap, -4)
+
+# Max is always at index 0
+print(-1 * maxHeap[0])  # 4
+
+while len(maxHeap):
+    print(-1 * heapq.heappop(maxHeap))
+# 4
+# 3
+# 2
+
+# Build heap from initial values
+arr = [2, 1, 8, 4, 5]
+heapq.heapify(arr)
+while arr:
+    print(heapq.heappop(arr))
+# 1
+# 2
+# 4
+# 5
+# 8
+
+```
+
+## Built-in Functions
+
+```python
+# Iteration Helpers
+enumerate(lst)        # Index + value pairs
+zip(lst1, lst2)      # Parallel iteration
+map(fn, lst)         # Apply function to all elements
+filter(fn, lst)      # Keep elements where fn returns True
+any(lst)             # True if any element is True
+all(lst)             # True if all elements are True
+
+# Binary Search
+import bisect
+
+bisect.bisect(lst, x)     # Find insertion point
+bisect.bisect_left(lst, x)# Find leftmost insertion point
+bisect.insort(lst, x)     # Insert maintaining sort
+
+# Type Conversion
+int('42')            # String to int
+str(42)              # Int to string
+list('abc')          # String to list
+''.join(['a','b'])   # List to string
+set([1,2,2])         # List to set
+
+# Math
+abs(-5)              # Absolute value
+pow(2, 3)            # Power
+round(3.14159, 2)    # Round to decimals
+divmod(10, 3)        # (3, 1) - returns (quotient, remainder)
+
+# Binary representation
+bin(10)              # '0b1010'
+format(10, 'b')      # '1010' (without prefix)
+```
+
+## Math
+
+在正数时，`int(a / b)` 和 `a // b` 通常结果相同，但在负数时可能不同：
+
+- `int(a / b)` 是向零取整（`trunc`）。如果你希望总是向零取整，使用 `int(a / b)`。
+- `//` 是向下取整（`floor`）。如果你希望总是向下取整，使用 `a // b`。
+
+另外，取模运算 `a % b`也遵从 `floor`法则，`a = (a // b) * b + (a % b)` -> `a % b = a - (a // b) * b`。
+
+```python
+# 向零取整
+print(int(3 / 2))  # 1
+print(int(-3 / 2))  # -1
+
+# 向下取整
+print(int(3 // 2))  # 1
+print(int(-3 // 2))  # -2
+# floor(-1.5) = -2
+
+# 取模
+print(10 % 3)  # 1
+print(-10 % 3)  # 2
+# -10 - (-10//3) * 3 = -10 - (-4) * 3 = 2
+
+import math
+
+# Constants
+math.pi       # 3.141592653589793
+math.e        # 2.718281828459045
+
+# Common Functions
+math.ceil(2.3)        # 3 - Smallest integer greater than x
+math.floor(2.3)       # 2 - Largest integer less than x
+math.gcd(a, b)        # Greatest common divisor
+math.log(x, base)     # Logarithm with specified base
+math.sqrt(x)          # Square root
+math.pow(x, y)        # x^y (prefer x ** y for integers)
+
+# Trigonometry
+math.degrees(rad)     # Convert radians to degrees
+math.radians(deg)     # Convert degrees to radians
+
+```
+
+## References
+
+- [CheetSheet-Python](https://github.com/0xCodeFuture/CheetSheet-Python)
+- [neetcode](https://neetcode.io/courses/lessons/python-for-coding-interviews)
+
+      </script>
+    </div>
+  </body>
+</html>
