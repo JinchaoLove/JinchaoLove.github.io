@@ -991,24 +991,15 @@
         }
       ,
         "121": {
-          "doc": "training",
-          "title": "training",
+          "doc": "python",
+          "title": "python",
           "content": null,
-          "url": "/blog/tags/training/",
+          "url": "/blog/tags/python/",
           
-          "relUrl": "/blog/tags/training/"
+          "relUrl": "/blog/tags/python/"
         }
       ,
         "122": {
-          "doc": "moe",
-          "title": "moe",
-          "content": null,
-          "url": "/blog/tags/moe/",
-          
-          "relUrl": "/blog/tags/moe/"
-        }
-      ,
-        "123": {
           "doc": "algorithm",
           "title": "algorithm",
           "content": null,
@@ -1017,13 +1008,22 @@
           "relUrl": "/blog/tags/algorithm/"
         }
       ,
-        "124": {
-          "doc": "python",
-          "title": "python",
+        "123": {
+          "doc": "training",
+          "title": "training",
           "content": null,
-          "url": "/blog/tags/python/",
+          "url": "/blog/tags/training/",
           
-          "relUrl": "/blog/tags/python/"
+          "relUrl": "/blog/tags/training/"
+        }
+      ,
+        "124": {
+          "doc": "moe",
+          "title": "moe",
+          "content": null,
+          "url": "/blog/tags/moe/",
+          
+          "relUrl": "/blog/tags/moe/"
         }
       ,
         "125": {
@@ -1117,24 +1117,15 @@
         }
       ,
         "135": {
-          "doc": "training",
-          "title": "training",
+          "doc": "python",
+          "title": "python",
           "content": null,
-          "url": "/blog/tags/training/",
+          "url": "/blog/tags/python/",
           
-          "relUrl": "/blog/tags/training/"
+          "relUrl": "/blog/tags/python/"
         }
       ,
         "136": {
-          "doc": "moe",
-          "title": "moe",
-          "content": null,
-          "url": "/blog/tags/moe/",
-          
-          "relUrl": "/blog/tags/moe/"
-        }
-      ,
-        "137": {
           "doc": "algorithm",
           "title": "algorithm",
           "content": null,
@@ -1143,13 +1134,22 @@
           "relUrl": "/blog/tags/algorithm/"
         }
       ,
-        "138": {
-          "doc": "python",
-          "title": "python",
+        "137": {
+          "doc": "training",
+          "title": "training",
           "content": null,
-          "url": "/blog/tags/python/",
+          "url": "/blog/tags/training/",
           
-          "relUrl": "/blog/tags/python/"
+          "relUrl": "/blog/tags/training/"
+        }
+      ,
+        "138": {
+          "doc": "moe",
+          "title": "moe",
+          "content": null,
+          "url": "/blog/tags/moe/",
+          
+          "relUrl": "/blog/tags/moe/"
         }
       ,
         "139": {
