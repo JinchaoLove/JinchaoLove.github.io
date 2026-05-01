@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en" class="markmap-dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+Thinking with Visual Primitives (转)</title>
+    <style>
+      .markmap {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+      }
+      .markmap-dark {
+        background: #27272a;
+        color: white;
+      }
+    </style>
+    <script>
+      window.markmap = {
+        autoLoader: {
+          toolbar: true
+        }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
+  </head>
+  <body>
+    <div class="markmap">
+      <script type="text/template">
+        ---
+        markmap:
+          maxWidth: 300
+          colorFreezeLevel: 3
+          initialExpandLevel: 3
+          pan: false
+          autoFit: true
+          fitRatio: 0.7
+        ---
+
+#Thinking with Visual Primitives (转)
+
+<p>作者：PaperAgent</p>
+
+<p>链接：https://zhuanlan.zhihu.com/p/2033494636023559146</p>
+
+<p>来源：知乎</p>
+
+<p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+<p>上周<strong>DeepSeek V4</strong>发布了，但遗憾的还是没有<strong>多模态</strong>，今天（老规矩，节假日发布）DeepSeek把这块补上了，开源了最新的多模态技术&amp;Paper：<strong>Thinking with Visual Primitives</strong>（以视觉原语思考）</p>
+
+<p><img src="https://pic2.zhimg.com/v2-027e592355913ad24b2c9734dcd369e5_1440w.jpg" alt="" /></p>
+
+<p><strong>DeepSeek&amp;北京大学&amp;清华大学</strong>提出”视觉基元推理”框架，将边界框与坐标点提升为”最小思考单元”，解决MLLM在复杂空间推理中的<strong>Reference Gap</strong>（指代鸿沟）问题。基于<strong>DeepSeek-V4-Flash</strong>构建的模型，在仅使用约90个KV Cache视觉token的情况下，性能比肩<strong>GPT-5.4、Claude-Sonnet-4.6与Gemini-3-Flash</strong>。<a href="https://link.zhihu.com/?target=https://mp.weixin.qq.com/s?__biz=Mzk0MTYzMzMxMA==&amp;mid=2247507031&amp;idx=1&amp;sn=d7081d9cb42cf4bbf3febc3cdd439fcf&amp;scene=21#wechat_redirect">Skills驱动推理新范式，清华&amp;北大：Token立省59%</a></p>
+
+<p><img src="https://pic2.zhimg.com/v2-67e3d69aecfb10f8eb6e14d15e2e6a07_1440w.jpg" alt="" /></p>
+
+<h2 id="一从感知鸿沟到指代鸿沟问题重新定义"><strong>一、从感知鸿沟到指代鸿沟：问题重新定义</strong></h2>
+
+<p>当前多模态大语言模型（MLLM）的Chain-of-Thought（CoT）推理几乎完全发生在<strong>语言空间</strong>。即便前沿模型通过高分辨率裁剪、动态分块等策略解决了”看不清”的<strong>Perception Gap</strong>（感知鸿沟），它们在面对密集计数、拓扑导航、多步空间推演时，仍然频繁出现<strong>逻辑崩塌（logical collapse）</strong>。</p>
+
+<p>DeepSeek团队指出，这背后是一个更本质的瓶颈——<strong>Reference Gap（指代鸿沟）</strong>：</p>
+
+<blockquote>
+  <p>自然语言天生是模糊、连续的，而视觉空间是精确、离散的。当模型用语言描述”左边第二个红色的物体”时，它实际上已经丢失了精确的空间锚点，导致推理链条与图像实体脱节，最终引发级联幻觉。</p>
+</blockquote>
+
+<p>人类是如何解决这个问题的？我们在数一堆密集物体或走迷宫时，会本能地<strong>用手指指向目标</strong>，将抽象的语义概念锚定到具体的物理坐标上，大幅降低工作记忆负担。</p>
+
+<p>受此启发，论文提出<strong>Thinking with Visual Primitives（基于视觉基元的思考）</strong>：将<strong>边界框（bounding boxes）</strong>和<strong>点（points）</strong>提升为与语言token同级的”最小思考单元”，直接交错插入模型的推理轨迹中。模型不再是”说完再指”，而是<strong>边指边想（point while it reasons）</strong>。</p>
+
+<p><img src="https://pic1.zhimg.com/v2-cd0c386e5ad61f84cb57ddacebc1d28c_1440w.jpg" alt="" /></p>
+
+<p>Figure 1对比了各模型在800×800分辨率下的KV Cache Entries与7项基准平均分</p>
+
+<p>Figure 1揭示了这一范式的惊人效率：对于800×800的输入，该模型在KV Cache中仅保留约<strong>90个视觉条目</strong>（总token约361），远低于GPT-5.4（~740）、Claude-Sonnet-4.6（~870）和Gemini-3-Flash（~1100），同时在计数与空间推理任务上取得77.2%的平均分，超越所有对比模型。</p>
+
+<h2 id="二架构与训练-pipeline效率与专项能力的平衡"><strong>二、架构与训练 pipeline：效率与专项能力的平衡</strong></h2>
+
+<h3 id="21-架构设计"><strong>2.1 架构设计</strong></h3>
+
+<p>模型采用类LLaVA的标准架构，以<strong>DeepSeek-V4-Flash</strong>（284B总参数，13B激活参数的MoE模型）为语言骨干，视觉编码器采用自研的<strong>DeepSeek-ViT</strong>，支持任意分辨率输入。</p>
+
+<p><img src="https://picx.zhimg.com/v2-47a5070c223b097feb3534c562fcb921_1440w.jpg" alt="" /></p>
+
+<p><strong>极致压缩是架构的核心</strong>：</p>
+
+<ol>
+  <li><strong>14×14 Patch Embedding</strong>：将图像切分为基础patch；</li>
+  <li><strong>3×3空间压缩</strong>：每9个相邻patch在通道维度压缩为1个token；</li>
+  <li>*Compressed Sparse Attention (CSA)**：在LLM的KV Cache层进一步压缩视觉token。</li>
+</ol>
+
+<p>以756×756图像为例：原始571,536像素 → ViT处理为2,916个patch token → 3×3压缩后324个token送入LLM → CSA机制最终仅保留<strong>81个视觉KV条目</strong>。从原始像素到KV Cache，整体压缩比高达<strong>7,056:1</strong>。</p>
+
+<h3 id="22-五阶段后训练流程"><strong>2.2 五阶段后训练流程</strong></h3>
+
+<p>论文设计了一套”先训专家，再合并”的范式：</p>
+
+<ol>
+  <li><strong>Pretraining</strong>：在数万亿多模态token上预训练，赋予模型输出视觉基元的基础能力；</li>
+  <li><strong>Specialized SFT</strong>：分别针对Box（FTwG）和Point（FTwP）构建冷启动数据，独立微调，避免模态冲突；</li>
+  <li><strong>Specialized RL</strong>：对两个专家模型分别应用GRPO强化学习，使用格式、质量、准确率三重Reward Model；</li>
+  <li><strong>Unified RFT</strong>：用两位专家模型生成拒绝采样数据，统一训练一个融合模型；</li>
+  <li><strong>On-Policy Distillation</strong>：通过反向KL散度，将专家模型的输出分布蒸馏到统一模型，弥合性能差距。</li>
+</ol>
+
+<h2 id="三冷启动数据构造四大推理场景的精细化设计"><strong>三、冷启动数据构造：四大推理场景的精细化设计</strong></h2>
+
+<p>为了让模型学会”用基元思考”，团队没有依赖简单的指令微调，而是为四类任务构建了<strong>带显式视觉锚定的思维链</strong>冷启动数据。</p>
+
+<h3 id="31-计数counting"><strong>3.1 计数（Counting）</strong></h3>
+
+<p>MLLM在密集场景中计数失败，本质是无法建立”语言数字↔视觉实体”的一一对应。</p>
+
+<p><img src="https://pic1.zhimg.com/v2-9900536850a5bc0a2999adbd7794293c_1440w.jpg" alt="" /></p>
+
+<p>包含足球队照片与熊群照片的两个完整推理案例</p>
+
+<ul>
+  <li><strong>粗粒度计数</strong>：模型先进行意图分析，再<strong>批量 grounding</strong>（同时框出所有候选对象），最后统计求和。Figure 3展示了对团队照片的人数统计，模型一次性框出25个人，再分排验证。</li>
+  <li><strong>细粒度计数</strong>：基于GQA场景图构造属性约束问题（如”地面上的熊有几只”），模型需<strong>逐一枚举验证</strong>，排除不符合属性的负样本。</li>
+</ul>
+
+<h3 id="32-空间推理与通用vqaspatial-reasoning--general-vqa"><strong>3.2 空间推理与通用VQA（Spatial Reasoning &amp; General VQA）</strong></h3>
+
+<p>利用GQA和CLEVR构造数据。在CLEVR合成场景中，模型需要执行<strong>多跳逻辑推理</strong>（如”与灰色金属球同尺寸的紫色橡胶物体是否存在”）。每个推理步骤都必须通过<code class="language-plaintext highlighter-rouge">&lt;|ref|&gt;...&lt;|/ref|&gt;&lt;|box|&gt;...&lt;|/box|&gt;</code>将提及的物体锚定到图像坐标，避免语义漂移。</p>
+
+<p><img src="https://pic1.zhimg.com/v2-060cddf6f583348f8e594baf78da7c52_1440w.jpg" alt="" /></p>
+
+<p>展示CLEVR场景中多属性验证的完整思维链</p>
+
+<h3 id="33-迷宫导航maze-navigation"><strong>3.3 迷宫导航（Maze Navigation）</strong></h3>
+
+<p>这是检验拓扑推理能力的极端场景。纯语言CoT难以描述不规则路径的连通性。</p>
+
+<p>团队使用DFS、Prim、Kruskal算法生成矩形、圆形、六边形三种迷宫拓扑，并构造<strong>不可解迷宫</strong>（在路径中段故意设墙）。模型的思维链以<code class="language-plaintext highlighter-rouge">&lt;|point|&gt;[[x,y]]&lt;|/point|&gt;</code>记录每一步探索坐标，形成类似人类”试错-回溯”的DFS轨迹。</p>
+
+<p><img src="https://pic3.zhimg.com/v2-aab0ba3533a1677b828f4b11e260a30a_1440w.jpg" alt="" /></p>
+
+<p>展示六边形迷宫中从起点到终点的完整探索与回溯过程</p>
+
+<h3 id="34-路径追踪path-tracing"><strong>3.4 路径追踪（Path Tracing）</strong></h3>
+
+<p>在缠绕的贝塞尔曲线中，模型需要追踪指定线条找到终点。难点在于<strong>交叉点消歧</strong>：当两条线相交时，模型必须依据局部几何连续性判断走向，而非依赖颜色捷径。思维链以自适应密度的坐标序列记录路径——直线段稀疏采样，弯曲/交叉处密集采样。</p>
+
+<p><img src="https://pica.zhimg.com/v2-8839b9a3bd04b52043607ddde54dcfc0_1440w.jpg" alt="" /></p>
+
+<p>展示从皇冠图标出发追踪洋红色曲线至终点的过程</p>
+
+<h2 id="四reward-model设计让强化学习看懂视觉推理"><strong>四、Reward Model设计：让强化学习”看懂”视觉推理</strong></h2>
+
+<p>在Specialized RL阶段，论文为不同任务设计了精细的Accuracy RM：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>任务</th>
+      <th>Reward Model核心逻辑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>计数</td>
+      <td>基于相对误差的指数衰减奖励：$R = \alpha \cdot \exp(-\beta \cdot \frac{</td>
+    </tr>
+    <tr>
+      <td>空间推理/VQA</td>
+      <td>LLM-based GRM，分别对思维链和最终回答评分后取平均</td>
+    </tr>
+    <tr>
+      <td>迷宫导航</td>
+      <td>四维加权：因果探索进度（截断于首次撞墙）、探索完整度（不可解迷宫）、撞墙惩罚、最终路径有效性</td>
+    </tr>
+    <tr>
+      <td>路径追踪</td>
+      <td>双向轨迹对齐（预测点→真值线 / 真值点→预测线）、端点精度、轨迹连续性惩罚（禁止跳点）</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="https://pic3.zhimg.com/v2-93a7d536f45713ed9199bdabe65a58d8_1440w.jpg" alt="" /></p>
+
+<p>Table 1的结果极具说服力：</p>
+
+<ul>
+  <li><strong>计数</strong>：Pixmo-Count达到<strong>89.2%</strong>，超越所有对手；CountQA上RA@10为74.1%，仅次于Gemini-3-Flash；</li>
+  <li><strong>空间推理</strong>：DS_Spatial_Reasoning达到<strong>98.7%</strong>，显著领先Claude的97.2%和Qwen3-VL的96.8%；</li>
+  <li><strong>拓扑推理</strong>：这是所有前沿模型的盲区。DS_Maze_Navigation <strong>66.9%</strong>（次高仅50.6%），DS_Path_Tracing <strong>56.7%（次高仅46.5%），形成断层式领先</strong>。</li>
+</ul>
+
+<h2 id="五定性分析视觉基元如何重塑推理体验"><strong>五、定性分析：视觉基元如何重塑推理体验</strong></h2>
+
+<p>论文通过大量案例展示，视觉基元不仅是内部推理工具，更外化为可解释的”注意力轨迹”。</p>
+
+<h3 id="51-边界框作为基元"><strong>5.1 边界框作为基元</strong></h3>
+
+<p>模型展现出强大的<strong>涌现协同能力</strong>：</p>
+
+<ul>
+  <li><strong>世界知识融合</strong>：看到金门大桥照片，模型框出大桥主体，关联到旧金山，进而回答”附近有NBA球队吗”（金州勇士）；</li>
+</ul>
+
+<p><img src="https://pica.zhimg.com/v2-8b89936c926c4277676d3a45050e4790_1440w.jpg" alt="" /></p>
+
+<ul>
+  <li><strong>反事实推理</strong>：在”天平哪边更重”问题中，模型框出左右物体及托盘，通过视觉证据（倾斜角度）推翻外观直觉；</li>
+</ul>
+
+<p><img src="https://pic3.zhimg.com/v2-6507bd409ea256eadc80c8b0fc97d5ca_1440w.jpg" alt="" /></p>
+
+<ul>
+  <li><strong>可操作建议</strong>：在”如何做拿铁”问题中，模型框出咖啡机、蒸汽棒、奶壶、咖啡豆、杯子，给出带空间坐标的操作步骤。</li>
+</ul>
+
+<p><img src="https://picx.zhimg.com/v2-cf735f66ba1b8e7122174ef7677f5249_1440w.jpg" alt="" /></p>
+
+<h3 id="52-点作为基元"><strong>5.2 点作为基元</strong></h3>
+
+<p>在迷宫和路径追踪中，模型输出的点序列构成了<strong>可视化的推理路径</strong>。人类可以沿着这些坐标还原模型的”心路历程”：何时尝试分支、何时发现死胡同、何时回溯。这种可解释性是纯语言CoT无法提供的。</p>
+
+<p><img src="https://pic2.zhimg.com/v2-0c0ef35809894886da4aca3e119a14f1_1440w.jpg" alt="" /></p>
+
+<p>圆形迷宫导航与多曲线追踪</p>
+
+<p><code class="language-plaintext highlighter-rouge">https://github.com/deepseek-ai/Thinking-with-Visual-Primitives/blob/main/Thinking_with_Visual_Primitives.pdf</code></p>
+
+<p><br /></p>
+
+
+      </script>
+    </div>
+  </body>
+</html>
