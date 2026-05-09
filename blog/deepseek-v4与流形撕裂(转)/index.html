@@ -607,6 +607,14 @@ class="col-10">
 
 
 
+
+
+
+
+
+
+
+
 <article class="px-1">
 <header>
 <h1 data-toc-skip>DeepSeek-V4与流形撕裂(转)</h1>
@@ -641,9 +649,9 @@ Deep Manifold
 class="readtime"
 data-bs-toggle="tooltip"
 data-bs-placement="bottom"
-title="27 min read"
+title="48 min read"
 >About
-<em>5010</em>
+<em>8728</em>
 words</span>
 <span>
 
@@ -786,6 +794,147 @@ Apr 25, 2026
 <p>Anticipatory Routing 强制引入一种<strong>时间一致性条件</strong>：在第 t 步，路由决策使用历史参数 θₜ₋Δₜ 来完成。也就是说，路由器作用在产生当前单标表征的那个流形快照上。用微分几何的话说，这类似于一种<strong>联络</strong>, 一种沿着流形一致地平行移动对象的规则。你不应该用目的地处的几何来路由一个向量；你应该用源点处的几何来路由它。</p>
 <p>它的实现很优雅：第 t 步的数据会在第 θₜ₋Δₜ 步提前取出，路由索引也会被预先计算并缓存。这样，路由器永远不会看到一个正在更新中的流形。离散坐标图，也就是路由分配；以及连续坐标图，也就是表征几何，因而保持同步。</p>
 <p>它的动态激活机制尤其值得注意。系统会检测残差尖峰，然后在一段稳定化期间启用 Anticipatory Routing，之后再回到标准训练。这等于系统在监测坐标图不一致，并按需施加一致性条件, 这是一种反馈回路，它把几何错位视为一种可检测、可修正的事件，而不是不可避免的宿命。</p>
+<hr/>
+<h2 id="mitigation-3-mhc--bounding-tear-propagation"><a href="#mitigation-3-mhc--bounding-tear-propagation" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2"><strong>Mitigation 3: mHC — Bounding Tear Propagation</strong></span></h2>
+<p>The Manifold-Constrained Hyper-Connections (mHC) is the deepest of the three interventions, and the one most explicitly geometric in the paper’s own framing , it’s right there in the name.</p>
+<p>Standard Hyper-Connections expand the residual stream width by a factor of n_hc, introducing a residual mapping matrix B_l ∈ ℝⁿ×ⁿ at each layer. The update rule is:</p>
+<blockquote>
+<p>(X_{l+1} = B_l X_l + C_l F_l(A_l X_l))</p>
+</blockquote>
+<p>The paper found that naive HC exhibited numerical instability when stacked, precisely because B_l is unconstrained. An unconstrained matrix can have spectral norm &gt; 1. Spectral norm is the largest singular value, it is the maximum factor by which the matrix can stretch a vector. If ‖B_l‖₂ &gt; 1, the residual mapping is <strong>expansive</strong>: it stretches the representation space at each layer. A small perturbation, say, a token slightly misrouted at layer 5:gets amplified at layer 6, further amplified at layer 7, and so on. By the time it reaches layer L, the tear has been stretched across a large region of representation space. This is tear amplification.</p>
+<p>The <strong>Birkhoff polytope constraint</strong> fixes this by requiring B_l to be a doubly stochastic matrix:</p>
+<blockquote>
+<div class="table-wrapper"><table>
+<tbody>
+<tr>
+<td>B_l ∈ M := {M ∈ ℝⁿ×ⁿ</td>
+<td>M·1ₙ = 1ₙ, 1ₙᵀ·M = 1ₙᵀ, M ≥ 0}</td>
+</tr>
+</tbody>
+</table></div>
+</blockquote>
+<p>A doubly stochastic matrix has spectral norm bounded by 1. This makes B_l <strong>non-expansive</strong>: for any two hidden states x and y,</p>
+<blockquote>
+<p>‖B_l·x − B_l·y‖ ≤ ‖x − y‖</p>
+</blockquote>
+<p>The residual mapping cannot increase the distance between any two points. It is a <strong>Lipschitz-1 map on the residual stream</strong>. A tear introduced at any layer cannot grow as it propagates through subsequent layers. The manifold can be torn, mHC does not remove the routing boundary discontinuities, but it cannot be <em>stretched apart</em>. The damage is contained.</p>
+<p>The Sinkhorn-Knopp algorithm that enforces this constraint is itself geometrically beautiful: it performs alternating projections onto two convex constraint sets, row-normalized matrices, and column-normalized matrices, until their intersection (the Birkhoff polytope) is reached. You are iteratively projecting B_l onto the manifold of doubly stochastic matrices. The constraint manifold M is itself a well-studied convex polytope, and Sinkhorn-Knopp is a convergent algorithm for finding the nearest point on it.</p>
+<p>Additionally, the input and output mappings A_l and C_l are constrained to be non-negative and bounded via Sigmoid functions. This prevents signal cancellation, another form of geometric pathology where opposing contributions annihilate each other, creating artificial zeros in the representation space that have no geometric meaning.</p>
+<h2 id="缓解方法三mhc约束撕裂传播"><a href="#缓解方法三mhc约束撕裂传播" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2"><strong>缓解方法三：mHC——约束撕裂传播</strong></span></h2>
+<p>Manifold-Constrained Hyper-Connections（mHC，流形约束超连接）是三种干预中最深层的一种，也是论文自身表述中最明确具有几何含义的一种, 这一点已经直接写在名字里了。</p>
+<p>标准 Hyper-Connections 会将残差流的宽度扩展 B_l 倍，并在每一层引入一个残差映射矩阵 B_l ∈ ℝⁿ×ⁿ。其更新规则为：</p>
+<blockquote>
+<p>(X_{l+1} = B_l X_l + C_l F_l(A_l X_l))</p>
+</blockquote>
+<p>论文发现，朴素的 HC 在堆叠多层时会表现出数值不稳定性——原因正是 BlB_lBl 没有受到约束。一个无约束矩阵的谱范数可能大于 1。谱范数是最大奇异值，也就是这个矩阵能够拉伸一个向量的最大倍数。如果 ‖B_l‖₂ &gt; 1，那么残差映射就是扩张性的：它会在每一层拉伸表征空间。一个很小的扰动, 比如某个单标在第 5 层被轻微错误路由, 会在第 6 层被放大，在第 7 层进一步放大，如此继续。等它到达第 L 层时，这个撕裂已经被拉伸到表征空间中的一大片区域。这就是<strong>撕裂放大</strong>。</p>
+<p>Birkhoff 多面体约束通过要求 B_l 成为一个双随机矩阵来解决这个问题：</p>
+<blockquote>
+<div class="table-wrapper"><table>
+<tbody>
+<tr>
+<td>B_l ∈ M := {M ∈ ℝⁿ×ⁿ</td>
+<td>M·1ₙ = 1ₙ, 1ₙᵀ·M = 1ₙᵀ, M ≥ 0}</td>
+</tr>
+</tbody>
+</table></div>
+</blockquote>
+<p>一个双随机矩阵的谱范数被 1 所约束。这使得 BlB_lBl 成为非扩张映射：对任意两个隐藏状态 xxx 和 yyy，都有</p>
+<blockquote>
+<p>‖B_l·x − B_l·y‖ ≤ ‖x − y‖</p>
+</blockquote>
+<p>也就是说，残差映射不能增加任意两点之间的距离。它是残差流上的一个 <strong>Lipschitz-1 映射</strong>。任何一层中引入的撕裂，都不能在后续层传播时继续增大。流形仍然可能被撕裂, mHC 并没有消除路由边界处的不连续性, 但它不能被进一步拉开。损伤被限制住了。</p>
+<p>执行这一约束的 Sinkhorn-Knopp 算法本身也具有很漂亮的几何意义：它在两个凸约束集合之间进行交替投影, 行归一化矩阵集合与列归一化矩阵集合, 直到到达它们的交集，也就是 Birkhoff 多面体。换句话说，你是在迭代地将 B_l 投影到双随机矩阵的流形上。这个约束流形 M 本身是一个研究充分的凸多面体，而 Sinkhorn-Knopp 是一种用于找到其上相应约束点的收敛算法。</p>
+<p>此外，输入映射 A_l 和输出映射 C_l 也通过 Sigmoid 函数被约束为非负且有界。这可以防止信号抵消, 另一种几何病态：相反方向的贡献彼此湮灭，在表征空间中制造出没有真实几何意义的人为空零点.</p>
+<hr/>
+<h2 id="the-unified-picture"><a href="#the-unified-picture" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2"><strong>The Unified Picture</strong></span></h2>
+<p>The three mitigations form a layered geometric defense, each acting at a different stage of the failure cascade:</p>
+<p><strong>Stage 1.</strong></p>
+<ul>
+<li><strong>Geometric Event: </strong>High local curvature</li>
+<li><strong>Mitigation: </strong>SwiGLU Clamping</li>
+<li><strong>Mechanism : </strong>Bounds activation magnitude; keeps optimizer’s local chart valid</li>
+</ul>
+<p><strong>Stage 2.</strong></p>
+<ul>
+<li><strong>Geometric Event: </strong>Chart inconsistency</li>
+<li><strong>Mitigation: </strong>Anticipatory Routing</li>
+<li><strong>Mechanism : </strong>Synchronizes routing chart with geometric chart via temporal consistency</li>
+</ul>
+<p><strong>Stage 3.</strong></p>
+<ul>
+<li><strong>Geometric Event: </strong>Tear amplification</li>
+<li><strong>Mitigation: </strong>mHC (Birkhoff)</li>
+<li><strong>Mechanism : </strong>Non-expansive residual mapping; Lipschitz-1 bound across layers</li>
+</ul>
+<p>None of the three individually suffices. SwiGLU clamping reduces the probability of a high-curvature precondition but cannot prevent all routing misalignment. Anticipatory Routing prevents chart inconsistency during normal training but is only activated reactively. mHC contains the damage if a tear occurs but does not prevent it from forming.</p>
+<p>Together, they form a cascade interrupt: clamping attacks the precondition, routing consistency attacks the event, and Lipschitz bounding attacks the aftermath. This is why the paper could say, with some confidence, that training was stabilized — even without a complete theoretical account.</p>
+<h2 id="统一图景"><a href="#统一图景" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2"><strong>统一图景</strong></span></h2>
+<p>这三种缓解方法构成了一套分层的几何防御体系，分别作用于失效级联的不同阶段：</p>
+<p><strong>阶段 1.</strong></p>
+<ul>
+<li><strong>几何事件: </strong>高局部曲率</li>
+<li><strong>解方法: </strong>SwiGLU Clamping</li>
+<li><strong>机制 : </strong>约束激活幅度；保持优化器的局部坐标图有效</li>
+</ul>
+<p><strong>阶段 2.</strong></p>
+<ul>
+<li><strong>几何事件: </strong>坐标图不一致</li>
+<li><strong>解方法: </strong>Anticipatory Routing</li>
+<li><strong>机制: </strong>通过时间一致性，使路由坐标图与几何坐标图同步</li>
+</ul>
+<p><strong>阶段 3.</strong></p>
+<ul>
+<li><strong>几何事件: </strong>撕裂放大</li>
+<li><strong>解方法: </strong>mHC (Birkhoff)</li>
+<li><strong>机制: </strong>非扩张残差映射；在层间施加 Lipschitz-1 约束</li>
+</ul>
+<p>这三者中的任何一个，单独来看都不足够。SwiGLU clamping 降低了高曲率前提出现的概率，但不能阻止所有路由错位。Anticipatory Routing 可以在正常训练中防止坐标图不一致，但它是反应式激活的。mHC 可以在撕裂发生之后限制损伤，但并不能阻止撕裂本身的形成。</p>
+<p>三者合在一起，构成了一种<strong>级联中断机制</strong>：clamping 攻击前提条件，路由一致性攻击事件本身，而 Lipschitz 约束攻击事后的传播放大。这也解释了为什么论文可以相当有信心地说，训练被稳定住了, 即使他们还没有给出一个完整的理论解释。</p>
+<hr/>
+<h2 id="what-the-paper-leaves-open"><a href="#what-the-paper-leaves-open" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2"><strong>What the Paper Leaves Open</strong></span></h2>
+<p>The authors write:</p>
+<blockquote>
+<p><em>“Although a comprehensive theoretical understanding of their underlying mechanisms remains an open question for now…”</em></p>
+</blockquote>
+<p>The geometric framing offered here suggests what that theoretical understanding might look like: a formal account of how routing boundary discontinuities propagate through residual streams, how spectral norm bounds on residual mappings contain this propagation, and how temporal consistency conditions in discrete selectors can be enforced as a parallel transport rule.</p>
+<p>This is not a complete theory. It is a vocabulary, a set of geometric concepts precise enough to ask the right questions. The manifold is torn by construction in every MoE layer. The question is whether that tear propagates catastrophically or stays bounded. DeepSeek V4’s three mitigations are three answers to that question, each operating at a different scale.</p>
+<p>Single Token Geometry is the project of taking seriously the idea that what happens to one token, passing through one forward pass, is already geometrically rich enough to explain phenomena we currently attribute to optimization dynamics. Loss spikes are one example.</p>
+<h2 id="论文留下了什么开放问题"><a href="#论文留下了什么开放问题" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2"><strong>论文留下了什么开放问题</strong></span></h2>
+<p>作者写道：</p>
+<blockquote>
+<p><em>“</em>“尽管目前我们对这些方法背后的机制尚缺乏完整的理论理解……”</p>
+</blockquote>
+<p>这里提出的几何框架，提示了这种理论理解可能是什么样子：它可以是一种形式化解释，用来说明路由边界不连续性如何沿着残差流传播，残差映射上的谱范数约束如何限制这种传播，以及离散选择器中的时间一致性条件如何被理解为一种平行移动规则。</p>
+<p>这还不是一个完整理论。它是一套词汇, 一组足够精确的几何概念，使我们能够提出正确的问题。每一个 MoE 层在结构上都会撕裂流形。真正的问题是：这种撕裂会灾难性地传播，还是会被约束在有界范围内？DeepSeek V4 的三种缓解方法，正是对这个问题的三种回答，并且分别作用在不同尺度上。</p>
+<p><strong>单标几何</strong>这个项目，就是认真对待这样一个想法：一个单标在一次前向传播中所经历的过程，本身就已经具有足够丰富的几何结构，足以解释许多我们目前归因于优化动力学的现象。残差尖峰只是其中一个例子。</p>
+<hr/>
+<h3 id="manifold-tearing-is-not-deepseeks-problem-alone"><a href="#manifold-tearing-is-not-deepseeks-problem-alone" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2"><strong>Manifold Tearing Is Not DeepSeek’s Problem Alone</strong></span></h3>
+<p>It is worth being precise about scope. Manifold tearing is not unique to DeepSeek, or to MoE architectures — though MoE does make it worse, by introducing routing boundaries that are discontinuous by construction. The pathology is more general.</p>
+<p>We noticed and discussed this in our 2024 paper, <em>Deep Manifold Part 1: Anatomy of Neural Network Manifold</em> — specifically Section 3.6, Learning Transformation:</p>
+<blockquote>
+<p><em>“This explains the zig-zag pattern observed in the loss curve during the slow decline stage of almost all foundation model training, suggesting that training is struggling to converge — a hidden bottleneck identified in our analysis. A model is considered to have converged effectively when the standard deviation of its loss values stabilizes at less than 5.”</em></p>
+</blockquote>
+<p>That zig-zag pattern is not noise. It is not a quirk of the optimizer or the learning rate schedule. High loss deviation is an indication of manifold tearing — the loss surface is not smooth but discontinuous, and the optimizer is crossing those discontinuities rather than descending through them. The standard deviation of the loss is, in this framing, a roughness measure of the representation manifold. When it stabilizes, the manifold has settled into a geometry the optimizer can navigate. When it spikes, the manifold is tearing.</p>
+<p>This means manifold tearing is visible in almost every foundation model training run ever published. It has been attributed to many things — learning rate warmup, batch size scheduling, data curriculum, optimizer hyperparameters. These attributions are not wrong. But they are proximate causes. They describe the conditions under which tearing is more or less likely. They do not identify the root cause.</p>
+<p>The root cause, beyond model architecture, is <strong>data</strong>.</p>
+<p>Specifically: data complexity. The representation manifold that a model learns is not chosen by the architect , it is <em>induced</em> by the training data. A dataset with discontinuous structure,sharp distributional boundaries between domains, conflicting label geometries, or extreme token frequency imbalances — induces a representation manifold with discontinuities baked in from the first forward pass. The model is not tearing a smooth manifold. It is trying to learn a manifold that was never smooth to begin with. The routing boundaries in MoE are a second-order effect; the data boundaries are primary.</p>
+<p>This is the argument of the next article in this series.</p>
+<p><em>Single Token Geometry: Data Complexity</em> will ask what it means, geometrically, for data to be complicit in manifold tearing: why certain data compositions make smooth representation manifolds impossible, and what that implies for how we should think about dataset curation, not as an engineering convenience, but as a geometric necessity.</p>
+<p>Manifold tearing will continue to appear throughout this series. DeepSeek V4 gave us a precise, honest, and unusually well-documented instance of it. The mitigations they found are real and they work. But they are defenses against a pathology whose origin sits upstream of the architecture — in the data the model is asked to learn from, and in the geometry that data imposes on the representation space before training even begins.</p>
+<h2 id="流形撕裂并不只是-deepseek-的问题"><a href="#流形撕裂并不只是-deepseek-的问题" class="anchor"><i class="fas fa-anchor"></i></a><span class="me-2"><strong>流形撕裂并不只是 DeepSeek 的问题</strong></span></h2>
+<p>有必要准确界定一下范围。流形撕裂并不是 DeepSeek 独有的问题，也并不是 MoE 架构独有的问题——尽管 MoE 通过引入构造上不连续的路由边界，确实会让这个问题更加严重。这个病态现象其实更一般。</p>
+<p>我们在 2024 年的论文《Deep Manifold Part 1: Anatomy of Neural Network Manifold》中已经注意并讨论过这一点，尤其是在第 3.6 节“Learning Transformation”中：</p>
+<blockquote>
+<p>这解释了几乎所有基础模型训练在缓慢下降阶段的残差曲线中所观察到的锯齿形模式，表明训练正在艰难收敛——这是我们分析中识别出的一个隐藏瓶颈。当残差值的标准差稳定在小于 5 时，可以认为模型已经有效收敛。</p>
+</blockquote>
+<p>这种锯齿形模式不是噪声。它不是优化器或学习率调度的某种偶然现象。高残差偏差是流形撕裂的迹象, 损失曲面不是光滑的，而是不连续的；优化器不是沿着它下降，而是在穿越这些不连续处。在这个框架中，残差的标准差可以被看作表征流形的一个粗糙度度量。当它稳定下来时，说明流形已经沉降到一种优化器可以导航的几何之中。当它出现尖峰时，说明流形正在撕裂。</p>
+<p>这意味着，流形撕裂几乎可以在每一次公开发表的基础模型训练过程中看到。它过去被归因于很多事情, 学习率 warmup、batch size 调度、数据课程、优化器超参数。这些归因并不是错的。但它们只是近因。它们描述的是在什么条件下撕裂更容易或更不容易发生，却没有指出根本原因。</p>
+<p>架构之外的根本原因，是数据。</p>
+<p>更具体地说：是数据复杂性。模型所学习到的表征流形，并不是由架构师自由选择的,它是由训练数据诱导出来的。一个具有不连续结构的数据集,例如领域之间存在尖锐的分布边界、标签几何彼此冲突，或者单标频率存在极端不平衡, 会从第一次前向传播开始，就诱导出一个内部带有不连续性的表征流形。模型并不是在撕裂一个原本光滑的流形。它是在试图学习一个从一开始就并不光滑的流形。MoE 中的路由边界是二阶效应；数据边界才是一阶原因。</p>
+<p>这正是本系列下一篇文章要讨论的问题。</p>
+<p>《单标几何：数据复杂性》将追问：从几何上看，数据如何“<strong>共谋</strong>”参与流形撕裂？为什么某些数据组合会让光滑的表征流形变得不可能？这又意味着我们应该如何重新理解数据集清洗与构造, 它不只是工程上的便利，而是一种几何上的必要。</p>
+<p>流形撕裂将会在这个系列中反复出现。DeepSeek V4 给了我们一个精确、诚实、而且罕见地记录充分的案例。他们找到的缓解方法是真实有效的。但这些方法所防御的病态，其源头位于架构之前, 位于模型被要求学习的数据之中，也位于这些数据在训练开始之前就施加到表征空间上的几何之中。</p>
+<p>###</p>
 </div>
 <div class="post-tail-wrapper text-muted">
 
