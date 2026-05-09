@@ -573,7 +573,7 @@
         "70": {
           "doc": "Hello, Notion!",
           "title": "Code blocks",
-          "content": "\n\n<p>Code blocks support syntax highlighting, one-click copying, collapsing-expanding, and dark/light theme switching.</p>\n\n<h3 id=\"common\">Common</h3>\n\n<p>A plain code block with no language specified:</p>\n\n<div class=\"language-text highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><table class=\"rouge-table\"><tbody><tr><!-- <td class=\"rouge-gutter gl\"><pre class=\"lineno\">1\n</pre></td> --><td class=\"rouge-code\"><pre>This is a common code snippet, without syntax highlight and line number.\n</pre></td></tr></tbody></table></code></pre></div></div>\n\n<h3 id=\"specific-language\">Specific Language</h3>\n\n<p>Specify the language after the opening backticks (e.g. ````bash`) to enable syntax highlighting and line numbers.</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><table class=\"rouge-table\"><tbody><tr><!-- <td class=\"rouge-gutter gl\"><pre class=\"lineno\">1\n2\n3\n4\n</pre></td> --><td class=\"rouge-code\"><pre><span class=\"k\">if</span> <span class=\"o\">[</span> <span class=\"nv\">$?</span> <span class=\"nt\">-ne</span> 0 <span class=\"o\">]</span><span class=\"p\">;</span> <span class=\"k\">then\n  </span><span class=\"nb\">echo</span> <span class=\"s2\">\"The command was not successful.\"</span><span class=\"p\">;</span>\n  <span class=\"c\">#do the needful / exit</span>\n<span class=\"k\">fi</span><span class=\"p\">;</span>\n</pre></td></tr></tbody></table></code></pre></div></div>\n\n<h3 id=\"specific-filename\">Specific filename</h3>\n\n<p>Add <code class=\"language-plaintext highlighter-rouge\">{: file='filename'}</code> right after the closing backticks to display a filename label on the code block.</p>\n\n<div file=\"_sass/jekyll-theme-chirpy.scss\" class=\"language-sass highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><table class=\"rouge-table\"><tbody><tr><!-- <td class=\"rouge-gutter gl\"><pre class=\"lineno\">1\n2\n3\n</pre></td> --><td class=\"rouge-code\"><pre><span class=\"k\">@import</span>\n  <span class=\"s2\">\"colors/light-typography\"</span><span class=\"o\">,</span>\n  <span class=\"s2\">\"colors/dark-typography\"</span><span class=\"o\">;</span>\n</pre></td></tr></tbody></table></code></pre></div></div>\n\n<h3 id=\"jupyter-notebook\">Jupyter notebook</h3>\n\n<p>Embed a Jupyter notebook directly into the post using the <code class=\"language-plaintext highlighter-rouge\">jupyter_notebook</code> tag.</p>\n\n<div class=\"jupyter-notebook\" data-light-src=\"/assets/jupyter/blog.ipynb.light.html\" data-dark-src=\"/assets/jupyter/blog.ipynb.dark.html\">\n  <div class=\"code-header\">\n    <span data-label-text=\"Jupyter Notebook\"><i class=\"fas fa-code fa-fw small\"></i></span>\n    <div class=\"code-header-fold-trigger jupyter-fold-trigger\"></div>\n    <div class=\"code-header-buttons\">\n      <button class=\"fold-btn jupyter-fold-btn\" data-bs-original-title=\"Collapse\">\n        <i class=\"fas fa-chevron-up\"></i>\n      </button>\n      <button class=\"clipboard-btn jupyter-clipboard-btn\" aria-label=\"copy\" data-title-succeed=\"Copied!\">\n        <i class=\"far fa-clipboard\"></i>\n      </button>\n    </div>\n  </div>\n  <div class=\"jupyter-notebook-iframe-container\">\n    <iframe class=\"jupyter-iframe jupyter-iframe-light\" src=\"/assets/jupyter/blog.ipynb.light.html\" style=\"display:none;\">\n    </iframe>\n    <iframe class=\"jupyter-iframe jupyter-iframe-dark\" src=\"/assets/jupyter/blog.ipynb.dark.html\" style=\"display:none;\">\n    </iframe>\n  </div>\n</div>\n\n",
+          "content": "\n\n<p>Code blocks support syntax highlighting, one-click copying, collapsing-expanding, and dark/light theme switching.</p>\n\n<h3 id=\"common\">Common</h3>\n\n<p>A plain code block with no language specified:</p>\n\n<div class=\"language-text highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><table class=\"rouge-table\"><tbody><tr><!-- <td class=\"rouge-gutter gl\"><pre class=\"lineno\">1\n</pre></td> --><td class=\"rouge-code\"><pre>This is a common code snippet, without syntax highlight and line number.\n</pre></td></tr></tbody></table></code></pre></div></div>\n\n<h3 id=\"specific-language\">Specific Language</h3>\n\n<p>Specify the language after the opening backticks (e.g. ````bash`) to enable syntax highlighting and line numbers.</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><table class=\"rouge-table\"><tbody><tr><!-- <td class=\"rouge-gutter gl\"><pre class=\"lineno\">1\n2\n3\n4\n</pre></td> --><td class=\"rouge-code\"><pre><span class=\"k\">if</span> <span class=\"o\">[</span> <span class=\"nv\">$?</span> <span class=\"nt\">-ne</span> 0 <span class=\"o\">]</span><span class=\"p\">;</span> <span class=\"k\">then\n  </span><span class=\"nb\">echo</span> <span class=\"s2\">\"The command was not successful.\"</span><span class=\"p\">;</span>\n  <span class=\"c\">#do the needful / exit</span>\n<span class=\"k\">fi</span><span class=\"p\">;</span>\n</pre></td></tr></tbody></table></code></pre></div></div>\n\n<h3 id=\"specific-filename\">Specific filename</h3>\n\n<p>Add <code class=\"language-plaintext highlighter-rouge\">{: file='filename'}</code> right after the closing backticks to display a filename label on the code block.</p>\n\n<div file=\"_sass/jekyll-theme-chirpy.scss\" class=\"language-sass highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><table class=\"rouge-table\"><tbody><tr><!-- <td class=\"rouge-gutter gl\"><pre class=\"lineno\">1\n2\n3\n</pre></td> --><td class=\"rouge-code\"><pre><span class=\"k\">@import</span>\n  <span class=\"s2\">\"colors/light-typography\"</span><span class=\"o\">,</span>\n  <span class=\"s2\">\"colors/dark-typography\"</span><span class=\"o\">;</span>\n</pre></td></tr></tbody></table></code></pre></div></div>\n\n<h3 id=\"jupyter-notebook\">Jupyter notebook</h3>\n\n<p>Embed a Jupyter notebook directly into the post using the <code class=\"language-plaintext highlighter-rouge\">jupyter_notebook</code> tag.</p>\n\n<div class=\"jupyter-notebook\" data-light-src=\"/assets/jupyter/demo.ipynb.light.html\" data-dark-src=\"/assets/jupyter/demo.ipynb.dark.html\">\n  <div class=\"code-header\">\n    <span data-label-text=\"Jupyter Notebook\"><i class=\"fas fa-code fa-fw small\"></i></span>\n    <div class=\"code-header-fold-trigger jupyter-fold-trigger\"></div>\n    <div class=\"code-header-buttons\">\n      <button class=\"fold-btn jupyter-fold-btn\" data-bs-original-title=\"Collapse\">\n        <i class=\"fas fa-chevron-up\"></i>\n      </button>\n      <button class=\"clipboard-btn jupyter-clipboard-btn\" aria-label=\"copy\" data-title-succeed=\"Copied!\">\n        <i class=\"far fa-clipboard\"></i>\n      </button>\n    </div>\n  </div>\n  <div class=\"jupyter-notebook-iframe-container\">\n    <iframe class=\"jupyter-iframe jupyter-iframe-light\" src=\"/assets/jupyter/demo.ipynb.light.html\" style=\"display:none;\">\n    </iframe>\n    <iframe class=\"jupyter-iframe jupyter-iframe-dark\" src=\"/assets/jupyter/demo.ipynb.dark.html\" style=\"display:none;\">\n    </iframe>\n  </div>\n</div>\n\n",
           "url": "/blog/hello,-notion!/#code-blocks",
           
           "relUrl": "/blog/hello,-notion!/#code-blocks"
@@ -923,7 +923,7 @@
         "113": {
           "doc": "Text and Typography",
           "title": "Code blocks",
-          "content": "\n\n<p>Code blocks support syntax highlighting, one-click copying, collapsing-expanding, and dark/light theme switching.</p>\n\n<h3 id=\"common\">Common</h3>\n\n<p>A plain code block with no language specified:</p>\n\n<div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><table class=\"rouge-table\"><tbody><tr><!-- <td class=\"rouge-gutter gl\"><pre class=\"lineno\">1\n</pre></td> --><td class=\"rouge-code\"><pre>This is a common code snippet, without syntax highlight and line number.\n</pre></td></tr></tbody></table></code></pre></div></div>\n\n<h3 id=\"specific-language\">Specific Language</h3>\n\n<p>Specify the language after the opening backticks (e.g. <code class=\"language-plaintext highlighter-rouge\">```bash</code>) to enable syntax highlighting and line numbers.</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><table class=\"rouge-table\"><tbody><tr><!-- <td class=\"rouge-gutter gl\"><pre class=\"lineno\">1\n2\n3\n4\n</pre></td> --><td class=\"rouge-code\"><pre><span class=\"k\">if</span> <span class=\"o\">[</span> <span class=\"nv\">$?</span> <span class=\"nt\">-ne</span> 0 <span class=\"o\">]</span><span class=\"p\">;</span> <span class=\"k\">then\n  </span><span class=\"nb\">echo</span> <span class=\"s2\">\"The command was not successful.\"</span><span class=\"p\">;</span>\n  <span class=\"c\">#do the needful / exit</span>\n<span class=\"k\">fi</span><span class=\"p\">;</span>\n</pre></td></tr></tbody></table></code></pre></div></div>\n\n<h3 id=\"specific-filename\">Specific filename</h3>\n\n<p>Add <code class=\"language-plaintext highlighter-rouge\">{: file='filename'}</code> right after the closing backticks to display a filename label on the code block.</p>\n\n<div file=\"_sass/jekyll-theme-chirpy.scss\" class=\"language-sass highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><table class=\"rouge-table\"><tbody><tr><!-- <td class=\"rouge-gutter gl\"><pre class=\"lineno\">1\n2\n3\n</pre></td> --><td class=\"rouge-code\"><pre><span class=\"k\">@import</span>\n  <span class=\"s2\">\"colors/light-typography\"</span><span class=\"o\">,</span>\n  <span class=\"s2\">\"colors/dark-typography\"</span><span class=\"o\">;</span>\n</pre></td></tr></tbody></table></code></pre></div></div>\n\n<h3 id=\"jupyter-notebook\">Jupyter notebook</h3>\n\n<p>Embed a Jupyter notebook directly into the post using the <code class=\"language-plaintext highlighter-rouge\">jupyter_notebook</code> tag.</p>\n\n<div class=\"jupyter-notebook\" data-light-src=\"/assets/jupyter/blog.ipynb.light.html\" data-dark-src=\"/assets/jupyter/blog.ipynb.dark.html\">\n  <div class=\"code-header\">\n    <span data-label-text=\"Jupyter Notebook\"><i class=\"fas fa-code fa-fw small\"></i></span>\n    <div class=\"code-header-fold-trigger jupyter-fold-trigger\"></div>\n    <div class=\"code-header-buttons\">\n      <button class=\"fold-btn jupyter-fold-btn\" data-bs-original-title=\"Collapse\">\n        <i class=\"fas fa-chevron-up\"></i>\n      </button>\n      <button class=\"clipboard-btn jupyter-clipboard-btn\" aria-label=\"copy\" data-title-succeed=\"Copied!\">\n        <i class=\"far fa-clipboard\"></i>\n      </button>\n    </div>\n  </div>\n  <div class=\"jupyter-notebook-iframe-container\">\n    <iframe\n      class=\"jupyter-iframe jupyter-iframe-light\"\n      src=\"/assets/jupyter/blog.ipynb.light.html\"\n      style=\"display:none;\">\n    </iframe>\n    <iframe\n      class=\"jupyter-iframe jupyter-iframe-dark\"\n      src=\"/assets/jupyter/blog.ipynb.dark.html\"\n      style=\"display:none;\">\n    </iframe>\n  </div>\n</div>\n\n\n",
+          "content": "\n\n<p>Code blocks support syntax highlighting, one-click copying, collapsing-expanding, and dark/light theme switching.</p>\n\n<h3 id=\"common\">Common</h3>\n\n<p>A plain code block with no language specified:</p>\n\n<div class=\"language-plaintext highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><table class=\"rouge-table\"><tbody><tr><!-- <td class=\"rouge-gutter gl\"><pre class=\"lineno\">1\n</pre></td> --><td class=\"rouge-code\"><pre>This is a common code snippet, without syntax highlight and line number.\n</pre></td></tr></tbody></table></code></pre></div></div>\n\n<h3 id=\"specific-language\">Specific Language</h3>\n\n<p>Specify the language after the opening backticks (e.g. <code class=\"language-plaintext highlighter-rouge\">```bash</code>) to enable syntax highlighting and line numbers.</p>\n\n<div class=\"language-bash highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><table class=\"rouge-table\"><tbody><tr><!-- <td class=\"rouge-gutter gl\"><pre class=\"lineno\">1\n2\n3\n4\n</pre></td> --><td class=\"rouge-code\"><pre><span class=\"k\">if</span> <span class=\"o\">[</span> <span class=\"nv\">$?</span> <span class=\"nt\">-ne</span> 0 <span class=\"o\">]</span><span class=\"p\">;</span> <span class=\"k\">then\n  </span><span class=\"nb\">echo</span> <span class=\"s2\">\"The command was not successful.\"</span><span class=\"p\">;</span>\n  <span class=\"c\">#do the needful / exit</span>\n<span class=\"k\">fi</span><span class=\"p\">;</span>\n</pre></td></tr></tbody></table></code></pre></div></div>\n\n<h3 id=\"specific-filename\">Specific filename</h3>\n\n<p>Add <code class=\"language-plaintext highlighter-rouge\">{: file='filename'}</code> right after the closing backticks to display a filename label on the code block.</p>\n\n<div file=\"_sass/jekyll-theme-chirpy.scss\" class=\"language-sass highlighter-rouge\"><div class=\"highlight\"><pre class=\"highlight\"><code><table class=\"rouge-table\"><tbody><tr><!-- <td class=\"rouge-gutter gl\"><pre class=\"lineno\">1\n2\n3\n</pre></td> --><td class=\"rouge-code\"><pre><span class=\"k\">@import</span>\n  <span class=\"s2\">\"colors/light-typography\"</span><span class=\"o\">,</span>\n  <span class=\"s2\">\"colors/dark-typography\"</span><span class=\"o\">;</span>\n</pre></td></tr></tbody></table></code></pre></div></div>\n\n<h3 id=\"jupyter-notebook\">Jupyter notebook</h3>\n\n<p>Embed a Jupyter notebook directly into the post using the <code class=\"language-plaintext highlighter-rouge\">jupyter_notebook</code> tag.</p>\n\n<div class=\"jupyter-notebook\" data-light-src=\"/assets/jupyter/demo.ipynb.light.html\" data-dark-src=\"/assets/jupyter/demo.ipynb.dark.html\">\n  <div class=\"code-header\">\n    <span data-label-text=\"Jupyter Notebook\"><i class=\"fas fa-code fa-fw small\"></i></span>\n    <div class=\"code-header-fold-trigger jupyter-fold-trigger\"></div>\n    <div class=\"code-header-buttons\">\n      <button class=\"fold-btn jupyter-fold-btn\" data-bs-original-title=\"Collapse\">\n        <i class=\"fas fa-chevron-up\"></i>\n      </button>\n      <button class=\"clipboard-btn jupyter-clipboard-btn\" aria-label=\"copy\" data-title-succeed=\"Copied!\">\n        <i class=\"far fa-clipboard\"></i>\n      </button>\n    </div>\n  </div>\n  <div class=\"jupyter-notebook-iframe-container\">\n    <iframe\n      class=\"jupyter-iframe jupyter-iframe-light\"\n      src=\"/assets/jupyter/demo.ipynb.light.html\"\n      style=\"display:none;\">\n    </iframe>\n    <iframe\n      class=\"jupyter-iframe jupyter-iframe-dark\"\n      src=\"/assets/jupyter/demo.ipynb.dark.html\"\n      style=\"display:none;\">\n    </iframe>\n  </div>\n</div>\n\n\n",
           "url": "/blog/text-and-typography/#code-blocks",
           
           "relUrl": "/blog/text-and-typography/#code-blocks"
@@ -1121,132 +1121,6 @@
         }
       ,
         "136": {
-          "doc": "typography",
-          "title": "typography",
-          "content": null,
-          "url": "/blog/tags/typography/",
-          
-          "relUrl": "/blog/tags/typography/"
-        }
-      ,
-        "137": {
-          "doc": "writing",
-          "title": "writing",
-          "content": null,
-          "url": "/blog/tags/writing/",
-          
-          "relUrl": "/blog/tags/writing/"
-        }
-      ,
-        "138": {
-          "doc": "demo",
-          "title": "demo",
-          "content": null,
-          "url": "/blog/tags/demo/",
-          
-          "relUrl": "/blog/tags/demo/"
-        }
-      ,
-        "139": {
-          "doc": "theme",
-          "title": "theme",
-          "content": null,
-          "url": "/blog/tags/theme/",
-          
-          "relUrl": "/blog/tags/theme/"
-        }
-      ,
-        "140": {
-          "doc": "homepage",
-          "title": "homepage",
-          "content": null,
-          "url": "/blog/tags/homepage/",
-          
-          "relUrl": "/blog/tags/homepage/"
-        }
-      ,
-        "141": {
-          "doc": "training",
-          "title": "training",
-          "content": null,
-          "url": "/blog/tags/training/",
-          
-          "relUrl": "/blog/tags/training/"
-        }
-      ,
-        "142": {
-          "doc": "moe",
-          "title": "moe",
-          "content": null,
-          "url": "/blog/tags/moe/",
-          
-          "relUrl": "/blog/tags/moe/"
-        }
-      ,
-        "143": {
-          "doc": "algorithm",
-          "title": "algorithm",
-          "content": null,
-          "url": "/blog/tags/algorithm/",
-          
-          "relUrl": "/blog/tags/algorithm/"
-        }
-      ,
-        "144": {
-          "doc": "python",
-          "title": "python",
-          "content": null,
-          "url": "/blog/tags/python/",
-          
-          "relUrl": "/blog/tags/python/"
-        }
-      ,
-        "145": {
-          "doc": "Blogging",
-          "title": "Blogging",
-          "content": null,
-          "url": "/blog/categories/blogging/",
-          
-          "relUrl": "/blog/categories/blogging/"
-        }
-      ,
-        "146": {
-          "doc": "Demo",
-          "title": "Demo",
-          "content": null,
-          "url": "/blog/categories/demo/",
-          
-          "relUrl": "/blog/categories/demo/"
-        }
-      ,
-        "147": {
-          "doc": "Design",
-          "title": "Design",
-          "content": null,
-          "url": "/blog/categories/design/",
-          
-          "relUrl": "/blog/categories/design/"
-        }
-      ,
-        "148": {
-          "doc": "Study",
-          "title": "Study",
-          "content": null,
-          "url": "/blog/categories/study/",
-          
-          "relUrl": "/blog/categories/study/"
-        }
-      ,
-        "149": {
-          "doc": "Algorithm",
-          "title": "Algorithm",
-          "content": null,
-          "url": "/blog/categories/algorithm/",
-          
-          "relUrl": "/blog/categories/algorithm/"
-        }
-      ,
-        "150": {
           "doc": "Blog",
           "title": "Blog",
           "content": null,
