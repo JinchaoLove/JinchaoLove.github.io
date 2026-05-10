@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-05-10T16:51:02+08:00</updated><id>https://jinchaoli.com/feed.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Thinking with Visual Primitives (转)</title><link href="https://jinchaoli.com/blog/thinking-with-visual-primitives-(%E8%BD%AC)/" rel="alternate" type="text/html" title="Thinking with Visual Primitives (转)"/><published>2026-05-01T00:00:00+08:00</published><updated>2026-05-01T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/thinking-with-visual-primitives-(%E8%BD%AC)</id><content type="html" xml:base="https://jinchaoli.com/blog/thinking-with-visual-primitives-(%E8%BD%AC)/"><![CDATA[<p>作者：PaperAgent</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-05-10T18:10:47+08:00</updated><id>https://jinchaoli.com/feed.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Thinking with Visual Primitives (转)</title><link href="https://jinchaoli.com/blog/thinking-with-visual-primitives-(%E8%BD%AC)/" rel="alternate" type="text/html" title="Thinking with Visual Primitives (转)"/><published>2026-05-01T00:00:00+08:00</published><updated>2026-05-01T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/thinking-with-visual-primitives-(%E8%BD%AC)</id><content type="html" xml:base="https://jinchaoli.com/blog/thinking-with-visual-primitives-(%E8%BD%AC)/"><![CDATA[<p>作者：PaperAgent</p>
 <p>链接：https://zhuanlan.zhihu.com/p/2033494636023559146</p>
 <p>来源：知乎</p>
 <p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
@@ -3572,33 +3572,237 @@
 <li><a href="https://github.com/keon/algorithms">Algorithms</a></li>
 <li><a href="https://labuladong.online/algo">labuladong的算法笔记</a></li>
 <li><a href="https://greyireland.gitbook.io/algorithm-pattern">算法模板</a></li>
-</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="Algorithm"/><category term="algorithm"/><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Configure Waline with TiDB</title><link href="https://jinchaoli.com/blog/set-waline-with-tidb/" rel="alternate" type="text/html" title="Configure Waline with TiDB"/><published>2025-07-27T11:00:00+08:00</published><updated>2026-04-15T15:40:01+08:00</updated><id>https://jinchaoli.com/blog/set-waline-with-tidb</id><content type="html" xml:base="https://jinchaoli.com/blog/set-waline-with-tidb/"><![CDATA[<h2 id="why-waline--tidb">Why Waline + TiDB?</h2>
-<p><a href="https://waline.js.org/">Waline</a> is a lightweight, open-source, privacy-focused, and self-hosted comment system with backend UI and rich features, and <a href="https://tidbcloud.com/">TiDB Cloud</a> offers a scalable, MySQL-compatible database with a generous 5GB free tier – making them a powerful pair for efficient and reliable comment system.</p>
-<h2 id="how-to-set-up-waline-with-tidb-cloud">How to Set Up Waline with TiDB Cloud?</h2>
-<p>Follow these steps to deploy and configure <a href="https://waline.js.org/">Waline</a> using <a href="https://tidbcloud.com/">TiDB Cloud</a> as the database backend.</p>
+</ul>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="Algorithm"/><category term="algorithm"/><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Hello, Notion!</title><link href="https://jinchaoli.com/blog/hello,-notion!/" rel="alternate" type="text/html" title="Hello, Notion!"/><published>2026-04-23T00:00:00+08:00</published><updated>2026-04-23T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/hello,-notion!</id><content type="html" xml:base="https://jinchaoli.com/blog/hello,-notion!/"><![CDATA[<h1 id="text-and-typography">Text and Typography</h1>
+<h2 id="headings">Headings</h2>
+<h1 class="mt-4 mb-0" id="h1---heading">H1 - heading</h1>
+<h2 id="h2---heading" data-toc-skip="" class="mt-4 mb-0">H2 - heading</h2>
+<h3 id="h3---heading" data-toc-skip="" class="mt-4 mb-0">H3 - heading</h3>
+<h3 id="h4---heading" data-toc-skip="" class="mt-4">H4 - heading</h3>
+<h2 id="paragraph">Paragraph</h2>
+<p>Quisque egestas convallis ipsum, ut sollicitudin risus tincidunt a. Maecenas interdum malesuada egestas. Duis consectetur porta risus, sit amet vulputate urna facilisis ac. Phasellus semper dui non purus ultrices sodales. Aliquam ante lorem, ornare a feugiat ac, finibus nec mauris. Vivamus ut tristique nisi. Sed vel leo vulputate, efficitur risus non, posuere mi. Nullam tincidunt bibendum rutrum. Proin commodo ornare sapien. Vivamus interdum diam sed sapien blandit, sit amet aliquam risus mattis. Nullam arcu turpis, mollis quis laoreet at, placerat id nibh. Suspendisse venenatis eros eros.</p>
+<h2 id="lists">Lists</h2>
+<h3 id="ordered-list">Ordered list</h3>
 <ol>
-<li>
-<p>Create a cluster in <a href="https://tidbcloud.com/">TiDB Database</a> (any name is okay)</p>
-</li>
-<li>
-<p>Connect with the above cluster in your local editor (e.g., VS Code)</p>
-<p>To manage your database and initialize comment tables:</p>
-<ol>
-<li>
-<p>Get Connection Details: In the TiDB Cloud console (Overview of the cluster), click the Connect button (top-right corner). You’ll see the connection parameters <code class="language-plaintext highlighter-rouge">HOST</code>, <code class="language-plaintext highlighter-rouge">PORT</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">PASSWORD</code> (generate and copy it), <code class="language-plaintext highlighter-rouge">DATABASE</code> and <code class="language-plaintext highlighter-rouge">CA</code>.</p>
-</li>
-<li>
-<p>Set Up VS Code: See details in <a href="https://docs.pingcap.com/tidbcloud/dev-guide-gui-vscode-sqltools/">TiDB Developer Guide</a>.</p>
-</li>
-<li>
-<p>Initialize the Waline Database Schema: Copy <a href="https://github.com/walinejs/waline/blob/main/assets/waline.tidb">waline.tidb</a> and execute the entire script in VS Code. The script will create a database named <code class="language-plaintext highlighter-rouge">waline</code> with <code class="language-plaintext highlighter-rouge">wl_Comment</code>, <code class="language-plaintext highlighter-rouge">wl_Counter</code> and <code class="language-plaintext highlighter-rouge">wl_Users</code> in it.</p>
-</li>
+<li>Firstly</li>
+<li>Secondly</li>
+<li>Thirdly</li>
 </ol>
+<h3 id="unordered-list">Unordered list</h3>
+<ul>
+<li>Chapter
+<ul>
+<li>Section
+<ul>
+<li>Paragraph</li>
+</ul>
 </li>
-<li>
-<p>Configure <code class="language-plaintext highlighter-rouge">Environment Variables</code> as listed in <a href="https://waline.js.org/guide/database.html#tidb">Waline Guidebook</a></p>
+</ul>
 </li>
-</ol>
+</ul>
+<h3 id="todo-list">ToDo list</h3>
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>Job
+<ul class="task-list">
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked"/>Step 1</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked"/>Step 2</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"/>Step 3</li>
+</ul>
+</li>
+</ul>
+<h3 id="description-list">Description list</h3>
+<dl>
+<dt>Sun</dt>
+<dd>the star around which the earth orbits</dd>
+<dt>Moon</dt>
+<dd>the natural satellite of the earth, visible by reflected light from the sun</dd>
+</dl>
+<h2 id="block-quote">Block Quote</h2>
+<blockquote>
+<p>This line shows the <em>block quote</em>.</p>
+</blockquote>
+<h2 id="prompts">Prompts</h2>
+<blockquote class="prompt-tip">
+<p>An example showing the <code class="language-plaintext highlighter-rouge">tip</code> type prompt.</p>
+</blockquote>
+<blockquote class="prompt-info">
+<p>An example showing the <code class="language-plaintext highlighter-rouge">info</code> type prompt.</p>
+</blockquote>
 <blockquote class="prompt-warn">
-<p>When first connecting via VS Code, the default <code class="language-plaintext highlighter-rouge">Database</code> is <code class="language-plaintext highlighter-rouge">test</code>. After running <code class="language-plaintext highlighter-rouge">waline.tidb</code>, the actual database used by Waline is <code class="language-plaintext highlighter-rouge">waline</code>. So in <code class="language-plaintext highlighter-rouge">Environment Variables</code>, set <code class="language-plaintext highlighter-rouge">DATABASE = waline</code>.</p>
-</blockquote>]]></content><author><name>Jinchao Li</name></author><category term="Blogging"/><category term="Design"/><category term="homepage"/><summary type="html"><![CDATA[Why Waline + TiDB?]]></summary></entry></feed>
+<p>An example showing the <code class="language-plaintext highlighter-rouge">warn</code> type prompt.</p>
+</blockquote>
+<blockquote class="prompt-danger">
+<p>An example showing the <code class="language-plaintext highlighter-rouge">danger</code> type prompt.</p>
+</blockquote>
+<h2 id="tables">Tables</h2>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Contact</th>
+<th>Country</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alfreds Futterkiste</td>
+<td>Maria Anders</td>
+<td>Germany</td>
+</tr>
+<tr>
+<td>Island Trading</td>
+<td>Helen Bennett</td>
+<td>UK</td>
+</tr>
+<tr>
+<td>Magazzini Alimentari Riuniti</td>
+<td>Giovanni Rovelli</td>
+<td>Italy</td>
+</tr>
+</tbody>
+</table>
+<h2 id="links">Links</h2>
+<p><a href="http://127.0.0.1:4000/">http://127.0.0.1:4000</a></p>
+<h2 id="footnote">Footnote</h2>
+<p>Click the hook will locate the footnote<sup id="fnref:footnote"><a href="#fn:footnote" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>, and here is another footnote<sup id="fnref:fn-nth-2"><a href="#fn:fn-nth-2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>.</p>
+<h2 id="inline-code">Inline code</h2>
+<p>This is an example of <code class="language-plaintext highlighter-rouge">Inline Code</code>.</p>
+<h2 id="filepath">Filepath</h2>
+<p>Here is the <code class="language-plaintext filepath highlighter-rouge">/path/to/the/filename</code>.</p>
+<h2 id="code-blocks">Code blocks</h2>
+<p>Code blocks support syntax highlighting, one-click copying, collapsing-expanding, and dark/light theme switching.</p>
+<h3 id="common">Common</h3>
+<p>A plain code block with no language specified:</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>This is a common code snippet, without syntax highlight and line number.
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h3 id="specific-language">Specific Language</h3>
+<p>Specify the language after the opening backticks (e.g. ````bash`) to enable syntax highlighting and line numbers.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-ne</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
+  </span><span class="nb">echo</span> <span class="s2">"The command was not successful."</span><span class="p">;</span>
+  <span class="c">#do the needful / exit</span>
+<span class="k">fi</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h3 id="specific-filename">Specific filename</h3>
+<p>Add <code class="language-plaintext highlighter-rouge">{: file='filename'}</code> right after the closing backticks to display a filename label on the code block.</p>
+<div file="_sass/jekyll-theme-chirpy.scss" class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="k">@import</span>
+  <span class="s2">"colors/light-typography"</span><span class="o">,</span>
+  <span class="s2">"colors/dark-typography"</span><span class="o">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<h3 id="jupyter-notebook">Jupyter notebook</h3>
+<p>Embed a Jupyter notebook directly into the post using the <code class="language-plaintext highlighter-rouge">jupyter_notebook</code> tag.</p>
+<div class="jupyter-notebook" data-light-src="/assets/jupyter/demo.ipynb.light.html" data-dark-src="/assets/jupyter/demo.ipynb.dark.html">
+<div class="code-header">
+<span data-label-text="Jupyter Notebook"><i class="fas fa-code fa-fw small"></i></span>
+<div class="code-header-fold-trigger jupyter-fold-trigger"></div>
+<div class="code-header-buttons">
+<button class="fold-btn jupyter-fold-btn" data-bs-original-title="Collapse">
+<i class="fas fa-chevron-up"></i>
+</button>
+<button class="clipboard-btn jupyter-clipboard-btn" aria-label="copy" data-title-succeed="Copied!">
+<i class="far fa-clipboard"></i>
+</button>
+</div>
+</div>
+<div class="jupyter-notebook-iframe-container">
+<iframe class="jupyter-iframe jupyter-iframe-light" src="/assets/jupyter/demo.ipynb.light.html" style="display:none;">
+</iframe>
+<iframe class="jupyter-iframe jupyter-iframe-dark" src="/assets/jupyter/demo.ipynb.dark.html" style="display:none;">
+</iframe>
+</div>
+</div>
+<h2 id="mathematics">Mathematics</h2>
+<p>The mathematics powered by <strong><a href="https://www.mathjax.org/">MathJax</a></strong>:</p>
+\[\begin{equation}
+\sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6}
+\label{eq:series}
+\end{equation}\]
+<p>We can reference the equation as \eqref{eq:series}.</p>
+<p>When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are</p>
+\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}\]
+<h2 id="mermaid-svg">Mermaid SVG</h2>
+<pre><code class="language-mermaid"> gantt
+  title  Adding GANTT diagram functionality to mermaid
+  apple :a, 2017-07-20, 1w
+  banana :crit, b, 2017-07-23, 1d
+  cherry :active, c, after b a, 1d
+</code></pre>
+<h2 id="mindmap">Mindmap</h2>
+<p>View <a href="https://github.com/markmap/markmap/blob/master/packages/markmap-view/src/constants.ts">markmap.js.org</a> for configuration details.</p>
+<div class="markmap">
+<script type="text/template">
+---
+markmap:
+  maxWidth: 300
+  pan: false
+  autoFit: true
+  fitRatio: 0.7
+---
+
+- markmap
+  - lib
+    - Transformer
+    - builtInPlugins
+  - render
+    - fillTemplate
+  - view
+    - Markmap
+    - loadCSS
+    - loadJS
+  - autoloader
+    - autoLoader
+	</script>
+</div>
+<h2 id="images">Images</h2>
+<h3 id="default-with-caption">Default (with caption)</h3>
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="" width="972" height="589"/></p>
+<p><em>Full screen width and center alignment</em></p>
+<h3 id="left-aligned">Left aligned</h3>
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="" width="972" height="589" class="w-75 normal"/></p>
+<h3 id="float-to-left">Float to left</h3>
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="" width="972" height="589" class="w-50 left"/><br/>
+Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.</p>
+<h3 id="float-to-right">Float to right</h3>
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/mockup.png" alt="" width="972" height="589" class="w-50 right"/><br/>
+Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecenas pharetra, sem sit amet interdum posuere, tellus lacus eleifend magna, ac lobortis felis ipsum id sapien. Proin ornare rutrum metus, ac convallis diam volutpat sit amet. Phasellus volutpat, elit sit amet tincidunt mollis, felis mi scelerisque mauris, ut facilisis leo magna accumsan sapien. In rutrum vehicula nisl eget tempor. Nullam maximus ullamcorper libero non maximus. Integer ultricies velit id convallis varius. Praesent eu nisl eu urna finibus ultrices id nec ex. Mauris ac mattis quam. Fusce aliquam est nec sapien bibendum, vitae malesuada ligula condimentum.</p>
+<h3 id="darklight-mode--shadow">Dark/Light mode &amp; Shadow</h3>
+<p>The image below will toggle dark/light mode based on theme preference, notice it has shadows.</p>
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/devtools-light.png" alt="" class="light w-75 shadow rounded-10" w="1212" h="668"/></p>
+<p><img src="https://chirpy-img.netlify.app/posts/20190808/devtools-dark.png" alt="" class="dark w-75 shadow rounded-10" w="1212" h="668"/></p>
+<h2 id="video">Video</h2>
+<div class="yt-lite embed-video" data-id="Balreaj8Yqs" onclick="
+var iframe=document.createElement('iframe');
+iframe.setAttribute('src', 'https://www.youtube.com/embed/' + this.dataset.id + '?autoplay=1');
+iframe.setAttribute('title', 'YouTube video player');
+iframe.setAttribute('frameborder', '0');
+iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+iframe.setAttribute('allowfullscreen', '');
+iframe.className = 'embed-video';
+this.parentNode.replaceChild(iframe, this);
+">
+<img src="https://i.ytimg.com/vi/Balreaj8Yqs/hqdefault.jpg" alt="YouTube video thumbnail" loading="lazy"/>
+<button class="yt-play-btn" aria-label="Play video">
+<svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M66.5 7.7c-.8-2.9-3-5.1-5.8-5.8C55.8 0 34 0 34 0S12.2 0 7.3 1.9C4.5 2.6 2.3 4.9 1.5 7.7 0 12.8 0 24 0 24s0 11.2 1.5 16.3c.8 2.9 3 5.1 5.8 5.8C12.2 48 34 48 34 48s21.8 0 26.7-1.9c2.8-.8 5-3 5.8-5.8C68 35.2 68 24 68 24s0-11.2-1.5-16.3z" fill="#f00"/>
+<path d="M45 24 27 14v20" fill="#fff"/>
+</svg>
+</button>
+</div>
+<h2 id="reverse-footnote">Reverse Footnote</h2>
+<p><br/></p>
+<div class="footnotes" role="doc-endnotes">
+<ol>
+<li id="fn:footnote">
+<p>The footnote source <a href="#fnref:footnote" class="reversefootnote" role="doc-backlink">&#8617;&#xfe0e;</a></p>
+</li>
+<li id="fn:fn-nth-2">
+<p>The 2nd footnote source <a href="#fnref:fn-nth-2" class="reversefootnote" role="doc-backlink">&#8617;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>]]></content><author><name>Jinchao Li</name></author><category term="Blogging"/><category term="demo"/><summary type="html"><![CDATA[Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more using Notion.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://chirpy-img.netlify.app/commons/devices-mockup.png"/><media:content medium="image" url="https://chirpy-img.netlify.app/commons/devices-mockup.png" xmlns:media="http://search.yahoo.com/mrss/"/></entry></feed>
