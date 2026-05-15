@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-05-16T06:52:47+08:00</updated><id>https://jinchaoli.com/feed.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">语音预训练范式</title><link href="https://jinchaoli.com/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F/" rel="alternate" type="text/html" title="语音预训练范式"/><published>2026-05-10T00:00:00+08:00</published><updated>2026-05-10T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F</id><content type="html" xml:base="https://jinchaoli.com/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F/"><![CDATA[<h2 id="目录">目录</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-05-16T07:53:04+08:00</updated><id>https://jinchaoli.com/feed.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">语音预训练范式</title><link href="https://jinchaoli.com/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F/" rel="alternate" type="text/html" title="语音预训练范式"/><published>2026-05-10T00:00:00+08:00</published><updated>2026-05-10T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F</id><content type="html" xml:base="https://jinchaoli.com/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F/"><![CDATA[<h2 id="目录">目录</h2>
 <ol>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#问题设定">问题设定：语音预训练的独特困难</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#第一范式">第一范式：对比学习（2019—2020）</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#第二范式">第二范式：掩码预测（2021—2022）</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#第三范式">第三范式：弱监督大规模训练（2022—2023）</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#第四范式">第四范式：LLM 融合（2023—2026）</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#横向对比">各范式横向对比</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#进化逻辑">进化路线的内在逻辑</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#开放问题">开放问题与研究方向</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#总结">总结</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#参考文献">参考文献</a></li>
+<li>问题设定：语音预训练的独特困难</li>
+<li>第一范式：对比学习（2019—2020）</li>
+<li>第二范式：掩码预测（2021—2022）</li>
+<li>第三范式：弱监督大规模训练（2022—2023）</li>
+<li>第四范式：LLM 融合（2023—2026）</li>
+<li>各范式横向对比</li>
+<li>进化路线的内在逻辑</li>
+<li>开放问题与研究方向</li>
+<li>总结</li>
+<li>参考文献</li>
 </ol>
 <hr/>
 <h2 id="1-问题设定语音预训练的独特困难">1. 问题设定：语音预训练的独特困难</h2>
@@ -404,16 +404,16 @@
 <h2 id="参考文献">参考文献</h2>
 <p><br/></p>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="architecture"/><category term="pretrain"/><summary type="html"><![CDATA[【Deep Research by Gemini 3.1 Pro】本文梳理了语音预训练领域自 2019 年以来的主要技术范式，重点分析各范式的设计动机、方法论选择及其内在局限，并追踪 Whisper 之后（2024—2026 年）以大语言模型融合为核心的新一轮技术演变。]]></summary></entry><entry><title type="html">音频表征学习</title><link href="https://jinchaoli.com/blog/%E9%9F%B3%E9%A2%91%E8%A1%A8%E5%BE%81%E5%AD%A6%E4%B9%A0/" rel="alternate" type="text/html" title="音频表征学习"/><published>2026-05-10T00:00:00+08:00</published><updated>2026-05-10T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/%E9%9F%B3%E9%A2%91%E8%A1%A8%E5%BE%81%E5%AD%A6%E4%B9%A0</id><content type="html" xml:base="https://jinchaoli.com/blog/%E9%9F%B3%E9%A2%91%E8%A1%A8%E5%BE%81%E5%AD%A6%E4%B9%A0/"><![CDATA[<h2 id="目录">目录</h2>
 <ol>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806d9061f7edff3c85d6#问题设定">问题设定：表征的信息论视角</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806d9061f7edff3c85d6#连续表征">连续表征：从手工特征到自监督学习</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806d9061f7edff3c85d6#离散表征">离散表征：量化机制的技术体系</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806d9061f7edff3c85d6#声学token">声学 Token 的系谱：神经音频编解码器</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806d9061f7edff3c85d6#语义token">语义 Token 的系谱：SSL 模型的离散化</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806d9061f7edff3c85d6#横向对比">整体横向对比</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806d9061f7edff3c85d6#统一表征">统一表征：弥合语义与声学的尝试</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806d9061f7edff3c85d6#前沿方向">前沿方向与开放问题</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806d9061f7edff3c85d6#总结">总结</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806d9061f7edff3c85d6#参考文献">参考文献</a></li>
+<li>问题设定：表征的信息论视角</li>
+<li>连续表征：从手工特征到自监督学习</li>
+<li>离散表征：量化机制的技术体系</li>
+<li>声学 Token 的系谱：神经音频编解码器</li>
+<li>语义 Token 的系谱：SSL 模型的离散化</li>
+<li>整体横向对比</li>
+<li>统一表征：弥合语义与声学的尝试</li>
+<li>前沿方向与开放问题</li>
+<li>总结</li>
+<li>参考文献</li>
 </ol>
 <hr/>
 <h2 id="1-问题设定表征的信息论视角">1. 问题设定：表征的信息论视角</h2>

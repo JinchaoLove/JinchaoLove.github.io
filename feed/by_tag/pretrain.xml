@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/pretrain.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-05-16T06:52:47+08:00</updated><id>https://jinchaoli.com/feed/by_tag/pretrain.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">语音预训练范式</title><link href="https://jinchaoli.com/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F/" rel="alternate" type="text/html" title="语音预训练范式"/><published>2026-05-10T00:00:00+08:00</published><updated>2026-05-10T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F</id><content type="html" xml:base="https://jinchaoli.com/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F/"><![CDATA[<h2 id="目录">目录</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/pretrain.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-05-16T07:53:04+08:00</updated><id>https://jinchaoli.com/feed/by_tag/pretrain.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">语音预训练范式</title><link href="https://jinchaoli.com/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F/" rel="alternate" type="text/html" title="语音预训练范式"/><published>2026-05-10T00:00:00+08:00</published><updated>2026-05-10T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F</id><content type="html" xml:base="https://jinchaoli.com/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F/"><![CDATA[<h2 id="目录">目录</h2>
 <ol>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#问题设定">问题设定：语音预训练的独特困难</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#第一范式">第一范式：对比学习（2019—2020）</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#第二范式">第二范式：掩码预测（2021—2022）</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#第三范式">第三范式：弱监督大规模训练（2022—2023）</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#第四范式">第四范式：LLM 融合（2023—2026）</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#横向对比">各范式横向对比</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#进化逻辑">进化路线的内在逻辑</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#开放问题">开放问题与研究方向</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#总结">总结</a></li>
-<li><a href="https://www.notion.so/jclovefy/35c01bb20636806cbe36f1d5575bfd96#参考文献">参考文献</a></li>
+<li>问题设定：语音预训练的独特困难</li>
+<li>第一范式：对比学习（2019—2020）</li>
+<li>第二范式：掩码预测（2021—2022）</li>
+<li>第三范式：弱监督大规模训练（2022—2023）</li>
+<li>第四范式：LLM 融合（2023—2026）</li>
+<li>各范式横向对比</li>
+<li>进化路线的内在逻辑</li>
+<li>开放问题与研究方向</li>
+<li>总结</li>
+<li>参考文献</li>
 </ol>
 <hr/>
 <h2 id="1-问题设定语音预训练的独特困难">1. 问题设定：语音预训练的独特困难</h2>
