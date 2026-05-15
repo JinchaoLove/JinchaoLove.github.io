@@ -410,13 +410,19 @@ role="button"
 </a>
 <a class="tag-chip" href="/blog/tags/algorithm/">algorithm<span class="tag-size ms-1">1</span>
 </a>
+<a class="tag-chip" href="/blog/tags/architecture/">architecture<span class="tag-size ms-1">1</span>
+</a>
 <a class="tag-chip" href="/blog/tags/demo/">demo<span class="tag-size ms-1">2</span>
 </a>
 <a class="tag-chip" href="/blog/tags/homepage/">homepage<span class="tag-size ms-1">2</span>
 </a>
 <a class="tag-chip" href="/blog/tags/moe/">moe<span class="tag-size ms-1">1</span>
 </a>
+<a class="tag-chip" href="/blog/tags/pretrain/">pretrain<span class="tag-size ms-1">1</span>
+</a>
 <a class="tag-chip" href="/blog/tags/python/">python<span class="tag-size ms-1">1</span>
+</a>
+<a class="tag-chip" href="/blog/tags/representation/">representation<span class="tag-size ms-1">1</span>
 </a>
 <a class="tag-chip" href="/blog/tags/theme/">theme<span class="tag-size ms-1">1</span>
 </a>
@@ -433,6 +439,12 @@ role="button"
 <span>ARCHIVES</span>
 </a>
 <ul>
+<li>
+<a href="/blog/%E9%9F%B3%E9%A2%91%E8%A1%A8%E5%BE%81%E5%AD%A6%E4%B9%A0/">音频表征学习</a>
+</li>
+<li>
+<a href="/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F/">语音预训练范式</a>
+</li>
 <li>
 <a href="/blog/thinking-with-visual-primitives-(%E8%BD%AC)/">Thinking with Visual Primitives (转)</a>
 </li>
@@ -672,9 +684,9 @@ By
 class="readtime"
 data-bs-toggle="tooltip"
 data-bs-placement="bottom"
-title="62 min read"
+title="63 min read"
 >About
-<em>11246</em>
+<em>11386</em>
 words</span>
 <span>
 
@@ -1120,7 +1132,10 @@ Apr 24, 2026
     <span class="k">return</span> <span class="n">dummy</span><span class="p">.</span><span class="nb">next</span>  <span class="c1"># 注意：不是返回指针 p，而是返回链表的头部，也就是 dummy.next
 </span></pre></td></tr></tbody></table></code></div></div>
 <blockquote class="prompt-info">
-<p>虚拟头结点</p>
+<p><strong>虚拟头结点</strong><br/>
+代码中用到了一个链表的算法题中是很常见的「虚拟头结点」技巧，也就是 dummy 节点。<br/>
+当遇到需要创造一条新链表的情况，可以使用虚拟头结点简化边界情况的处理。<br/>
+如果不使用 dummy 虚拟节点，代码会复杂一些，需要额外处理指针 p 为空的情况。而有了 dummy 节点这个占位符，可以避免处理空指针的情况，降低代码的复杂性。</p>
 </blockquote>
 <p><br/></p>
 <p><a href="https://leetcode.cn/problems/longest-palindromic-substring">5. 最长回文子串</a></p>
@@ -3566,13 +3581,13 @@ class="col-2 ps-2 mb-5 text-muted">
 <h2 class="panel-heading">Recently Updated</h2>
 <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
 <li class="text-truncate lh-lg">
+<a href="/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F/">语音预训练范式</a>
+</li>
+<li class="text-truncate lh-lg">
+<a href="/blog/%E9%9F%B3%E9%A2%91%E8%A1%A8%E5%BE%81%E5%AD%A6%E4%B9%A0/">音频表征学习</a>
+</li>
+<li class="text-truncate lh-lg">
 <a href="/blog/text-and-typography/">Text and Typography</a>
-</li>
-<li class="text-truncate lh-lg">
-<a href="/blog/thinking-with-visual-primitives-(%E8%BD%AC)/">Thinking with Visual Primitives (转)</a>
-</li>
-<li class="text-truncate lh-lg">
-<a href="/blog/deepseek-v4%E4%B8%8E%E6%B5%81%E5%BD%A2%E6%92%95%E8%A3%82(%E8%BD%AC)/">DeepSeek-V4与流形撕裂(转)</a>
 </li>
 </ul>
 </section>

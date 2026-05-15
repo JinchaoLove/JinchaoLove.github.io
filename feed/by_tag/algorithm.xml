@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/algorithm.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-05-15T21:56:42+08:00</updated><id>https://jinchaoli.com/feed/by_tag/algorithm.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">算法基础</title><link href="https://jinchaoli.com/blog/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" rel="alternate" type="text/html" title="算法基础"/><published>2026-04-24T00:00:00+08:00</published><updated>2026-04-24T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80</id><content type="html" xml:base="https://jinchaoli.com/blog/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"><![CDATA[
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/algorithm.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-05-15T23:05:37+08:00</updated><id>https://jinchaoli.com/feed/by_tag/algorithm.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">算法基础</title><link href="https://jinchaoli.com/blog/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" rel="alternate" type="text/html" title="算法基础"/><published>2026-04-24T00:00:00+08:00</published><updated>2026-04-24T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80</id><content type="html" xml:base="https://jinchaoli.com/blog/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"><![CDATA[
 <h2 id="框架概括">框架概括</h2>
 <h3 id="整体框架">整体框架</h3>
 <ul>
@@ -411,7 +411,10 @@
     <span class="k">return</span> <span class="n">dummy</span><span class="p">.</span><span class="nb">next</span>  <span class="c1"># 注意：不是返回指针 p，而是返回链表的头部，也就是 dummy.next
 </span></pre></td></tr></tbody></table></code></pre></div></div>
 <blockquote class="prompt-info">
-<p>虚拟头结点</p>
+<p><strong>虚拟头结点</strong><br/>
+代码中用到了一个链表的算法题中是很常见的「虚拟头结点」技巧，也就是 dummy 节点。<br/>
+当遇到需要创造一条新链表的情况，可以使用虚拟头结点简化边界情况的处理。<br/>
+如果不使用 dummy 虚拟节点，代码会复杂一些，需要额外处理指针 p 为空的情况。而有了 dummy 节点这个占位符，可以避免处理空指针的情况，降低代码的复杂性。</p>
 </blockquote>
 <p><br/></p>
 <p><a href="https://leetcode.cn/problems/longest-palindromic-substring">5. 最长回文子串</a></p>

@@ -489,7 +489,10 @@
 </span></pre></td></tr></tbody></table></code></pre></div></div>
 
 <blockquote class="prompt-info">
-  <p>虚拟头结点</p>
+  <p><strong>虚拟头结点</strong><br />
+代码中用到了一个链表的算法题中是很常见的「虚拟头结点」技巧，也就是 dummy 节点。<br />
+当遇到需要创造一条新链表的情况，可以使用虚拟头结点简化边界情况的处理。<br />
+如果不使用 dummy 虚拟节点，代码会复杂一些，需要额外处理指针 p 为空的情况。而有了 dummy 节点这个占位符，可以避免处理空指针的情况，降低代码的复杂性。</p>
 </blockquote>
 
 <p><br /></p>
