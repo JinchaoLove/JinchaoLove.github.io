@@ -1,4 +1,573 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/algorithm.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-05-16T07:53:04+08:00</updated><id>https://jinchaoli.com/feed/by_tag/algorithm.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">算法基础</title><link href="https://jinchaoli.com/blog/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" rel="alternate" type="text/html" title="算法基础"/><published>2026-04-24T00:00:00+08:00</published><updated>2026-04-24T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80</id><content type="html" xml:base="https://jinchaoli.com/blog/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"><![CDATA[
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/algorithm.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-05-23T08:03:10+08:00</updated><id>https://jinchaoli.com/feed/by_tag/algorithm.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">强化学习算法</title><link href="https://jinchaoli.com/blog/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/" rel="alternate" type="text/html" title="强化学习算法"/><published>2026-05-16T00:00:00+08:00</published><updated>2026-05-16T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95</id><content type="html" xml:base="https://jinchaoli.com/blog/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/"><![CDATA[<h2 id="1-引言">1. 引言</h2>
+<p>大语言模型的训练通常分为三个阶段：以自监督下一词预测为目标的大规模预训练、基于人工标注数据的监督微调（Supervised Fine-Tuning, SFT），以及以人类偏好为导向的强化学习对齐。前两个阶段赋予模型广泛的世界知识与指令遵循能力，但无法保证模型输出与人类价值观的深度对齐——模型仍可能产生有害、不诚实或无益的响应。强化学习对齐阶段正是为了填补这一差距而设计的。</p>
+<p>2022年，OpenAI发布InstructGPT <a href="https://arxiv.org/abs/2203.02155">1</a>，系统性地将人类反馈强化学习（Reinforcement Learning from Human Feedback, RLHF）应用于大语言模型对齐，标志着这一范式的确立。此后，ChatGPT、Claude、Gemini等前沿系统均以RLHF为核心对齐技术 <a href="https://arxiv.org/abs/2407.16216">6</a>。2024年，DeepSeek-R1 <a href="https://arxiv.org/abs/2501.12948">3</a> 证明了仅凭可验证奖励的强化学习（RLVR）即可激发模型的复杂推理能力，无需任何人工标注的推理轨迹，进一步拓展了强化学习在LLM中的应用边界。</p>
+<p>与此同时，随着GPT-4o <a href="https://arxiv.org/abs/2303.08774">4</a>、Qwen3-Omni <a href="https://arxiv.org/abs/2509.17765">5</a> 等全模态大模型的兴起，强化学习算法的设计面临新的挑战：如何在视觉、音频、文本等多种模态上统一奖励信号，如何处理跨模态推理中的信用分配问题，以及如何在保持各模态性能不退化的前提下实现全模态对齐。</p>
+<p>本文的组织结构如下：第2节建立算法分类体系与演进时间线；第3节介绍统一后训练框架；第4节详述RLHF/PPO范式；第5节分析DPO及其变体；第6节深入探讨GRPO与RLVR；第7节介绍GSPO等最新算法；第8节重点讨论多模态与全模态场景下的强化学习扩展；第9节进行横向对比与未来展望。</p>
+<hr/>
+<h2 id="2-算法分类体系与演进时间线">2. 算法分类体系与演进时间线</h2>
+<h3 id="21-多维度分类体系">2.1 多维度分类体系</h3>
+<p>大模型后训练强化学习方法可从四个正交维度进行分类，这四个维度共同决定了算法的样本效率、训练稳定性、可扩展性与工程复杂度。</p>
+<p><strong>维度一：反馈来源。</strong> 人类反馈（RLHF）通过标注者对模型输出的成对排序提供偏好信号，成本高且存在标注者主观性；AI 反馈（RLAIF）以大模型作为评判者替代人工标注，将人类监督从逐条标注提升到原则层面的设计，如 Anthropic 的 Constitutional AI（CAI）<a href="https://arxiv.org/abs/2212.08073">11</a>；可验证奖励（RLVR）则对数学、代码等具有客观正确性的任务直接使用规则验证器，完全绕过人工标注。</p>
+<p><strong>维度二：策略类型。</strong> 在线策略（on-policy）方法（PPO、GRPO、GSPO 等）在训练过程中持续从当前或旧策略采样新响应，具备在线探索能力但计算代价较高；离线（offline）方法（DPO 等）则利用预先收集的静态数据集进行训练，计算高效但缺乏在线探索带来的持续改进潜力。</p>
+<p><strong>维度三：奖励建模方式。</strong> 显式奖励模型（RM）将人类偏好映射为标量分数；隐式奖励（DPO 类）通过建立奖励模型与最优策略之间的解析映射，将奖励建模与策略优化合并为单一目标；规则/验证器式奖励则对可客观验证的任务直接返回二元奖励信号。</p>
+<p><strong>维度四：优势/信用分配粒度。</strong> Token 级优势（如 GAE）提供细粒度信用分配但引入价值网络；响应/组级优势（如 GRPO）在减少模型数量和工程复杂度方面有明显优势；过程级奖励（PRM）<a href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/98711dea460bdefe0e651ca23ec98ba2-Abstract-Conference.html">31</a> 在推理步骤边界处提供稀疏奖励，能够更精确地指导推理过程；序列级重要性比率（GSPO）则通过将 token 级连乘提升到序列级别，显著提升长序列与 MoE 架构下的训练稳定性。</p>
+<h3 id="22-主要算法演进时间线">2.2 主要算法演进时间线</h3>
+<p>大模型后训练强化学习的演进可划分为五个阶段，每个阶段均有标志性工作推动方法论的跃迁：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>时间</th>
+<th>标志性工作</th>
+<th>核心创新</th>
+<th> </th>
+<th> </th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序列 RL 探索期</td>
+<td>2017—2021</td>
+<td>MIXER、SeqGAN 等</td>
+<td>REINFORCE 应用于序列生成</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>RLHF 工业化范式</td>
+<td>2022</td>
+<td>InstructGPT</td>
+<td><a href="https://arxiv.org/abs/2203.02155">1</a></td>
+<td>三阶段（SFT→RM→PPO）对齐范式</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>离线偏好优化</td>
+<td>2023</td>
+<td>DPO</td>
+<td><a href="https://arxiv.org/abs/2305.18290">12</a></td>
+<td>绕过 RM 直接优化策略</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>可验证奖励与推理激发</td>
+<td>2024—2025 初</td>
+<td>DeepSeek-R1</td>
+<td><a href="https://arxiv.org/abs/2501.12948">3</a></td>
+<td>、GRPO</td>
+<td><a href="https://arxiv.org/abs/2402.03300">14</a></td>
+<td>GRPO+RLVR 激发推理涌现</td>
+</tr>
+<tr>
+<td>序列级与全模态 RL</td>
+<td>2025</td>
+<td>GSPO</td>
+<td><a href="https://arxiv.org/abs/2507.18071">18</a></td>
+<td>、Qwen3-Omni</td>
+<td><a href="https://arxiv.org/abs/2509.17765">5</a></td>
+<td>序列级重要性采样与全模态 RL 实践</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="3-统一后训练框架">3. 统一后训练框架</h2>
+<h3 id="31-从预训练到后训练">3.1 从预训练到后训练</h3>
+<p>预训练阶段通过最大化对数似然（MLE）在万亿token语料上优化模型：</p>
+<table>
+<tbody>
+<tr>
+<td>$J_{\text{pre}}(\theta) = \mathbb{E}{x \sim \mathcal{D}{\text{pre}}} \left[ \frac{1}{</td>
+<td>x</td>
+<td>} \sum_{t=1}^{</td>
+<td>x</td>
+<td>} \log \pi_\theta(x_t</td>
+<td>x_{&lt;t}) \right]$</td>
+</tr>
+</tbody>
+</table>
+<p>预训练赋予模型广泛的世界知识，但其梯度系数 $\text{GC}_{\text{pre}} = 1$ 对所有token均匀强化，无法区分优质与劣质输出。SFT在精心策划的指令-回复对上继续优化，梯度系数同样为常数，但通过数据选择引入了隐式的人类偏好。</p>
+<h3 id="32-统一策略梯度框架">3.2 统一策略梯度框架</h3>
+<p>Wang等人 <a href="https://arxiv.org/abs/2412.10400">2</a> 提出了一个统一的策略梯度框架，将预训练、SFT、RLHF和RLVR统一为同一目标函数的特例。所有在线强化学习方法均优化如下KL正则化奖励目标：</p>
+<table>
+<tbody>
+<tr>
+<td>$J(\theta) = \mathbb{E}{x \sim \mathcal{D}} \left[ \mathbb{E}{y \sim \pi_\theta(\cdot</td>
+<td>x)} [r(x,y)] - \beta \, \text{KL}(\pi_\theta(\cdot</td>
+<td>x) | \pi_{\text{ref}}(\cdot</td>
+<td>x)) \right], \quad \beta \geq 0$</td>
+</tr>
+</tbody>
+</table>
+<p>对该目标求梯度，可得统一的策略梯度估计器：</p>
+<table>
+<tbody>
+<tr>
+<td>$\nabla_\theta J(\theta) = \mathbb{E}{(x,y) \sim \mathcal{D}} \left[ \frac{1}{</td>
+<td>y</td>
+<td>} \sum{t=1}^{</td>
+<td>y</td>
+<td>} \underbrace{\text{GC}(x, y, t)}<em>{\text{梯度系数}} \nabla\theta \log \pi</em>\theta(y_t</td>
+<td>x, y_{&lt;t}) \right]$</td>
+</tr>
+</tbody>
+</table>
+<p>其中<strong>梯度系数（Gradient Coefficient, GC）</strong>封装了每种方法的核心设计决策。不同后训练方法的本质区别在于：数据来源 $\mathcal{D}$（离线 offline、离线策略 off-policy 或在线策略 on-policy 三种形式）、梯度系数 $\text{GC}$ 的设计，以及稳定化机制（PPO裁剪或KL惩罚）。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>数据来源</th>
+<th>梯度系数 GC</th>
+<th>稳定机制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>预训练（MLE）</td>
+<td>离线（offline）语料</td>
+<td>$1$</td>
+<td>—</td>
+</tr>
+<tr>
+<td>SFT</td>
+<td>离线（offline）标注</td>
+<td>$1$</td>
+<td>—</td>
+</tr>
+<tr>
+<td>RFT</td>
+<td>离线（offline）采样</td>
+<td>$\mathbb{I}(y = y^*)$</td>
+<td>—</td>
+</tr>
+<tr>
+<td>REINFORCE</td>
+<td>在线策略（on-policy）</td>
+<td>$r(x,y)$</td>
+<td>基线减法</td>
+</tr>
+<tr>
+<td>PPO</td>
+<td>在线策略（on-policy，旧策略采样）</td>
+<td>$c_t \rho_t A_t^{\text{GAE}}$</td>
+<td>裁剪+KL</td>
+</tr>
+<tr>
+<td>GRPO</td>
+<td>在线策略（on-policy，旧策略采样）</td>
+<td>$c_{i,t} \rho_{i,t} A_i^{\text{GRPO}}$</td>
+<td>裁剪+KL</td>
+</tr>
+<tr>
+<td>DPO</td>
+<td>离线（offline）偏好对</td>
+<td>隐式奖励差</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GSPO</td>
+<td>在线策略（on-policy，旧策略采样）</td>
+<td>序列级裁剪</td>
+<td>序列级KL</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="4-rlhf与ppo主流对齐范式">4. RLHF与PPO：主流对齐范式</h2>
+<h3 id="41-rlhf的三阶段流程">4.1 RLHF的三阶段流程</h3>
+<p>RLHF <a href="https://arxiv.org/abs/2203.02155">1</a><a href="https://arxiv.org/abs/2204.05862">7</a> 通过三个阶段将模型与人类偏好对齐：</p>
+<p><strong>第一阶段：监督微调（SFT）。</strong> 在人工演示数据上对预训练模型进行微调，得到参考策略 $\pi_{\text{ref}}$。</p>
+<p><strong>第二阶段：奖励模型训练。</strong> 对每个提示 $x$，从SFT策略采样多个候选响应并由人工标注偏好排序。在Bradley-Terry（BT）偏好模型 <a href="https://doi.org/10.2307/3001430">8</a> 下，响应 $y_w$ 优于 $y_l$ 的概率为：</p>
+<table>
+<tbody>
+<tr>
+<td>$P(y_w \succ y_l</td>
+<td>x) = \sigma[r_\phi(x, y_w) - r_\phi(x, y_l)]$</td>
+</tr>
+</tbody>
+</table>
+<p>奖励模型通过最小化二元交叉熵损失训练：</p>
+<p>$\mathcal{L}{\text{RM}}(r\phi) = -\mathbb{E}{(x, y_w, y_l) \sim \mathcal{D}{\text{RM}}} \left[ \log \sigma(r_\phi(x, y_w) - r_\phi(x, y_l)) \right]$</p>
+<p><strong>第三阶段：PPO策略优化。</strong> 使用学到的奖励模型，通过PPO算法在KL约束下优化策略。</p>
+<h3 id="42-ppo算法原理">4.2 PPO算法原理</h3>
+<p>近端策略优化（Proximal Policy Optimization, PPO）<a href="https://arxiv.org/abs/1707.06347">9</a> 是RLHF中最广泛使用的强化学习算法。其核心思想是通过裁剪代理目标防止策略更新过大，从而避免预训练能力的灾难性遗忘。</p>
+<p><strong>Actor-Critic框架。</strong> PPO基于Actor-Critic方法，用学到的优势函数 $A^\pi(s_t, a_t) = Q^\pi(s_t, a_t) - V^\pi(s_t)$ 替代高方差的蒙特卡洛回报。广义优势估计（GAE）<a href="https://arxiv.org/abs/1506.02438">10</a> 通过指数加权的多步TD残差在偏差与方差之间插值：</p>
+<p>$A_t^{\text{GAE}(\gamma,\lambda)} = \sum_{l=0}^{T-t} (\gamma\lambda)^l \delta_{t+l}, \quad \delta_t = r_t + \gamma V_\phi(s_{t+1}) - V_\phi(s_t)$</p>
+<table>
+<tbody>
+<tr>
+<td><strong>PPO裁剪目标。</strong> 设 $\rho_t = \frac{\pi_\theta(a_t</td>
+<td>s_t)}{\pi_{\theta_{\text{old}}}(a_t</td>
+<td>s_t)}$ 为重要性采样比率，PPO的裁剪代理目标为：</td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr>
+<td>$J_{\text{PPO}}(\theta) = \mathbb{E}{x \sim \mathcal{D}, y \sim \pi{\theta_{\text{old}}}} \left[ \frac{1}{</td>
+<td>y</td>
+<td>} \sum_{t=1}^{</td>
+<td>y</td>
+<td>} \min\left(\rho_t A_t^{\text{GAE}}, \, \text{clip}(\rho_t, 1-\varepsilon, 1+\varepsilon) A_t^{\text{GAE}}\right) \right]$</td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr>
+<td>裁剪机制的设计动机在于：当 $\rho_t$ 超出 $[1-\varepsilon, 1+\varepsilon]$ 范围时，梯度被置零，从而将策略更新约束在旧策略的邻域内。在RLHF实践中，per-token的KL惩罚被折叠进奖励信号：$r_t = r_\phi(x, y_{\leq t}) - \beta \log \frac{\pi_\theta(y_t</td>
+<td>x,y_{&lt;t})}{\pi_{\text{ref}}(y_t</td>
+<td>x,y_{&lt;t})}$，使GAE优势已内含KL正则化。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>RLHF/PPO的工程挑战。</strong> 标准RLHF/PPO流程需要同时维护四个模型（策略模型、参考模型、奖励模型、价值模型），并在每个梯度步骤进行在线策略（on-policy）rollout，计算代价极高。Anthropic的研究 <a href="https://arxiv.org/abs/2204.05862">7</a> 发现，RLHF对较小模型存在”对齐税”（alignment tax），但对13B以上规模的模型反而带来对齐红利，且奖励模型准确率与模型和数据集规模呈近似对数线性关系。</p>
+<h3 id="43-rlaif以ai反馈替代人类反馈">4.3 RLAIF：以AI反馈替代人类反馈</h3>
+<p>为降低人工标注成本，Anthropic提出了Constitutional AI（CAI）<a href="https://arxiv.org/abs/2212.08073">11</a> 与RLAIF（Reinforcement Learning from AI Feedback）范式。CAI的核心思想是用一组宪法原则（constitution）指导AI模型对自身输出进行批评与修订，再用修订后的输出训练奖励模型，最终通过RLHF对齐。这一方法将人类监督从逐条标注提升到原则层面的设计，显著降低了标注成本，同时保持了对齐效果。</p>
+<hr/>
+<h2 id="5-dpo绕过奖励模型的直接偏好优化">5. DPO：绕过奖励模型的直接偏好优化</h2>
+<h3 id="51-dpo的推导动机">5.1 DPO的推导动机</h3>
+<p>PPO/RLHF流程的复杂性促使研究者寻找更简洁的对齐方法。Rafailov等人 <a href="https://arxiv.org/abs/2305.18290">12</a> 观察到，在KL正则化奖励目标下，最优策略具有解析形式：</p>
+<table>
+<tbody>
+<tr>
+<td>$\pi^*(y</td>
+<td>x) \propto \pi_{\text{ref}}(y</td>
+<td>x) \exp\left(\frac{r(x,y)}{\beta}\right)$</td>
+</tr>
+</tbody>
+</table>
+<p>对上式取对数并整理，可以将奖励函数表达为策略与参考策略的比值：</p>
+<table>
+<tbody>
+<tr>
+<td>$r(x,y) = \beta \log \frac{\pi^*(y</td>
+<td>x)}{\pi_{\text{ref}}(y</td>
+<td>x)} + \beta \log Z(x)$</td>
+</tr>
+</tbody>
+</table>
+<p>将此奖励表达式代入Bradley-Terry偏好模型，配分函数 $Z(x)$ 在偏好对中相消，得到DPO损失函数：</p>
+<table>
+<tbody>
+<tr>
+<td>$\mathcal{L}{\text{DPO}}(\pi\theta) = -\mathbb{E}{(x, y_w, y_l) \sim \mathcal{D}} \left[ \log \sigma\left( \beta \log \frac{\pi\theta(y_w</td>
+<td>x)}{\pi_{\text{ref}}(y_w</td>
+<td>x)} - \beta \log \frac{\pi_\theta(y_l</td>
+<td>x)}{\pi_{\text{ref}}(y_l</td>
+<td>x)} \right) \right]$</td>
+</tr>
+</tbody>
+</table>
+<p>DPO通过建立奖励模型与最优策略之间的直接映射，将奖励模型训练与策略优化合并为单一的监督学习目标，仅需维护策略模型和参考模型两个模型。</p>
+<h3 id="52-dpo的局限性与ppo的比较">5.2 DPO的局限性与PPO的比较</h3>
+<p>Xu等人 <a href="https://arxiv.org/abs/2404.10719">13</a> 对DPO与PPO进行了全面的理论与实验比较，发现DPO存在若干基本局限性：其一，DPO是离线方法，无法通过在线策略探索发现新的优质响应；其二，DPO对数据质量高度敏感，偏好数据中的噪声可能导致训练不稳定；其三，在挑战性任务（如代码竞赛）上，PPO能够超越DPO及所有其他对齐方法。然而，DPO在计算效率和训练稳定性上的优势使其在学术研究中得到广泛应用。</p>
+<h3 id="53-迭代dpo与在线dpo">5.3 迭代DPO与在线DPO</h3>
+<p>为克服DPO的离线局限性，研究者提出了迭代DPO（Iterative DPO）<a href="https://arxiv.org/abs/2412.10400">2</a>，周期性地从当前策略采样新响应并更新偏好数据集，结合了DPO的简洁性与在线方法的探索能力。此外，基于Nash学习的方法 <a href="https://arxiv.org/abs/2412.10400">2</a> 将对齐问题建模为双人零和博弈，寻找策略的Nash均衡，在理论上提供了更强的收敛保证。</p>
+<hr/>
+<h2 id="6-grpo与rlvr可验证奖励驱动的推理涌现">6. GRPO与RLVR：可验证奖励驱动的推理涌现</h2>
+<h3 id="61-grpo的设计动机">6.1 GRPO的设计动机</h3>
+<p>对于数学、代码等存在客观可验证答案的任务，RLHF依赖主观人类判断的奖励信号并非最优选择。Shao等人 <a href="https://arxiv.org/abs/2402.03300">14</a> 提出了组相对策略优化（Group Relative Policy Optimization, GRPO），其核心创新在于<strong>以组内归一化替代学习的价值函数</strong>，从而消除了PPO中代价高昂的critic模型。</p>
+<h3 id="62-grpo的数学形式">6.2 GRPO的数学形式</h3>
+<p>对每个提示 $x$，GRPO从旧策略 $\pi_{\theta_{\text{old}}}$ 采样一组 $G$ 个响应 ${y_1, \ldots, y_G}$，计算各响应的奖励 ${r_1, \ldots, r_G}$，并通过组内统计量估计优势：</p>
+<p>$\mu(x) = \frac{1}{G} \sum_{j=1}^G r(x, y_j), \quad \sigma(x) = \sqrt{\frac{1}{G} \sum_{j=1}^G (r(x, y_j) - \mu(x))^2}$</p>
+<p>$A_i^{\text{GRPO}}(x, y_i) = \frac{r(x, y_i) - \mu(x)}{\sigma(x)}$</p>
+<p>GRPO的目标函数为：</p>
+<table>
+<tbody>
+<tr>
+<td>$J_{\text{GRPO}}(\theta) = \mathbb{E}{x, {y_i}{i=1}^G \sim \pi_{\theta_{\text{old}}}} \left[ \frac{1}{G} \sum_{i=1}^G \frac{1}{</td>
+<td>y_i</td>
+<td>} \sum_{t=1}^{</td>
+<td>y_i</td>
+<td>} \left( \min\left(\rho_{i,t} A_i, \, \text{clip}(\rho_{i,t}, 1-\varepsilon, 1+\varepsilon) A_i\right) - \beta D_{KL}^{(i,t)} \right) \right]$</td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr>
+<td>其中 $\rho_{i,t} = \frac{\pi_\theta(y_i^t</td>
+<td>x,y_i^{&lt;t})}{\pi_{\theta_{\text{old}}}(y_i^t</td>
+<td>x,y_i^{&lt;t})}$，$D_{KL}^{(i,t)} = \frac{\pi_{\text{ref}}(y_i^t</td>
+<td>x,y_i^{&lt;t})}{\pi_\theta(y_i^t</td>
+<td>x,y_i^{&lt;t})} - \log \frac{\pi_{\text{ref}}(y_i^t</td>
+<td>x,y_i^{&lt;t})}{\pi_\theta(y_i^t</td>
+<td>x,y_i^{&lt;t})} - 1$ 为非负的KL估计量。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>GRPO与PPO的关键区别</strong>体现在以下几个维度：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>PPO</th>
+<th>GRPO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>优势估计</td>
+<td>学习的价值函数（GAE）</td>
+<td>组内奖励归一化</td>
+</tr>
+<tr>
+<td>优势粒度</td>
+<td>Token级别（随位置变化）</td>
+<td>Response级别（对所有token相同）</td>
+</tr>
+<tr>
+<td>KL处理</td>
+<td>折叠进奖励信号</td>
+<td>独立处理，不裁剪</td>
+</tr>
+<tr>
+<td>每次rollout更新次数</td>
+<td>多次（重用rollout）</td>
+<td>一次（每次更新后刷新旧策略）</td>
+</tr>
+<tr>
+<td>模型数量</td>
+<td>4个（策略+参考+奖励+价值）</td>
+<td>2个（策略+参考）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-deepseek-r1grpo激发推理涌现">6.3 DeepSeek-R1：GRPO激发推理涌现</h3>
+<p>DeepSeek-R1 <a href="https://arxiv.org/abs/2501.12948">3</a> 是GRPO与可验证奖励结合的里程碑式工作。其核心发现是：仅凭规则基础的可验证奖励（数学答案匹配、代码执行通过率、格式遵循），无需任何人工标注的推理轨迹，GRPO即可从基础模型中激发出复杂的链式思维（Chain-of-Thought, CoT）推理能力，包括自我验证、反思和动态策略探索等行为，以及标志性的”顿悟时刻”（Aha Moment）——模型自发学会暂停并重新评估推理过程。</p>
+<p>DeepSeek-R1的完整训练流程采用四阶段设计：</p>
+<ol>
+<li><strong>冷启动SFT</strong>：在精心策划的长CoT示例上进行SFT，建立清晰的 <code class="language-plaintext highlighter-rouge">&lt;think&gt;...&lt;/think&gt;</code> 推理格式；</li>
+<li><strong>推理专项RL</strong>：以规则奖励（准确性、格式、语言一致性）驱动GRPO，专注于推理能力提升；</li>
+<li><strong>拒绝采样+SFT</strong>：从Stage-2模型生成候选响应，通过拒绝采样筛选最优响应并混合非推理数据进行SFT，恢复通用能力；</li>
+<li><strong>全场景RL</strong>：在Stage-3检查点上进行第二轮GRPO，同时引入基于模型的偏好奖励（用于帮助性和安全性），覆盖所有任务类型。</li>
+</ol>
+<h3 id="64-grpo的优化变体">6.4 GRPO的优化变体</h3>
+<p><strong>DAPO（动态采样策略优化）</strong><a href="https://arxiv.org/abs/2503.14476">15</a> 针对GRPO的三个核心问题提出改进：（1）<strong>非对称裁剪策略</strong>（Clip-Higher），将裁剪范围解耦为 $\varepsilon_{\text{low}} \neq \varepsilon_{\text{high}}$，允许低概率token获得更大的梯度更新空间，防止熵崩溃；（2）<strong>动态采样</strong>，过滤全对或全错的批次，确保每个批次都包含有效梯度信号；（3）<strong>Token级策略梯度损失</strong>，解决长链推理中长序列token梯度被稀释的问题。</p>
+<p><strong>Dr.GRPO</strong><a href="https://arxiv.org/abs/2503.20783">16</a> 识别出GRPO中的两种偏差：响应长度偏差（导致模型偏好生成更长的错误回答）和问题难度偏差（不同难度问题被赋予不同权重）。通过移除长度归一化和标准差归一化项，Dr.GRPO使优势函数简化为 $\tilde{A}<em>i = R(q, o_i) - \text{mean}({R(q, o_j)}</em>{j=1}^G)$，确保不同难度问题在优化中权重相等。</p>
+<p><strong>RLOO（REINFORCE Leave-One-Out）</strong><a href="https://arxiv.org/abs/2402.14740">17</a> 是GRPO的前身，区别仅在于基线计算方式：使用留一均值 $\mu(x, y_i) = \frac{1}{G-1} \sum_{j \neq i} r(x, y_j)$ 作为基线，标准差固定为1，提供无偏的基线估计。</p>
+<hr/>
+<h2 id="7-gspo序列级策略优化">7. GSPO：序列级策略优化</h2>
+<h3 id="71-gspo的设计动机">7.1 GSPO的设计动机</h3>
+<table>
+<tbody>
+<tr>
+<td>GRPO及其变体均在<strong>token级别</strong>定义重要性采样比率 $\rho_{i,t} = \frac{\pi_\theta(y_i^t</td>
+<td>x,y_i^{&lt;t})}{\pi_{\theta_{\text{old}}}(y_i^t</td>
+<td>x,y_i^{&lt;t})}$。然而，对于长序列，token级比率的乘积可能产生极端值，导致训练不稳定，这一问题在混合专家（MoE）架构中尤为突出。</td>
+</tr>
+</tbody>
+</table>
+<p>Qwen团队提出的GSPO（Group Sequence Policy Optimization）<a href="https://arxiv.org/abs/2507.18071">18</a> 将重要性采样比率的定义从token级别提升到<strong>序列级别</strong>：</p>
+<table>
+<tbody>
+<tr>
+<td>$\rho_i^{\text{seq}} = \frac{\pi_\theta(y_i</td>
+<td>x)}{\pi_{\theta_{\text{old}}}(y_i</td>
+<td>x)} = \prod_{t=1}^{</td>
+<td>y_i</td>
+<td>} \frac{\pi_\theta(y_i^t</td>
+<td>x,y_i^{&lt;t})}{\pi_{\theta_{\text{old}}}(y_i^t</td>
+<td>x,y_i^{&lt;t})}$</td>
+</tr>
+</tbody>
+</table>
+<p>在此基础上，GSPO在序列级别执行裁剪、奖励和优化，而非token级别。这一设计显著稳定了MoE架构的RL训练，并在Qwen3系列模型中取得了优于GRPO的训练效率和性能表现 <a href="https://arxiv.org/abs/2507.18071">18</a>。</p>
+<hr/>
+<h2 id="8-多模态与全模态场景下的强化学习">8. 多模态与全模态场景下的强化学习</h2>
+<h3 id="81-多模态rlhf的挑战与方法">8.1 多模态RLHF的挑战与方法</h3>
+<p>将RLHF扩展到视觉语言模型（VLM）面临独特挑战。其一，<strong>多模态幻觉</strong>问题：VLM在视觉信息与文本描述之间存在对齐偏差，奖励模型需要能够识别视觉事实性错误。其二，<strong>跨模态奖励设计</strong>：不同模态的质量评估标准差异显著，难以用统一的标量奖励衡量。其三，<strong>标注成本</strong>：多模态偏好数据的收集比纯文本数据更为昂贵。</p>
+<p><strong>LLaVA-RLHF</strong><a href="https://aclanthology.org/2024.findings-acl.775/">19</a> 是将RLHF应用于视觉语言模型的代表性工作，提出了<strong>事实增强RLHF（Factually Augmented RLHF）</strong>：用图像描述增强奖励模型的训练数据，使奖励模型能够识别视觉事实性错误，从而减少多模态幻觉。</p>
+<p><strong>MM-RLHF</strong><a href="https://arxiv.org/abs/2502.10391">20</a> 构建了包含12万个细粒度人工标注偏好对的数据集，并提出两项关键创新：<strong>基于批评的奖励模型（Critique-Based Reward Model）</strong>在打分前先生成对模型输出的批评，提升奖励信号的可解释性；<strong>动态奖励缩放（Dynamic Reward Scaling）</strong>根据奖励信号动态调整每个样本的损失权重，优化高质量偏好对的利用效率。实验表明，LLaVA-ov-7B经MM-RLHF对齐后，对话能力提升19.5%，安全性提升60%。</p>
+<h3 id="82-多模态grpor1范式的跨模态迁移">8.2 多模态GRPO：R1范式的跨模态迁移</h3>
+<p>受DeepSeek-R1的启发，研究者将GRPO与可验证奖励的组合范式迁移到多模态任务，形成了<strong>多模态R1训练范式</strong>。其基本奖励设计沿用文本域的格式奖励与准确性奖励：</p>
+<p>$R_{\text{total}} = R_{\text{format}} + R_{\text{acc}}$</p>
+<p>其中格式奖励检查 <code class="language-plaintext highlighter-rouge">&lt;think&gt;...&lt;/think&gt;&lt;answer&gt;...&lt;/answer&gt;</code> 结构，准确性奖励验证答案与ground truth的匹配。</p>
+<p>然而，多模态任务的多样性要求针对不同任务设计专门的奖励函数。以目标检测为例，Visual-RFT <a href="https://arxiv.org/abs/2503.01785">21</a> 设计了基于IoU的复合奖励：$R = r_{\text{IoU}} + r_{\text{conf}} + r_{\text{format}}$；视频时序推理中，Video-R1 <a href="https://arxiv.org/abs/2503.21776">22</a> 引入了时序一致性奖励，通过比较预测帧序与ground truth帧序来指导因果推理。</p>
+<p>Zhou等人 <a href="https://arxiv.org/abs/2504.21277">23</a> 对多模态GRPO的应用进行了系统综述，归纳出两类主要范式：</p>
+<p><strong>MLLM-R1-Zero</strong>：直接在多模态任务上应用R1训练范式，无需SFT冷启动。代表工作包括MedVLM-R1（医学VQA）、VisualThinker-R1-Zero（空间推理）和MM-Eureka（数学VQA），这些工作成功在多模态任务中复现了”顿悟时刻”和自我反思机制。</p>
+<p><strong>MLLM-R1</strong>：先通过SFT冷启动建立推理格式，再进行RL优化。Vision-R1 <a href="https://arxiv.org/abs/2503.06749">24</a> 提出渐进式思维抑制训练（PTST），分阶段延伸CoT推理长度，同时抑制早期训练阶段的过度思考。R1-Onevision <a href="https://arxiv.org/abs/2503.10615">25</a> 在SFT阶段构建包含规范化图像描述的推理数据集，引导模型在推理过程中主动整合多模态信息。</p>
+<p>以下是多模态强化学习代表性模型的概览：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>模态</th>
+<th>基础模型</th>
+<th>RL算法</th>
+<th>任务类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visual-RFT</td>
+<td>图像+文本</td>
+<td>Qwen2-VL</td>
+<td>GRPO</td>
+<td>目标检测/分类</td>
+</tr>
+<tr>
+<td>Seg-Zero</td>
+<td>图像+文本</td>
+<td>Qwen2-VL</td>
+<td>GRPO</td>
+<td>视觉分割</td>
+</tr>
+<tr>
+<td>VLM-R1</td>
+<td>图像+文本</td>
+<td>Qwen2.5-VL</td>
+<td>GRPO</td>
+<td>通用视觉推理</td>
+</tr>
+<tr>
+<td>Video-R1</td>
+<td>视频+文本</td>
+<td>Qwen2.5-VL-7B</td>
+<td>T-GRPO</td>
+<td>时序推理</td>
+</tr>
+<tr>
+<td>Skywork R1V2</td>
+<td>图像+文本</td>
+<td>InternViT-6B+QwQ-32B</td>
+<td>MPO+GRPO</td>
+<td>通用推理</td>
+</tr>
+<tr>
+<td>R1-AQA</td>
+<td>音频+文本</td>
+<td>Qwen2-Audio-7B</td>
+<td>GRPO</td>
+<td>音频问答</td>
+</tr>
+<tr>
+<td>SARI</td>
+<td>音频+文本</td>
+<td>Qwen2-Audio-7B</td>
+<td>课程GRPO</td>
+<td>结构化音频推理</td>
+</tr>
+<tr>
+<td>R1-Omni</td>
+<td>视频+音频+文本</td>
+<td>HumanOmni-0.5B</td>
+<td>GRPO</td>
+<td>情感识别</td>
+</tr>
+</tbody>
+</table>
+<h3 id="83-音频模态的强化学习">8.3 音频模态的强化学习</h3>
+<p>音频模态的强化学习研究相对滞后，但近期取得了重要进展。<strong>SARI（Structured Audio Reasoning via Curriculum-Guided Reinforcement Learning）</strong><a href="https://arxiv.org/abs/2504.15900">26</a> 将GRPO框架扩展到大型音频语言模型（LALM），采用两阶段训练策略：首先在结构化和非结构化思维链数据上进行SFT预热，然后应用课程引导的GRPO（由易到难的问题序列）。在Qwen2-Audio-7B-Instruct基础上，SARI实现了16.35%的平均准确率提升；基于Qwen2.5-Omni的变体在MMAU test-mini基准上达到67.08%的SOTA性能。</p>
+<p>SARI的消融实验揭示了三个关键发现：SFT预热对稳定RL训练至关重要；结构化思维链比非结构化思维链具有更强的泛化能力；由易到难的课程设计能够加速收敛并提升最终性能。</p>
+<h3 id="84-全模态大模型的强化学习">8.4 全模态大模型的强化学习</h3>
+<p><strong>R1-Omni</strong><a href="https://arxiv.org/abs/2503.05379">27</a> 是第一个将RLVR应用于全模态大模型的工作，以情感识别为任务场景（同时依赖视觉和音频模态）。通过RLVR优化，R1-Omni不仅提升了情感识别准确率，还增强了模型对视觉和音频模态各自贡献的分析能力，为理解多模态信息融合提供了新的视角。</p>
+<p><strong>Omni-R1</strong><a href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/4086fe59dc3584708468fba0e459f6a7-Abstract-Conference.html">28</a> 提出了统一视觉、语言和音频处理的全模态框架，通过两系统协作机制（Two-System Collaboration）实现跨模态推理。仅经过一个epoch的RL训练，Omni-R1即在RefAVS和REVOS基准上超越了强监督基线和专门SOTA方法，展示了全模态RL的高效性。</p>
+<p><strong>Qwen3-Omni</strong><a href="https://arxiv.org/abs/2509.17765">5</a> 代表了工业界全模态强化学习的最新实践。其后训练策略将Thinker（文本生成模块）和Talker（语音生成模块）分别优化：Thinker采用三阶段训练（SFT → 强到弱蒸馏 → GSPO），GSPO同时使用规则奖励（数学、代码、指令遵循等可验证任务）和模型奖励（LLM-as-a-judge，Qwen3用于通用任务，Qwen2.5-VL用于视觉任务）；Talker则通过DPO优化多语言语音生成的偏好对齐。</p>
+<h3 id="85-多模态奖励模型的进展">8.5 多模态奖励模型的进展</h3>
+<p>多模态奖励模型的设计是全模态RL的核心挑战之一。<strong>Omni-RRM</strong><a href="https://openreview.net/forum?id=JhHEsrQKk5">29</a> 提出了支持文本、图像、视频和音频的统一推理驱动奖励模型，通过自动构建偏好和推理数据，并基于rubric（评分标准）生成显式的偏好理由，提升了奖励信号的可解释性和泛化能力。<strong>R1-Reward</strong><a href="https://arxiv.org/abs/2505.02835">30</a> 针对多模态奖励模型训练的不稳定性，提出了pre-CLIP（移除不稳定训练样本）和优势过滤（Advantage Filter）两项稳定化策略。</p>
+<hr/>
+<h2 id="9-横向对比与未来展望">9. 横向对比与未来展望</h2>
+<h3 id="91-核心算法的系统对比">9.1 核心算法的系统对比</h3>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>奖励来源</th>
+<th>是否需要RM</th>
+<th>是否在线</th>
+<th>模型数量</th>
+<th>优势</th>
+<th>局限性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PPO+RLHF</td>
+<td>人类偏好</td>
+<td>是</td>
+<td>是</td>
+<td>4</td>
+<td>细粒度token优势；工业验证</td>
+<td>计算代价高；训练不稳定</td>
+</tr>
+<tr>
+<td>DPO</td>
+<td>人类偏好</td>
+<td>否</td>
+<td>否</td>
+<td>2</td>
+<td>简洁；稳定</td>
+<td>离线；对数据质量敏感</td>
+</tr>
+<tr>
+<td>GRPO+RLVR</td>
+<td>规则验证</td>
+<td>否</td>
+<td>是</td>
+<td>2</td>
+<td>激发推理涌现；无需人工标注</td>
+<td>仅适用于可验证任务</td>
+</tr>
+<tr>
+<td>RLAIF/CAI</td>
+<td>AI反馈</td>
+<td>是</td>
+<td>是</td>
+<td>3+</td>
+<td>降低标注成本；可扩展</td>
+<td>依赖AI反馈质量</td>
+</tr>
+<tr>
+<td>迭代DPO</td>
+<td>人类/AI偏好</td>
+<td>否</td>
+<td>是</td>
+<td>2</td>
+<td>结合DPO简洁性与在线探索</td>
+<td>迭代成本；分布偏移</td>
+</tr>
+<tr>
+<td>GSPO</td>
+<td>规则+模型</td>
+<td>可选</td>
+<td>是</td>
+<td>2</td>
+<td>稳定MoE训练；序列级优化</td>
+<td>序列级比率可能过于粗粒度</td>
+</tr>
+</tbody>
+</table>
+<h3 id="92-奖励模型的演进">9.2 奖励模型的演进</h3>
+<p>奖励模型的设计经历了从简单标量奖励到细粒度、可解释奖励的演进，可按信号来源与粒度划分为以下几类。</p>
+<p><strong>结果奖励模型（Outcome Reward Model, ORM）</strong>仅评估最终输出的正确性，实现简单，但存在信用分配困难的问题——模型难以判断哪些中间步骤对最终结果有贡献。在可验证任务（数学、代码）中，ORM 可退化为规则验证器，无需训练。</p>
+<p><strong>过程奖励模型（Process Reward Model, PRM）</strong><a href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/98711dea460bdefe0e651ca23ec98ba2-Abstract-Conference.html">31</a> 在推理步骤边界处提供稀疏奖励，能够更精确地指导推理过程，有效缓解信用分配问题，但需要大量步骤级标注数据，标注成本显著高于 ORM。</p>
+<p><strong>基于批评的奖励模型（Critique-Based RM）</strong>（如 MM-RLHF <a href="https://arxiv.org/abs/2502.10391">20</a> 提出）在打分前先生成对模型输出的自然语言批评，提升奖励信号的可解释性与信息量，适合多模态对齐场景。</p>
+<p><strong>混合奖励设计</strong>将格式奖励、准确性奖励与任务特定奖励（如 IoU、时序一致性、分割质量）组合使用，已成为多模态 RL 的主流实践。各奖励分量的权重设计对训练稳定性与最终性能有显著影响。</p>
+<h3 id="93-训练范式的演进趋势">9.3 训练范式的演进趋势</h3>
+<p>从算法演进的整体趋势来看，LLM与全模态大模型的强化学习呈现出以下规律性特征：</p>
+<p><strong>从人类反馈到可验证奖励的转变。</strong> 早期RLHF依赖大量人工偏好标注，成本高昂且存在标注者主观性问题。近期工作（DeepSeek-R1、Qwen3等）转向可验证奖励，在数学、代码等客观任务上完全绕过人工标注，显著降低了对齐成本。</p>
+<p><strong>从单一模态到全模态的扩展。</strong> 强化学习算法从纯文本域逐步扩展到图像、视频、音频等多模态，并最终走向全模态统一训练。这一过程中，跨模态奖励设计和模态平衡是核心技术挑战。</p>
+<p><strong>从离线到在线的回归。</strong> DPO等离线方法虽然简洁，但在线方法（PPO、GRPO、GSPO）在挑战性任务上表现更优。混合训练策略（如HPT，根据模型能力动态切换RL与SFT）代表了未来的重要方向。</p>
+<p><strong>推理能力的涌现与可控。</strong> GRPO+RLVR范式展示了强化学习激发推理涌现的潜力，但如何控制推理深度（避免过度思考）、如何在推理与效率之间平衡，仍是开放问题。</p>
+<h3 id="94-未来研究方向">9.4 未来研究方向</h3>
+<p><strong>跨模态信用分配。</strong> 当前多模态RL方法大多将视觉/音频信息作为条件输入，推理过程仍以文本为主。如何在推理链中显式整合多模态信息，并对不同模态的贡献进行精确的信用分配，是亟待解决的核心问题。</p>
+<p><strong>稀疏奖励与过程监督。</strong> 多模态任务中可验证答案相对稀少，稀疏奖励问题更为突出。将过程奖励模型（PRM）与多模态RL结合，提供中间步骤的密集反馈，是提升样本效率的重要方向。</p>
+<p><strong>计算效率与可扩展性。</strong> 全模态RL训练涉及多种模态的数据处理和多个模型的协同优化，计算开销显著高于纯文本场景。异步RL框架（如Relax <a href="https://arxiv.org/abs/2604.11554">32</a>）的提出为大规模全模态RL训练提供了工程基础。</p>
+<p><strong>安全性与多模态对齐税。</strong> Safe RLHF-V <a href="https://proceedings.neurips.cc/paper_files/paper/2025/hash/41c51513dac7b42dea755ea484955604-Abstract-Conference.html">33</a> 等工作开始关注多模态安全对齐问题，但如何在提升能力的同时避免多模态特有的安全风险（如视觉越狱攻击），仍需深入研究。</p>
+<hr/>
+<h2 id="10-结语">10. 结语</h2>
+<p>本文系统梳理了大语言模型与全模态大模型中强化学习算法的演进历程。从RLHF/PPO的三阶段对齐范式，到DPO的直接偏好优化，再到GRPO/RLVR激发推理涌现，以及GSPO在序列级别的稳定化优化，每一次算法创新都深刻改变了大模型的训练范式。在全模态场景下，多模态RLHF、多模态GRPO及全模态RL框架的提出，将强化学习的边界从文本延伸至视觉、音频和视频，为构建真正意义上的通用人工智能奠定了算法基础。</p>
+<p>随着Qwen3-Omni、GPT-4o等全模态系统的持续演进，强化学习在大模型训练中的地位将愈加重要。如何设计更高效、更可解释、更安全的强化学习算法，以支持全模态智能的涌现与对齐，是未来研究的核心命题。</p>
+<hr/>
+<h2 id="参考文献">参考文献</h2>
+<p><br/></p>]]></content><author><name>Jinchao Li</name></author><category term="Study"/><category term="Algorithm"/><category term="algorithm"/><category term="reinforcement learning"/><summary type="html"><![CDATA[本文首先建立多维度算法分类体系与演进时间线，再以统一策略梯度框架为基础，系统剖析 RLHF/PPO、DPO、GRPO/RLVR、GSPO 等主流算法的数学原理、设计动机与工程权衡，并重点探讨强化学习在多模态与全模态场景下的扩展方法与挑战。文章最后给出横向对比与未来研究方向建议。]]></summary></entry><entry><title type="html">算法基础</title><link href="https://jinchaoli.com/blog/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" rel="alternate" type="text/html" title="算法基础"/><published>2026-04-24T00:00:00+08:00</published><updated>2026-04-24T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80</id><content type="html" xml:base="https://jinchaoli.com/blog/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/"><![CDATA[
 <h2 id="框架概括">框架概括</h2>
 <h3 id="整体框架">整体框架</h3>
 <ul>

@@ -408,7 +408,7 @@ role="button"
 <i class="fa-fw fas fa-tags"></i>
 <span>TAGS</span>
 </a>
-<a class="tag-chip" href="/blog/tags/algorithm/">algorithm<span class="tag-size ms-1">1</span>
+<a class="tag-chip" href="/blog/tags/algorithm/">algorithm<span class="tag-size ms-1">2</span>
 </a>
 <a class="tag-chip" href="/blog/tags/architecture/">architecture<span class="tag-size ms-1">1</span>
 </a>
@@ -422,7 +422,9 @@ role="button"
 </a>
 <a class="tag-chip" href="/blog/tags/python/">python<span class="tag-size ms-1">1</span>
 </a>
-<a class="tag-chip" href="/blog/tags/representation/">representation<span class="tag-size ms-1">1</span>
+<a class="tag-chip" href="/blog/tags/reinforcement-learning/">reinforcement learning<span class="tag-size ms-1">1</span>
+</a>
+<a class="tag-chip" href="/blog/tags/representation-learning/">representation learning<span class="tag-size ms-1">1</span>
 </a>
 <a class="tag-chip" href="/blog/tags/theme/">theme<span class="tag-size ms-1">1</span>
 </a>
@@ -439,6 +441,9 @@ role="button"
 <span>ARCHIVES</span>
 </a>
 <ul>
+<li>
+<a href="/blog/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/">强化学习算法</a>
+</li>
 <li>
 <a href="/blog/%E9%9F%B3%E9%A2%91%E8%A1%A8%E5%BE%81%E5%AD%A6%E4%B9%A0/">音频表征学习</a>
 </li>
@@ -1247,13 +1252,13 @@ class="col-2 ps-2 mb-5 text-muted">
 <h2 class="panel-heading">Recently Updated</h2>
 <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
 <li class="text-truncate lh-lg">
+<a href="/blog/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/">强化学习算法</a>
+</li>
+<li class="text-truncate lh-lg">
 <a href="/blog/%E8%AF%AD%E9%9F%B3%E9%A2%84%E8%AE%AD%E7%BB%83%E8%8C%83%E5%BC%8F/">语音预训练范式</a>
 </li>
 <li class="text-truncate lh-lg">
 <a href="/blog/%E9%9F%B3%E9%A2%91%E8%A1%A8%E5%BE%81%E5%AD%A6%E4%B9%A0/">音频表征学习</a>
-</li>
-<li class="text-truncate lh-lg">
-<a href="/blog/text-and-typography/">Text and Typography</a>
 </li>
 </ul>
 </section>
@@ -1264,9 +1269,9 @@ class="col-2 ps-2 mb-5 text-muted">
 <section>
 <h2 class="panel-heading">Trending Tags</h2>
 <div class="d-flex flex-wrap mt-3 mb-1 me-3">
+<a class="tag-chip" href="/blog/tags/algorithm/">algorithm</a>
 <a class="tag-chip" href="/blog/tags/demo/">demo</a>
 <a class="tag-chip" href="/blog/tags/homepage/">homepage</a>
-<a class="tag-chip" href="/blog/tags/training/">training</a>
 </div>
 </section>
 </div>
@@ -1316,6 +1321,23 @@ Apr 24, 2026
 </a>
 </article>
 <article class="col">
+<a href="/blog/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/" class="post-preview card h-100">
+<div class="card-body">
+
+<time
+data-ts="1778860800"
+data-df="ll"
+>
+May 16, 2026
+</time>
+<h4 class="pt-0 my-2">强化学习算法</h4>
+<div class="text-muted">
+<p>本文首先建立多维度算法分类体系与演进时间线，再以统一策略梯度框架为基础，系统剖析 RLHF/PPO、DPO、GRPO/RLVR、GSPO 等主流算法的数学原理、设计动机与工程权衡，并重点探讨强化学习在多模态与全模态场景下的扩展方法与挑战。文章最后给出横向对比与未来研究方向建议。</p>
+</div>
+</div>
+</a>
+</article>
+<article class="col">
 <a href="/blog/deepseek-v4%E4%B8%8E%E6%B5%81%E5%BD%A2%E6%92%95%E8%A3%82(%E8%BD%AC)/" class="post-preview card h-100">
 <div class="card-body">
 
@@ -1328,23 +1350,6 @@ Apr 25, 2026
 <h4 class="pt-0 my-2">DeepSeek-V4与流形撕裂(转)</h4>
 <div class="text-muted">
 <p>原文&lt;https://substack.com/home/post/p-195402224&gt;，侵删。</p>
-</div>
-</div>
-</a>
-</article>
-<article class="col">
-<a href="/blog/thinking-with-visual-primitives-(%E8%BD%AC)/" class="post-preview card h-100">
-<div class="card-body">
-
-<time
-data-ts="1777564800"
-data-df="ll"
->
-May 1, 2026
-</time>
-<h4 class="pt-0 my-2">Thinking with Visual Primitives (转)</h4>
-<div class="text-muted">
-<p>原文&lt;https://zhuanlan.zhihu.com/p/2033494636023559146&gt;，侵删。</p>
 </div>
 </div>
 </a>
@@ -1451,6 +1456,7 @@ Update
 <script defer src="/assets/lib/dayjs/plugin/relativeTime.min.js"></script>
 <script defer src="/assets/lib/dayjs/plugin/localizedFormat.min.js"></script>
 <script defer src="/assets/lib/tocbot/tocbot.min.js"></script>
+<script defer src="/assets/lib/mermaid/mermaid.min.js"></script>
 
 <script defer src="/assets/js/dist/commons.min.js"></script>
 <script async src="/assets/js/just-the-docs.js"></script>
@@ -1482,6 +1488,99 @@ src="/assets/lib/mathjax/tex-chtml.js"></script>
 <script defer src="/assets/js/dist/app.min.js"></script>
 
 
+
+<script type="text/javascript">
+  (function () {
+    function updateMermaid(event) {
+      if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
+        const mode = event.data.message;
+
+        if (typeof mermaid === 'undefined') {
+          return;
+        }
+
+        let expectedTheme = mode === ModeToggle.DARK_MODE ? 'dark' : 'default';
+        let config = { theme: expectedTheme };
+
+        /* Re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */
+        $('.mermaid').each(function () {
+          let svgCode = $(this).prev().children().html();
+          $(this).removeAttr('data-processed');
+          $(this).html(svgCode);
+        });
+
+        mermaid.initialize(config);
+        mermaid.init(undefined, '.mermaid');
+      }
+    }
+
+    let initTheme = 'default';
+    const html = document.documentElement;
+
+    if (
+      (html.hasAttribute('data-mode') && html.getAttribute('data-mode') === 'dark') ||
+      (!html.hasAttribute('data-mode') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      initTheme = 'dark';
+    }
+
+    let mermaidConf = {
+      theme: initTheme /* <default|dark|forest|neutral> */
+    };
+
+    /* Create mermaid tag */
+    document.querySelectorAll('pre>code.language-mermaid').forEach((elem) => {
+      const svgCode = elem.textContent;
+      const backup = elem.parentElement;
+      backup.classList.add('unloaded');
+      /* create mermaid node */
+      let mermaid = document.createElement('pre');
+      mermaid.classList.add('mermaid');
+      const text = document.createTextNode(svgCode);
+      mermaid.appendChild(text);
+      backup.after(mermaid);
+    });
+
+    mermaid.initialize(mermaidConf);
+
+    window.addEventListener('message', updateMermaid);
+  })();
+</script>
+<script type="text/javascript" defer>
+  function removeChildBySelector(parent, selector) {
+    const child = parent.querySelector(selector);
+    if (child) {
+      child.remove();
+    }
+  }
+
+  function removeChildByTitle(parent, title) {
+    const child = Array.from(parent.children).find(
+      (el) => el.getAttribute('title') === title
+    );
+    if (child) {
+      child.remove();
+    }
+  }
+
+  window.markmap = {
+    autoLoader: {
+    toolbar: true,
+    onReady: function() {
+      // 等待 toolbar 渲染完成后再操作
+      setTimeout(() => {
+        const toolbar = document.querySelector('.mm-toolbar');
+        if (!toolbar) return;
+
+        removeChildBySelector(toolbar, '.mm-toolbar-brand');
+        removeChildByTitle(toolbar, 'Toggle recursively');
+        removeChildByTitle(toolbar, 'Toggle dark theme');
+      }, 100); // 小延迟确保 DOM 已更新
+    }
+    }
+  };
+</script>
+<script src="/assets/lib/markmap/markmap.js"></script>
 <script type="text/javascript">
   /**
    * Jupyter Notebook theme switcher (dual-iframe, height-auto approach).
