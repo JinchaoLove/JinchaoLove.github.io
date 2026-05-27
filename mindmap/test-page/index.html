@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en" class="markmap-dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+Test Page</title>
+    <style>
+      .markmap {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+      }
+      .markmap-dark {
+        background: #27272a;
+        color: white;
+      }
+    </style>
+    <script>
+      window.markmap = {
+        autoLoader: {
+          toolbar: true
+        }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
+  </head>
+  <body>
+    <div class="markmap">
+      <script type="text/template">
+        ---
+        markmap:
+          maxWidth: 300
+          colorFreezeLevel: 3
+          initialExpandLevel: 3
+          pan: false
+          autoFit: true
+          fitRatio: 0.7
+        ---
+
+#Test Page
+
+<h3 id="11-偶然不确定性">1.1 偶然不确定性</h3>
+
+<p><strong>偶然不确定性</strong>（Aleatoric Uncertainty）来源于数据本身的内在随机性，反映的是观测过程中不可消除的噪声。其数学定义为预测分布的熵在数据生成过程上的期望：</p>
+
+<p>$\mathcal{U}{\text{alea}} = \mathbb{E}{p(x)}\left[ H\left[ p(y \mid x, \theta) \right] \right]$</p>
+
+<p>偶然不确定性具有<strong>不可约性</strong>（irreducibility）：无论收集多少额外数据，只要数据生成过程本身包含随机性，这种不确定性就无法消除。例如，在医学图像标注中，不同专家对同一病灶的判断差异就属于偶然不确定性。</p>
+
+<p>偶然不确定性进一步分为两类：<strong>同方差不确定性</strong>（homoscedastic）指噪声水平与输入无关，是任务层面的常数；<strong>异方差不确定性</strong>（heteroscedastic）指噪声水平随输入变化，是输入相关的函数 $\sigma^2(x)$，在实际场景中更为普遍。</p>
+
+<h3 id="12-认知不确定性">1.2 认知不确定性</h3>
+
+<p><strong>认知不确定性</strong>（Epistemic Uncertainty）来源于模型参数的不确定性，反映的是由于训练数据有限而导致的知识缺失。其数学定义为预测分布在参数后验上的方差：</p>
+
+<p>$\mathcal{U}{\text{epis}} = \mathbb{V}{p(\theta \mid \mathcal{D})}\left[ \mathbb{E}\left[ p(y \mid x, \theta) \right] \right]$</p>
+
+<p>认知不确定性具有<strong>可约性</strong>（reducibility）：给定足够多的训练数据，参数后验 $p(\theta \mid \mathcal{D})$ 将收缩至一个点，认知不确定性趋近于零。这一性质使得认知不确定性与<strong>主动学习</strong>（Active Learning）天然契合——模型在认知不确定性高的区域采集新样本，可以最高效地压缩参数不确定性 <a href="https://link.springer.com/article/10.1007/s10994-021-05946-3">3</a>。</p>
+
+<h3 id="22-异方差回归">2.2 异方差回归</h3>
+
+<p>对于回归任务，最自然的出发点是假设 $y \mid x \sim \mathcal{N}(\mu_\theta(x), \sigma^2<em>\theta(x))$，其中均值 $\mu</em>\theta(x)$ 和方差 $\sigma^2_\theta(x)$ 均为网络的输出。训练目标为最大化对数似然，等价于最小化以下损失函数 <a href="https://proceedings.neurips.cc/paper/2017/hash/2650d6089a6d640c5e85b2b88265dc2b-Abstract.html">2</a>：</p>
+
+<p>$\mathcal{L}(\theta) = \frac{1}{N} \sum_{i=1}^{N} \left[ \frac{(y_i - \mu_\theta(x_i))^2}{2\sigma^2<em>\theta(x_i)} + \frac{1}{2}\log \sigma^2</em>\theta(x_i) \right]$</p>
+
+<p>该损失函数具有直观的信息论解释：第一项是以预测方差为权重的加权均方误差，当模型对某个样本预测不确定（$\sigma^2$ 大）时，该样本对梯度的贡献被自动降低；第二项是正则化项，防止模型通过无限增大 $\sigma^2$ 来规避第一项的惩罚。这种机制使得模型能够自适应地对噪声较大的样本降低权重，从而对异常值具有天然的鲁棒性。</p>
+
+
+      </script>
+    </div>
+  </body>
+</html>
