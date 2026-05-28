@@ -86,9 +86,6 @@ href="/assets/lib/magnific-popup/magnific-popup.css"
 media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="/assets/lib/magnific-popup/magnific-popup.css"></noscript>
 
-<link rel="stylesheet" href="/assets/lib/waline/waline.css" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="/assets/lib/waline/waline.css"></noscript>
-
 
 <script type="text/javascript" blocking="render">
   class ModeToggle {
@@ -1160,25 +1157,70 @@ aria-label="Older"
 </div>
 </nav>
 
-<div id="waline"></div>
-<script type="module">
-  import { init } from "/assets/lib/waline/waline.js";
 
-  init({
-    el: '#waline',
-    serverURL: "https://comment.jinchaoli.com",
-    reaction: [
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_heart.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_thumbsup.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_clap.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_grin.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_doubt.gif',
-      'https://cdn.jsdelivr.net/npm/@waline/emojis@1.1.0/qq/qq_sleep.gif',
-    ],
-    search: false,
-    pageview: true,
-    lang: 'en'
-  });
+<script type="text/javascript">
+  (function () {
+    const origin = 'https://giscus.app';
+    const iframe = 'iframe.giscus-frame';
+    const lightTheme = 'light';
+    const darkTheme = 'dark_dimmed';
+
+    let initTheme = lightTheme;
+    const html = document.documentElement;
+
+    if (
+      (html.hasAttribute('data-mode') &&
+        html.getAttribute('data-mode') === 'dark') ||
+      (!html.hasAttribute('data-mode') &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      initTheme = darkTheme;
+    }
+
+    let giscusAttributes = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'JinchaoLove/JinchaoLove.github.io',
+      'data-repo-id': 'MDEwOlJlcG9zaXRvcnkzODEyNzcwMzk=',
+      'data-category': 'Announcements',
+      'data-category-id': 'DIC_kwDOFrnTb84CA87v',
+      'data-mapping': 'pathname',
+      'data-strict' : '0',      'data-reactions-enabled': '1',
+      'data-emit-metadata': '0',
+      'data-theme': initTheme,
+      'data-input-position': 'top',
+      'data-lang': 'en',
+      'data-loading': 'lazy',
+      crossorigin: 'anonymous',
+      async: ''
+    };
+
+    let giscusScript = document.createElement('script');
+    Object.entries(giscusAttributes).forEach(([key, value]) =>
+      giscusScript.setAttribute(key, value)
+    );
+    document.getElementById('tail-wrapper').appendChild(giscusScript);
+
+    addEventListener('message', (event) => {
+      if (
+        event.source === window &&
+        event.data &&
+        event.data.direction === ModeToggle.ID
+      ) {
+        /* global theme mode changed */
+        const mode = event.data.message;
+        const theme = mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme;
+
+        const message = {
+          setConfig: {
+            theme: theme
+          }
+        };
+
+        const giscus = document.querySelector(iframe).contentWindow;
+        giscus.postMessage({ giscus: message }, origin);
+      }
+    });
+  })();
 </script>
 </div>
 </div>
