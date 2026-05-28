@@ -271,7 +271,7 @@ DeepSeek-V4与流形撕裂(转)</title>
 <p>Standard Hyper-Connections expand the residual stream width by a factor of n_hc, introducing a residual mapping matrix B_l ∈ ℝⁿ×ⁿ at each layer. The update rule is:</p>
 
 <blockquote>
-  <p>(X_{l+1} = B_l X_l + C_l F_l(A_l X_l))</p>
+\[X_{l+1} = B_l X_l + C_l F_l(A_l X_l)\]
 </blockquote>
 
 <p>The paper found that naive HC exhibited numerical instability when stacked, precisely because B_l is unconstrained. An unconstrained matrix can have spectral norm &gt; 1. Spectral norm is the largest singular value, it is the maximum factor by which the matrix can stretch a vector. If ‖B_l‖₂ &gt; 1, the residual mapping is <strong>expansive</strong>: it stretches the representation space at each layer. A small perturbation, say, a token slightly misrouted at layer 5:gets amplified at layer 6, further amplified at layer 7, and so on. By the time it reaches layer L, the tear has been stretched across a large region of representation space. This is tear amplification.</p>
@@ -308,7 +308,7 @@ DeepSeek-V4与流形撕裂(转)</title>
 <p>标准 Hyper-Connections 会将残差流的宽度扩展 B_l 倍，并在每一层引入一个残差映射矩阵 B_l ∈ ℝⁿ×ⁿ。其更新规则为：</p>
 
 <blockquote>
-  <p>(X_{l+1} = B_l X_l + C_l F_l(A_l X_l))</p>
+\[X_{l+1} = B_l X_l + C_l F_l(A_l X_l)\]
 </blockquote>
 
 <p>论文发现，朴素的 HC 在堆叠多层时会表现出数值不稳定性——原因正是 BlB_lBl 没有受到约束。一个无约束矩阵的谱范数可能大于 1。谱范数是最大奇异值，也就是这个矩阵能够拉伸一个向量的最大倍数。如果 ‖B_l‖₂ &gt; 1，那么残差映射就是扩张性的：它会在每一层拉伸表征空间。一个很小的扰动, 比如某个单标在第 5 层被轻微错误路由, 会在第 6 层被放大，在第 7 层进一步放大，如此继续。等它到达第 L 层时，这个撕裂已经被拉伸到表征空间中的一大片区域。这就是<strong>撕裂放大</strong>。</p>
