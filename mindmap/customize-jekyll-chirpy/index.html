@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en" class="markmap-dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customize Your Jekyll Chirpy Theme</title>
+    <style>
+      .markmap {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+      }
+      .markmap-dark {
+        background: #27272a;
+        color: white;
+      }
+    </style>
+    <script>
+      window.markmap = {
+        autoLoader: {
+          toolbar: true
+        }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader@0.18"></script>
+  </head>
+  <body>
+    <div class="markmap">
+      <script type="text/template">
+        ---
+        markmap:
+          maxWidth: 300
+          colorFreezeLevel: 3
+          initialExpandLevel: 3
+          pan: false
+          autoFit: true
+          fitRatio: 0.7
+        ---
+
+#Customize Your Jekyll Chirpy Theme
+
+[Jekyll Chirpy Theme][chirpy] is a highly customizable theme with a large number of users and a very complete ecology. You can reproduce or adjust the configuration according to the official [wiki][wiki] to realize your own magic modification.
+
+This blog introduces some basic tutorials to customize your own Chirpy theme, suitable for those friends who are not satisfied with the Chirpy configuration and want more blogging functions. Welcome to [issue][issue] or [join us][contibute] to help others build blogs.
+
+- [Exchange Homepage and About](/blog/exchange-homepage-and-about/)
+
+- [Replace Disqus with Valine for Discussion](https://nihil.cc/posts/use_valine/)
+
+- [Use Waline for Discussion](https://blog.ixiaocai.net/posts/Astro-Blog-Customize-4-Waline-Enhancement/)
+
+[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy
+[wiki]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki
+[issue]: https://github.com/JinchaoLove/jekyll-chirpy-demo/issues
+[contibute]: https://github.com/JinchaoLove/jekyll-chirpy-demo/pulls
+
+      </script>
+    </div>
+  </body>
+</html>

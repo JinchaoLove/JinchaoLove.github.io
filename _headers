@@ -1,0 +1,41 @@
+# Cloudflare Pages / Netlify HTTP Headers
+# Extends cache TTL for static assets to improve repeat-visit performance.
+# For GitHub Pages + Cloudflare proxy: configure equivalent rules in
+# Cloudflare Dashboard → Rules → Cache Rules (or Page Rules).
+
+# Static library assets (fingerprinted by content, safe for long cache)
+/assets/lib/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Generated JS bundles
+/assets/js/dist/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Other JS files
+/assets/js/*.js
+  Cache-Control: public, max-age=604800, must-revalidate
+
+# CSS theme
+/assets/css/*
+  Cache-Control: public, max-age=604800, must-revalidate
+
+# Images and papers (versioned by filename)
+/assets/img/*
+  Cache-Control: public, max-age=2592000, must-revalidate
+
+/assets/papers/*
+  Cache-Control: public, max-age=2592000, must-revalidate
+
+# Fonts (rarely change)
+/assets/lib/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/lib/fontawesome-free/webfonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML pages (short cache to pick up updates quickly)
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
