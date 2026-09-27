@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/demo.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-08-08T10:45:00+08:00</updated><id>https://jinchaoli.com/feed/by_tag/demo.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Hello, Notion!</title><link href="https://jinchaoli.com/blog/hello,-notion!/" rel="alternate" type="text/html" title="Hello, Notion!"/><published>2026-04-23T00:00:00+08:00</published><updated>2026-04-23T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/hello,-notion!</id><content type="html" xml:base="https://jinchaoli.com/blog/hello,-notion!/"><![CDATA[<h1 id="text-and-typography">Text and Typography</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://jinchaoli.com/feed/by_tag/demo.xml" rel="self" type="application/atom+xml"/><link href="https://jinchaoli.com/" rel="alternate" type="text/html" hreflang="en"/><updated>2026-09-27T18:48:52+08:00</updated><id>https://jinchaoli.com/feed/by_tag/demo.xml</id><title type="html">Jinchao Li</title><subtitle>Jinchao Li&apos;s Homepage</subtitle><entry><title type="html">Hello, Notion!</title><link href="https://jinchaoli.com/blog/hello,-notion!/" rel="alternate" type="text/html" title="Hello, Notion!"/><published>2026-04-23T00:00:00+08:00</published><updated>2026-04-23T00:00:00+08:00</updated><id>https://jinchaoli.com/blog/hello,-notion!</id><content type="html" xml:base="https://jinchaoli.com/blog/hello,-notion!/"><![CDATA[<h1 id="text-and-typography">Text and Typography</h1>
 <h2 id="headings">Headings</h2>
 <h1 class="mt-4 mb-0" id="h1---heading">H1 - heading</h1>
 <h2 id="h2---heading" data-toc-skip="" class="mt-4 mb-0">H2 - heading</h2>
@@ -200,7 +200,7 @@ Praesent maximus aliquam sapien. Sed vel neque in dolor pulvinar auctor. Maecena
 <p><img src="https://chirpy-img.netlify.app/posts/20190808/devtools-light.png" alt="" class="light w-75 shadow rounded-10" w="1212" h="668"/></p>
 <p><img src="https://chirpy-img.netlify.app/posts/20190808/devtools-dark.png" alt="" class="dark w-75 shadow rounded-10" w="1212" h="668"/></p>
 <h2 id="video">Video</h2>
-<div class="yt-lite embed-video" data-id="Balreaj8Yqs" onclick="
+<div class="yt-lite embed-video" data-id="wPpLaUMMK_M" onclick="
 var iframe=document.createElement('iframe');
 iframe.setAttribute('src', 'https://www.youtube.com/embed/' + this.dataset.id + '?autoplay=1');
 iframe.setAttribute('title', 'YouTube video player');
@@ -210,7 +210,7 @@ iframe.setAttribute('allowfullscreen', '');
 iframe.className = 'embed-video';
 this.parentNode.replaceChild(iframe, this);
 ">
-<img src="https://i.ytimg.com/vi/Balreaj8Yqs/hqdefault.jpg" alt="YouTube video thumbnail" loading="lazy"/>
+<img src="https://i.ytimg.com/vi/wPpLaUMMK_M/hqdefault.jpg" alt="YouTube video thumbnail" loading="lazy"/>
 <button class="yt-play-btn" aria-label="Play video">
 <svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
 <path d="M66.5 7.7c-.8-2.9-3-5.1-5.8-5.8C55.8 0 34 0 34 0S12.2 0 7.3 1.9C4.5 2.6 2.3 4.9 1.5 7.7 0 12.8 0 24 0 24s0 11.2 1.5 16.3c.8 2.9 3 5.1 5.8 5.8C12.2 48 34 48 34 48s21.8 0 26.7-1.9c2.8-.8 5-3 5.8-5.8C68 35.2 68 24 68 24s0-11.2-1.5-16.3z" fill="#f00"/>
